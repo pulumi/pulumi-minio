@@ -1,0 +1,901 @@
+{
+    "name": "minio",
+    "description": "A Pulumi package for creating and managing minio cloud resources.",
+    "keywords": [
+        "pulumi",
+        "minio"
+    ],
+    "homepage": "https://pulumi.io",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`minio` Terraform Provider](https://github.com/aminueza/terraform-provider-minio).",
+    "repository": "https://github.com/pulumi/pulumi-minio",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "minioAccessKey": {
+                "type": "string",
+                "description": "Minio Access Key\n"
+            },
+            "minioApiVersion": {
+                "type": "string",
+                "description": "Minio API Version (type: string, options: v2 or v4, default: v4)\n"
+            },
+            "minioRegion": {
+                "type": "string",
+                "description": "Minio Region (default: us-east-1)\n"
+            },
+            "minioSecretKey": {
+                "type": "string",
+                "description": "Minio Secret Key\n"
+            },
+            "minioServer": {
+                "type": "string",
+                "description": "Minio Host and Port\n"
+            },
+            "minioSsl": {
+                "type": "boolean",
+                "description": "Minio SSL enabled (default: false)\n"
+            }
+        },
+        "defaults": [
+            "minioAccessKey",
+            "minioSecretKey",
+            "minioServer"
+        ]
+    },
+    "types": {
+        "minio:index/getIamPolicyDocumentStatement:getIamPolicyDocumentStatement": {
+            "properties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/minio:index/getIamPolicyDocumentStatementCondition:getIamPolicyDocumentStatementCondition"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "effect": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "principal": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sid": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "minio:index/getIamPolicyDocumentStatementCondition:getIamPolicyDocumentStatementCondition": {
+            "properties": {
+                "test": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "variable": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "test",
+                "values",
+                "variable"
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the minio package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "minioAccessKey": {
+                "type": "string",
+                "description": "Minio Access Key\n"
+            },
+            "minioApiVersion": {
+                "type": "string",
+                "description": "Minio API Version (type: string, options: v2 or v4, default: v4)\n"
+            },
+            "minioRegion": {
+                "type": "string",
+                "description": "Minio Region (default: us-east-1)\n"
+            },
+            "minioSecretKey": {
+                "type": "string",
+                "description": "Minio Secret Key\n"
+            },
+            "minioServer": {
+                "type": "string",
+                "description": "Minio Host and Port\n"
+            },
+            "minioSsl": {
+                "type": "boolean",
+                "description": "Minio SSL enabled (default: false)\n"
+            }
+        },
+        "required": [
+            "minioAccessKey",
+            "minioSecretKey",
+            "minioServer"
+        ],
+        "inputProperties": {
+            "minioAccessKey": {
+                "type": "string",
+                "description": "Minio Access Key\n"
+            },
+            "minioApiVersion": {
+                "type": "string",
+                "description": "Minio API Version (type: string, options: v2 or v4, default: v4)\n"
+            },
+            "minioRegion": {
+                "type": "string",
+                "description": "Minio Region (default: us-east-1)\n"
+            },
+            "minioSecretKey": {
+                "type": "string",
+                "description": "Minio Secret Key\n"
+            },
+            "minioServer": {
+                "type": "string",
+                "description": "Minio Host and Port\n"
+            },
+            "minioSsl": {
+                "type": "boolean",
+                "description": "Minio SSL enabled (default: false)\n"
+            }
+        },
+        "requiredInputs": [
+            "minioAccessKey",
+            "minioSecretKey",
+            "minioServer"
+        ]
+    },
+    "resources": {
+        "minio:index/iamGroup:IamGroup": {
+            "properties": {
+                "disableGroup": {
+                    "type": "boolean",
+                    "description": "Disable group\n"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Delete group even if it has non-Terraform-managed members\n"
+                },
+                "groupName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "groupName",
+                "name"
+            ],
+            "inputProperties": {
+                "disableGroup": {
+                    "type": "boolean",
+                    "description": "Disable group\n"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Delete group even if it has non-Terraform-managed members\n"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IamGroup resources.\n",
+                "properties": {
+                    "disableGroup": {
+                        "type": "boolean",
+                        "description": "Disable group\n"
+                    },
+                    "forceDestroy": {
+                        "type": "boolean",
+                        "description": "Delete group even if it has non-Terraform-managed members\n"
+                    },
+                    "groupName": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "minio:index/iamGroupMembership:IamGroupMembership": {
+            "properties": {
+                "group": {
+                    "type": "string",
+                    "description": "Group name to add users\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of group membership\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Add user or list of users such as a group membership\n"
+                }
+            },
+            "required": [
+                "group",
+                "name",
+                "users"
+            ],
+            "inputProperties": {
+                "group": {
+                    "type": "string",
+                    "description": "Group name to add users\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of group membership\n"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Add user or list of users such as a group membership\n"
+                }
+            },
+            "requiredInputs": [
+                "group",
+                "users"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IamGroupMembership resources.\n",
+                "properties": {
+                    "group": {
+                        "type": "string",
+                        "description": "Group name to add users\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of group membership\n"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Add user or list of users such as a group membership\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "minio:index/iamGroupPolicy:IamGroupPolicy": {
+            "properties": {
+                "group": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "namePrefix": {
+                    "type": "string"
+                },
+                "policy": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "group",
+                "name",
+                "policy"
+            ],
+            "inputProperties": {
+                "group": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "namePrefix": {
+                    "type": "string"
+                },
+                "policy": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "group",
+                "policy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IamGroupPolicy resources.\n",
+                "properties": {
+                    "group": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "namePrefix": {
+                        "type": "string"
+                    },
+                    "policy": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment": {
+            "properties": {
+                "groupName": {
+                    "type": "string"
+                },
+                "policyName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "groupName",
+                "policyName"
+            ],
+            "inputProperties": {
+                "groupName": {
+                    "type": "string"
+                },
+                "policyName": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "groupName",
+                "policyName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IamGroupPolicyAttachment resources.\n",
+                "properties": {
+                    "groupName": {
+                        "type": "string"
+                    },
+                    "policyName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "minio:index/iamGroupUserAttachment:IamGroupUserAttachment": {
+            "properties": {
+                "groupName": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "groupName",
+                "userName"
+            ],
+            "inputProperties": {
+                "groupName": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "groupName",
+                "userName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IamGroupUserAttachment resources.\n",
+                "properties": {
+                    "groupName": {
+                        "type": "string"
+                    },
+                    "userName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "minio:index/iamPolicy:IamPolicy": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "namePrefix": {
+                    "type": "string"
+                },
+                "policy": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "policy"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string"
+                },
+                "namePrefix": {
+                    "type": "string"
+                },
+                "policy": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "policy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IamPolicy resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "namePrefix": {
+                        "type": "string"
+                    },
+                    "policy": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "minio:index/iamUser:IamUser": {
+            "properties": {
+                "disableUser": {
+                    "type": "boolean",
+                    "description": "Disable user\n"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Delete user even if it has non-Terraform-managed IAM access keys\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
+                "updateSecret": {
+                    "type": "boolean",
+                    "description": "Rotate Minio User Secret Key\n"
+                }
+            },
+            "required": [
+                "name",
+                "secret",
+                "status"
+            ],
+            "inputProperties": {
+                "disableUser": {
+                    "type": "boolean",
+                    "description": "Disable user\n"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "Delete user even if it has non-Terraform-managed IAM access keys\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
+                "updateSecret": {
+                    "type": "boolean",
+                    "description": "Rotate Minio User Secret Key\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IamUser resources.\n",
+                "properties": {
+                    "disableUser": {
+                        "type": "boolean",
+                        "description": "Disable user\n"
+                    },
+                    "forceDestroy": {
+                        "type": "boolean",
+                        "description": "Delete user even if it has non-Terraform-managed IAM access keys\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "secret": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "updateSecret": {
+                        "type": "boolean",
+                        "description": "Rotate Minio User Secret Key\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment": {
+            "properties": {
+                "policyName": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "policyName",
+                "userName"
+            ],
+            "inputProperties": {
+                "policyName": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "policyName",
+                "userName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IamUserPolicyAttachment resources.\n",
+                "properties": {
+                    "policyName": {
+                        "type": "string"
+                    },
+                    "userName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "minio:index/s3Bucket:S3Bucket": {
+            "properties": {
+                "acl": {
+                    "type": "string"
+                },
+                "bucket": {
+                    "type": "string"
+                },
+                "bucketDomainName": {
+                    "type": "string"
+                },
+                "bucketPrefix": {
+                    "type": "string"
+                },
+                "forceDestroy": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "acl",
+                "bucket",
+                "bucketDomainName"
+            ],
+            "inputProperties": {
+                "acl": {
+                    "type": "string"
+                },
+                "bucket": {
+                    "type": "string"
+                },
+                "bucketPrefix": {
+                    "type": "string"
+                },
+                "forceDestroy": {
+                    "type": "boolean"
+                }
+            },
+            "requiredInputs": [
+                "acl"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering S3Bucket resources.\n",
+                "properties": {
+                    "acl": {
+                        "type": "string"
+                    },
+                    "bucket": {
+                        "type": "string"
+                    },
+                    "bucketDomainName": {
+                        "type": "string"
+                    },
+                    "bucketPrefix": {
+                        "type": "string"
+                    },
+                    "forceDestroy": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "minio:index/s3Object:S3Object": {
+            "properties": {
+                "bucketName": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "contentBase64": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "objectName": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "versionId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "bucketName",
+                "contentType",
+                "etag",
+                "objectName",
+                "versionId"
+            ],
+            "inputProperties": {
+                "bucketName": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "contentBase64": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "etag": {
+                    "type": "string"
+                },
+                "objectName": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "versionId": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "bucketName",
+                "objectName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering S3Object resources.\n",
+                "properties": {
+                    "bucketName": {
+                        "type": "string"
+                    },
+                    "content": {
+                        "type": "string"
+                    },
+                    "contentBase64": {
+                        "type": "string"
+                    },
+                    "contentType": {
+                        "type": "string"
+                    },
+                    "etag": {
+                        "type": "string"
+                    },
+                    "objectName": {
+                        "type": "string"
+                    },
+                    "source": {
+                        "type": "string"
+                    },
+                    "versionId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "minio:index/getIamPolicyDocument:getIamPolicyDocument": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getIamPolicyDocument.\n",
+                "properties": {
+                    "overrideJson": {
+                        "type": "string"
+                    },
+                    "policyId": {
+                        "type": "string"
+                    },
+                    "sourceJson": {
+                        "type": "string"
+                    },
+                    "statements": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/minio:index/getIamPolicyDocumentStatement:getIamPolicyDocumentStatement"
+                        }
+                    },
+                    "version": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIamPolicyDocument.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "json": {
+                        "type": "string"
+                    },
+                    "overrideJson": {
+                        "type": "string"
+                    },
+                    "policyId": {
+                        "type": "string"
+                    },
+                    "sourceJson": {
+                        "type": "string"
+                    },
+                    "statements": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/minio:index/getIamPolicyDocumentStatement:getIamPolicyDocumentStatement"
+                        }
+                    },
+                    "version": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "json",
+                    "id"
+                ]
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-minio/sdk/go/minio"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing minio cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aminueza/terraform-provider-minio)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-minio` repo](https://github.com/pulumi/pulumi-minio/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`aminueza/terraform-provider-minio` repo](https://github.com/aminueza/terraform-provider-minio/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aminueza/terraform-provider-minio)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-minio` repo](https://github.com/pulumi/pulumi-minio/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`aminueza/terraform-provider-minio` repo](https://github.com/aminueza/terraform-provider-minio/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    }
+}
