@@ -4,6 +4,39 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as minio from "@pulumi/minio";
+ *
+ * const testUser = new minio.IamUser("test_user", {});
+ * const testPolicy = new minio.IamPolicy("test_policy", {
+ *     policy: `{
+ *   "Version":"2012-10-17",
+ *   "Statement": [
+ *     {
+ *       "Sid":"ListAllBucket",
+ *       "Effect": "Allow",
+ *       "Action": ["s3:PutObject"],
+ *       "Principal":"*",
+ *       "Resource": "arn:aws:s3:::state-terraform-s3/*"
+ *     }
+ *   ]
+ * }
+ * `,
+ * });
+ * const developer = new minio.IamUserPolicyAttachment("developer", {
+ *     policyName: testPolicy.id,
+ *     userName: testUser.id,
+ * });
+ *
+ * export const minioName = developer.id;
+ * export const minioUsers = developer.userName;
+ * export const minioGroup = developer.policyName;
+ * ```
+ */
 export class IamUserPolicyAttachment extends pulumi.CustomResource {
     /**
      * Get an existing IamUserPolicyAttachment resource's state with the given name, ID, and optional extra

@@ -81,7 +81,35 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
                  user_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a IamUserPolicyAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        test_user = minio.IamUser("testUser")
+        test_policy = minio.IamPolicy("testPolicy", policy=\"\"\"{
+          "Version":"2012-10-17",
+          "Statement": [
+            {
+              "Sid":"ListAllBucket",
+              "Effect": "Allow",
+              "Action": ["s3:PutObject"],
+              "Principal":"*",
+              "Resource": "arn:aws:s3:::state-terraform-s3/*"
+            }
+          ]
+        }
+
+        \"\"\")
+        developer = minio.IamUserPolicyAttachment("developer",
+            policy_name=test_policy.id,
+            user_name=test_user.id)
+        pulumi.export("minioName", developer.id)
+        pulumi.export("minioUsers", developer.user_name)
+        pulumi.export("minioGroup", developer.policy_name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -92,7 +120,35 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
                  args: IamUserPolicyAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IamUserPolicyAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        test_user = minio.IamUser("testUser")
+        test_policy = minio.IamPolicy("testPolicy", policy=\"\"\"{
+          "Version":"2012-10-17",
+          "Statement": [
+            {
+              "Sid":"ListAllBucket",
+              "Effect": "Allow",
+              "Action": ["s3:PutObject"],
+              "Principal":"*",
+              "Resource": "arn:aws:s3:::state-terraform-s3/*"
+            }
+          ]
+        }
+
+        \"\"\")
+        developer = minio.IamUserPolicyAttachment("developer",
+            policy_name=test_policy.id,
+            user_name=test_user.id)
+        pulumi.export("minioName", developer.id)
+        pulumi.export("minioUsers", developer.user_name)
+        pulumi.export("minioGroup", developer.policy_name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param IamUserPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

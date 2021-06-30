@@ -9,6 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Minio = Pulumi.Minio;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var developerIamGroup = new Minio.IamGroup("developerIamGroup", new Minio.IamGroupArgs
+    ///         {
+    ///         });
+    ///         var testPolicy = new Minio.IamGroupPolicy("testPolicy", new Minio.IamGroupPolicyArgs
+    ///         {
+    ///             Policy = @"{
+    ///   ""Version"":""2012-10-17"",
+    ///   ""Statement"": [
+    ///     {
+    ///       ""Sid"":""ListAllBucket"",
+    ///       ""Effect"": ""Allow"",
+    ///       ""Action"": [""s3:PutObject""],
+    ///       ""Principal"":""*"",
+    ///       ""Resource"": ""arn:aws:s3:::state-terraform-s3/*""
+    ///     }
+    ///   ]
+    /// }
+    /// 
+    /// ",
+    ///         });
+    ///         var developerIamGroupPolicyAttachment = new Minio.IamGroupPolicyAttachment("developerIamGroupPolicyAttachment", new Minio.IamGroupPolicyAttachmentArgs
+    ///         {
+    ///             GroupName = minio_iam_group.Group.Name,
+    ///             PolicyName = minio_iam_policy.Test_policy.Id,
+    ///         });
+    ///         this.MinioName = developerIamGroupPolicyAttachment.Id;
+    ///         this.MinioUsers = developerIamGroupPolicyAttachment.GroupName;
+    ///         this.MinioGroup = developerIamGroupPolicyAttachment.PolicyName;
+    ///     }
+    /// 
+    ///     [Output("minioName")]
+    ///     public Output&lt;string&gt; MinioName { get; set; }
+    ///     [Output("minioUsers")]
+    ///     public Output&lt;string&gt; MinioUsers { get; set; }
+    ///     [Output("minioGroup")]
+    ///     public Output&lt;string&gt; MinioGroup { get; set; }
+    /// }
+    /// ```
+    /// </summary>
     [MinioResourceType("minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment")]
     public partial class IamGroupPolicyAttachment : Pulumi.CustomResource
     {

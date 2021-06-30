@@ -11,6 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := minio.NewIamGroup(ctx, "developerIamGroup", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		userOne, err := minio.NewIamUser(ctx, "userOne", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		developerIamGroupUserAttachment, err := minio.NewIamGroupUserAttachment(ctx, "developerIamGroupUserAttachment", &minio.IamGroupUserAttachmentArgs{
+// 			GroupName: pulumi.Any(minio_iam_group.Group.Name),
+// 			UserName:  userOne.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("minioName", developerIamGroupUserAttachment.ID())
+// 		ctx.Export("minioUsers", developerIamGroupUserAttachment.GroupName)
+// 		ctx.Export("minioGroup", developerIamGroupUserAttachment.UserName)
+// 		return nil
+// 	})
+// }
+// ```
 type IamGroupUserAttachment struct {
 	pulumi.CustomResourceState
 

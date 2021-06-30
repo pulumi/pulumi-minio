@@ -9,6 +9,39 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Minio = Pulumi.Minio;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var testIamUser = new Minio.IamUser("testIamUser", new Minio.IamUserArgs
+    ///         {
+    ///             ForceDestroy = true,
+    ///             Tags = 
+    ///             {
+    ///                 { "tag-key", "tag-value" },
+    ///             },
+    ///         });
+    ///         this.Test = testIamUser.Id;
+    ///         this.Status = testIamUser.Status;
+    ///         this.Secret = testIamUser.Secret;
+    ///     }
+    /// 
+    ///     [Output("test")]
+    ///     public Output&lt;string&gt; Test { get; set; }
+    ///     [Output("status")]
+    ///     public Output&lt;string&gt; Status { get; set; }
+    ///     [Output("secret")]
+    ///     public Output&lt;string&gt; Secret { get; set; }
+    /// }
+    /// ```
+    /// </summary>
     [MinioResourceType("minio:index/iamUser:IamUser")]
     public partial class IamUser : Pulumi.CustomResource
     {

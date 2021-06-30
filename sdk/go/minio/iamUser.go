@@ -10,6 +10,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		testIamUser, err := minio.NewIamUser(ctx, "testIamUser", &minio.IamUserArgs{
+// 			ForceDestroy: pulumi.Bool(true),
+// 			Tags: pulumi.StringMap{
+// 				"tag-key": pulumi.String("tag-value"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("test", testIamUser.ID())
+// 		ctx.Export("status", testIamUser.Status)
+// 		ctx.Export("secret", testIamUser.Secret)
+// 		return nil
+// 	})
+// }
+// ```
 type IamUser struct {
 	pulumi.CustomResourceState
 

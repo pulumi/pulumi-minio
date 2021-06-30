@@ -9,11 +9,38 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Minio = Pulumi.Minio;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var stateTerraformS3 = new Minio.S3Bucket("stateTerraformS3", new Minio.S3BucketArgs
+    ///         {
+    ///             Acl = "public",
+    ///             Bucket = "state-terraform-s3",
+    ///         });
+    ///         this.MinioId = stateTerraformS3.Id;
+    ///         this.MinioUrl = stateTerraformS3.BucketDomainName;
+    ///     }
+    /// 
+    ///     [Output("minioId")]
+    ///     public Output&lt;string&gt; MinioId { get; set; }
+    ///     [Output("minioUrl")]
+    ///     public Output&lt;string&gt; MinioUrl { get; set; }
+    /// }
+    /// ```
+    /// </summary>
     [MinioResourceType("minio:index/s3Bucket:S3Bucket")]
     public partial class S3Bucket : Pulumi.CustomResource
     {
         [Output("acl")]
-        public Output<string> Acl { get; private set; } = null!;
+        public Output<string?> Acl { get; private set; } = null!;
 
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
@@ -35,7 +62,7 @@ namespace Pulumi.Minio
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public S3Bucket(string name, S3BucketArgs args, CustomResourceOptions? options = null)
+        public S3Bucket(string name, S3BucketArgs? args = null, CustomResourceOptions? options = null)
             : base("minio:index/s3Bucket:S3Bucket", name, args ?? new S3BucketArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -73,8 +100,8 @@ namespace Pulumi.Minio
 
     public sealed class S3BucketArgs : Pulumi.ResourceArgs
     {
-        [Input("acl", required: true)]
-        public Input<string> Acl { get; set; } = null!;
+        [Input("acl")]
+        public Input<string>? Acl { get; set; }
 
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }

@@ -13,14 +13,15 @@ __all__ = ['S3BucketArgs', 'S3Bucket']
 @pulumi.input_type
 class S3BucketArgs:
     def __init__(__self__, *,
-                 acl: pulumi.Input[str],
+                 acl: Optional[pulumi.Input[str]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  bucket_prefix: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a S3Bucket resource.
         """
-        pulumi.set(__self__, "acl", acl)
+        if acl is not None:
+            pulumi.set(__self__, "acl", acl)
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
         if bucket_prefix is not None:
@@ -30,11 +31,11 @@ class S3BucketArgs:
 
     @property
     @pulumi.getter
-    def acl(self) -> pulumi.Input[str]:
+    def acl(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: pulumi.Input[str]):
+    def acl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "acl", value)
 
     @property
@@ -144,7 +145,19 @@ class S3Bucket(pulumi.CustomResource):
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a S3Bucket resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        state_terraform_s3 = minio.S3Bucket("stateTerraformS3",
+            acl="public",
+            bucket="state-terraform-s3")
+        pulumi.export("minioId", state_terraform_s3.id)
+        pulumi.export("minioUrl", state_terraform_s3.bucket_domain_name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -152,10 +165,22 @@ class S3Bucket(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: S3BucketArgs,
+                 args: Optional[S3BucketArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a S3Bucket resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        state_terraform_s3 = minio.S3Bucket("stateTerraformS3",
+            acl="public",
+            bucket="state-terraform-s3")
+        pulumi.export("minioId", state_terraform_s3.id)
+        pulumi.export("minioUrl", state_terraform_s3.bucket_domain_name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param S3BucketArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -187,8 +212,6 @@ class S3Bucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = S3BucketArgs.__new__(S3BucketArgs)
 
-            if acl is None and not opts.urn:
-                raise TypeError("Missing required property 'acl'")
             __props__.__dict__["acl"] = acl
             __props__.__dict__["bucket"] = bucket
             __props__.__dict__["bucket_prefix"] = bucket_prefix
@@ -230,7 +253,7 @@ class S3Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def acl(self) -> pulumi.Output[str]:
+    def acl(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "acl")
 
     @property

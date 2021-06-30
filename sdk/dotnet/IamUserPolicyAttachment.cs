@@ -9,6 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Minio = Pulumi.Minio;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var testUser = new Minio.IamUser("testUser", new Minio.IamUserArgs
+    ///         {
+    ///         });
+    ///         var testPolicy = new Minio.IamPolicy("testPolicy", new Minio.IamPolicyArgs
+    ///         {
+    ///             Policy = @"{
+    ///   ""Version"":""2012-10-17"",
+    ///   ""Statement"": [
+    ///     {
+    ///       ""Sid"":""ListAllBucket"",
+    ///       ""Effect"": ""Allow"",
+    ///       ""Action"": [""s3:PutObject""],
+    ///       ""Principal"":""*"",
+    ///       ""Resource"": ""arn:aws:s3:::state-terraform-s3/*""
+    ///     }
+    ///   ]
+    /// }
+    /// 
+    /// ",
+    ///         });
+    ///         var developer = new Minio.IamUserPolicyAttachment("developer", new Minio.IamUserPolicyAttachmentArgs
+    ///         {
+    ///             PolicyName = testPolicy.Id,
+    ///             UserName = testUser.Id,
+    ///         });
+    ///         this.MinioName = developer.Id;
+    ///         this.MinioUsers = developer.UserName;
+    ///         this.MinioGroup = developer.PolicyName;
+    ///     }
+    /// 
+    ///     [Output("minioName")]
+    ///     public Output&lt;string&gt; MinioName { get; set; }
+    ///     [Output("minioUsers")]
+    ///     public Output&lt;string&gt; MinioUsers { get; set; }
+    ///     [Output("minioGroup")]
+    ///     public Output&lt;string&gt; MinioGroup { get; set; }
+    /// }
+    /// ```
+    /// </summary>
     [MinioResourceType("minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment")]
     public partial class IamUserPolicyAttachment : Pulumi.CustomResource
     {

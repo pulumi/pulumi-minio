@@ -9,6 +9,52 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Minio = Pulumi.Minio;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var developer = new Minio.IamGroup("developer", new Minio.IamGroupArgs
+    ///         {
+    ///         });
+    ///         var testPolicy = new Minio.IamGroupPolicy("testPolicy", new Minio.IamGroupPolicyArgs
+    ///         {
+    ///             Group = developer.Id,
+    ///             Policy = @"{
+    ///   ""Version"":""2012-10-17"",
+    ///   ""Statement"": [
+    ///     {
+    ///       ""Sid"":""ListAllBucket"",
+    ///       ""Effect"": ""Allow"",
+    ///       ""Action"": [""s3:PutObject""],
+    ///       ""Principal"":""*"",
+    ///       ""Resource"": ""arn:aws:s3:::state-terraform-s3/*""
+    ///     }
+    ///   ]
+    /// }
+    /// 
+    /// ",
+    ///         });
+    ///         this.MinioName = minio_iam_group_membership.Developer.Id;
+    ///         this.MinioPolicy = minio_iam_group_membership.Developer.Policy;
+    ///         this.MinioGroup = minio_iam_group_membership.Developer.Group;
+    ///     }
+    /// 
+    ///     [Output("minioName")]
+    ///     public Output&lt;string&gt; MinioName { get; set; }
+    ///     [Output("minioPolicy")]
+    ///     public Output&lt;string&gt; MinioPolicy { get; set; }
+    ///     [Output("minioGroup")]
+    ///     public Output&lt;string&gt; MinioGroup { get; set; }
+    /// }
+    /// ```
+    /// </summary>
     [MinioResourceType("minio:index/iamGroupPolicy:IamGroupPolicy")]
     public partial class IamGroupPolicy : Pulumi.CustomResource
     {

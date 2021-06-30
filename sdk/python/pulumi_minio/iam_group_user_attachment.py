@@ -81,7 +81,22 @@ class IamGroupUserAttachment(pulumi.CustomResource):
                  user_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a IamGroupUserAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        developer_iam_group = minio.IamGroup("developerIamGroup")
+        user_one = minio.IamUser("userOne")
+        developer_iam_group_user_attachment = minio.IamGroupUserAttachment("developerIamGroupUserAttachment",
+            group_name=minio_iam_group["group"]["name"],
+            user_name=user_one.name)
+        pulumi.export("minioName", developer_iam_group_user_attachment.id)
+        pulumi.export("minioUsers", developer_iam_group_user_attachment.group_name)
+        pulumi.export("minioGroup", developer_iam_group_user_attachment.user_name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -92,7 +107,22 @@ class IamGroupUserAttachment(pulumi.CustomResource):
                  args: IamGroupUserAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IamGroupUserAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        developer_iam_group = minio.IamGroup("developerIamGroup")
+        user_one = minio.IamUser("userOne")
+        developer_iam_group_user_attachment = minio.IamGroupUserAttachment("developerIamGroupUserAttachment",
+            group_name=minio_iam_group["group"]["name"],
+            user_name=user_one.name)
+        pulumi.export("minioName", developer_iam_group_user_attachment.id)
+        pulumi.export("minioUsers", developer_iam_group_user_attachment.group_name)
+        pulumi.export("minioGroup", developer_iam_group_user_attachment.user_name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param IamGroupUserAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
