@@ -1,48 +1,14 @@
-# Terraform Bridge Provider Boilerplate
+[![Actions Status](https://github.com/pulumi/pulumi-minio/workflows/master/badge.svg)](https://github.com/pulumi/pulumi-minio/actions)
+[![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
+[![NPM version](https://badge.fury.io/js/%40pulumi%2Fminio.svg)](https://www.npmjs.com/package/@pulumi/minio)
+[![Python version](https://badge.fury.io/py/pulumi-minio.svg)](https://pypi.org/project/pulumi-minio)
+[![NuGet version](https://badge.fury.io/nu/pulumi.minio.svg)](https://badge.fury.io/nu/pulumi.minio)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-minio/sdk/go)](https://pkg.go.dev/github.com/pulumi/pulumi-minio/sdk/go)
+[![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-minio/blob/master/LICENSE)
 
-This repository contains boilerplate code for building a new Pulumi provider which wraps an existing
-Terraform provider, if the existing provider uses _Go Modules_.
+# Minio Resource Provider
 
-Modify this README to describe:
-
-- The type of resources the provider manages
-- Add a build status image from Travis at the top of the README
-- Update package names in the information below
-- Add any important documentation of concepts (e.g. the "serverless" components in the AWS provider).
-
-## Creating a Pulumi Terraform Bridge Provider
-
-First, clone this repo with the name of the desired provider in place of `minio`:
-
-```
-git clone https://github.com/pulumi/pulumi-tf-provider-boilerplate pulumi-minio
-```
-
-Second, replace references to `minio` with the name of your provider:
-
-```
-make prepare NAME=foo REPOSITORY=github.com/pulumi/pulumi-foo
-```
-
-Next, list the configuration points for the provider in the area of the README.
-
-
-> Note: If the name of the desired Pulumi provider differs from the name of the Terraform provider, you will need to carefully distinguish between the references - see https://github.com/pulumi/pulumi-azure for an example.
-
-### Add dependencies
-
-In order to properly build the sdks, the following tools are expected:
-- `pulumictl` (See the project's README for installation instructions: https://github.com/pulumi/pulumictl)
-
-In the root of the repository, run:
-
-- `(cd provider && go get github.com/terraform-providers/terraform-provider-foo)`  (where `foo` is the name of the provider - note the parenthesis to run this in a subshell)
-- `(cd provider && go mod download)`
-
-### Build the provider:
-
-- Edit `provider/resources.go` to map each resource, and specify provider information
-- `make build_sdks`
+The Minio Resource Provider lets you manage releases in a Minio installation.
 
 ## Installing
 
@@ -52,17 +18,17 @@ This package is available in many languages in the standard packaging formats.
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
-    $ npm install @pulumi/xyx
+    $ npm install @pulumi/minio
 
 or `yarn`:
 
-    $ yarn add @pulumi/xyx
+    $ yarn add @pulumi/minio
 
 ### Python
 
 To use from Python, install using `pip`:
 
-    $ pip install pulumi_xyx
+    $ pip install pulumi_minio
 
 ### Go
 
@@ -70,16 +36,29 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-minio/sdk/go/...
 
+### .NET
+
+To use from .NET, install using `dotnet add package`:
+
+    $ dotnet add package Pulumi.Minio
+
 ## Configuration
 
-The following configuration points are available for the `minio` provider:
+The following configuration points are available:
 
-- `minio:apiKey` (environment: `XYZ_API_KEY`) - the API key for `minio`
-- `minio:region` (environment: `XYZ_REGION`) - the region in which to deploy resources
+* `minio:minioServer` - (Required) Minio Host and Port. It must be provided, but
+  it can also be sourced from the `MINIO_ENDPOINT` environment variable
+* `minio:minioAccessKey` - (Required) Minio Access Key. It must be provided, but
+  it can also be sourced from the `MINIO_ACCESS_KEY` environment variable
+* `minio:minioSecretKey` - (Required) Minio Secret Key. It must be provided, but
+  it can also be sourced from the `MINIO_SECRET_KEY` environment variable
+* `minio:minioRegion` - (Optional) Minio Region (`default: us-east-1`).
+* `minio:minioApiVersion` - (Optional) Minio API Version (type: string, options: `v2` or `v4`, default: `v4`).
+* `minio:minioSsl` - (Optional) Minio SSL enabled (default: `false`). It can also be sourced from the
+  `MINIO_ENABLE_HTTPS` environment variable
+
 
 ## Reference
 
-For detailed reference documentation, please visit [the API docs][1].
-
-
-[1]: https://www.pulumi.com/docs/reference/pkg/x/
+For further information, please visit [the Minio provider docs](https://www.pulumi.com/docs/intro/cloud-providers/minio)
+or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/minio).
