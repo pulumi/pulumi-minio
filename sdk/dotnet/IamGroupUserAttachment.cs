@@ -9,6 +9,42 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Minio = Pulumi.Minio;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var developerIamGroup = new Minio.IamGroup("developerIamGroup", new Minio.IamGroupArgs
+    ///         {
+    ///         });
+    ///         var userOne = new Minio.IamUser("userOne", new Minio.IamUserArgs
+    ///         {
+    ///         });
+    ///         var developerIamGroupUserAttachment = new Minio.IamGroupUserAttachment("developerIamGroupUserAttachment", new Minio.IamGroupUserAttachmentArgs
+    ///         {
+    ///             GroupName = minio_iam_group.Group.Name,
+    ///             UserName = userOne.Name,
+    ///         });
+    ///         this.MinioName = developerIamGroupUserAttachment.Id;
+    ///         this.MinioUsers = developerIamGroupUserAttachment.GroupName;
+    ///         this.MinioGroup = developerIamGroupUserAttachment.UserName;
+    ///     }
+    /// 
+    ///     [Output("minioName")]
+    ///     public Output&lt;string&gt; MinioName { get; set; }
+    ///     [Output("minioUsers")]
+    ///     public Output&lt;string&gt; MinioUsers { get; set; }
+    ///     [Output("minioGroup")]
+    ///     public Output&lt;string&gt; MinioGroup { get; set; }
+    /// }
+    /// ```
+    /// </summary>
     [MinioResourceType("minio:index/iamGroupUserAttachment:IamGroupUserAttachment")]
     public partial class IamGroupUserAttachment : Pulumi.CustomResource
     {

@@ -9,6 +9,42 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Minio = Pulumi.Minio;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var stateTerraformS3 = new Minio.S3Bucket("stateTerraformS3", new Minio.S3BucketArgs
+    ///         {
+    ///             Bucket = "state-terraform-s3",
+    ///             Acl = "public",
+    ///         });
+    ///         var txtFile = new Minio.S3Object("txtFile", new Minio.S3ObjectArgs
+    ///         {
+    ///             BucketName = stateTerraformS3.Bucket,
+    ///             ObjectName = "text.txt",
+    ///             Content = "Lorem ipsum dolor sit amet.",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 stateTerraformS3,
+    ///             },
+    ///         });
+    ///         this.MinioId = txtFile.Id;
+    ///     }
+    /// 
+    ///     [Output("minioId")]
+    ///     public Output&lt;string&gt; MinioId { get; set; }
+    /// }
+    /// ```
+    /// </summary>
     [MinioResourceType("minio:index/s3Object:S3Object")]
     public partial class S3Object : Pulumi.CustomResource
     {

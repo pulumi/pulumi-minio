@@ -9,6 +9,28 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Minio = Pulumi.Minio;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var developer = new Minio.IamGroup("developer", new Minio.IamGroupArgs
+    ///         {
+    ///         });
+    ///         this.MinioUserGroup = developer.GroupName;
+    ///     }
+    /// 
+    ///     [Output("minioUserGroup")]
+    ///     public Output&lt;string&gt; MinioUserGroup { get; set; }
+    /// }
+    /// ```
+    /// </summary>
     [MinioResourceType("minio:index/iamGroup:IamGroup")]
     public partial class IamGroup : Pulumi.CustomResource
     {

@@ -81,7 +81,35 @@ class IamGroupPolicyAttachment(pulumi.CustomResource):
                  policy_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a IamGroupPolicyAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        developer_iam_group = minio.IamGroup("developerIamGroup")
+        test_policy = minio.IamGroupPolicy("testPolicy", policy=\"\"\"{
+          "Version":"2012-10-17",
+          "Statement": [
+            {
+              "Sid":"ListAllBucket",
+              "Effect": "Allow",
+              "Action": ["s3:PutObject"],
+              "Principal":"*",
+              "Resource": "arn:aws:s3:::state-terraform-s3/*"
+            }
+          ]
+        }
+
+        \"\"\")
+        developer_iam_group_policy_attachment = minio.IamGroupPolicyAttachment("developerIamGroupPolicyAttachment",
+            group_name=minio_iam_group["group"]["name"],
+            policy_name=minio_iam_policy["test_policy"]["id"])
+        pulumi.export("minioName", developer_iam_group_policy_attachment.id)
+        pulumi.export("minioUsers", developer_iam_group_policy_attachment.group_name)
+        pulumi.export("minioGroup", developer_iam_group_policy_attachment.policy_name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -92,7 +120,35 @@ class IamGroupPolicyAttachment(pulumi.CustomResource):
                  args: IamGroupPolicyAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IamGroupPolicyAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        developer_iam_group = minio.IamGroup("developerIamGroup")
+        test_policy = minio.IamGroupPolicy("testPolicy", policy=\"\"\"{
+          "Version":"2012-10-17",
+          "Statement": [
+            {
+              "Sid":"ListAllBucket",
+              "Effect": "Allow",
+              "Action": ["s3:PutObject"],
+              "Principal":"*",
+              "Resource": "arn:aws:s3:::state-terraform-s3/*"
+            }
+          ]
+        }
+
+        \"\"\")
+        developer_iam_group_policy_attachment = minio.IamGroupPolicyAttachment("developerIamGroupPolicyAttachment",
+            group_name=minio_iam_group["group"]["name"],
+            policy_name=minio_iam_policy["test_policy"]["id"])
+        pulumi.export("minioName", developer_iam_group_policy_attachment.id)
+        pulumi.export("minioUsers", developer_iam_group_policy_attachment.group_name)
+        pulumi.export("minioGroup", developer_iam_group_policy_attachment.policy_name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param IamGroupPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

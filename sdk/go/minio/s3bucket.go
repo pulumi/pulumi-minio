@@ -7,14 +7,38 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		stateTerraformS3, err := minio.NewS3Bucket(ctx, "stateTerraformS3", &minio.S3BucketArgs{
+// 			Acl:    pulumi.String("public"),
+// 			Bucket: pulumi.String("state-terraform-s3"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("minioId", stateTerraformS3.ID())
+// 		ctx.Export("minioUrl", stateTerraformS3.BucketDomainName)
+// 		return nil
+// 	})
+// }
+// ```
 type S3Bucket struct {
 	pulumi.CustomResourceState
 
-	Acl              pulumi.StringOutput    `pulumi:"acl"`
+	Acl              pulumi.StringPtrOutput `pulumi:"acl"`
 	Bucket           pulumi.StringOutput    `pulumi:"bucket"`
 	BucketDomainName pulumi.StringOutput    `pulumi:"bucketDomainName"`
 	BucketPrefix     pulumi.StringPtrOutput `pulumi:"bucketPrefix"`
@@ -25,12 +49,9 @@ type S3Bucket struct {
 func NewS3Bucket(ctx *pulumi.Context,
 	name string, args *S3BucketArgs, opts ...pulumi.ResourceOption) (*S3Bucket, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &S3BucketArgs{}
 	}
 
-	if args.Acl == nil {
-		return nil, errors.New("invalid value for required argument 'Acl'")
-	}
 	var resource S3Bucket
 	err := ctx.RegisterResource("minio:index/s3Bucket:S3Bucket", name, args, &resource, opts...)
 	if err != nil {
@@ -73,7 +94,7 @@ func (S3BucketState) ElementType() reflect.Type {
 }
 
 type s3bucketArgs struct {
-	Acl          string  `pulumi:"acl"`
+	Acl          *string `pulumi:"acl"`
 	Bucket       *string `pulumi:"bucket"`
 	BucketPrefix *string `pulumi:"bucketPrefix"`
 	ForceDestroy *bool   `pulumi:"forceDestroy"`
@@ -81,7 +102,7 @@ type s3bucketArgs struct {
 
 // The set of arguments for constructing a S3Bucket resource.
 type S3BucketArgs struct {
-	Acl          pulumi.StringInput
+	Acl          pulumi.StringPtrInput
 	Bucket       pulumi.StringPtrInput
 	BucketPrefix pulumi.StringPtrInput
 	ForceDestroy pulumi.BoolPtrInput

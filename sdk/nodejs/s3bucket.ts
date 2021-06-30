@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as minio from "@pulumi/minio";
+ *
+ * const stateTerraformS3 = new minio.S3Bucket("state_terraform_s3", {
+ *     acl: "public",
+ *     bucket: "state-terraform-s3",
+ * });
+ *
+ * export const minioId = stateTerraformS3.id;
+ * export const minioUrl = stateTerraformS3.bucketDomainName;
+ * ```
+ */
 export class S3Bucket extends pulumi.CustomResource {
     /**
      * Get an existing S3Bucket resource's state with the given name, ID, and optional extra
@@ -32,7 +48,7 @@ export class S3Bucket extends pulumi.CustomResource {
         return obj['__pulumiType'] === S3Bucket.__pulumiType;
     }
 
-    public readonly acl!: pulumi.Output<string>;
+    public readonly acl!: pulumi.Output<string | undefined>;
     public readonly bucket!: pulumi.Output<string>;
     public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
     public readonly bucketPrefix!: pulumi.Output<string | undefined>;
@@ -45,7 +61,7 @@ export class S3Bucket extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: S3BucketArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: S3BucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: S3BucketArgs | S3BucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -58,9 +74,6 @@ export class S3Bucket extends pulumi.CustomResource {
             inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
         } else {
             const args = argsOrState as S3BucketArgs | undefined;
-            if ((!args || args.acl === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'acl'");
-            }
             inputs["acl"] = args ? args.acl : undefined;
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["bucketPrefix"] = args ? args.bucketPrefix : undefined;
@@ -89,7 +102,7 @@ export interface S3BucketState {
  * The set of arguments for constructing a S3Bucket resource.
  */
 export interface S3BucketArgs {
-    acl: pulumi.Input<string>;
+    acl?: pulumi.Input<string>;
     bucket?: pulumi.Input<string>;
     bucketPrefix?: pulumi.Input<string>;
     forceDestroy?: pulumi.Input<boolean>;
