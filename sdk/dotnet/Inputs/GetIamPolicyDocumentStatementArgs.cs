@@ -10,42 +10,42 @@ using Pulumi.Serialization;
 namespace Pulumi.Minio.Inputs
 {
 
-    public sealed class GetIamPolicyDocumentStatementArgs : Pulumi.InvokeArgs
+    public sealed class GetIamPolicyDocumentStatementInputArgs : Pulumi.ResourceArgs
     {
         [Input("actions")]
-        private List<string>? _actions;
-        public List<string> Actions
+        private InputList<string>? _actions;
+        public InputList<string> Actions
         {
-            get => _actions ?? (_actions = new List<string>());
+            get => _actions ?? (_actions = new InputList<string>());
             set => _actions = value;
         }
 
         [Input("conditions")]
-        private List<Inputs.GetIamPolicyDocumentStatementConditionArgs>? _conditions;
-        public List<Inputs.GetIamPolicyDocumentStatementConditionArgs> Conditions
+        private InputList<Inputs.GetIamPolicyDocumentStatementConditionInputArgs>? _conditions;
+        public InputList<Inputs.GetIamPolicyDocumentStatementConditionInputArgs> Conditions
         {
-            get => _conditions ?? (_conditions = new List<Inputs.GetIamPolicyDocumentStatementConditionArgs>());
+            get => _conditions ?? (_conditions = new InputList<Inputs.GetIamPolicyDocumentStatementConditionInputArgs>());
             set => _conditions = value;
         }
 
         [Input("effect")]
-        public string? Effect { get; set; }
+        public Input<string>? Effect { get; set; }
 
         [Input("principal")]
-        public string? Principal { get; set; }
+        public Input<string>? Principal { get; set; }
 
         [Input("resources")]
-        private List<string>? _resources;
-        public List<string> Resources
+        private InputList<string>? _resources;
+        public InputList<string> Resources
         {
-            get => _resources ?? (_resources = new List<string>());
+            get => _resources ?? (_resources = new InputList<string>());
             set => _resources = value;
         }
 
         [Input("sid")]
-        public string? Sid { get; set; }
+        public Input<string>? Sid { get; set; }
 
-        public GetIamPolicyDocumentStatementArgs()
+        public GetIamPolicyDocumentStatementInputArgs()
         {
         }
     }

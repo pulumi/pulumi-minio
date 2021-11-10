@@ -4,29 +4,72 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("minio");
+declare var exports: any;
+const __config = new pulumi.Config("minio");
 
 /**
  * Minio Access Key
  */
-export let minioAccessKey: string | undefined = __config.get("minioAccessKey");
+export declare const minioAccessKey: string | undefined;
+Object.defineProperty(exports, "minioAccessKey", {
+    get() {
+        return __config.get("minioAccessKey");
+    },
+    enumerable: true,
+});
+
 /**
  * Minio API Version (type: string, options: v2 or v4, default: v4)
  */
-export let minioApiVersion: string | undefined = __config.get("minioApiVersion");
+export declare const minioApiVersion: string | undefined;
+Object.defineProperty(exports, "minioApiVersion", {
+    get() {
+        return __config.get("minioApiVersion");
+    },
+    enumerable: true,
+});
+
 /**
  * Minio Region (default: us-east-1)
  */
-export let minioRegion: string | undefined = __config.get("minioRegion");
+export declare const minioRegion: string | undefined;
+Object.defineProperty(exports, "minioRegion", {
+    get() {
+        return __config.get("minioRegion");
+    },
+    enumerable: true,
+});
+
 /**
  * Minio Secret Key
  */
-export let minioSecretKey: string | undefined = __config.get("minioSecretKey");
+export declare const minioSecretKey: string | undefined;
+Object.defineProperty(exports, "minioSecretKey", {
+    get() {
+        return __config.get("minioSecretKey");
+    },
+    enumerable: true,
+});
+
 /**
  * Minio Host and Port
  */
-export let minioServer: string | undefined = __config.get("minioServer");
+export declare const minioServer: string | undefined;
+Object.defineProperty(exports, "minioServer", {
+    get() {
+        return __config.get("minioServer");
+    },
+    enumerable: true,
+});
+
 /**
  * Minio SSL enabled (default: false)
  */
-export let minioSsl: boolean | undefined = __config.getObject<boolean>("minioSsl");
+export declare const minioSsl: boolean | undefined;
+Object.defineProperty(exports, "minioSsl", {
+    get() {
+        return __config.getObject<boolean>("minioSsl");
+    },
+    enumerable: true,
+});
+

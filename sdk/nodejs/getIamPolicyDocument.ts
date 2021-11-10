@@ -5,6 +5,47 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as minio from "@pulumi/minio";
+ *
+ * const example = minio.getIamPolicyDocument({
+ *     statements: [
+ *         {
+ *             sid: "1",
+ *             actions: [
+ *                 "s3:ListAllMyBuckets",
+ *                 "s3:GetBucketLocation",
+ *             ],
+ *             resources: ["arn:aws:s3:::*"],
+ *         },
+ *         {
+ *             actions: ["s3:ListBucket"],
+ *             resources: ["arn:aws:s3:::state-terraform-s3"],
+ *             conditions: [{
+ *                 test: "StringLike",
+ *                 variable: "s3:prefix",
+ *                 values: [
+ *                     "",
+ *                     "home/",
+ *                 ],
+ *             }],
+ *         },
+ *         {
+ *             actions: ["s3:PutObject"],
+ *             resources: [
+ *                 "arn:aws:s3:::state-terraform-s3",
+ *                 "arn:aws:s3:::state-terraform-s3/*",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * const testPolicy = new minio.IamPolicy("testPolicy", {policy: example.then(example => example.json)});
+ * ```
+ */
 export function getIamPolicyDocument(args?: GetIamPolicyDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPolicyDocumentResult> {
     args = args || {};
     if (!opts) {
@@ -48,4 +89,19 @@ export interface GetIamPolicyDocumentResult {
     readonly sourceJson?: string;
     readonly statements?: outputs.GetIamPolicyDocumentStatement[];
     readonly version?: string;
+}
+
+export function getIamPolicyDocumentOutput(args?: GetIamPolicyDocumentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamPolicyDocumentResult> {
+    return pulumi.output(args).apply(a => getIamPolicyDocument(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIamPolicyDocument.
+ */
+export interface GetIamPolicyDocumentOutputArgs {
+    overrideJson?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string>;
+    sourceJson?: pulumi.Input<string>;
+    statements?: pulumi.Input<pulumi.Input<inputs.GetIamPolicyDocumentStatementArgs>[]>;
+    version?: pulumi.Input<string>;
 }

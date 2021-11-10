@@ -18,3 +18,4 @@ export interface GetIamPolicyDocumentStatementCondition {
     values: string[];
     variable: string;
 }
+

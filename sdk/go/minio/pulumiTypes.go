@@ -241,6 +241,10 @@ func (o GetIamPolicyDocumentStatementConditionArrayOutput) Index(i pulumi.IntInp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementInput)(nil)).Elem(), GetIamPolicyDocumentStatementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementArrayInput)(nil)).Elem(), GetIamPolicyDocumentStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementConditionInput)(nil)).Elem(), GetIamPolicyDocumentStatementConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementConditionArrayInput)(nil)).Elem(), GetIamPolicyDocumentStatementConditionArray{})
 	pulumi.RegisterOutputType(GetIamPolicyDocumentStatementOutput{})
 	pulumi.RegisterOutputType(GetIamPolicyDocumentStatementArrayOutput{})
 	pulumi.RegisterOutputType(GetIamPolicyDocumentStatementConditionOutput{})

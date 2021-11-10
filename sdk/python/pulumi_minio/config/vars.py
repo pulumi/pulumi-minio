@@ -8,44 +8,51 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'minio_access_key',
-    'minio_api_version',
-    'minio_region',
-    'minio_secret_key',
-    'minio_server',
-    'minio_ssl',
-]
+import types
 
 __config__ = pulumi.Config('minio')
 
-minio_access_key = __config__.get('minioAccessKey')
-"""
-Minio Access Key
-"""
 
-minio_api_version = __config__.get('minioApiVersion')
-"""
-Minio API Version (type: string, options: v2 or v4, default: v4)
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def minio_access_key(self) -> Optional[str]:
+        """
+        Minio Access Key
+        """
+        return __config__.get('minioAccessKey')
 
-minio_region = __config__.get('minioRegion')
-"""
-Minio Region (default: us-east-1)
-"""
+    @property
+    def minio_api_version(self) -> Optional[str]:
+        """
+        Minio API Version (type: string, options: v2 or v4, default: v4)
+        """
+        return __config__.get('minioApiVersion')
 
-minio_secret_key = __config__.get('minioSecretKey')
-"""
-Minio Secret Key
-"""
+    @property
+    def minio_region(self) -> Optional[str]:
+        """
+        Minio Region (default: us-east-1)
+        """
+        return __config__.get('minioRegion')
 
-minio_server = __config__.get('minioServer')
-"""
-Minio Host and Port
-"""
+    @property
+    def minio_secret_key(self) -> Optional[str]:
+        """
+        Minio Secret Key
+        """
+        return __config__.get('minioSecretKey')
 
-minio_ssl = __config__.get('minioSsl')
-"""
-Minio SSL enabled (default: false)
-"""
+    @property
+    def minio_server(self) -> Optional[str]:
+        """
+        Minio Host and Port
+        """
+        return __config__.get('minioServer')
+
+    @property
+    def minio_ssl(self) -> Optional[bool]:
+        """
+        Minio SSL enabled (default: false)
+        """
+        return __config__.get_bool('minioSsl')
 

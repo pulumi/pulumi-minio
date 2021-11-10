@@ -13,8 +13,23 @@ export interface GetIamPolicyDocumentStatement {
     sid?: string;
 }
 
+export interface GetIamPolicyDocumentStatementArgs {
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.GetIamPolicyDocumentStatementConditionArgs>[]>;
+    effect?: pulumi.Input<string>;
+    principal?: pulumi.Input<string>;
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    sid?: pulumi.Input<string>;
+}
+
 export interface GetIamPolicyDocumentStatementCondition {
     test: string;
     values: string[];
     variable: string;
+}
+
+export interface GetIamPolicyDocumentStatementConditionArgs {
+    test: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+    variable: pulumi.Input<string>;
 }

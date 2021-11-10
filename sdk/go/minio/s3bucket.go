@@ -174,7 +174,7 @@ type S3BucketArrayInput interface {
 type S3BucketArray []S3BucketInput
 
 func (S3BucketArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*S3Bucket)(nil))
+	return reflect.TypeOf((*[]*S3Bucket)(nil)).Elem()
 }
 
 func (i S3BucketArray) ToS3BucketArrayOutput() S3BucketArrayOutput {
@@ -199,7 +199,7 @@ type S3BucketMapInput interface {
 type S3BucketMap map[string]S3BucketInput
 
 func (S3BucketMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*S3Bucket)(nil))
+	return reflect.TypeOf((*map[string]*S3Bucket)(nil)).Elem()
 }
 
 func (i S3BucketMap) ToS3BucketMapOutput() S3BucketMapOutput {
@@ -210,9 +210,7 @@ func (i S3BucketMap) ToS3BucketMapOutputWithContext(ctx context.Context) S3Bucke
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketMapOutput)
 }
 
-type S3BucketOutput struct {
-	*pulumi.OutputState
-}
+type S3BucketOutput struct{ *pulumi.OutputState }
 
 func (S3BucketOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*S3Bucket)(nil))
@@ -231,14 +229,12 @@ func (o S3BucketOutput) ToS3BucketPtrOutput() S3BucketPtrOutput {
 }
 
 func (o S3BucketOutput) ToS3BucketPtrOutputWithContext(ctx context.Context) S3BucketPtrOutput {
-	return o.ApplyT(func(v S3Bucket) *S3Bucket {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3Bucket) *S3Bucket {
 		return &v
 	}).(S3BucketPtrOutput)
 }
 
-type S3BucketPtrOutput struct {
-	*pulumi.OutputState
-}
+type S3BucketPtrOutput struct{ *pulumi.OutputState }
 
 func (S3BucketPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**S3Bucket)(nil))
@@ -250,6 +246,16 @@ func (o S3BucketPtrOutput) ToS3BucketPtrOutput() S3BucketPtrOutput {
 
 func (o S3BucketPtrOutput) ToS3BucketPtrOutputWithContext(ctx context.Context) S3BucketPtrOutput {
 	return o
+}
+
+func (o S3BucketPtrOutput) Elem() S3BucketOutput {
+	return o.ApplyT(func(v *S3Bucket) S3Bucket {
+		if v != nil {
+			return *v
+		}
+		var ret S3Bucket
+		return ret
+	}).(S3BucketOutput)
 }
 
 type S3BucketArrayOutput struct{ *pulumi.OutputState }
@@ -293,6 +299,10 @@ func (o S3BucketMapOutput) MapIndex(k pulumi.StringInput) S3BucketOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketInput)(nil)).Elem(), &S3Bucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketPtrInput)(nil)).Elem(), &S3Bucket{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketArrayInput)(nil)).Elem(), S3BucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketMapInput)(nil)).Elem(), S3BucketMap{})
 	pulumi.RegisterOutputType(S3BucketOutput{})
 	pulumi.RegisterOutputType(S3BucketPtrOutput{})
 	pulumi.RegisterOutputType(S3BucketArrayOutput{})

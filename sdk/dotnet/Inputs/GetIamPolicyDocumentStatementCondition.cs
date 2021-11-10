@@ -10,23 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Minio.Inputs
 {
 
-    public sealed class GetIamPolicyDocumentStatementConditionInputArgs : Pulumi.ResourceArgs
+    public sealed class GetIamPolicyDocumentStatementConditionArgs : Pulumi.InvokeArgs
     {
         [Input("test", required: true)]
-        public Input<string> Test { get; set; } = null!;
+        public string Test { get; set; } = null!;
 
         [Input("values", required: true)]
-        private InputList<string>? _values;
-        public InputList<string> Values
+        private List<string>? _values;
+        public List<string> Values
         {
-            get => _values ?? (_values = new InputList<string>());
+            get => _values ?? (_values = new List<string>());
             set => _values = value;
         }
 
         [Input("variable", required: true)]
-        public Input<string> Variable { get; set; } = null!;
+        public string Variable { get; set; } = null!;
 
-        public GetIamPolicyDocumentStatementConditionInputArgs()
+        public GetIamPolicyDocumentStatementConditionArgs()
         {
         }
     }
