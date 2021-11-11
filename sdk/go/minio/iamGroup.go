@@ -175,7 +175,7 @@ type IamGroupArrayInput interface {
 type IamGroupArray []IamGroupInput
 
 func (IamGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IamGroup)(nil))
+	return reflect.TypeOf((*[]*IamGroup)(nil)).Elem()
 }
 
 func (i IamGroupArray) ToIamGroupArrayOutput() IamGroupArrayOutput {
@@ -200,7 +200,7 @@ type IamGroupMapInput interface {
 type IamGroupMap map[string]IamGroupInput
 
 func (IamGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IamGroup)(nil))
+	return reflect.TypeOf((*map[string]*IamGroup)(nil)).Elem()
 }
 
 func (i IamGroupMap) ToIamGroupMapOutput() IamGroupMapOutput {
@@ -211,9 +211,7 @@ func (i IamGroupMap) ToIamGroupMapOutputWithContext(ctx context.Context) IamGrou
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupMapOutput)
 }
 
-type IamGroupOutput struct {
-	*pulumi.OutputState
-}
+type IamGroupOutput struct{ *pulumi.OutputState }
 
 func (IamGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IamGroup)(nil))
@@ -232,14 +230,12 @@ func (o IamGroupOutput) ToIamGroupPtrOutput() IamGroupPtrOutput {
 }
 
 func (o IamGroupOutput) ToIamGroupPtrOutputWithContext(ctx context.Context) IamGroupPtrOutput {
-	return o.ApplyT(func(v IamGroup) *IamGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamGroup) *IamGroup {
 		return &v
 	}).(IamGroupPtrOutput)
 }
 
-type IamGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type IamGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (IamGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IamGroup)(nil))
@@ -251,6 +247,16 @@ func (o IamGroupPtrOutput) ToIamGroupPtrOutput() IamGroupPtrOutput {
 
 func (o IamGroupPtrOutput) ToIamGroupPtrOutputWithContext(ctx context.Context) IamGroupPtrOutput {
 	return o
+}
+
+func (o IamGroupPtrOutput) Elem() IamGroupOutput {
+	return o.ApplyT(func(v *IamGroup) IamGroup {
+		if v != nil {
+			return *v
+		}
+		var ret IamGroup
+		return ret
+	}).(IamGroupOutput)
 }
 
 type IamGroupArrayOutput struct{ *pulumi.OutputState }
@@ -294,6 +300,10 @@ func (o IamGroupMapOutput) MapIndex(k pulumi.StringInput) IamGroupOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupInput)(nil)).Elem(), &IamGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupPtrInput)(nil)).Elem(), &IamGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupArrayInput)(nil)).Elem(), IamGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupMapInput)(nil)).Elem(), IamGroupMap{})
 	pulumi.RegisterOutputType(IamGroupOutput{})
 	pulumi.RegisterOutputType(IamGroupPtrOutput{})
 	pulumi.RegisterOutputType(IamGroupArrayOutput{})

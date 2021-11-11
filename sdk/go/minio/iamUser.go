@@ -24,8 +24,8 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		testIamUser, err := minio.NewIamUser(ctx, "testIamUser", &minio.IamUserArgs{
 // 			ForceDestroy: pulumi.Bool(true),
-// 			Tags: pulumi.StringMap{
-// 				"tag-key": pulumi.String("tag-value"),
+// 			Tags: pulumi.AnyMap{
+// 				"tag-key": pulumi.Any("tag-value"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -200,7 +200,7 @@ type IamUserArrayInput interface {
 type IamUserArray []IamUserInput
 
 func (IamUserArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IamUser)(nil))
+	return reflect.TypeOf((*[]*IamUser)(nil)).Elem()
 }
 
 func (i IamUserArray) ToIamUserArrayOutput() IamUserArrayOutput {
@@ -225,7 +225,7 @@ type IamUserMapInput interface {
 type IamUserMap map[string]IamUserInput
 
 func (IamUserMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IamUser)(nil))
+	return reflect.TypeOf((*map[string]*IamUser)(nil)).Elem()
 }
 
 func (i IamUserMap) ToIamUserMapOutput() IamUserMapOutput {
@@ -236,9 +236,7 @@ func (i IamUserMap) ToIamUserMapOutputWithContext(ctx context.Context) IamUserMa
 	return pulumi.ToOutputWithContext(ctx, i).(IamUserMapOutput)
 }
 
-type IamUserOutput struct {
-	*pulumi.OutputState
-}
+type IamUserOutput struct{ *pulumi.OutputState }
 
 func (IamUserOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IamUser)(nil))
@@ -257,14 +255,12 @@ func (o IamUserOutput) ToIamUserPtrOutput() IamUserPtrOutput {
 }
 
 func (o IamUserOutput) ToIamUserPtrOutputWithContext(ctx context.Context) IamUserPtrOutput {
-	return o.ApplyT(func(v IamUser) *IamUser {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamUser) *IamUser {
 		return &v
 	}).(IamUserPtrOutput)
 }
 
-type IamUserPtrOutput struct {
-	*pulumi.OutputState
-}
+type IamUserPtrOutput struct{ *pulumi.OutputState }
 
 func (IamUserPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IamUser)(nil))
@@ -276,6 +272,16 @@ func (o IamUserPtrOutput) ToIamUserPtrOutput() IamUserPtrOutput {
 
 func (o IamUserPtrOutput) ToIamUserPtrOutputWithContext(ctx context.Context) IamUserPtrOutput {
 	return o
+}
+
+func (o IamUserPtrOutput) Elem() IamUserOutput {
+	return o.ApplyT(func(v *IamUser) IamUser {
+		if v != nil {
+			return *v
+		}
+		var ret IamUser
+		return ret
+	}).(IamUserOutput)
 }
 
 type IamUserArrayOutput struct{ *pulumi.OutputState }
@@ -319,6 +325,10 @@ func (o IamUserMapOutput) MapIndex(k pulumi.StringInput) IamUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IamUserInput)(nil)).Elem(), &IamUser{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamUserPtrInput)(nil)).Elem(), &IamUser{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamUserArrayInput)(nil)).Elem(), IamUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamUserMapInput)(nil)).Elem(), IamUserMap{})
 	pulumi.RegisterOutputType(IamUserOutput{})
 	pulumi.RegisterOutputType(IamUserPtrOutput{})
 	pulumi.RegisterOutputType(IamUserArrayOutput{})
