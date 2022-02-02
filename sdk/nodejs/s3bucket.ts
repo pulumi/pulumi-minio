@@ -63,27 +63,25 @@ export class S3Bucket extends pulumi.CustomResource {
      */
     constructor(name: string, args?: S3BucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: S3BucketArgs | S3BucketState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as S3BucketState | undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["bucket"] = state ? state.bucket : undefined;
-            inputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
-            inputs["bucketPrefix"] = state ? state.bucketPrefix : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
+            resourceInputs["bucketPrefix"] = state ? state.bucketPrefix : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
         } else {
             const args = argsOrState as S3BucketArgs | undefined;
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["bucket"] = args ? args.bucket : undefined;
-            inputs["bucketPrefix"] = args ? args.bucketPrefix : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["bucketDomainName"] = undefined /*out*/;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["bucketPrefix"] = args ? args.bucketPrefix : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["bucketDomainName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(S3Bucket.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(S3Bucket.__pulumiType, name, resourceInputs, opts);
     }
 }
 

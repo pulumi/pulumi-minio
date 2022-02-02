@@ -54,7 +54,7 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
             if ((!args || args.minioAccessKey === undefined) && !opts.urn) {
@@ -66,17 +66,15 @@ export class Provider extends pulumi.ProviderResource {
             if ((!args || args.minioServer === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'minioServer'");
             }
-            inputs["minioAccessKey"] = args ? args.minioAccessKey : undefined;
-            inputs["minioApiVersion"] = args ? args.minioApiVersion : undefined;
-            inputs["minioRegion"] = args ? args.minioRegion : undefined;
-            inputs["minioSecretKey"] = args ? args.minioSecretKey : undefined;
-            inputs["minioServer"] = args ? args.minioServer : undefined;
-            inputs["minioSsl"] = pulumi.output(args ? args.minioSsl : undefined).apply(JSON.stringify);
+            resourceInputs["minioAccessKey"] = args ? args.minioAccessKey : undefined;
+            resourceInputs["minioApiVersion"] = args ? args.minioApiVersion : undefined;
+            resourceInputs["minioRegion"] = args ? args.minioRegion : undefined;
+            resourceInputs["minioSecretKey"] = args ? args.minioSecretKey : undefined;
+            resourceInputs["minioServer"] = args ? args.minioServer : undefined;
+            resourceInputs["minioSsl"] = pulumi.output(args ? args.minioSsl : undefined).apply(JSON.stringify);
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

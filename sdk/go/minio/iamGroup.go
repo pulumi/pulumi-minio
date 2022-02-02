@@ -121,7 +121,7 @@ type IamGroupInput interface {
 }
 
 func (*IamGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamGroup)(nil))
+	return reflect.TypeOf((**IamGroup)(nil)).Elem()
 }
 
 func (i *IamGroup) ToIamGroupOutput() IamGroupOutput {
@@ -130,35 +130,6 @@ func (i *IamGroup) ToIamGroupOutput() IamGroupOutput {
 
 func (i *IamGroup) ToIamGroupOutputWithContext(ctx context.Context) IamGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupOutput)
-}
-
-func (i *IamGroup) ToIamGroupPtrOutput() IamGroupPtrOutput {
-	return i.ToIamGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *IamGroup) ToIamGroupPtrOutputWithContext(ctx context.Context) IamGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamGroupPtrOutput)
-}
-
-type IamGroupPtrInput interface {
-	pulumi.Input
-
-	ToIamGroupPtrOutput() IamGroupPtrOutput
-	ToIamGroupPtrOutputWithContext(ctx context.Context) IamGroupPtrOutput
-}
-
-type iamGroupPtrType IamGroupArgs
-
-func (*iamGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamGroup)(nil))
-}
-
-func (i *iamGroupPtrType) ToIamGroupPtrOutput() IamGroupPtrOutput {
-	return i.ToIamGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *iamGroupPtrType) ToIamGroupPtrOutputWithContext(ctx context.Context) IamGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamGroupPtrOutput)
 }
 
 // IamGroupArrayInput is an input type that accepts IamGroupArray and IamGroupArrayOutput values.
@@ -214,7 +185,7 @@ func (i IamGroupMap) ToIamGroupMapOutputWithContext(ctx context.Context) IamGrou
 type IamGroupOutput struct{ *pulumi.OutputState }
 
 func (IamGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamGroup)(nil))
+	return reflect.TypeOf((**IamGroup)(nil)).Elem()
 }
 
 func (o IamGroupOutput) ToIamGroupOutput() IamGroupOutput {
@@ -225,44 +196,10 @@ func (o IamGroupOutput) ToIamGroupOutputWithContext(ctx context.Context) IamGrou
 	return o
 }
 
-func (o IamGroupOutput) ToIamGroupPtrOutput() IamGroupPtrOutput {
-	return o.ToIamGroupPtrOutputWithContext(context.Background())
-}
-
-func (o IamGroupOutput) ToIamGroupPtrOutputWithContext(ctx context.Context) IamGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamGroup) *IamGroup {
-		return &v
-	}).(IamGroupPtrOutput)
-}
-
-type IamGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (IamGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamGroup)(nil))
-}
-
-func (o IamGroupPtrOutput) ToIamGroupPtrOutput() IamGroupPtrOutput {
-	return o
-}
-
-func (o IamGroupPtrOutput) ToIamGroupPtrOutputWithContext(ctx context.Context) IamGroupPtrOutput {
-	return o
-}
-
-func (o IamGroupPtrOutput) Elem() IamGroupOutput {
-	return o.ApplyT(func(v *IamGroup) IamGroup {
-		if v != nil {
-			return *v
-		}
-		var ret IamGroup
-		return ret
-	}).(IamGroupOutput)
-}
-
 type IamGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (IamGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IamGroup)(nil))
+	return reflect.TypeOf((*[]*IamGroup)(nil)).Elem()
 }
 
 func (o IamGroupArrayOutput) ToIamGroupArrayOutput() IamGroupArrayOutput {
@@ -274,15 +211,15 @@ func (o IamGroupArrayOutput) ToIamGroupArrayOutputWithContext(ctx context.Contex
 }
 
 func (o IamGroupArrayOutput) Index(i pulumi.IntInput) IamGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IamGroup {
-		return vs[0].([]IamGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamGroup {
+		return vs[0].([]*IamGroup)[vs[1].(int)]
 	}).(IamGroupOutput)
 }
 
 type IamGroupMapOutput struct{ *pulumi.OutputState }
 
 func (IamGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IamGroup)(nil))
+	return reflect.TypeOf((*map[string]*IamGroup)(nil)).Elem()
 }
 
 func (o IamGroupMapOutput) ToIamGroupMapOutput() IamGroupMapOutput {
@@ -294,18 +231,16 @@ func (o IamGroupMapOutput) ToIamGroupMapOutputWithContext(ctx context.Context) I
 }
 
 func (o IamGroupMapOutput) MapIndex(k pulumi.StringInput) IamGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IamGroup {
-		return vs[0].(map[string]IamGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IamGroup {
+		return vs[0].(map[string]*IamGroup)[vs[1].(string)]
 	}).(IamGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupInput)(nil)).Elem(), &IamGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupPtrInput)(nil)).Elem(), &IamGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupArrayInput)(nil)).Elem(), IamGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupMapInput)(nil)).Elem(), IamGroupMap{})
 	pulumi.RegisterOutputType(IamGroupOutput{})
-	pulumi.RegisterOutputType(IamGroupPtrOutput{})
 	pulumi.RegisterOutputType(IamGroupArrayOutput{})
 	pulumi.RegisterOutputType(IamGroupMapOutput{})
 }

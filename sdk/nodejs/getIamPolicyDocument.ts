@@ -52,9 +52,7 @@ export function getIamPolicyDocument(args?: GetIamPolicyDocumentArgs, opts?: pul
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("minio:index/getIamPolicyDocument:getIamPolicyDocument", {
         "overrideJson": args.overrideJson,
         "policyId": args.policyId,

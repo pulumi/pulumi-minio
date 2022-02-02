@@ -123,7 +123,7 @@ type IamGroupUserAttachmentInput interface {
 }
 
 func (*IamGroupUserAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamGroupUserAttachment)(nil))
+	return reflect.TypeOf((**IamGroupUserAttachment)(nil)).Elem()
 }
 
 func (i *IamGroupUserAttachment) ToIamGroupUserAttachmentOutput() IamGroupUserAttachmentOutput {
@@ -132,35 +132,6 @@ func (i *IamGroupUserAttachment) ToIamGroupUserAttachmentOutput() IamGroupUserAt
 
 func (i *IamGroupUserAttachment) ToIamGroupUserAttachmentOutputWithContext(ctx context.Context) IamGroupUserAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupUserAttachmentOutput)
-}
-
-func (i *IamGroupUserAttachment) ToIamGroupUserAttachmentPtrOutput() IamGroupUserAttachmentPtrOutput {
-	return i.ToIamGroupUserAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *IamGroupUserAttachment) ToIamGroupUserAttachmentPtrOutputWithContext(ctx context.Context) IamGroupUserAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamGroupUserAttachmentPtrOutput)
-}
-
-type IamGroupUserAttachmentPtrInput interface {
-	pulumi.Input
-
-	ToIamGroupUserAttachmentPtrOutput() IamGroupUserAttachmentPtrOutput
-	ToIamGroupUserAttachmentPtrOutputWithContext(ctx context.Context) IamGroupUserAttachmentPtrOutput
-}
-
-type iamGroupUserAttachmentPtrType IamGroupUserAttachmentArgs
-
-func (*iamGroupUserAttachmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamGroupUserAttachment)(nil))
-}
-
-func (i *iamGroupUserAttachmentPtrType) ToIamGroupUserAttachmentPtrOutput() IamGroupUserAttachmentPtrOutput {
-	return i.ToIamGroupUserAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (i *iamGroupUserAttachmentPtrType) ToIamGroupUserAttachmentPtrOutputWithContext(ctx context.Context) IamGroupUserAttachmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IamGroupUserAttachmentPtrOutput)
 }
 
 // IamGroupUserAttachmentArrayInput is an input type that accepts IamGroupUserAttachmentArray and IamGroupUserAttachmentArrayOutput values.
@@ -216,7 +187,7 @@ func (i IamGroupUserAttachmentMap) ToIamGroupUserAttachmentMapOutputWithContext(
 type IamGroupUserAttachmentOutput struct{ *pulumi.OutputState }
 
 func (IamGroupUserAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamGroupUserAttachment)(nil))
+	return reflect.TypeOf((**IamGroupUserAttachment)(nil)).Elem()
 }
 
 func (o IamGroupUserAttachmentOutput) ToIamGroupUserAttachmentOutput() IamGroupUserAttachmentOutput {
@@ -227,44 +198,10 @@ func (o IamGroupUserAttachmentOutput) ToIamGroupUserAttachmentOutputWithContext(
 	return o
 }
 
-func (o IamGroupUserAttachmentOutput) ToIamGroupUserAttachmentPtrOutput() IamGroupUserAttachmentPtrOutput {
-	return o.ToIamGroupUserAttachmentPtrOutputWithContext(context.Background())
-}
-
-func (o IamGroupUserAttachmentOutput) ToIamGroupUserAttachmentPtrOutputWithContext(ctx context.Context) IamGroupUserAttachmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamGroupUserAttachment) *IamGroupUserAttachment {
-		return &v
-	}).(IamGroupUserAttachmentPtrOutput)
-}
-
-type IamGroupUserAttachmentPtrOutput struct{ *pulumi.OutputState }
-
-func (IamGroupUserAttachmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IamGroupUserAttachment)(nil))
-}
-
-func (o IamGroupUserAttachmentPtrOutput) ToIamGroupUserAttachmentPtrOutput() IamGroupUserAttachmentPtrOutput {
-	return o
-}
-
-func (o IamGroupUserAttachmentPtrOutput) ToIamGroupUserAttachmentPtrOutputWithContext(ctx context.Context) IamGroupUserAttachmentPtrOutput {
-	return o
-}
-
-func (o IamGroupUserAttachmentPtrOutput) Elem() IamGroupUserAttachmentOutput {
-	return o.ApplyT(func(v *IamGroupUserAttachment) IamGroupUserAttachment {
-		if v != nil {
-			return *v
-		}
-		var ret IamGroupUserAttachment
-		return ret
-	}).(IamGroupUserAttachmentOutput)
-}
-
 type IamGroupUserAttachmentArrayOutput struct{ *pulumi.OutputState }
 
 func (IamGroupUserAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IamGroupUserAttachment)(nil))
+	return reflect.TypeOf((*[]*IamGroupUserAttachment)(nil)).Elem()
 }
 
 func (o IamGroupUserAttachmentArrayOutput) ToIamGroupUserAttachmentArrayOutput() IamGroupUserAttachmentArrayOutput {
@@ -276,15 +213,15 @@ func (o IamGroupUserAttachmentArrayOutput) ToIamGroupUserAttachmentArrayOutputWi
 }
 
 func (o IamGroupUserAttachmentArrayOutput) Index(i pulumi.IntInput) IamGroupUserAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IamGroupUserAttachment {
-		return vs[0].([]IamGroupUserAttachment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamGroupUserAttachment {
+		return vs[0].([]*IamGroupUserAttachment)[vs[1].(int)]
 	}).(IamGroupUserAttachmentOutput)
 }
 
 type IamGroupUserAttachmentMapOutput struct{ *pulumi.OutputState }
 
 func (IamGroupUserAttachmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IamGroupUserAttachment)(nil))
+	return reflect.TypeOf((*map[string]*IamGroupUserAttachment)(nil)).Elem()
 }
 
 func (o IamGroupUserAttachmentMapOutput) ToIamGroupUserAttachmentMapOutput() IamGroupUserAttachmentMapOutput {
@@ -296,18 +233,16 @@ func (o IamGroupUserAttachmentMapOutput) ToIamGroupUserAttachmentMapOutputWithCo
 }
 
 func (o IamGroupUserAttachmentMapOutput) MapIndex(k pulumi.StringInput) IamGroupUserAttachmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IamGroupUserAttachment {
-		return vs[0].(map[string]IamGroupUserAttachment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IamGroupUserAttachment {
+		return vs[0].(map[string]*IamGroupUserAttachment)[vs[1].(string)]
 	}).(IamGroupUserAttachmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupUserAttachmentInput)(nil)).Elem(), &IamGroupUserAttachment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupUserAttachmentPtrInput)(nil)).Elem(), &IamGroupUserAttachment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupUserAttachmentArrayInput)(nil)).Elem(), IamGroupUserAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamGroupUserAttachmentMapInput)(nil)).Elem(), IamGroupUserAttachmentMap{})
 	pulumi.RegisterOutputType(IamGroupUserAttachmentOutput{})
-	pulumi.RegisterOutputType(IamGroupUserAttachmentPtrOutput{})
 	pulumi.RegisterOutputType(IamGroupUserAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(IamGroupUserAttachmentMapOutput{})
 }

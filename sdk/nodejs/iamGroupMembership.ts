@@ -54,13 +54,13 @@ export class IamGroupMembership extends pulumi.CustomResource {
      */
     constructor(name: string, args: IamGroupMembershipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamGroupMembershipArgs | IamGroupMembershipState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamGroupMembershipState | undefined;
-            inputs["group"] = state ? state.group : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["users"] = state ? state.users : undefined;
+            resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as IamGroupMembershipArgs | undefined;
             if ((!args || args.group === undefined) && !opts.urn) {
@@ -69,14 +69,12 @@ export class IamGroupMembership extends pulumi.CustomResource {
             if ((!args || args.users === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'users'");
             }
-            inputs["group"] = args ? args.group : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["users"] = args ? args.users : undefined;
+            resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["users"] = args ? args.users : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IamGroupMembership.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IamGroupMembership.__pulumiType, name, resourceInputs, opts);
     }
 }
 

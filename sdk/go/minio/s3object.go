@@ -153,7 +153,7 @@ type S3ObjectInput interface {
 }
 
 func (*S3Object) ElementType() reflect.Type {
-	return reflect.TypeOf((*S3Object)(nil))
+	return reflect.TypeOf((**S3Object)(nil)).Elem()
 }
 
 func (i *S3Object) ToS3ObjectOutput() S3ObjectOutput {
@@ -162,35 +162,6 @@ func (i *S3Object) ToS3ObjectOutput() S3ObjectOutput {
 
 func (i *S3Object) ToS3ObjectOutputWithContext(ctx context.Context) S3ObjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3ObjectOutput)
-}
-
-func (i *S3Object) ToS3ObjectPtrOutput() S3ObjectPtrOutput {
-	return i.ToS3ObjectPtrOutputWithContext(context.Background())
-}
-
-func (i *S3Object) ToS3ObjectPtrOutputWithContext(ctx context.Context) S3ObjectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(S3ObjectPtrOutput)
-}
-
-type S3ObjectPtrInput interface {
-	pulumi.Input
-
-	ToS3ObjectPtrOutput() S3ObjectPtrOutput
-	ToS3ObjectPtrOutputWithContext(ctx context.Context) S3ObjectPtrOutput
-}
-
-type s3objectPtrType S3ObjectArgs
-
-func (*s3objectPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**S3Object)(nil))
-}
-
-func (i *s3objectPtrType) ToS3ObjectPtrOutput() S3ObjectPtrOutput {
-	return i.ToS3ObjectPtrOutputWithContext(context.Background())
-}
-
-func (i *s3objectPtrType) ToS3ObjectPtrOutputWithContext(ctx context.Context) S3ObjectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(S3ObjectPtrOutput)
 }
 
 // S3ObjectArrayInput is an input type that accepts S3ObjectArray and S3ObjectArrayOutput values.
@@ -246,7 +217,7 @@ func (i S3ObjectMap) ToS3ObjectMapOutputWithContext(ctx context.Context) S3Objec
 type S3ObjectOutput struct{ *pulumi.OutputState }
 
 func (S3ObjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*S3Object)(nil))
+	return reflect.TypeOf((**S3Object)(nil)).Elem()
 }
 
 func (o S3ObjectOutput) ToS3ObjectOutput() S3ObjectOutput {
@@ -257,44 +228,10 @@ func (o S3ObjectOutput) ToS3ObjectOutputWithContext(ctx context.Context) S3Objec
 	return o
 }
 
-func (o S3ObjectOutput) ToS3ObjectPtrOutput() S3ObjectPtrOutput {
-	return o.ToS3ObjectPtrOutputWithContext(context.Background())
-}
-
-func (o S3ObjectOutput) ToS3ObjectPtrOutputWithContext(ctx context.Context) S3ObjectPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3Object) *S3Object {
-		return &v
-	}).(S3ObjectPtrOutput)
-}
-
-type S3ObjectPtrOutput struct{ *pulumi.OutputState }
-
-func (S3ObjectPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**S3Object)(nil))
-}
-
-func (o S3ObjectPtrOutput) ToS3ObjectPtrOutput() S3ObjectPtrOutput {
-	return o
-}
-
-func (o S3ObjectPtrOutput) ToS3ObjectPtrOutputWithContext(ctx context.Context) S3ObjectPtrOutput {
-	return o
-}
-
-func (o S3ObjectPtrOutput) Elem() S3ObjectOutput {
-	return o.ApplyT(func(v *S3Object) S3Object {
-		if v != nil {
-			return *v
-		}
-		var ret S3Object
-		return ret
-	}).(S3ObjectOutput)
-}
-
 type S3ObjectArrayOutput struct{ *pulumi.OutputState }
 
 func (S3ObjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]S3Object)(nil))
+	return reflect.TypeOf((*[]*S3Object)(nil)).Elem()
 }
 
 func (o S3ObjectArrayOutput) ToS3ObjectArrayOutput() S3ObjectArrayOutput {
@@ -306,15 +243,15 @@ func (o S3ObjectArrayOutput) ToS3ObjectArrayOutputWithContext(ctx context.Contex
 }
 
 func (o S3ObjectArrayOutput) Index(i pulumi.IntInput) S3ObjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3Object {
-		return vs[0].([]S3Object)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3Object {
+		return vs[0].([]*S3Object)[vs[1].(int)]
 	}).(S3ObjectOutput)
 }
 
 type S3ObjectMapOutput struct{ *pulumi.OutputState }
 
 func (S3ObjectMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]S3Object)(nil))
+	return reflect.TypeOf((*map[string]*S3Object)(nil)).Elem()
 }
 
 func (o S3ObjectMapOutput) ToS3ObjectMapOutput() S3ObjectMapOutput {
@@ -326,18 +263,16 @@ func (o S3ObjectMapOutput) ToS3ObjectMapOutputWithContext(ctx context.Context) S
 }
 
 func (o S3ObjectMapOutput) MapIndex(k pulumi.StringInput) S3ObjectOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) S3Object {
-		return vs[0].(map[string]S3Object)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *S3Object {
+		return vs[0].(map[string]*S3Object)[vs[1].(string)]
 	}).(S3ObjectOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*S3ObjectInput)(nil)).Elem(), &S3Object{})
-	pulumi.RegisterInputType(reflect.TypeOf((*S3ObjectPtrInput)(nil)).Elem(), &S3Object{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3ObjectArrayInput)(nil)).Elem(), S3ObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*S3ObjectMapInput)(nil)).Elem(), S3ObjectMap{})
 	pulumi.RegisterOutputType(S3ObjectOutput{})
-	pulumi.RegisterOutputType(S3ObjectPtrOutput{})
 	pulumi.RegisterOutputType(S3ObjectArrayOutput{})
 	pulumi.RegisterOutputType(S3ObjectMapOutput{})
 }

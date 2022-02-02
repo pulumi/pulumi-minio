@@ -63,25 +63,23 @@ export class IamGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: IamGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamGroupArgs | IamGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamGroupState | undefined;
-            inputs["disableGroup"] = state ? state.disableGroup : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["groupName"] = state ? state.groupName : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["disableGroup"] = state ? state.disableGroup : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["groupName"] = state ? state.groupName : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as IamGroupArgs | undefined;
-            inputs["disableGroup"] = args ? args.disableGroup : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["groupName"] = undefined /*out*/;
+            resourceInputs["disableGroup"] = args ? args.disableGroup : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["groupName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IamGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IamGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 
