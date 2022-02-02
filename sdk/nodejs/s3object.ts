@@ -71,18 +71,18 @@ export class S3Object extends pulumi.CustomResource {
      */
     constructor(name: string, args: S3ObjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: S3ObjectArgs | S3ObjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as S3ObjectState | undefined;
-            inputs["bucketName"] = state ? state.bucketName : undefined;
-            inputs["content"] = state ? state.content : undefined;
-            inputs["contentBase64"] = state ? state.contentBase64 : undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["objectName"] = state ? state.objectName : undefined;
-            inputs["source"] = state ? state.source : undefined;
-            inputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentBase64"] = state ? state.contentBase64 : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["objectName"] = state ? state.objectName : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as S3ObjectArgs | undefined;
             if ((!args || args.bucketName === undefined) && !opts.urn) {
@@ -91,19 +91,17 @@ export class S3Object extends pulumi.CustomResource {
             if ((!args || args.objectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'objectName'");
             }
-            inputs["bucketName"] = args ? args.bucketName : undefined;
-            inputs["content"] = args ? args.content : undefined;
-            inputs["contentBase64"] = args ? args.contentBase64 : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["objectName"] = args ? args.objectName : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["contentBase64"] = args ? args.contentBase64 : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["objectName"] = args ? args.objectName : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["versionId"] = args ? args.versionId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(S3Object.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(S3Object.__pulumiType, name, resourceInputs, opts);
     }
 }
 

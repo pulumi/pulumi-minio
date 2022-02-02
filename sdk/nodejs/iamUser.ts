@@ -77,31 +77,29 @@ export class IamUser extends pulumi.CustomResource {
      */
     constructor(name: string, args?: IamUserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamUserArgs | IamUserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamUserState | undefined;
-            inputs["disableUser"] = state ? state.disableUser : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["secret"] = state ? state.secret : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["updateSecret"] = state ? state.updateSecret : undefined;
+            resourceInputs["disableUser"] = state ? state.disableUser : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updateSecret"] = state ? state.updateSecret : undefined;
         } else {
             const args = argsOrState as IamUserArgs | undefined;
-            inputs["disableUser"] = args ? args.disableUser : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["updateSecret"] = args ? args.updateSecret : undefined;
-            inputs["secret"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["disableUser"] = args ? args.disableUser : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["updateSecret"] = args ? args.updateSecret : undefined;
+            resourceInputs["secret"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IamUser.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IamUser.__pulumiType, name, resourceInputs, opts);
     }
 }
 

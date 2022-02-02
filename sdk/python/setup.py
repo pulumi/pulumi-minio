@@ -55,6 +55,7 @@ setup(name='pulumi_minio',
       package_data={
           'pulumi_minio': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[
