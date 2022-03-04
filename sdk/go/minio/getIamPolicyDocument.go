@@ -25,7 +25,7 @@ import (
 // 		example, err := minio.GetIamPolicyDocument(ctx, &GetIamPolicyDocumentArgs{
 // 			Statements: []GetIamPolicyDocumentStatement{
 // 				GetIamPolicyDocumentStatement{
-// 					Sid: "1",
+// 					Sid: pulumi.StringRef("1"),
 // 					Actions: []string{
 // 						"s3:ListAllMyBuckets",
 // 						"s3:GetBucketLocation",
