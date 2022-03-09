@@ -36,6 +36,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IamUser{}
 	case "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment":
 		r = &IamUserPolicyAttachment{}
+	case "minio:index/ilmPolicy:IlmPolicy":
+		r = &IlmPolicy{}
 	case "minio:index/s3Bucket:S3Bucket":
 		r = &S3Bucket{}
 	case "minio:index/s3Object:S3Object":
@@ -109,6 +111,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"minio",
 		"index/iamUserPolicyAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"minio",
+		"index/ilmPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

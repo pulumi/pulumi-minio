@@ -17,6 +17,18 @@ func GetMinioAccessKey(ctx *pulumi.Context) string {
 func GetMinioApiVersion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "minio:minioApiVersion")
 }
+func GetMinioCacertFile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "minio:minioCacertFile")
+}
+func GetMinioCertFile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "minio:minioCertFile")
+}
+func GetMinioInsecure(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "minio:minioInsecure")
+}
+func GetMinioKeyFile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "minio:minioKeyFile")
+}
 
 // Minio Region (default: us-east-1)
 func GetMinioRegion(ctx *pulumi.Context) string {

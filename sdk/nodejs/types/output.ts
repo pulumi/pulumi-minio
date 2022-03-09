@@ -19,3 +19,13 @@ export interface GetIamPolicyDocumentStatementCondition {
     variable: string;
 }
 
+export interface IlmPolicyRule {
+    expiration?: string;
+    filter?: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    status: string;
+}
+

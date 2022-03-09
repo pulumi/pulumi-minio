@@ -22,6 +22,9 @@ type Provider struct {
 	MinioAccessKey pulumi.StringOutput `pulumi:"minioAccessKey"`
 	// Minio API Version (type: string, options: v2 or v4, default: v4)
 	MinioApiVersion pulumi.StringPtrOutput `pulumi:"minioApiVersion"`
+	MinioCacertFile pulumi.StringPtrOutput `pulumi:"minioCacertFile"`
+	MinioCertFile   pulumi.StringPtrOutput `pulumi:"minioCertFile"`
+	MinioKeyFile    pulumi.StringPtrOutput `pulumi:"minioKeyFile"`
 	// Minio Region (default: us-east-1)
 	MinioRegion pulumi.StringPtrOutput `pulumi:"minioRegion"`
 	// Minio Secret Key
@@ -59,6 +62,10 @@ type providerArgs struct {
 	MinioAccessKey string `pulumi:"minioAccessKey"`
 	// Minio API Version (type: string, options: v2 or v4, default: v4)
 	MinioApiVersion *string `pulumi:"minioApiVersion"`
+	MinioCacertFile *string `pulumi:"minioCacertFile"`
+	MinioCertFile   *string `pulumi:"minioCertFile"`
+	MinioInsecure   *bool   `pulumi:"minioInsecure"`
+	MinioKeyFile    *string `pulumi:"minioKeyFile"`
 	// Minio Region (default: us-east-1)
 	MinioRegion *string `pulumi:"minioRegion"`
 	// Minio Secret Key
@@ -75,6 +82,10 @@ type ProviderArgs struct {
 	MinioAccessKey pulumi.StringInput
 	// Minio API Version (type: string, options: v2 or v4, default: v4)
 	MinioApiVersion pulumi.StringPtrInput
+	MinioCacertFile pulumi.StringPtrInput
+	MinioCertFile   pulumi.StringPtrInput
+	MinioInsecure   pulumi.BoolPtrInput
+	MinioKeyFile    pulumi.StringPtrInput
 	// Minio Region (default: us-east-1)
 	MinioRegion pulumi.StringPtrInput
 	// Minio Secret Key

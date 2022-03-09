@@ -10,6 +10,121 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type IlmPolicyRule struct {
+	Expiration *string `pulumi:"expiration"`
+	Filter     *string `pulumi:"filter"`
+	// The ID of this resource.
+	Id     string  `pulumi:"id"`
+	Status *string `pulumi:"status"`
+}
+
+// IlmPolicyRuleInput is an input type that accepts IlmPolicyRuleArgs and IlmPolicyRuleOutput values.
+// You can construct a concrete instance of `IlmPolicyRuleInput` via:
+//
+//          IlmPolicyRuleArgs{...}
+type IlmPolicyRuleInput interface {
+	pulumi.Input
+
+	ToIlmPolicyRuleOutput() IlmPolicyRuleOutput
+	ToIlmPolicyRuleOutputWithContext(context.Context) IlmPolicyRuleOutput
+}
+
+type IlmPolicyRuleArgs struct {
+	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
+	Filter     pulumi.StringPtrInput `pulumi:"filter"`
+	// The ID of this resource.
+	Id     pulumi.StringInput    `pulumi:"id"`
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (IlmPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IlmPolicyRule)(nil)).Elem()
+}
+
+func (i IlmPolicyRuleArgs) ToIlmPolicyRuleOutput() IlmPolicyRuleOutput {
+	return i.ToIlmPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i IlmPolicyRuleArgs) ToIlmPolicyRuleOutputWithContext(ctx context.Context) IlmPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IlmPolicyRuleOutput)
+}
+
+// IlmPolicyRuleArrayInput is an input type that accepts IlmPolicyRuleArray and IlmPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `IlmPolicyRuleArrayInput` via:
+//
+//          IlmPolicyRuleArray{ IlmPolicyRuleArgs{...} }
+type IlmPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToIlmPolicyRuleArrayOutput() IlmPolicyRuleArrayOutput
+	ToIlmPolicyRuleArrayOutputWithContext(context.Context) IlmPolicyRuleArrayOutput
+}
+
+type IlmPolicyRuleArray []IlmPolicyRuleInput
+
+func (IlmPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IlmPolicyRule)(nil)).Elem()
+}
+
+func (i IlmPolicyRuleArray) ToIlmPolicyRuleArrayOutput() IlmPolicyRuleArrayOutput {
+	return i.ToIlmPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i IlmPolicyRuleArray) ToIlmPolicyRuleArrayOutputWithContext(ctx context.Context) IlmPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IlmPolicyRuleArrayOutput)
+}
+
+type IlmPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (IlmPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IlmPolicyRule)(nil)).Elem()
+}
+
+func (o IlmPolicyRuleOutput) ToIlmPolicyRuleOutput() IlmPolicyRuleOutput {
+	return o
+}
+
+func (o IlmPolicyRuleOutput) ToIlmPolicyRuleOutputWithContext(ctx context.Context) IlmPolicyRuleOutput {
+	return o
+}
+
+func (o IlmPolicyRuleOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IlmPolicyRule) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+func (o IlmPolicyRuleOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IlmPolicyRule) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// The ID of this resource.
+func (o IlmPolicyRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v IlmPolicyRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o IlmPolicyRuleOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IlmPolicyRule) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type IlmPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (IlmPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IlmPolicyRule)(nil)).Elem()
+}
+
+func (o IlmPolicyRuleArrayOutput) ToIlmPolicyRuleArrayOutput() IlmPolicyRuleArrayOutput {
+	return o
+}
+
+func (o IlmPolicyRuleArrayOutput) ToIlmPolicyRuleArrayOutputWithContext(ctx context.Context) IlmPolicyRuleArrayOutput {
+	return o
+}
+
+func (o IlmPolicyRuleArrayOutput) Index(i pulumi.IntInput) IlmPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IlmPolicyRule {
+		return vs[0].([]IlmPolicyRule)[vs[1].(int)]
+	}).(IlmPolicyRuleOutput)
+}
+
 type GetIamPolicyDocumentStatement struct {
 	Actions    []string                                 `pulumi:"actions"`
 	Conditions []GetIamPolicyDocumentStatementCondition `pulumi:"conditions"`
@@ -241,10 +356,14 @@ func (o GetIamPolicyDocumentStatementConditionArrayOutput) Index(i pulumi.IntInp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IlmPolicyRuleInput)(nil)).Elem(), IlmPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IlmPolicyRuleArrayInput)(nil)).Elem(), IlmPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementInput)(nil)).Elem(), GetIamPolicyDocumentStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementArrayInput)(nil)).Elem(), GetIamPolicyDocumentStatementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementConditionInput)(nil)).Elem(), GetIamPolicyDocumentStatementConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementConditionArrayInput)(nil)).Elem(), GetIamPolicyDocumentStatementConditionArray{})
+	pulumi.RegisterOutputType(IlmPolicyRuleOutput{})
+	pulumi.RegisterOutputType(IlmPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetIamPolicyDocumentStatementOutput{})
 	pulumi.RegisterOutputType(GetIamPolicyDocumentStatementArrayOutput{})
 	pulumi.RegisterOutputType(GetIamPolicyDocumentStatementConditionOutput{})

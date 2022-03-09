@@ -117,6 +117,7 @@ type iamUserArgs struct {
 	// Delete user even if it has non-Terraform-managed IAM access keys
 	ForceDestroy *bool                  `pulumi:"forceDestroy"`
 	Name         *string                `pulumi:"name"`
+	Secret       *string                `pulumi:"secret"`
 	Tags         map[string]interface{} `pulumi:"tags"`
 	// Rotate Minio User Secret Key
 	UpdateSecret *bool `pulumi:"updateSecret"`
@@ -129,6 +130,7 @@ type IamUserArgs struct {
 	// Delete user even if it has non-Terraform-managed IAM access keys
 	ForceDestroy pulumi.BoolPtrInput
 	Name         pulumi.StringPtrInput
+	Secret       pulumi.StringPtrInput
 	Tags         pulumi.MapInput
 	// Rotate Minio User Secret Key
 	UpdateSecret pulumi.BoolPtrInput

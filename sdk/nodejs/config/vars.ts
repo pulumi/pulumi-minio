@@ -29,6 +29,38 @@ Object.defineProperty(exports, "minioApiVersion", {
     enumerable: true,
 });
 
+export declare const minioCacertFile: string | undefined;
+Object.defineProperty(exports, "minioCacertFile", {
+    get() {
+        return __config.get("minioCacertFile");
+    },
+    enumerable: true,
+});
+
+export declare const minioCertFile: string | undefined;
+Object.defineProperty(exports, "minioCertFile", {
+    get() {
+        return __config.get("minioCertFile");
+    },
+    enumerable: true,
+});
+
+export declare const minioInsecure: boolean | undefined;
+Object.defineProperty(exports, "minioInsecure", {
+    get() {
+        return __config.getObject<boolean>("minioInsecure");
+    },
+    enumerable: true,
+});
+
+export declare const minioKeyFile: string | undefined;
+Object.defineProperty(exports, "minioKeyFile", {
+    get() {
+        return __config.get("minioKeyFile");
+    },
+    enumerable: true,
+});
+
 /**
  * Minio Region (default: us-east-1)
  */
