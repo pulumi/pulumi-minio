@@ -60,7 +60,7 @@ export class IamUser extends pulumi.CustomResource {
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    public readonly secret!: pulumi.Output<string>;
     public /*out*/ readonly status!: pulumi.Output<string>;
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -93,9 +93,9 @@ export class IamUser extends pulumi.CustomResource {
             resourceInputs["disableUser"] = args ? args.disableUser : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["secret"] = args ? args.secret : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["updateSecret"] = args ? args.updateSecret : undefined;
-            resourceInputs["secret"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -138,6 +138,7 @@ export interface IamUserArgs {
      */
     forceDestroy?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Rotate Minio User Secret Key

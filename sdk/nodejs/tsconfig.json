@@ -24,6 +24,7 @@
         "iamPolicy.ts",
         "iamUser.ts",
         "iamUserPolicyAttachment.ts",
+        "ilmPolicy.ts",
         "index.ts",
         "provider.ts",
         "s3bucket.ts",

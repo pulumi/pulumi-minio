@@ -16,6 +16,7 @@ class IamUserArgs:
                  disable_user: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  update_secret: Optional[pulumi.Input[bool]] = None):
         """
@@ -30,6 +31,8 @@ class IamUserArgs:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if update_secret is not None:
@@ -67,6 +70,15 @@ class IamUserArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
 
     @property
     @pulumi.getter
@@ -202,6 +214,7 @@ class IamUser(pulumi.CustomResource):
                  disable_user: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  update_secret: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -269,6 +282,7 @@ class IamUser(pulumi.CustomResource):
                  disable_user: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  update_secret: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -286,9 +300,9 @@ class IamUser(pulumi.CustomResource):
             __props__.__dict__["disable_user"] = disable_user
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["name"] = name
+            __props__.__dict__["secret"] = secret
             __props__.__dict__["tags"] = tags
             __props__.__dict__["update_secret"] = update_secret
-            __props__.__dict__["secret"] = None
             __props__.__dict__["status"] = None
         super(IamUser, __self__).__init__(
             'minio:index/iamUser:IamUser',

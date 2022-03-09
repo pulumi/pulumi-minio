@@ -30,6 +30,15 @@ namespace Pulumi.Minio
         [Output("minioApiVersion")]
         public Output<string?> MinioApiVersion { get; private set; } = null!;
 
+        [Output("minioCacertFile")]
+        public Output<string?> MinioCacertFile { get; private set; } = null!;
+
+        [Output("minioCertFile")]
+        public Output<string?> MinioCertFile { get; private set; } = null!;
+
+        [Output("minioKeyFile")]
+        public Output<string?> MinioKeyFile { get; private set; } = null!;
+
         /// <summary>
         /// Minio Region (default: us-east-1)
         /// </summary>
@@ -87,6 +96,18 @@ namespace Pulumi.Minio
         /// </summary>
         [Input("minioApiVersion")]
         public Input<string>? MinioApiVersion { get; set; }
+
+        [Input("minioCacertFile")]
+        public Input<string>? MinioCacertFile { get; set; }
+
+        [Input("minioCertFile")]
+        public Input<string>? MinioCertFile { get; set; }
+
+        [Input("minioInsecure", json: true)]
+        public Input<bool>? MinioInsecure { get; set; }
+
+        [Input("minioKeyFile")]
+        public Input<string>? MinioKeyFile { get; set; }
 
         /// <summary>
         /// Minio Region (default: us-east-1)

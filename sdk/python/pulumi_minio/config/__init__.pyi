@@ -18,6 +18,14 @@ minioApiVersion: Optional[str]
 Minio API Version (type: string, options: v2 or v4, default: v4)
 """
 
+minioCacertFile: Optional[str]
+
+minioCertFile: Optional[str]
+
+minioInsecure: Optional[bool]
+
+minioKeyFile: Optional[str]
+
 minioRegion: Optional[str]
 """
 Minio Region (default: us-east-1)

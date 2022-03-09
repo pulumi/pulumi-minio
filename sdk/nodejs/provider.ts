@@ -33,6 +33,9 @@ export class Provider extends pulumi.ProviderResource {
      * Minio API Version (type: string, options: v2 or v4, default: v4)
      */
     public readonly minioApiVersion!: pulumi.Output<string | undefined>;
+    public readonly minioCacertFile!: pulumi.Output<string | undefined>;
+    public readonly minioCertFile!: pulumi.Output<string | undefined>;
+    public readonly minioKeyFile!: pulumi.Output<string | undefined>;
     /**
      * Minio Region (default: us-east-1)
      */
@@ -68,6 +71,10 @@ export class Provider extends pulumi.ProviderResource {
             }
             resourceInputs["minioAccessKey"] = args ? args.minioAccessKey : undefined;
             resourceInputs["minioApiVersion"] = args ? args.minioApiVersion : undefined;
+            resourceInputs["minioCacertFile"] = args ? args.minioCacertFile : undefined;
+            resourceInputs["minioCertFile"] = args ? args.minioCertFile : undefined;
+            resourceInputs["minioInsecure"] = pulumi.output(args ? args.minioInsecure : undefined).apply(JSON.stringify);
+            resourceInputs["minioKeyFile"] = args ? args.minioKeyFile : undefined;
             resourceInputs["minioRegion"] = args ? args.minioRegion : undefined;
             resourceInputs["minioSecretKey"] = args ? args.minioSecretKey : undefined;
             resourceInputs["minioServer"] = args ? args.minioServer : undefined;
@@ -90,6 +97,10 @@ export interface ProviderArgs {
      * Minio API Version (type: string, options: v2 or v4, default: v4)
      */
     minioApiVersion?: pulumi.Input<string>;
+    minioCacertFile?: pulumi.Input<string>;
+    minioCertFile?: pulumi.Input<string>;
+    minioInsecure?: pulumi.Input<boolean>;
+    minioKeyFile?: pulumi.Input<string>;
     /**
      * Minio Region (default: us-east-1)
      */

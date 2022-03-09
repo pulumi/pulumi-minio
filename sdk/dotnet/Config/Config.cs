@@ -52,6 +52,34 @@ namespace Pulumi.Minio
             set => _minioApiVersion.Set(value);
         }
 
+        private static readonly __Value<string?> _minioCacertFile = new __Value<string?>(() => __config.Get("minioCacertFile"));
+        public static string? MinioCacertFile
+        {
+            get => _minioCacertFile.Get();
+            set => _minioCacertFile.Set(value);
+        }
+
+        private static readonly __Value<string?> _minioCertFile = new __Value<string?>(() => __config.Get("minioCertFile"));
+        public static string? MinioCertFile
+        {
+            get => _minioCertFile.Get();
+            set => _minioCertFile.Set(value);
+        }
+
+        private static readonly __Value<bool?> _minioInsecure = new __Value<bool?>(() => __config.GetBoolean("minioInsecure"));
+        public static bool? MinioInsecure
+        {
+            get => _minioInsecure.Get();
+            set => _minioInsecure.Set(value);
+        }
+
+        private static readonly __Value<string?> _minioKeyFile = new __Value<string?>(() => __config.Get("minioKeyFile"));
+        public static string? MinioKeyFile
+        {
+            get => _minioKeyFile.Get();
+            set => _minioKeyFile.Set(value);
+        }
+
         private static readonly __Value<string?> _minioRegion = new __Value<string?>(() => __config.Get("minioRegion"));
         /// <summary>
         /// Minio Region (default: us-east-1)

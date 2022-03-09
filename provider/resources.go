@@ -87,6 +87,7 @@ func Provider() tfbridge.ProviderInfo {
 			"minio_iam_user_policy_attachment":  {Tok: makeResource(mainMod, "IamUserPolicyAttachment")},
 			"minio_iam_group_policy_attachment": {Tok: makeResource(mainMod, "IamGroupPolicyAttachment")},
 			"minio_iam_group_user_attachment":   {Tok: makeResource(mainMod, "IamGroupUserAttachment")},
+			"minio_ilm_policy":                  {Tok: makeResource(mainMod, "IlmPolicy")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"minio_iam_policy_document": {Tok: makeDataSource(mainMod, "getIamPolicyDocument")},

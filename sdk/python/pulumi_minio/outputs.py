@@ -10,9 +10,52 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'IlmPolicyRule',
     'GetIamPolicyDocumentStatementResult',
     'GetIamPolicyDocumentStatementConditionResult',
 ]
+
+@pulumi.output_type
+class IlmPolicyRule(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 expiration: Optional[str] = None,
+                 filter: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "id", id)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[str]:
+        return pulumi.get(self, "expiration")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[str]:
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        return pulumi.get(self, "status")
+
 
 @pulumi.output_type
 class GetIamPolicyDocumentStatementResult(dict):

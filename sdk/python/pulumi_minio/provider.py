@@ -17,6 +17,10 @@ class ProviderArgs:
                  minio_secret_key: pulumi.Input[str],
                  minio_server: pulumi.Input[str],
                  minio_api_version: Optional[pulumi.Input[str]] = None,
+                 minio_cacert_file: Optional[pulumi.Input[str]] = None,
+                 minio_cert_file: Optional[pulumi.Input[str]] = None,
+                 minio_insecure: Optional[pulumi.Input[bool]] = None,
+                 minio_key_file: Optional[pulumi.Input[str]] = None,
                  minio_region: Optional[pulumi.Input[str]] = None,
                  minio_ssl: Optional[pulumi.Input[bool]] = None):
         """
@@ -33,6 +37,14 @@ class ProviderArgs:
         pulumi.set(__self__, "minio_server", minio_server)
         if minio_api_version is not None:
             pulumi.set(__self__, "minio_api_version", minio_api_version)
+        if minio_cacert_file is not None:
+            pulumi.set(__self__, "minio_cacert_file", minio_cacert_file)
+        if minio_cert_file is not None:
+            pulumi.set(__self__, "minio_cert_file", minio_cert_file)
+        if minio_insecure is not None:
+            pulumi.set(__self__, "minio_insecure", minio_insecure)
+        if minio_key_file is not None:
+            pulumi.set(__self__, "minio_key_file", minio_key_file)
         if minio_region is not None:
             pulumi.set(__self__, "minio_region", minio_region)
         if minio_ssl is not None:
@@ -87,6 +99,42 @@ class ProviderArgs:
         pulumi.set(self, "minio_api_version", value)
 
     @property
+    @pulumi.getter(name="minioCacertFile")
+    def minio_cacert_file(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "minio_cacert_file")
+
+    @minio_cacert_file.setter
+    def minio_cacert_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minio_cacert_file", value)
+
+    @property
+    @pulumi.getter(name="minioCertFile")
+    def minio_cert_file(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "minio_cert_file")
+
+    @minio_cert_file.setter
+    def minio_cert_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minio_cert_file", value)
+
+    @property
+    @pulumi.getter(name="minioInsecure")
+    def minio_insecure(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "minio_insecure")
+
+    @minio_insecure.setter
+    def minio_insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "minio_insecure", value)
+
+    @property
+    @pulumi.getter(name="minioKeyFile")
+    def minio_key_file(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "minio_key_file")
+
+    @minio_key_file.setter
+    def minio_key_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minio_key_file", value)
+
+    @property
     @pulumi.getter(name="minioRegion")
     def minio_region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -118,6 +166,10 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  minio_access_key: Optional[pulumi.Input[str]] = None,
                  minio_api_version: Optional[pulumi.Input[str]] = None,
+                 minio_cacert_file: Optional[pulumi.Input[str]] = None,
+                 minio_cert_file: Optional[pulumi.Input[str]] = None,
+                 minio_insecure: Optional[pulumi.Input[bool]] = None,
+                 minio_key_file: Optional[pulumi.Input[str]] = None,
                  minio_region: Optional[pulumi.Input[str]] = None,
                  minio_secret_key: Optional[pulumi.Input[str]] = None,
                  minio_server: Optional[pulumi.Input[str]] = None,
@@ -167,6 +219,10 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  minio_access_key: Optional[pulumi.Input[str]] = None,
                  minio_api_version: Optional[pulumi.Input[str]] = None,
+                 minio_cacert_file: Optional[pulumi.Input[str]] = None,
+                 minio_cert_file: Optional[pulumi.Input[str]] = None,
+                 minio_insecure: Optional[pulumi.Input[bool]] = None,
+                 minio_key_file: Optional[pulumi.Input[str]] = None,
                  minio_region: Optional[pulumi.Input[str]] = None,
                  minio_secret_key: Optional[pulumi.Input[str]] = None,
                  minio_server: Optional[pulumi.Input[str]] = None,
@@ -187,6 +243,10 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError("Missing required property 'minio_access_key'")
             __props__.__dict__["minio_access_key"] = minio_access_key
             __props__.__dict__["minio_api_version"] = minio_api_version
+            __props__.__dict__["minio_cacert_file"] = minio_cacert_file
+            __props__.__dict__["minio_cert_file"] = minio_cert_file
+            __props__.__dict__["minio_insecure"] = pulumi.Output.from_input(minio_insecure).apply(pulumi.runtime.to_json) if minio_insecure is not None else None
+            __props__.__dict__["minio_key_file"] = minio_key_file
             __props__.__dict__["minio_region"] = minio_region
             if minio_secret_key is None and not opts.urn:
                 raise TypeError("Missing required property 'minio_secret_key'")
@@ -216,6 +276,21 @@ class Provider(pulumi.ProviderResource):
         Minio API Version (type: string, options: v2 or v4, default: v4)
         """
         return pulumi.get(self, "minio_api_version")
+
+    @property
+    @pulumi.getter(name="minioCacertFile")
+    def minio_cacert_file(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "minio_cacert_file")
+
+    @property
+    @pulumi.getter(name="minioCertFile")
+    def minio_cert_file(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "minio_cert_file")
+
+    @property
+    @pulumi.getter(name="minioKeyFile")
+    def minio_key_file(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "minio_key_file")
 
     @property
     @pulumi.getter(name="minioRegion")

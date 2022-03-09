@@ -136,6 +136,9 @@ namespace Pulumi.Minio
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("secret")]
+        public Input<string>? Secret { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
         public InputMap<object> Tags

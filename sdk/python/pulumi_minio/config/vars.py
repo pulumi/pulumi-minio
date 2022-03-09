@@ -29,6 +29,22 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('minioApiVersion')
 
     @property
+    def minio_cacert_file(self) -> Optional[str]:
+        return __config__.get('minioCacertFile')
+
+    @property
+    def minio_cert_file(self) -> Optional[str]:
+        return __config__.get('minioCertFile')
+
+    @property
+    def minio_insecure(self) -> Optional[bool]:
+        return __config__.get_bool('minioInsecure')
+
+    @property
+    def minio_key_file(self) -> Optional[str]:
+        return __config__.get('minioKeyFile')
+
+    @property
     def minio_region(self) -> Optional[str]:
         """
         Minio Region (default: us-east-1)

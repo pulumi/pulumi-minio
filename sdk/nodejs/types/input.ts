@@ -33,3 +33,13 @@ export interface GetIamPolicyDocumentStatementConditionArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
     variable: pulumi.Input<string>;
 }
+
+export interface IlmPolicyRule {
+    expiration?: pulumi.Input<string>;
+    filter?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+}

@@ -14,6 +14,7 @@ from .iam_group_user_attachment import *
 from .iam_policy import *
 from .iam_user import *
 from .iam_user_policy_attachment import *
+from .ilm_policy import *
 from .provider import *
 from .s3_bucket import *
 from .s3_object import *
@@ -92,6 +93,14 @@ _utilities.register(
   "fqn": "pulumi_minio",
   "classes": {
    "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment": "IamUserPolicyAttachment"
+  }
+ },
+ {
+  "pkg": "minio",
+  "mod": "index/ilmPolicy",
+  "fqn": "pulumi_minio",
+  "classes": {
+   "minio:index/ilmPolicy:IlmPolicy": "IlmPolicy"
   }
  },
  {
