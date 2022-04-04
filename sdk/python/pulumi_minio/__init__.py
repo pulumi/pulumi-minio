@@ -17,6 +17,7 @@ from .iam_user_policy_attachment import *
 from .ilm_policy import *
 from .provider import *
 from .s3_bucket import *
+from .s3_bucket_policy import *
 from .s3_object import *
 from ._inputs import *
 from . import outputs
@@ -109,6 +110,14 @@ _utilities.register(
   "fqn": "pulumi_minio",
   "classes": {
    "minio:index/s3Bucket:S3Bucket": "S3Bucket"
+  }
+ },
+ {
+  "pkg": "minio",
+  "mod": "index/s3BucketPolicy",
+  "fqn": "pulumi_minio",
+  "classes": {
+   "minio:index/s3BucketPolicy:S3BucketPolicy": "S3BucketPolicy"
   }
  },
  {

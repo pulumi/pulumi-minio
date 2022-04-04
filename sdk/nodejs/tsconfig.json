@@ -28,6 +28,7 @@
         "index.ts",
         "provider.ts",
         "s3bucket.ts",
+        "s3bucketPolicy.ts",
         "s3object.ts",
         "types/index.ts",
         "types/input.ts",
