@@ -844,6 +844,45 @@
                 "type": "object"
             }
         },
+        "minio:index/s3BucketPolicy:S3BucketPolicy": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as minio from \"@pulumi/minio\";\n\nconst bucketS3Bucket = new minio.S3Bucket(\"bucketS3Bucket\", {bucket: \"example-bucket\"});\nconst bucketS3BucketPolicy = new minio.S3BucketPolicy(\"bucketS3BucketPolicy\", {\n    bucket: bucketS3Bucket.bucket,\n    policy: pulumi.interpolate`{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n     \"Principal\": {\"AWS\": [\"*\"]},\n      \"Resource\": [\"arn:aws:s3:::${bucketS3Bucket.bucket}\"],\n     \"Action\": [\"s3:ListBucket\"]\n    }\n  ]\n}\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_minio as minio\n\nbucket_s3_bucket = minio.S3Bucket(\"bucketS3Bucket\", bucket=\"example-bucket\")\nbucket_s3_bucket_policy = minio.S3BucketPolicy(\"bucketS3BucketPolicy\",\n    bucket=bucket_s3_bucket.bucket,\n    policy=bucket_s3_bucket.bucket.apply(lambda bucket: f\"\"\"{{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {{\n      \"Effect\": \"Allow\",\n     \"Principal\": {{\"AWS\": [\"*\"]}},\n      \"Resource\": [\"arn:aws:s3:::{bucket}\"],\n     \"Action\": [\"s3:ListBucket\"]\n    }}\n  ]\n}}\n\"\"\"))\n```\n```csharp\nusing Pulumi;\nusing Minio = Pulumi.Minio;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var bucketS3Bucket = new Minio.S3Bucket(\"bucketS3Bucket\", new Minio.S3BucketArgs\n        {\n            Bucket = \"example-bucket\",\n        });\n        var bucketS3BucketPolicy = new Minio.S3BucketPolicy(\"bucketS3BucketPolicy\", new Minio.S3BucketPolicyArgs\n        {\n            Bucket = bucketS3Bucket.Bucket,\n            Policy = bucketS3Bucket.Bucket.Apply(bucket =\u003e @$\"{{\n  \"\"Version\"\": \"\"2012-10-17\"\",\n  \"\"Statement\"\": [\n    {{\n      \"\"Effect\"\": \"\"Allow\"\",\n     \"\"Principal\"\": {{\"\"AWS\"\": [\"\"*\"\"]}},\n      \"\"Resource\"\": [\"\"arn:aws:s3:::{bucket}\"\"],\n     \"\"Action\"\": [\"\"s3:ListBucket\"\"]\n    }}\n  ]\n}}\n\"),\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-minio/sdk/go/minio\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbucketS3Bucket, err := minio.NewS3Bucket(ctx, \"bucketS3Bucket\", \u0026minio.S3BucketArgs{\n\t\t\tBucket: pulumi.String(\"example-bucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = minio.NewS3BucketPolicy(ctx, \"bucketS3BucketPolicy\", \u0026minio.S3BucketPolicyArgs{\n\t\t\tBucket: bucketS3Bucket.Bucket,\n\t\t\tPolicy: bucketS3Bucket.Bucket.ApplyT(func(bucket string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v%v%v%v\", \"{\\n\", \"  \\\"Version\\\": \\\"2012-10-17\\\",\\n\", \"  \\\"Statement\\\": [\\n\", \"    {\\n\", \"      \\\"Effect\\\": \\\"Allow\\\",\\n\", \"     \\\"Principal\\\": {\\\"AWS\\\": [\\\"*\\\"]},\\n\", \"      \\\"Resource\\\": [\\\"arn:aws:s3:::\", bucket, \"\\\"],\\n\", \"     \\\"Action\\\": [\\\"s3:ListBucket\\\"]\\n\", \"    }\\n\", \"  ]\\n\", \"}\\n\"), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "bucket": {
+                    "type": "string"
+                },
+                "policy": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "bucket",
+                "policy"
+            ],
+            "inputProperties": {
+                "bucket": {
+                    "type": "string"
+                },
+                "policy": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "bucket",
+                "policy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering S3BucketPolicy resources.\n",
+                "properties": {
+                    "bucket": {
+                        "type": "string"
+                    },
+                    "policy": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "minio:index/s3Object:S3Object": {
             "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as minio from \"@pulumi/minio\";\n\nconst stateTerraformS3 = new minio.S3Bucket(\"stateTerraformS3\", {\n    bucket: \"state-terraform-s3\",\n    acl: \"public\",\n});\nconst txtFile = new minio.S3Object(\"txtFile\", {\n    bucketName: stateTerraformS3.bucket,\n    objectName: \"text.txt\",\n    content: \"Lorem ipsum dolor sit amet.\",\n}, {\n    dependsOn: [stateTerraformS3],\n});\nexport const minioId = txtFile.id;\n```\n```python\nimport pulumi\nimport pulumi_minio as minio\n\nstate_terraform_s3 = minio.S3Bucket(\"stateTerraformS3\",\n    bucket=\"state-terraform-s3\",\n    acl=\"public\")\ntxt_file = minio.S3Object(\"txtFile\",\n    bucket_name=state_terraform_s3.bucket,\n    object_name=\"text.txt\",\n    content=\"Lorem ipsum dolor sit amet.\",\n    opts=pulumi.ResourceOptions(depends_on=[state_terraform_s3]))\npulumi.export(\"minioId\", txt_file.id)\n```\n```csharp\nusing Pulumi;\nusing Minio = Pulumi.Minio;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var stateTerraformS3 = new Minio.S3Bucket(\"stateTerraformS3\", new Minio.S3BucketArgs\n        {\n            Bucket = \"state-terraform-s3\",\n            Acl = \"public\",\n        });\n        var txtFile = new Minio.S3Object(\"txtFile\", new Minio.S3ObjectArgs\n        {\n            BucketName = stateTerraformS3.Bucket,\n            ObjectName = \"text.txt\",\n            Content = \"Lorem ipsum dolor sit amet.\",\n        }, new CustomResourceOptions\n        {\n            DependsOn = \n            {\n                stateTerraformS3,\n            },\n        });\n        this.MinioId = txtFile.Id;\n    }\n\n    [Output(\"minioId\")]\n    public Output\u003cstring\u003e MinioId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-minio/sdk/go/minio\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tstateTerraformS3, err := minio.NewS3Bucket(ctx, \"stateTerraformS3\", \u0026minio.S3BucketArgs{\n\t\t\tBucket: pulumi.String(\"state-terraform-s3\"),\n\t\t\tAcl:    pulumi.String(\"public\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttxtFile, err := minio.NewS3Object(ctx, \"txtFile\", \u0026minio.S3ObjectArgs{\n\t\t\tBucketName: stateTerraformS3.Bucket,\n\t\t\tObjectName: pulumi.String(\"text.txt\"),\n\t\t\tContent:    pulumi.String(\"Lorem ipsum dolor sit amet.\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tstateTerraformS3,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"minioId\", txtFile.ID())\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {

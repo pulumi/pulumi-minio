@@ -40,6 +40,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IlmPolicy{}
 	case "minio:index/s3Bucket:S3Bucket":
 		r = &S3Bucket{}
+	case "minio:index/s3BucketPolicy:S3BucketPolicy":
+		r = &S3BucketPolicy{}
 	case "minio:index/s3Object:S3Object":
 		r = &S3Object{}
 	default:
@@ -121,6 +123,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"minio",
 		"index/s3Bucket",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"minio",
+		"index/s3BucketPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

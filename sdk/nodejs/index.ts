@@ -17,6 +17,7 @@ export * from "./iamUserPolicyAttachment";
 export * from "./ilmPolicy";
 export * from "./provider";
 export * from "./s3bucket";
+export * from "./s3bucketPolicy";
 export * from "./s3object";
 
 // Export sub-modules:
@@ -39,6 +40,7 @@ import { IamUser } from "./iamUser";
 import { IamUserPolicyAttachment } from "./iamUserPolicyAttachment";
 import { IlmPolicy } from "./ilmPolicy";
 import { S3Bucket } from "./s3bucket";
+import { S3BucketPolicy } from "./s3bucketPolicy";
 import { S3Object } from "./s3object";
 
 const _module = {
@@ -65,6 +67,8 @@ const _module = {
                 return new IlmPolicy(name, <any>undefined, { urn })
             case "minio:index/s3Bucket:S3Bucket":
                 return new S3Bucket(name, <any>undefined, { urn })
+            case "minio:index/s3BucketPolicy:S3BucketPolicy":
+                return new S3BucketPolicy(name, <any>undefined, { urn })
             case "minio:index/s3Object:S3Object":
                 return new S3Object(name, <any>undefined, { urn })
             default:
@@ -82,6 +86,7 @@ pulumi.runtime.registerResourceModule("minio", "index/iamUser", _module)
 pulumi.runtime.registerResourceModule("minio", "index/iamUserPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("minio", "index/ilmPolicy", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3Bucket", _module)
+pulumi.runtime.registerResourceModule("minio", "index/s3BucketPolicy", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3Object", _module)
 
 import { Provider } from "./provider";
