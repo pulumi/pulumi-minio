@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     bucket: bucket.bucket,
  *     rules: [{
  *         id: "expire-7d",
- *         expiration: 7,
+ *         expiration: "7",
  *     }],
  * });
  * ```
