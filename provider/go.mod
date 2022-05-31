@@ -11,7 +11,7 @@ replace (
 )
 
 require (
-	github.com/aminueza/terraform-provider-minio v1.5.1
+	github.com/aminueza/terraform-provider-minio v1.5.2
 	github.com/hashicorp/terraform-plugin-sdk v1.9.1 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.21.0
 	github.com/pulumi/pulumi/sdk/v3 v3.30.0
