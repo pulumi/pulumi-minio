@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Minio.Inputs
 {
 
-    public sealed class IlmPolicyRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class IlmPolicyRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("expiration")]
         public Input<string>? Expiration { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Minio.Inputs
         public IlmPolicyRuleGetArgs()
         {
         }
+        public static new IlmPolicyRuleGetArgs Empty => new IlmPolicyRuleGetArgs();
     }
 }

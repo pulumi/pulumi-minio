@@ -123,7 +123,7 @@ func (i *IamGroupMembership) ToIamGroupMembershipOutputWithContext(ctx context.C
 // IamGroupMembershipArrayInput is an input type that accepts IamGroupMembershipArray and IamGroupMembershipArrayOutput values.
 // You can construct a concrete instance of `IamGroupMembershipArrayInput` via:
 //
-//          IamGroupMembershipArray{ IamGroupMembershipArgs{...} }
+//	IamGroupMembershipArray{ IamGroupMembershipArgs{...} }
 type IamGroupMembershipArrayInput interface {
 	pulumi.Input
 
@@ -148,7 +148,7 @@ func (i IamGroupMembershipArray) ToIamGroupMembershipArrayOutputWithContext(ctx 
 // IamGroupMembershipMapInput is an input type that accepts IamGroupMembershipMap and IamGroupMembershipMapOutput values.
 // You can construct a concrete instance of `IamGroupMembershipMapInput` via:
 //
-//          IamGroupMembershipMap{ "key": IamGroupMembershipArgs{...} }
+//	IamGroupMembershipMap{ "key": IamGroupMembershipArgs{...} }
 type IamGroupMembershipMapInput interface {
 	pulumi.Input
 
@@ -182,6 +182,21 @@ func (o IamGroupMembershipOutput) ToIamGroupMembershipOutput() IamGroupMembershi
 
 func (o IamGroupMembershipOutput) ToIamGroupMembershipOutputWithContext(ctx context.Context) IamGroupMembershipOutput {
 	return o
+}
+
+// Group name to add users
+func (o IamGroupMembershipOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroupMembership) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
+// Name of group membership
+func (o IamGroupMembershipOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroupMembership) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Add user or list of users such as a group membership
+func (o IamGroupMembershipOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IamGroupMembership) pulumi.StringArrayOutput { return v.Users }).(pulumi.StringArrayOutput)
 }
 
 type IamGroupMembershipArrayOutput struct{ *pulumi.OutputState }

@@ -13,21 +13,21 @@ namespace Pulumi.Minio
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucketS3Bucket = new Minio.S3Bucket("bucketS3Bucket", new()
     ///     {
-    ///         var bucketS3Bucket = new Minio.S3Bucket("bucketS3Bucket", new Minio.S3BucketArgs
-    ///         {
-    ///             Bucket = "example-bucket",
-    ///         });
-    ///         var bucketS3BucketPolicy = new Minio.S3BucketPolicy("bucketS3BucketPolicy", new Minio.S3BucketPolicyArgs
-    ///         {
-    ///             Bucket = bucketS3Bucket.Bucket,
-    ///             Policy = bucketS3Bucket.Bucket.Apply(bucket =&gt; @$"{{
+    ///         Bucket = "example-bucket",
+    ///     });
+    /// 
+    ///     var bucketS3BucketPolicy = new Minio.S3BucketPolicy("bucketS3BucketPolicy", new()
+    ///     {
+    ///         Bucket = bucketS3Bucket.Bucket,
+    ///         Policy = bucketS3Bucket.Bucket.Apply(bucket =&gt; @$"{{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {{
@@ -39,14 +39,13 @@ namespace Pulumi.Minio
     ///   ]
     /// }}
     /// "),
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [MinioResourceType("minio:index/s3BucketPolicy:S3BucketPolicy")]
-    public partial class S3BucketPolicy : Pulumi.CustomResource
+    public partial class S3BucketPolicy : global::Pulumi.CustomResource
     {
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
@@ -98,7 +97,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class S3BucketPolicyArgs : Pulumi.ResourceArgs
+    public sealed class S3BucketPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
@@ -109,9 +108,10 @@ namespace Pulumi.Minio
         public S3BucketPolicyArgs()
         {
         }
+        public static new S3BucketPolicyArgs Empty => new S3BucketPolicyArgs();
     }
 
-    public sealed class S3BucketPolicyState : Pulumi.ResourceArgs
+    public sealed class S3BucketPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
@@ -122,5 +122,6 @@ namespace Pulumi.Minio
         public S3BucketPolicyState()
         {
         }
+        public static new S3BucketPolicyState Empty => new S3BucketPolicyState();
     }
 }

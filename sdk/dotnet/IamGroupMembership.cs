@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Minio
 {
     [MinioResourceType("minio:index/iamGroupMembership:IamGroupMembership")]
-    public partial class IamGroupMembership : Pulumi.CustomResource
+    public partial class IamGroupMembership : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Group name to add users
@@ -74,7 +74,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class IamGroupMembershipArgs : Pulumi.ResourceArgs
+    public sealed class IamGroupMembershipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Group name to add users
@@ -103,9 +103,10 @@ namespace Pulumi.Minio
         public IamGroupMembershipArgs()
         {
         }
+        public static new IamGroupMembershipArgs Empty => new IamGroupMembershipArgs();
     }
 
-    public sealed class IamGroupMembershipState : Pulumi.ResourceArgs
+    public sealed class IamGroupMembershipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Group name to add users
@@ -134,5 +135,6 @@ namespace Pulumi.Minio
         public IamGroupMembershipState()
         {
         }
+        public static new IamGroupMembershipState Empty => new IamGroupMembershipState();
     }
 }

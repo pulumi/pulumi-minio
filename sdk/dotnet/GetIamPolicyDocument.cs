@@ -17,75 +17,74 @@ namespace Pulumi.Minio
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Minio = Pulumi.Minio;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = Minio.GetIamPolicyDocument.Invoke(new()
         ///     {
-        ///         var example = Output.Create(Minio.GetIamPolicyDocument.InvokeAsync(new Minio.GetIamPolicyDocumentArgs
+        ///         Statements = new[]
         ///         {
-        ///             Statements = 
+        ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
         ///             {
-        ///                 new Minio.Inputs.GetIamPolicyDocumentStatementArgs
+        ///                 Sid = "1",
+        ///                 Actions = new[]
         ///                 {
-        ///                     Sid = "1",
-        ///                     Actions = 
-        ///                     {
-        ///                         "s3:ListAllMyBuckets",
-        ///                         "s3:GetBucketLocation",
-        ///                     },
-        ///                     Resources = 
-        ///                     {
-        ///                         "arn:aws:s3:::*",
-        ///                     },
+        ///                     "s3:ListAllMyBuckets",
+        ///                     "s3:GetBucketLocation",
         ///                 },
-        ///                 new Minio.Inputs.GetIamPolicyDocumentStatementArgs
+        ///                 Resources = new[]
         ///                 {
-        ///                     Actions = 
+        ///                     "arn:aws:s3:::*",
+        ///                 },
+        ///             },
+        ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "s3:ListBucket",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "arn:aws:s3:::state-terraform-s3",
+        ///                 },
+        ///                 Conditions = new[]
+        ///                 {
+        ///                     new Minio.Inputs.GetIamPolicyDocumentStatementConditionInputArgs
         ///                     {
-        ///                         "s3:ListBucket",
-        ///                     },
-        ///                     Resources = 
-        ///                     {
-        ///                         "arn:aws:s3:::state-terraform-s3",
-        ///                     },
-        ///                     Conditions = 
-        ///                     {
-        ///                         new Minio.Inputs.GetIamPolicyDocumentStatementConditionArgs
+        ///                         Test = "StringLike",
+        ///                         Variable = "s3:prefix",
+        ///                         Values = new[]
         ///                         {
-        ///                             Test = "StringLike",
-        ///                             Variable = "s3:prefix",
-        ///                             Values = 
-        ///                             {
-        ///                                 "",
-        ///                                 "home/",
-        ///                             },
+        ///                             "",
+        ///                             "home/",
         ///                         },
         ///                     },
         ///                 },
-        ///                 new Minio.Inputs.GetIamPolicyDocumentStatementArgs
+        ///             },
+        ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Actions = new[]
         ///                 {
-        ///                     Actions = 
-        ///                     {
-        ///                         "s3:PutObject",
-        ///                     },
-        ///                     Resources = 
-        ///                     {
-        ///                         "arn:aws:s3:::state-terraform-s3",
-        ///                         "arn:aws:s3:::state-terraform-s3/*",
-        ///                     },
+        ///                     "s3:PutObject",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "arn:aws:s3:::state-terraform-s3",
+        ///                     "arn:aws:s3:::state-terraform-s3/*",
         ///                 },
         ///             },
-        ///         }));
-        ///         var testPolicy = new Minio.IamPolicy("testPolicy", new Minio.IamPolicyArgs
-        ///         {
-        ///             Policy = example.Apply(example =&gt; example.Json),
-        ///         });
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        ///     var testPolicy = new Minio.IamPolicy("testPolicy", new()
+        ///     {
+        ///         Policy = example.Apply(getIamPolicyDocumentResult =&gt; getIamPolicyDocumentResult.Json),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -99,75 +98,74 @@ namespace Pulumi.Minio
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Minio = Pulumi.Minio;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = Minio.GetIamPolicyDocument.Invoke(new()
         ///     {
-        ///         var example = Output.Create(Minio.GetIamPolicyDocument.InvokeAsync(new Minio.GetIamPolicyDocumentArgs
+        ///         Statements = new[]
         ///         {
-        ///             Statements = 
+        ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
         ///             {
-        ///                 new Minio.Inputs.GetIamPolicyDocumentStatementArgs
+        ///                 Sid = "1",
+        ///                 Actions = new[]
         ///                 {
-        ///                     Sid = "1",
-        ///                     Actions = 
-        ///                     {
-        ///                         "s3:ListAllMyBuckets",
-        ///                         "s3:GetBucketLocation",
-        ///                     },
-        ///                     Resources = 
-        ///                     {
-        ///                         "arn:aws:s3:::*",
-        ///                     },
+        ///                     "s3:ListAllMyBuckets",
+        ///                     "s3:GetBucketLocation",
         ///                 },
-        ///                 new Minio.Inputs.GetIamPolicyDocumentStatementArgs
+        ///                 Resources = new[]
         ///                 {
-        ///                     Actions = 
+        ///                     "arn:aws:s3:::*",
+        ///                 },
+        ///             },
+        ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "s3:ListBucket",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "arn:aws:s3:::state-terraform-s3",
+        ///                 },
+        ///                 Conditions = new[]
+        ///                 {
+        ///                     new Minio.Inputs.GetIamPolicyDocumentStatementConditionInputArgs
         ///                     {
-        ///                         "s3:ListBucket",
-        ///                     },
-        ///                     Resources = 
-        ///                     {
-        ///                         "arn:aws:s3:::state-terraform-s3",
-        ///                     },
-        ///                     Conditions = 
-        ///                     {
-        ///                         new Minio.Inputs.GetIamPolicyDocumentStatementConditionArgs
+        ///                         Test = "StringLike",
+        ///                         Variable = "s3:prefix",
+        ///                         Values = new[]
         ///                         {
-        ///                             Test = "StringLike",
-        ///                             Variable = "s3:prefix",
-        ///                             Values = 
-        ///                             {
-        ///                                 "",
-        ///                                 "home/",
-        ///                             },
+        ///                             "",
+        ///                             "home/",
         ///                         },
         ///                     },
         ///                 },
-        ///                 new Minio.Inputs.GetIamPolicyDocumentStatementArgs
+        ///             },
+        ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Actions = new[]
         ///                 {
-        ///                     Actions = 
-        ///                     {
-        ///                         "s3:PutObject",
-        ///                     },
-        ///                     Resources = 
-        ///                     {
-        ///                         "arn:aws:s3:::state-terraform-s3",
-        ///                         "arn:aws:s3:::state-terraform-s3/*",
-        ///                     },
+        ///                     "s3:PutObject",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "arn:aws:s3:::state-terraform-s3",
+        ///                     "arn:aws:s3:::state-terraform-s3/*",
         ///                 },
         ///             },
-        ///         }));
-        ///         var testPolicy = new Minio.IamPolicy("testPolicy", new Minio.IamPolicyArgs
-        ///         {
-        ///             Policy = example.Apply(example =&gt; example.Json),
-        ///         });
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        ///     var testPolicy = new Minio.IamPolicy("testPolicy", new()
+        ///     {
+        ///         Policy = example.Apply(getIamPolicyDocumentResult =&gt; getIamPolicyDocumentResult.Json),
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -177,7 +175,7 @@ namespace Pulumi.Minio
     }
 
 
-    public sealed class GetIamPolicyDocumentArgs : Pulumi.InvokeArgs
+    public sealed class GetIamPolicyDocumentArgs : global::Pulumi.InvokeArgs
     {
         [Input("overrideJson")]
         public string? OverrideJson { get; set; }
@@ -202,9 +200,10 @@ namespace Pulumi.Minio
         public GetIamPolicyDocumentArgs()
         {
         }
+        public static new GetIamPolicyDocumentArgs Empty => new GetIamPolicyDocumentArgs();
     }
 
-    public sealed class GetIamPolicyDocumentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIamPolicyDocumentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("overrideJson")]
         public Input<string>? OverrideJson { get; set; }
@@ -229,6 +228,7 @@ namespace Pulumi.Minio
         public GetIamPolicyDocumentInvokeArgs()
         {
         }
+        public static new GetIamPolicyDocumentInvokeArgs Empty => new GetIamPolicyDocumentInvokeArgs();
     }
 
 

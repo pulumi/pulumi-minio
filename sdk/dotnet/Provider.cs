@@ -16,7 +16,7 @@ namespace Pulumi.Minio
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [MinioResourceType("pulumi:providers:minio")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// Minio Access Key
@@ -83,7 +83,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Minio Access Key
@@ -136,5 +136,6 @@ namespace Pulumi.Minio
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

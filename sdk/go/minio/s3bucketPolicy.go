@@ -17,32 +17,48 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucketS3Bucket, err := minio.NewS3Bucket(ctx, "bucketS3Bucket", &minio.S3BucketArgs{
-// 			Bucket: pulumi.String("example-bucket"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = minio.NewS3BucketPolicy(ctx, "bucketS3BucketPolicy", &minio.S3BucketPolicyArgs{
-// 			Bucket: bucketS3Bucket.Bucket,
-// 			Policy: bucketS3Bucket.Bucket.ApplyT(func(bucket string) (string, error) {
-// 				return fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Effect\": \"Allow\",\n", "     \"Principal\": {\"AWS\": [\"*\"]},\n", "      \"Resource\": [\"arn:aws:s3:::", bucket, "\"],\n", "     \"Action\": [\"s3:ListBucket\"]\n", "    }\n", "  ]\n", "}\n"), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucketS3Bucket, err := minio.NewS3Bucket(ctx, "bucketS3Bucket", &minio.S3BucketArgs{
+//				Bucket: pulumi.String("example-bucket"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = minio.NewS3BucketPolicy(ctx, "bucketS3BucketPolicy", &minio.S3BucketPolicyArgs{
+//				Bucket: bucketS3Bucket.Bucket,
+//				Policy: bucketS3Bucket.Bucket.ApplyT(func(bucket string) (string, error) {
+//					return fmt.Sprintf(`{
+//	  "Version": "2012-10-17",
+//	  "Statement": [
+//	    {
+//	      "Effect": "Allow",
+//	     "Principal": {"AWS": ["*"]},
+//	      "Resource": ["arn:aws:s3:::%v"],
+//	     "Action": ["s3:ListBucket"]
+//	    }
+//	  ]
+//	}
+//
+// `, bucket), nil
+//
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type S3BucketPolicy struct {
 	pulumi.CustomResourceState
@@ -136,7 +152,7 @@ func (i *S3BucketPolicy) ToS3BucketPolicyOutputWithContext(ctx context.Context) 
 // S3BucketPolicyArrayInput is an input type that accepts S3BucketPolicyArray and S3BucketPolicyArrayOutput values.
 // You can construct a concrete instance of `S3BucketPolicyArrayInput` via:
 //
-//          S3BucketPolicyArray{ S3BucketPolicyArgs{...} }
+//	S3BucketPolicyArray{ S3BucketPolicyArgs{...} }
 type S3BucketPolicyArrayInput interface {
 	pulumi.Input
 
@@ -161,7 +177,7 @@ func (i S3BucketPolicyArray) ToS3BucketPolicyArrayOutputWithContext(ctx context.
 // S3BucketPolicyMapInput is an input type that accepts S3BucketPolicyMap and S3BucketPolicyMapOutput values.
 // You can construct a concrete instance of `S3BucketPolicyMapInput` via:
 //
-//          S3BucketPolicyMap{ "key": S3BucketPolicyArgs{...} }
+//	S3BucketPolicyMap{ "key": S3BucketPolicyArgs{...} }
 type S3BucketPolicyMapInput interface {
 	pulumi.Input
 
@@ -195,6 +211,14 @@ func (o S3BucketPolicyOutput) ToS3BucketPolicyOutput() S3BucketPolicyOutput {
 
 func (o S3BucketPolicyOutput) ToS3BucketPolicyOutputWithContext(ctx context.Context) S3BucketPolicyOutput {
 	return o
+}
+
+func (o S3BucketPolicyOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3BucketPolicy) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o S3BucketPolicyOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3BucketPolicy) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
 }
 
 type S3BucketPolicyArrayOutput struct{ *pulumi.OutputState }

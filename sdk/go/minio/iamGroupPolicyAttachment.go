@@ -17,37 +17,54 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := minio.NewIamGroup(ctx, "developerIamGroup", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = minio.NewIamGroupPolicy(ctx, "testPolicy", &minio.IamGroupPolicyArgs{
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\":\"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Sid\":\"ListAllBucket\",\n", "      \"Effect\": \"Allow\",\n", "      \"Action\": [\"s3:PutObject\"],\n", "      \"Principal\":\"*\",\n", "      \"Resource\": \"arn:aws:s3:::state-terraform-s3/*\"\n", "    }\n", "  ]\n", "}\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		developerIamGroupPolicyAttachment, err := minio.NewIamGroupPolicyAttachment(ctx, "developerIamGroupPolicyAttachment", &minio.IamGroupPolicyAttachmentArgs{
-// 			GroupName:  pulumi.Any(minio_iam_group.Group.Name),
-// 			PolicyName: pulumi.Any(minio_iam_policy.Test_policy.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("minioName", developerIamGroupPolicyAttachment.ID())
-// 		ctx.Export("minioUsers", developerIamGroupPolicyAttachment.GroupName)
-// 		ctx.Export("minioGroup", developerIamGroupPolicyAttachment.PolicyName)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := minio.NewIamGroup(ctx, "developerIamGroup", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = minio.NewIamGroupPolicy(ctx, "testPolicy", &minio.IamGroupPolicyArgs{
+//				Policy: pulumi.String(fmt.Sprintf(`{
+//	  "Version":"2012-10-17",
+//	  "Statement": [
+//	    {
+//	      "Sid":"ListAllBucket",
+//	      "Effect": "Allow",
+//	      "Action": ["s3:PutObject"],
+//	      "Principal":"*",
+//	      "Resource": "arn:aws:s3:::state-terraform-s3/*"
+//	    }
+//	  ]
+//	}
+//
+// `)),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			developerIamGroupPolicyAttachment, err := minio.NewIamGroupPolicyAttachment(ctx, "developerIamGroupPolicyAttachment", &minio.IamGroupPolicyAttachmentArgs{
+//				GroupName:  pulumi.Any(minio_iam_group.Group.Name),
+//				PolicyName: pulumi.Any(minio_iam_policy.Test_policy.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("minioName", developerIamGroupPolicyAttachment.ID())
+//			ctx.Export("minioUsers", developerIamGroupPolicyAttachment.GroupName)
+//			ctx.Export("minioGroup", developerIamGroupPolicyAttachment.PolicyName)
+//			return nil
+//		})
+//	}
+//
 // ```
 type IamGroupPolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -141,7 +158,7 @@ func (i *IamGroupPolicyAttachment) ToIamGroupPolicyAttachmentOutputWithContext(c
 // IamGroupPolicyAttachmentArrayInput is an input type that accepts IamGroupPolicyAttachmentArray and IamGroupPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `IamGroupPolicyAttachmentArrayInput` via:
 //
-//          IamGroupPolicyAttachmentArray{ IamGroupPolicyAttachmentArgs{...} }
+//	IamGroupPolicyAttachmentArray{ IamGroupPolicyAttachmentArgs{...} }
 type IamGroupPolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -166,7 +183,7 @@ func (i IamGroupPolicyAttachmentArray) ToIamGroupPolicyAttachmentArrayOutputWith
 // IamGroupPolicyAttachmentMapInput is an input type that accepts IamGroupPolicyAttachmentMap and IamGroupPolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `IamGroupPolicyAttachmentMapInput` via:
 //
-//          IamGroupPolicyAttachmentMap{ "key": IamGroupPolicyAttachmentArgs{...} }
+//	IamGroupPolicyAttachmentMap{ "key": IamGroupPolicyAttachmentArgs{...} }
 type IamGroupPolicyAttachmentMapInput interface {
 	pulumi.Input
 
@@ -200,6 +217,14 @@ func (o IamGroupPolicyAttachmentOutput) ToIamGroupPolicyAttachmentOutput() IamGr
 
 func (o IamGroupPolicyAttachmentOutput) ToIamGroupPolicyAttachmentOutputWithContext(ctx context.Context) IamGroupPolicyAttachmentOutput {
 	return o
+}
+
+func (o IamGroupPolicyAttachmentOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroupPolicyAttachment) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+func (o IamGroupPolicyAttachmentOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroupPolicyAttachment) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 type IamGroupPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }

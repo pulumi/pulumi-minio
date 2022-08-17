@@ -16,20 +16,23 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		developer, err := minio.NewIamGroup(ctx, "developer", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("minioUserGroup", developer.GroupName)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			developer, err := minio.NewIamGroup(ctx, "developer", nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("minioUserGroup", developer.GroupName)
+//			return nil
+//		})
+//	}
+//
 // ```
 type IamGroup struct {
 	pulumi.CustomResourceState
@@ -135,7 +138,7 @@ func (i *IamGroup) ToIamGroupOutputWithContext(ctx context.Context) IamGroupOutp
 // IamGroupArrayInput is an input type that accepts IamGroupArray and IamGroupArrayOutput values.
 // You can construct a concrete instance of `IamGroupArrayInput` via:
 //
-//          IamGroupArray{ IamGroupArgs{...} }
+//	IamGroupArray{ IamGroupArgs{...} }
 type IamGroupArrayInput interface {
 	pulumi.Input
 
@@ -160,7 +163,7 @@ func (i IamGroupArray) ToIamGroupArrayOutputWithContext(ctx context.Context) Iam
 // IamGroupMapInput is an input type that accepts IamGroupMap and IamGroupMapOutput values.
 // You can construct a concrete instance of `IamGroupMapInput` via:
 //
-//          IamGroupMap{ "key": IamGroupArgs{...} }
+//	IamGroupMap{ "key": IamGroupArgs{...} }
 type IamGroupMapInput interface {
 	pulumi.Input
 
@@ -194,6 +197,24 @@ func (o IamGroupOutput) ToIamGroupOutput() IamGroupOutput {
 
 func (o IamGroupOutput) ToIamGroupOutputWithContext(ctx context.Context) IamGroupOutput {
 	return o
+}
+
+// Disable group
+func (o IamGroupOutput) DisableGroup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IamGroup) pulumi.BoolPtrOutput { return v.DisableGroup }).(pulumi.BoolPtrOutput)
+}
+
+// Delete group even if it has non-Terraform-managed members
+func (o IamGroupOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IamGroup) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+func (o IamGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroup) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+func (o IamGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 type IamGroupArrayOutput struct{ *pulumi.OutputState }

@@ -13,37 +13,32 @@ namespace Pulumi.Minio
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var testIamUser = new Minio.IamUser("testIamUser", new()
     ///     {
-    ///         var testIamUser = new Minio.IamUser("testIamUser", new Minio.IamUserArgs
+    ///         ForceDestroy = true,
+    ///         Tags = 
     ///         {
-    ///             ForceDestroy = true,
-    ///             Tags = 
-    ///             {
-    ///                 { "tag-key", "tag-value" },
-    ///             },
-    ///         });
-    ///         this.Test = testIamUser.Id;
-    ///         this.Status = testIamUser.Status;
-    ///         this.Secret = testIamUser.Secret;
-    ///     }
+    ///             { "tag-key", "tag-value" },
+    ///         },
+    ///     });
     /// 
-    ///     [Output("test")]
-    ///     public Output&lt;string&gt; Test { get; set; }
-    ///     [Output("status")]
-    ///     public Output&lt;string&gt; Status { get; set; }
-    ///     [Output("secret")]
-    ///     public Output&lt;string&gt; Secret { get; set; }
-    /// }
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["test"] = testIamUser.Id,
+    ///         ["status"] = testIamUser.Status,
+    ///         ["secret"] = testIamUser.Secret,
+    ///     };
+    /// });
     /// ```
     /// </summary>
     [MinioResourceType("minio:index/iamUser:IamUser")]
-    public partial class IamUser : Pulumi.CustomResource
+    public partial class IamUser : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Disable user
@@ -119,7 +114,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class IamUserArgs : Pulumi.ResourceArgs
+    public sealed class IamUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Disable user
@@ -156,9 +151,10 @@ namespace Pulumi.Minio
         public IamUserArgs()
         {
         }
+        public static new IamUserArgs Empty => new IamUserArgs();
     }
 
-    public sealed class IamUserState : Pulumi.ResourceArgs
+    public sealed class IamUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Disable user
@@ -198,5 +194,6 @@ namespace Pulumi.Minio
         public IamUserState()
         {
         }
+        public static new IamUserState Empty => new IamUserState();
     }
 }

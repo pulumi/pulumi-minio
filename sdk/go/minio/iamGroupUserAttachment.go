@@ -17,33 +17,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := minio.NewIamGroup(ctx, "developerIamGroup", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		userOne, err := minio.NewIamUser(ctx, "userOne", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		developerIamGroupUserAttachment, err := minio.NewIamGroupUserAttachment(ctx, "developerIamGroupUserAttachment", &minio.IamGroupUserAttachmentArgs{
-// 			GroupName: pulumi.Any(minio_iam_group.Group.Name),
-// 			UserName:  userOne.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("minioName", developerIamGroupUserAttachment.ID())
-// 		ctx.Export("minioUsers", developerIamGroupUserAttachment.GroupName)
-// 		ctx.Export("minioGroup", developerIamGroupUserAttachment.UserName)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := minio.NewIamGroup(ctx, "developerIamGroup", nil)
+//			if err != nil {
+//				return err
+//			}
+//			userOne, err := minio.NewIamUser(ctx, "userOne", nil)
+//			if err != nil {
+//				return err
+//			}
+//			developerIamGroupUserAttachment, err := minio.NewIamGroupUserAttachment(ctx, "developerIamGroupUserAttachment", &minio.IamGroupUserAttachmentArgs{
+//				GroupName: pulumi.Any(minio_iam_group.Group.Name),
+//				UserName:  userOne.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("minioName", developerIamGroupUserAttachment.ID())
+//			ctx.Export("minioUsers", developerIamGroupUserAttachment.GroupName)
+//			ctx.Export("minioGroup", developerIamGroupUserAttachment.UserName)
+//			return nil
+//		})
+//	}
+//
 // ```
 type IamGroupUserAttachment struct {
 	pulumi.CustomResourceState
@@ -137,7 +140,7 @@ func (i *IamGroupUserAttachment) ToIamGroupUserAttachmentOutputWithContext(ctx c
 // IamGroupUserAttachmentArrayInput is an input type that accepts IamGroupUserAttachmentArray and IamGroupUserAttachmentArrayOutput values.
 // You can construct a concrete instance of `IamGroupUserAttachmentArrayInput` via:
 //
-//          IamGroupUserAttachmentArray{ IamGroupUserAttachmentArgs{...} }
+//	IamGroupUserAttachmentArray{ IamGroupUserAttachmentArgs{...} }
 type IamGroupUserAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -162,7 +165,7 @@ func (i IamGroupUserAttachmentArray) ToIamGroupUserAttachmentArrayOutputWithCont
 // IamGroupUserAttachmentMapInput is an input type that accepts IamGroupUserAttachmentMap and IamGroupUserAttachmentMapOutput values.
 // You can construct a concrete instance of `IamGroupUserAttachmentMapInput` via:
 //
-//          IamGroupUserAttachmentMap{ "key": IamGroupUserAttachmentArgs{...} }
+//	IamGroupUserAttachmentMap{ "key": IamGroupUserAttachmentArgs{...} }
 type IamGroupUserAttachmentMapInput interface {
 	pulumi.Input
 
@@ -196,6 +199,14 @@ func (o IamGroupUserAttachmentOutput) ToIamGroupUserAttachmentOutput() IamGroupU
 
 func (o IamGroupUserAttachmentOutput) ToIamGroupUserAttachmentOutputWithContext(ctx context.Context) IamGroupUserAttachmentOutput {
 	return o
+}
+
+func (o IamGroupUserAttachmentOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroupUserAttachment) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
+}
+
+func (o IamGroupUserAttachmentOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroupUserAttachment) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }
 
 type IamGroupUserAttachmentArrayOutput struct{ *pulumi.OutputState }

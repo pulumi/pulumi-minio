@@ -74,7 +74,7 @@ namespace Pulumi.Minio
         }
     }
 
-    internal sealed class MinioResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class MinioResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public MinioResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

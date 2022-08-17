@@ -53,6 +53,10 @@ export class S3Bucket extends pulumi.CustomResource {
     public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
     public readonly bucketPrefix!: pulumi.Output<string | undefined>;
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
+     * The limit of the amount of data in the bucket (bytes).
+     */
+    public readonly quota!: pulumi.Output<number | undefined>;
 
     /**
      * Create a S3Bucket resource with the given unique name, arguments, and options.
@@ -72,12 +76,14 @@ export class S3Bucket extends pulumi.CustomResource {
             resourceInputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
             resourceInputs["bucketPrefix"] = state ? state.bucketPrefix : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["quota"] = state ? state.quota : undefined;
         } else {
             const args = argsOrState as S3BucketArgs | undefined;
             resourceInputs["acl"] = args ? args.acl : undefined;
             resourceInputs["bucket"] = args ? args.bucket : undefined;
             resourceInputs["bucketPrefix"] = args ? args.bucketPrefix : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["quota"] = args ? args.quota : undefined;
             resourceInputs["bucketDomainName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -94,6 +100,10 @@ export interface S3BucketState {
     bucketDomainName?: pulumi.Input<string>;
     bucketPrefix?: pulumi.Input<string>;
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * The limit of the amount of data in the bucket (bytes).
+     */
+    quota?: pulumi.Input<number>;
 }
 
 /**
@@ -104,4 +114,8 @@ export interface S3BucketArgs {
     bucket?: pulumi.Input<string>;
     bucketPrefix?: pulumi.Input<string>;
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * The limit of the amount of data in the bucket (bytes).
+     */
+    quota?: pulumi.Input<number>;
 }

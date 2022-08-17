@@ -17,31 +17,48 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		developer, err := minio.NewIamGroup(ctx, "developer", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = minio.NewIamGroupPolicy(ctx, "testPolicy", &minio.IamGroupPolicyArgs{
-// 			Group:  developer.ID(),
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\":\"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Sid\":\"ListAllBucket\",\n", "      \"Effect\": \"Allow\",\n", "      \"Action\": [\"s3:PutObject\"],\n", "      \"Principal\":\"*\",\n", "      \"Resource\": \"arn:aws:s3:::state-terraform-s3/*\"\n", "    }\n", "  ]\n", "}\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("minioName", minio_iam_group_membership.Developer.Id)
-// 		ctx.Export("minioPolicy", minio_iam_group_membership.Developer.Policy)
-// 		ctx.Export("minioGroup", minio_iam_group_membership.Developer.Group)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			developer, err := minio.NewIamGroup(ctx, "developer", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = minio.NewIamGroupPolicy(ctx, "testPolicy", &minio.IamGroupPolicyArgs{
+//				Group: developer.ID(),
+//				Policy: pulumi.String(fmt.Sprintf(`{
+//	  "Version":"2012-10-17",
+//	  "Statement": [
+//	    {
+//	      "Sid":"ListAllBucket",
+//	      "Effect": "Allow",
+//	      "Action": ["s3:PutObject"],
+//	      "Principal":"*",
+//	      "Resource": "arn:aws:s3:::state-terraform-s3/*"
+//	    }
+//	  ]
+//	}
+//
+// `)),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("minioName", minio_iam_group_membership.Developer.Id)
+//			ctx.Export("minioPolicy", minio_iam_group_membership.Developer.Policy)
+//			ctx.Export("minioGroup", minio_iam_group_membership.Developer.Group)
+//			return nil
+//		})
+//	}
+//
 // ```
 type IamGroupPolicy struct {
 	pulumi.CustomResourceState
@@ -145,7 +162,7 @@ func (i *IamGroupPolicy) ToIamGroupPolicyOutputWithContext(ctx context.Context) 
 // IamGroupPolicyArrayInput is an input type that accepts IamGroupPolicyArray and IamGroupPolicyArrayOutput values.
 // You can construct a concrete instance of `IamGroupPolicyArrayInput` via:
 //
-//          IamGroupPolicyArray{ IamGroupPolicyArgs{...} }
+//	IamGroupPolicyArray{ IamGroupPolicyArgs{...} }
 type IamGroupPolicyArrayInput interface {
 	pulumi.Input
 
@@ -170,7 +187,7 @@ func (i IamGroupPolicyArray) ToIamGroupPolicyArrayOutputWithContext(ctx context.
 // IamGroupPolicyMapInput is an input type that accepts IamGroupPolicyMap and IamGroupPolicyMapOutput values.
 // You can construct a concrete instance of `IamGroupPolicyMapInput` via:
 //
-//          IamGroupPolicyMap{ "key": IamGroupPolicyArgs{...} }
+//	IamGroupPolicyMap{ "key": IamGroupPolicyArgs{...} }
 type IamGroupPolicyMapInput interface {
 	pulumi.Input
 
@@ -204,6 +221,22 @@ func (o IamGroupPolicyOutput) ToIamGroupPolicyOutput() IamGroupPolicyOutput {
 
 func (o IamGroupPolicyOutput) ToIamGroupPolicyOutputWithContext(ctx context.Context) IamGroupPolicyOutput {
 	return o
+}
+
+func (o IamGroupPolicyOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroupPolicy) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
+func (o IamGroupPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroupPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o IamGroupPolicyOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamGroupPolicy) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o IamGroupPolicyOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamGroupPolicy) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
 }
 
 type IamGroupPolicyArrayOutput struct{ *pulumi.OutputState }

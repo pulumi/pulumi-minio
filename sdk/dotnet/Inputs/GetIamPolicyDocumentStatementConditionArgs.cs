@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Minio.Inputs
 {
 
-    public sealed class GetIamPolicyDocumentStatementConditionInputArgs : Pulumi.ResourceArgs
+    public sealed class GetIamPolicyDocumentStatementConditionInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("test", required: true)]
         public Input<string> Test { get; set; } = null!;
@@ -29,5 +29,6 @@ namespace Pulumi.Minio.Inputs
         public GetIamPolicyDocumentStatementConditionInputArgs()
         {
         }
+        public static new GetIamPolicyDocumentStatementConditionInputArgs Empty => new GetIamPolicyDocumentStatementConditionInputArgs();
     }
 }
