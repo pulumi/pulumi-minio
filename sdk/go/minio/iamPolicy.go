@@ -17,25 +17,42 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testPolicy, err := minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\":\"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Sid\":\"ListAllBucket\",\n", "      \"Effect\": \"Allow\",\n", "      \"Action\": [\"s3:PutObject\"],\n", "      \"Principal\":\"*\",\n", "      \"Resource\": \"arn:aws:s3:::state-terraform-s3/*\"\n", "    }\n", "  ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("minioId", testPolicy.ID())
-// 		ctx.Export("minioPolicy", testPolicy.Policy)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testPolicy, err := minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
+//				Policy: pulumi.String(fmt.Sprintf(`{
+//	  "Version":"2012-10-17",
+//	  "Statement": [
+//	    {
+//	      "Sid":"ListAllBucket",
+//	      "Effect": "Allow",
+//	      "Action": ["s3:PutObject"],
+//	      "Principal":"*",
+//	      "Resource": "arn:aws:s3:::state-terraform-s3/*"
+//	    }
+//	  ]
+//	}
+//
+// `)),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("minioId", testPolicy.ID())
+//			ctx.Export("minioPolicy", testPolicy.Policy)
+//			return nil
+//		})
+//	}
+//
 // ```
 type IamPolicy struct {
 	pulumi.CustomResourceState
@@ -131,7 +148,7 @@ func (i *IamPolicy) ToIamPolicyOutputWithContext(ctx context.Context) IamPolicyO
 // IamPolicyArrayInput is an input type that accepts IamPolicyArray and IamPolicyArrayOutput values.
 // You can construct a concrete instance of `IamPolicyArrayInput` via:
 //
-//          IamPolicyArray{ IamPolicyArgs{...} }
+//	IamPolicyArray{ IamPolicyArgs{...} }
 type IamPolicyArrayInput interface {
 	pulumi.Input
 
@@ -156,7 +173,7 @@ func (i IamPolicyArray) ToIamPolicyArrayOutputWithContext(ctx context.Context) I
 // IamPolicyMapInput is an input type that accepts IamPolicyMap and IamPolicyMapOutput values.
 // You can construct a concrete instance of `IamPolicyMapInput` via:
 //
-//          IamPolicyMap{ "key": IamPolicyArgs{...} }
+//	IamPolicyMap{ "key": IamPolicyArgs{...} }
 type IamPolicyMapInput interface {
 	pulumi.Input
 
@@ -190,6 +207,18 @@ func (o IamPolicyOutput) ToIamPolicyOutput() IamPolicyOutput {
 
 func (o IamPolicyOutput) ToIamPolicyOutputWithContext(ctx context.Context) IamPolicyOutput {
 	return o
+}
+
+func (o IamPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o IamPolicyOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamPolicy) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o IamPolicyOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamPolicy) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
 }
 
 type IamPolicyArrayOutput struct{ *pulumi.OutputState }

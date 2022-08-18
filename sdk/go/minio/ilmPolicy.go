@@ -19,33 +19,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		bucket, err := minio.NewS3Bucket(ctx, "bucket", &minio.S3BucketArgs{
-// 			Bucket: pulumi.String("bucket"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = minio.NewIlmPolicy(ctx, "bucket-lifecycle-rules", &minio.IlmPolicyArgs{
-// 			Bucket: bucket.Bucket,
-// 			Rules: IlmPolicyRuleArray{
-// 				&IlmPolicyRuleArgs{
-// 					Id:         pulumi.String("expire-7d"),
-// 					Expiration: pulumi.String("7"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := minio.NewS3Bucket(ctx, "bucket", &minio.S3BucketArgs{
+//				Bucket: pulumi.String("bucket"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = minio.NewIlmPolicy(ctx, "bucket-lifecycle-rules", &minio.IlmPolicyArgs{
+//				Bucket: bucket.Bucket,
+//				Rules: IlmPolicyRuleArray{
+//					&IlmPolicyRuleArgs{
+//						Id:         pulumi.String("expire-7d"),
+//						Expiration: pulumi.String("7"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type IlmPolicy struct {
 	pulumi.CustomResourceState
@@ -139,7 +142,7 @@ func (i *IlmPolicy) ToIlmPolicyOutputWithContext(ctx context.Context) IlmPolicyO
 // IlmPolicyArrayInput is an input type that accepts IlmPolicyArray and IlmPolicyArrayOutput values.
 // You can construct a concrete instance of `IlmPolicyArrayInput` via:
 //
-//          IlmPolicyArray{ IlmPolicyArgs{...} }
+//	IlmPolicyArray{ IlmPolicyArgs{...} }
 type IlmPolicyArrayInput interface {
 	pulumi.Input
 
@@ -164,7 +167,7 @@ func (i IlmPolicyArray) ToIlmPolicyArrayOutputWithContext(ctx context.Context) I
 // IlmPolicyMapInput is an input type that accepts IlmPolicyMap and IlmPolicyMapOutput values.
 // You can construct a concrete instance of `IlmPolicyMapInput` via:
 //
-//          IlmPolicyMap{ "key": IlmPolicyArgs{...} }
+//	IlmPolicyMap{ "key": IlmPolicyArgs{...} }
 type IlmPolicyMapInput interface {
 	pulumi.Input
 
@@ -198,6 +201,14 @@ func (o IlmPolicyOutput) ToIlmPolicyOutput() IlmPolicyOutput {
 
 func (o IlmPolicyOutput) ToIlmPolicyOutputWithContext(ctx context.Context) IlmPolicyOutput {
 	return o
+}
+
+func (o IlmPolicyOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *IlmPolicy) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o IlmPolicyOutput) Rules() IlmPolicyRuleArrayOutput {
+	return o.ApplyT(func(v *IlmPolicy) IlmPolicyRuleArrayOutput { return v.Rules }).(IlmPolicyRuleArrayOutput)
 }
 
 type IlmPolicyArrayOutput struct{ *pulumi.OutputState }

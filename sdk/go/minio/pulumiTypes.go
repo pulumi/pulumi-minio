@@ -21,7 +21,7 @@ type IlmPolicyRule struct {
 // IlmPolicyRuleInput is an input type that accepts IlmPolicyRuleArgs and IlmPolicyRuleOutput values.
 // You can construct a concrete instance of `IlmPolicyRuleInput` via:
 //
-//          IlmPolicyRuleArgs{...}
+//	IlmPolicyRuleArgs{...}
 type IlmPolicyRuleInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i IlmPolicyRuleArgs) ToIlmPolicyRuleOutputWithContext(ctx context.Context)
 // IlmPolicyRuleArrayInput is an input type that accepts IlmPolicyRuleArray and IlmPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `IlmPolicyRuleArrayInput` via:
 //
-//          IlmPolicyRuleArray{ IlmPolicyRuleArgs{...} }
+//	IlmPolicyRuleArray{ IlmPolicyRuleArgs{...} }
 type IlmPolicyRuleArrayInput interface {
 	pulumi.Input
 
@@ -137,7 +137,7 @@ type GetIamPolicyDocumentStatement struct {
 // GetIamPolicyDocumentStatementInput is an input type that accepts GetIamPolicyDocumentStatementArgs and GetIamPolicyDocumentStatementOutput values.
 // You can construct a concrete instance of `GetIamPolicyDocumentStatementInput` via:
 //
-//          GetIamPolicyDocumentStatementArgs{...}
+//	GetIamPolicyDocumentStatementArgs{...}
 type GetIamPolicyDocumentStatementInput interface {
 	pulumi.Input
 
@@ -169,7 +169,7 @@ func (i GetIamPolicyDocumentStatementArgs) ToGetIamPolicyDocumentStatementOutput
 // GetIamPolicyDocumentStatementArrayInput is an input type that accepts GetIamPolicyDocumentStatementArray and GetIamPolicyDocumentStatementArrayOutput values.
 // You can construct a concrete instance of `GetIamPolicyDocumentStatementArrayInput` via:
 //
-//          GetIamPolicyDocumentStatementArray{ GetIamPolicyDocumentStatementArgs{...} }
+//	GetIamPolicyDocumentStatementArray{ GetIamPolicyDocumentStatementArgs{...} }
 type GetIamPolicyDocumentStatementArrayInput interface {
 	pulumi.Input
 
@@ -258,7 +258,7 @@ type GetIamPolicyDocumentStatementCondition struct {
 // GetIamPolicyDocumentStatementConditionInput is an input type that accepts GetIamPolicyDocumentStatementConditionArgs and GetIamPolicyDocumentStatementConditionOutput values.
 // You can construct a concrete instance of `GetIamPolicyDocumentStatementConditionInput` via:
 //
-//          GetIamPolicyDocumentStatementConditionArgs{...}
+//	GetIamPolicyDocumentStatementConditionArgs{...}
 type GetIamPolicyDocumentStatementConditionInput interface {
 	pulumi.Input
 
@@ -287,7 +287,7 @@ func (i GetIamPolicyDocumentStatementConditionArgs) ToGetIamPolicyDocumentStatem
 // GetIamPolicyDocumentStatementConditionArrayInput is an input type that accepts GetIamPolicyDocumentStatementConditionArray and GetIamPolicyDocumentStatementConditionArrayOutput values.
 // You can construct a concrete instance of `GetIamPolicyDocumentStatementConditionArrayInput` via:
 //
-//          GetIamPolicyDocumentStatementConditionArray{ GetIamPolicyDocumentStatementConditionArgs{...} }
+//	GetIamPolicyDocumentStatementConditionArray{ GetIamPolicyDocumentStatementConditionArgs{...} }
 type GetIamPolicyDocumentStatementConditionArrayInput interface {
 	pulumi.Input
 

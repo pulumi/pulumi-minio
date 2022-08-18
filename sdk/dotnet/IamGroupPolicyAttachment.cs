@@ -13,19 +13,17 @@ namespace Pulumi.Minio
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var developerIamGroup = new Minio.IamGroup("developerIamGroup");
+    /// 
+    ///     var testPolicy = new Minio.IamGroupPolicy("testPolicy", new()
     ///     {
-    ///         var developerIamGroup = new Minio.IamGroup("developerIamGroup", new Minio.IamGroupArgs
-    ///         {
-    ///         });
-    ///         var testPolicy = new Minio.IamGroupPolicy("testPolicy", new Minio.IamGroupPolicyArgs
-    ///         {
-    ///             Policy = @"{
+    ///         Policy = @"{
     ///   ""Version"":""2012-10-17"",
     ///   ""Statement"": [
     ///     {
@@ -39,28 +37,25 @@ namespace Pulumi.Minio
     /// }
     /// 
     /// ",
-    ///         });
-    ///         var developerIamGroupPolicyAttachment = new Minio.IamGroupPolicyAttachment("developerIamGroupPolicyAttachment", new Minio.IamGroupPolicyAttachmentArgs
-    ///         {
-    ///             GroupName = minio_iam_group.Group.Name,
-    ///             PolicyName = minio_iam_policy.Test_policy.Id,
-    ///         });
-    ///         this.MinioName = developerIamGroupPolicyAttachment.Id;
-    ///         this.MinioUsers = developerIamGroupPolicyAttachment.GroupName;
-    ///         this.MinioGroup = developerIamGroupPolicyAttachment.PolicyName;
-    ///     }
+    ///     });
     /// 
-    ///     [Output("minioName")]
-    ///     public Output&lt;string&gt; MinioName { get; set; }
-    ///     [Output("minioUsers")]
-    ///     public Output&lt;string&gt; MinioUsers { get; set; }
-    ///     [Output("minioGroup")]
-    ///     public Output&lt;string&gt; MinioGroup { get; set; }
-    /// }
+    ///     var developerIamGroupPolicyAttachment = new Minio.IamGroupPolicyAttachment("developerIamGroupPolicyAttachment", new()
+    ///     {
+    ///         GroupName = minio_iam_group.Group.Name,
+    ///         PolicyName = minio_iam_policy.Test_policy.Id,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["minioName"] = developerIamGroupPolicyAttachment.Id,
+    ///         ["minioUsers"] = developerIamGroupPolicyAttachment.GroupName,
+    ///         ["minioGroup"] = developerIamGroupPolicyAttachment.PolicyName,
+    ///     };
+    /// });
     /// ```
     /// </summary>
     [MinioResourceType("minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment")]
-    public partial class IamGroupPolicyAttachment : Pulumi.CustomResource
+    public partial class IamGroupPolicyAttachment : global::Pulumi.CustomResource
     {
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
@@ -112,7 +107,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class IamGroupPolicyAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class IamGroupPolicyAttachmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
@@ -123,9 +118,10 @@ namespace Pulumi.Minio
         public IamGroupPolicyAttachmentArgs()
         {
         }
+        public static new IamGroupPolicyAttachmentArgs Empty => new IamGroupPolicyAttachmentArgs();
     }
 
-    public sealed class IamGroupPolicyAttachmentState : Pulumi.ResourceArgs
+    public sealed class IamGroupPolicyAttachmentState : global::Pulumi.ResourceArgs
     {
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
@@ -136,5 +132,6 @@ namespace Pulumi.Minio
         public IamGroupPolicyAttachmentState()
         {
         }
+        public static new IamGroupPolicyAttachmentState Empty => new IamGroupPolicyAttachmentState();
     }
 }

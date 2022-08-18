@@ -13,31 +13,28 @@ namespace Pulumi.Minio
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var stateTerraformS3 = new Minio.S3Bucket("stateTerraformS3", new()
     ///     {
-    ///         var stateTerraformS3 = new Minio.S3Bucket("stateTerraformS3", new Minio.S3BucketArgs
-    ///         {
-    ///             Acl = "public",
-    ///             Bucket = "state-terraform-s3",
-    ///         });
-    ///         this.MinioId = stateTerraformS3.Id;
-    ///         this.MinioUrl = stateTerraformS3.BucketDomainName;
-    ///     }
+    ///         Acl = "public",
+    ///         Bucket = "state-terraform-s3",
+    ///     });
     /// 
-    ///     [Output("minioId")]
-    ///     public Output&lt;string&gt; MinioId { get; set; }
-    ///     [Output("minioUrl")]
-    ///     public Output&lt;string&gt; MinioUrl { get; set; }
-    /// }
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["minioId"] = stateTerraformS3.Id,
+    ///         ["minioUrl"] = stateTerraformS3.BucketDomainName,
+    ///     };
+    /// });
     /// ```
     /// </summary>
     [MinioResourceType("minio:index/s3Bucket:S3Bucket")]
-    public partial class S3Bucket : Pulumi.CustomResource
+    public partial class S3Bucket : global::Pulumi.CustomResource
     {
         [Output("acl")]
         public Output<string?> Acl { get; private set; } = null!;
@@ -53,6 +50,12 @@ namespace Pulumi.Minio
 
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
+
+        /// <summary>
+        /// The limit of the amount of data in the bucket (bytes).
+        /// </summary>
+        [Output("quota")]
+        public Output<int?> Quota { get; private set; } = null!;
 
 
         /// <summary>
@@ -98,7 +101,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class S3BucketArgs : Pulumi.ResourceArgs
+    public sealed class S3BucketArgs : global::Pulumi.ResourceArgs
     {
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -112,12 +115,19 @@ namespace Pulumi.Minio
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// The limit of the amount of data in the bucket (bytes).
+        /// </summary>
+        [Input("quota")]
+        public Input<int>? Quota { get; set; }
+
         public S3BucketArgs()
         {
         }
+        public static new S3BucketArgs Empty => new S3BucketArgs();
     }
 
-    public sealed class S3BucketState : Pulumi.ResourceArgs
+    public sealed class S3BucketState : global::Pulumi.ResourceArgs
     {
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -134,8 +144,15 @@ namespace Pulumi.Minio
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// The limit of the amount of data in the bucket (bytes).
+        /// </summary>
+        [Input("quota")]
+        public Input<int>? Quota { get; set; }
+
         public S3BucketState()
         {
         }
+        public static new S3BucketState Empty => new S3BucketState();
     }
 }

@@ -13,26 +13,23 @@ namespace Pulumi.Minio
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var developer = new Minio.IamGroup("developer", new Minio.IamGroupArgs
-    ///         {
-    ///         });
-    ///         this.MinioUserGroup = developer.GroupName;
-    ///     }
+    ///     var developer = new Minio.IamGroup("developer");
     /// 
-    ///     [Output("minioUserGroup")]
-    ///     public Output&lt;string&gt; MinioUserGroup { get; set; }
-    /// }
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["minioUserGroup"] = developer.GroupName,
+    ///     };
+    /// });
     /// ```
     /// </summary>
     [MinioResourceType("minio:index/iamGroup:IamGroup")]
-    public partial class IamGroup : Pulumi.CustomResource
+    public partial class IamGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Disable group
@@ -96,7 +93,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class IamGroupArgs : Pulumi.ResourceArgs
+    public sealed class IamGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Disable group
@@ -116,9 +113,10 @@ namespace Pulumi.Minio
         public IamGroupArgs()
         {
         }
+        public static new IamGroupArgs Empty => new IamGroupArgs();
     }
 
-    public sealed class IamGroupState : Pulumi.ResourceArgs
+    public sealed class IamGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Disable group
@@ -141,5 +139,6 @@ namespace Pulumi.Minio
         public IamGroupState()
         {
         }
+        public static new IamGroupState Empty => new IamGroupState();
     }
 }

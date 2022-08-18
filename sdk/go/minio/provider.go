@@ -133,6 +133,43 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// Minio Access Key
+func (o ProviderOutput) MinioAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.MinioAccessKey }).(pulumi.StringOutput)
+}
+
+// Minio API Version (type: string, options: v2 or v4, default: v4)
+func (o ProviderOutput) MinioApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioApiVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) MinioCacertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioCacertFile }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) MinioCertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioCertFile }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) MinioKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioKeyFile }).(pulumi.StringPtrOutput)
+}
+
+// Minio Region (default: us-east-1)
+func (o ProviderOutput) MinioRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioRegion }).(pulumi.StringPtrOutput)
+}
+
+// Minio Secret Key
+func (o ProviderOutput) MinioSecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.MinioSecretKey }).(pulumi.StringOutput)
+}
+
+// Minio Host and Port
+func (o ProviderOutput) MinioServer() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.MinioServer }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

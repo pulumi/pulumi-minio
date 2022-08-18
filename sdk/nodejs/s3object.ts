@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *     bucketName: stateTerraformS3.bucket,
  *     objectName: "text.txt",
  *     content: "Lorem ipsum dolor sit amet.",
+ *     contentType: "text/plain",
  * }, {
  *     dependsOn: [stateTerraformS3],
  * });

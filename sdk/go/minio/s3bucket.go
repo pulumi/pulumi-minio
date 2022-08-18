@@ -16,24 +16,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		stateTerraformS3, err := minio.NewS3Bucket(ctx, "stateTerraformS3", &minio.S3BucketArgs{
-// 			Acl:    pulumi.String("public"),
-// 			Bucket: pulumi.String("state-terraform-s3"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("minioId", stateTerraformS3.ID())
-// 		ctx.Export("minioUrl", stateTerraformS3.BucketDomainName)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			stateTerraformS3, err := minio.NewS3Bucket(ctx, "stateTerraformS3", &minio.S3BucketArgs{
+//				Acl:    pulumi.String("public"),
+//				Bucket: pulumi.String("state-terraform-s3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("minioId", stateTerraformS3.ID())
+//			ctx.Export("minioUrl", stateTerraformS3.BucketDomainName)
+//			return nil
+//		})
+//	}
+//
 // ```
 type S3Bucket struct {
 	pulumi.CustomResourceState
@@ -43,6 +46,8 @@ type S3Bucket struct {
 	BucketDomainName pulumi.StringOutput    `pulumi:"bucketDomainName"`
 	BucketPrefix     pulumi.StringPtrOutput `pulumi:"bucketPrefix"`
 	ForceDestroy     pulumi.BoolPtrOutput   `pulumi:"forceDestroy"`
+	// The limit of the amount of data in the bucket (bytes).
+	Quota pulumi.IntPtrOutput `pulumi:"quota"`
 }
 
 // NewS3Bucket registers a new resource with the given unique name, arguments, and options.
@@ -79,6 +84,8 @@ type s3bucketState struct {
 	BucketDomainName *string `pulumi:"bucketDomainName"`
 	BucketPrefix     *string `pulumi:"bucketPrefix"`
 	ForceDestroy     *bool   `pulumi:"forceDestroy"`
+	// The limit of the amount of data in the bucket (bytes).
+	Quota *int `pulumi:"quota"`
 }
 
 type S3BucketState struct {
@@ -87,6 +94,8 @@ type S3BucketState struct {
 	BucketDomainName pulumi.StringPtrInput
 	BucketPrefix     pulumi.StringPtrInput
 	ForceDestroy     pulumi.BoolPtrInput
+	// The limit of the amount of data in the bucket (bytes).
+	Quota pulumi.IntPtrInput
 }
 
 func (S3BucketState) ElementType() reflect.Type {
@@ -98,6 +107,8 @@ type s3bucketArgs struct {
 	Bucket       *string `pulumi:"bucket"`
 	BucketPrefix *string `pulumi:"bucketPrefix"`
 	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	// The limit of the amount of data in the bucket (bytes).
+	Quota *int `pulumi:"quota"`
 }
 
 // The set of arguments for constructing a S3Bucket resource.
@@ -106,6 +117,8 @@ type S3BucketArgs struct {
 	Bucket       pulumi.StringPtrInput
 	BucketPrefix pulumi.StringPtrInput
 	ForceDestroy pulumi.BoolPtrInput
+	// The limit of the amount of data in the bucket (bytes).
+	Quota pulumi.IntPtrInput
 }
 
 func (S3BucketArgs) ElementType() reflect.Type {
@@ -134,7 +147,7 @@ func (i *S3Bucket) ToS3BucketOutputWithContext(ctx context.Context) S3BucketOutp
 // S3BucketArrayInput is an input type that accepts S3BucketArray and S3BucketArrayOutput values.
 // You can construct a concrete instance of `S3BucketArrayInput` via:
 //
-//          S3BucketArray{ S3BucketArgs{...} }
+//	S3BucketArray{ S3BucketArgs{...} }
 type S3BucketArrayInput interface {
 	pulumi.Input
 
@@ -159,7 +172,7 @@ func (i S3BucketArray) ToS3BucketArrayOutputWithContext(ctx context.Context) S3B
 // S3BucketMapInput is an input type that accepts S3BucketMap and S3BucketMapOutput values.
 // You can construct a concrete instance of `S3BucketMapInput` via:
 //
-//          S3BucketMap{ "key": S3BucketArgs{...} }
+//	S3BucketMap{ "key": S3BucketArgs{...} }
 type S3BucketMapInput interface {
 	pulumi.Input
 
@@ -193,6 +206,31 @@ func (o S3BucketOutput) ToS3BucketOutput() S3BucketOutput {
 
 func (o S3BucketOutput) ToS3BucketOutputWithContext(ctx context.Context) S3BucketOutput {
 	return o
+}
+
+func (o S3BucketOutput) Acl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Bucket) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
+}
+
+func (o S3BucketOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Bucket) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o S3BucketOutput) BucketDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Bucket) pulumi.StringOutput { return v.BucketDomainName }).(pulumi.StringOutput)
+}
+
+func (o S3BucketOutput) BucketPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Bucket) pulumi.StringPtrOutput { return v.BucketPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o S3BucketOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3Bucket) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// The limit of the amount of data in the bucket (bytes).
+func (o S3BucketOutput) Quota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *S3Bucket) pulumi.IntPtrOutput { return v.Quota }).(pulumi.IntPtrOutput)
 }
 
 type S3BucketArrayOutput struct{ *pulumi.OutputState }

@@ -17,37 +17,54 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testUser, err := minio.NewIamUser(ctx, "testUser", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		testPolicy, err := minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\":\"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Sid\":\"ListAllBucket\",\n", "      \"Effect\": \"Allow\",\n", "      \"Action\": [\"s3:PutObject\"],\n", "      \"Principal\":\"*\",\n", "      \"Resource\": \"arn:aws:s3:::state-terraform-s3/*\"\n", "    }\n", "  ]\n", "}\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		developer, err := minio.NewIamUserPolicyAttachment(ctx, "developer", &minio.IamUserPolicyAttachmentArgs{
-// 			PolicyName: testPolicy.ID(),
-// 			UserName:   testUser.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("minioName", developer.ID())
-// 		ctx.Export("minioUsers", developer.UserName)
-// 		ctx.Export("minioGroup", developer.PolicyName)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testUser, err := minio.NewIamUser(ctx, "testUser", nil)
+//			if err != nil {
+//				return err
+//			}
+//			testPolicy, err := minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
+//				Policy: pulumi.String(fmt.Sprintf(`{
+//	  "Version":"2012-10-17",
+//	  "Statement": [
+//	    {
+//	      "Sid":"ListAllBucket",
+//	      "Effect": "Allow",
+//	      "Action": ["s3:PutObject"],
+//	      "Principal":"*",
+//	      "Resource": "arn:aws:s3:::state-terraform-s3/*"
+//	    }
+//	  ]
+//	}
+//
+// `)),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			developer, err := minio.NewIamUserPolicyAttachment(ctx, "developer", &minio.IamUserPolicyAttachmentArgs{
+//				PolicyName: testPolicy.ID(),
+//				UserName:   testUser.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("minioName", developer.ID())
+//			ctx.Export("minioUsers", developer.UserName)
+//			ctx.Export("minioGroup", developer.PolicyName)
+//			return nil
+//		})
+//	}
+//
 // ```
 type IamUserPolicyAttachment struct {
 	pulumi.CustomResourceState
@@ -141,7 +158,7 @@ func (i *IamUserPolicyAttachment) ToIamUserPolicyAttachmentOutputWithContext(ctx
 // IamUserPolicyAttachmentArrayInput is an input type that accepts IamUserPolicyAttachmentArray and IamUserPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `IamUserPolicyAttachmentArrayInput` via:
 //
-//          IamUserPolicyAttachmentArray{ IamUserPolicyAttachmentArgs{...} }
+//	IamUserPolicyAttachmentArray{ IamUserPolicyAttachmentArgs{...} }
 type IamUserPolicyAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -166,7 +183,7 @@ func (i IamUserPolicyAttachmentArray) ToIamUserPolicyAttachmentArrayOutputWithCo
 // IamUserPolicyAttachmentMapInput is an input type that accepts IamUserPolicyAttachmentMap and IamUserPolicyAttachmentMapOutput values.
 // You can construct a concrete instance of `IamUserPolicyAttachmentMapInput` via:
 //
-//          IamUserPolicyAttachmentMap{ "key": IamUserPolicyAttachmentArgs{...} }
+//	IamUserPolicyAttachmentMap{ "key": IamUserPolicyAttachmentArgs{...} }
 type IamUserPolicyAttachmentMapInput interface {
 	pulumi.Input
 
@@ -200,6 +217,14 @@ func (o IamUserPolicyAttachmentOutput) ToIamUserPolicyAttachmentOutput() IamUser
 
 func (o IamUserPolicyAttachmentOutput) ToIamUserPolicyAttachmentOutputWithContext(ctx context.Context) IamUserPolicyAttachmentOutput {
 	return o
+}
+
+func (o IamUserPolicyAttachmentOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamUserPolicyAttachment) pulumi.StringOutput { return v.PolicyName }).(pulumi.StringOutput)
+}
+
+func (o IamUserPolicyAttachmentOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamUserPolicyAttachment) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }
 
 type IamUserPolicyAttachmentArrayOutput struct{ *pulumi.OutputState }

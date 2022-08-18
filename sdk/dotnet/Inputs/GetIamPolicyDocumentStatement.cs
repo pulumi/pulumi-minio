@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Minio.Inputs
 {
 
-    public sealed class GetIamPolicyDocumentStatementArgs : Pulumi.InvokeArgs
+    public sealed class GetIamPolicyDocumentStatementArgs : global::Pulumi.InvokeArgs
     {
         [Input("actions")]
         private List<string>? _actions;
@@ -48,5 +48,6 @@ namespace Pulumi.Minio.Inputs
         public GetIamPolicyDocumentStatementArgs()
         {
         }
+        public static new GetIamPolicyDocumentStatementArgs Empty => new GetIamPolicyDocumentStatementArgs();
     }
 }

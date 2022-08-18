@@ -15,36 +15,35 @@ namespace Pulumi.Minio
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var bucket = new Minio.S3Bucket("bucket", new()
     ///     {
-    ///         var bucket = new Minio.S3Bucket("bucket", new Minio.S3BucketArgs
-    ///         {
-    ///             Bucket = "bucket",
-    ///         });
-    ///         var bucket_lifecycle_rules = new Minio.IlmPolicy("bucket-lifecycle-rules", new Minio.IlmPolicyArgs
-    ///         {
-    ///             Bucket = bucket.Bucket,
-    ///             Rules = 
-    ///             {
-    ///                 new Minio.Inputs.IlmPolicyRuleArgs
-    ///                 {
-    ///                     Id = "expire-7d",
-    ///                     Expiration = "7",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         Bucket = "bucket",
+    ///     });
     /// 
-    /// }
+    ///     var bucket_lifecycle_rules = new Minio.IlmPolicy("bucket-lifecycle-rules", new()
+    ///     {
+    ///         Bucket = bucket.Bucket,
+    ///         Rules = new[]
+    ///         {
+    ///             new Minio.Inputs.IlmPolicyRuleArgs
+    ///             {
+    ///                 Id = "expire-7d",
+    ///                 Expiration = "7",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [MinioResourceType("minio:index/ilmPolicy:IlmPolicy")]
-    public partial class IlmPolicy : Pulumi.CustomResource
+    public partial class IlmPolicy : global::Pulumi.CustomResource
     {
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
@@ -96,7 +95,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class IlmPolicyArgs : Pulumi.ResourceArgs
+    public sealed class IlmPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
@@ -112,9 +111,10 @@ namespace Pulumi.Minio
         public IlmPolicyArgs()
         {
         }
+        public static new IlmPolicyArgs Empty => new IlmPolicyArgs();
     }
 
-    public sealed class IlmPolicyState : Pulumi.ResourceArgs
+    public sealed class IlmPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
@@ -130,5 +130,6 @@ namespace Pulumi.Minio
         public IlmPolicyState()
         {
         }
+        public static new IlmPolicyState Empty => new IlmPolicyState();
     }
 }

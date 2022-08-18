@@ -13,40 +13,41 @@ namespace Pulumi.Minio
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var stateTerraformS3 = new Minio.S3Bucket("stateTerraformS3", new()
     ///     {
-    ///         var stateTerraformS3 = new Minio.S3Bucket("stateTerraformS3", new Minio.S3BucketArgs
-    ///         {
-    ///             Bucket = "state-terraform-s3",
-    ///             Acl = "public",
-    ///         });
-    ///         var txtFile = new Minio.S3Object("txtFile", new Minio.S3ObjectArgs
-    ///         {
-    ///             BucketName = stateTerraformS3.Bucket,
-    ///             ObjectName = "text.txt",
-    ///             Content = "Lorem ipsum dolor sit amet.",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 stateTerraformS3,
-    ///             },
-    ///         });
-    ///         this.MinioId = txtFile.Id;
-    ///     }
+    ///         Bucket = "state-terraform-s3",
+    ///         Acl = "public",
+    ///     });
     /// 
-    ///     [Output("minioId")]
-    ///     public Output&lt;string&gt; MinioId { get; set; }
-    /// }
+    ///     var txtFile = new Minio.S3Object("txtFile", new()
+    ///     {
+    ///         BucketName = stateTerraformS3.Bucket,
+    ///         ObjectName = "text.txt",
+    ///         Content = "Lorem ipsum dolor sit amet.",
+    ///         ContentType = "text/plain",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             stateTerraformS3,
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["minioId"] = txtFile.Id,
+    ///     };
+    /// });
     /// ```
     /// </summary>
     [MinioResourceType("minio:index/s3Object:S3Object")]
-    public partial class S3Object : Pulumi.CustomResource
+    public partial class S3Object : global::Pulumi.CustomResource
     {
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
@@ -116,7 +117,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class S3ObjectArgs : Pulumi.ResourceArgs
+    public sealed class S3ObjectArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
@@ -145,9 +146,10 @@ namespace Pulumi.Minio
         public S3ObjectArgs()
         {
         }
+        public static new S3ObjectArgs Empty => new S3ObjectArgs();
     }
 
-    public sealed class S3ObjectState : Pulumi.ResourceArgs
+    public sealed class S3ObjectState : global::Pulumi.ResourceArgs
     {
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
@@ -176,5 +178,6 @@ namespace Pulumi.Minio
         public S3ObjectState()
         {
         }
+        public static new S3ObjectState Empty => new S3ObjectState();
     }
 }

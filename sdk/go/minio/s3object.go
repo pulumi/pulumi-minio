@@ -17,33 +17,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		stateTerraformS3, err := minio.NewS3Bucket(ctx, "stateTerraformS3", &minio.S3BucketArgs{
-// 			Bucket: pulumi.String("state-terraform-s3"),
-// 			Acl:    pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		txtFile, err := minio.NewS3Object(ctx, "txtFile", &minio.S3ObjectArgs{
-// 			BucketName: stateTerraformS3.Bucket,
-// 			ObjectName: pulumi.String("text.txt"),
-// 			Content:    pulumi.String("Lorem ipsum dolor sit amet."),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			stateTerraformS3,
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("minioId", txtFile.ID())
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			stateTerraformS3, err := minio.NewS3Bucket(ctx, "stateTerraformS3", &minio.S3BucketArgs{
+//				Bucket: pulumi.String("state-terraform-s3"),
+//				Acl:    pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			txtFile, err := minio.NewS3Object(ctx, "txtFile", &minio.S3ObjectArgs{
+//				BucketName:  stateTerraformS3.Bucket,
+//				ObjectName:  pulumi.String("text.txt"),
+//				Content:     pulumi.String("Lorem ipsum dolor sit amet."),
+//				ContentType: pulumi.String("text/plain"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				stateTerraformS3,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("minioId", txtFile.ID())
+//			return nil
+//		})
+//	}
+//
 // ```
 type S3Object struct {
 	pulumi.CustomResourceState
@@ -167,7 +171,7 @@ func (i *S3Object) ToS3ObjectOutputWithContext(ctx context.Context) S3ObjectOutp
 // S3ObjectArrayInput is an input type that accepts S3ObjectArray and S3ObjectArrayOutput values.
 // You can construct a concrete instance of `S3ObjectArrayInput` via:
 //
-//          S3ObjectArray{ S3ObjectArgs{...} }
+//	S3ObjectArray{ S3ObjectArgs{...} }
 type S3ObjectArrayInput interface {
 	pulumi.Input
 
@@ -192,7 +196,7 @@ func (i S3ObjectArray) ToS3ObjectArrayOutputWithContext(ctx context.Context) S3O
 // S3ObjectMapInput is an input type that accepts S3ObjectMap and S3ObjectMapOutput values.
 // You can construct a concrete instance of `S3ObjectMapInput` via:
 //
-//          S3ObjectMap{ "key": S3ObjectArgs{...} }
+//	S3ObjectMap{ "key": S3ObjectArgs{...} }
 type S3ObjectMapInput interface {
 	pulumi.Input
 
@@ -226,6 +230,38 @@ func (o S3ObjectOutput) ToS3ObjectOutput() S3ObjectOutput {
 
 func (o S3ObjectOutput) ToS3ObjectOutputWithContext(ctx context.Context) S3ObjectOutput {
 	return o
+}
+
+func (o S3ObjectOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Object) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
+}
+
+func (o S3ObjectOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Object) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ObjectOutput) ContentBase64() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Object) pulumi.StringPtrOutput { return v.ContentBase64 }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ObjectOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Object) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+func (o S3ObjectOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Object) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+func (o S3ObjectOutput) ObjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Object) pulumi.StringOutput { return v.ObjectName }).(pulumi.StringOutput)
+}
+
+func (o S3ObjectOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3Object) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+func (o S3ObjectOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Object) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }
 
 type S3ObjectArrayOutput struct{ *pulumi.OutputState }

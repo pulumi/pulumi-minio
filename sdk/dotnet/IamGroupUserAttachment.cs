@@ -13,40 +13,33 @@ namespace Pulumi.Minio
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var developerIamGroup = new Minio.IamGroup("developerIamGroup", new Minio.IamGroupArgs
-    ///         {
-    ///         });
-    ///         var userOne = new Minio.IamUser("userOne", new Minio.IamUserArgs
-    ///         {
-    ///         });
-    ///         var developerIamGroupUserAttachment = new Minio.IamGroupUserAttachment("developerIamGroupUserAttachment", new Minio.IamGroupUserAttachmentArgs
-    ///         {
-    ///             GroupName = minio_iam_group.Group.Name,
-    ///             UserName = userOne.Name,
-    ///         });
-    ///         this.MinioName = developerIamGroupUserAttachment.Id;
-    ///         this.MinioUsers = developerIamGroupUserAttachment.GroupName;
-    ///         this.MinioGroup = developerIamGroupUserAttachment.UserName;
-    ///     }
+    ///     var developerIamGroup = new Minio.IamGroup("developerIamGroup");
     /// 
-    ///     [Output("minioName")]
-    ///     public Output&lt;string&gt; MinioName { get; set; }
-    ///     [Output("minioUsers")]
-    ///     public Output&lt;string&gt; MinioUsers { get; set; }
-    ///     [Output("minioGroup")]
-    ///     public Output&lt;string&gt; MinioGroup { get; set; }
-    /// }
+    ///     var userOne = new Minio.IamUser("userOne");
+    /// 
+    ///     var developerIamGroupUserAttachment = new Minio.IamGroupUserAttachment("developerIamGroupUserAttachment", new()
+    ///     {
+    ///         GroupName = minio_iam_group.Group.Name,
+    ///         UserName = userOne.Name,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["minioName"] = developerIamGroupUserAttachment.Id,
+    ///         ["minioUsers"] = developerIamGroupUserAttachment.GroupName,
+    ///         ["minioGroup"] = developerIamGroupUserAttachment.UserName,
+    ///     };
+    /// });
     /// ```
     /// </summary>
     [MinioResourceType("minio:index/iamGroupUserAttachment:IamGroupUserAttachment")]
-    public partial class IamGroupUserAttachment : Pulumi.CustomResource
+    public partial class IamGroupUserAttachment : global::Pulumi.CustomResource
     {
         [Output("groupName")]
         public Output<string> GroupName { get; private set; } = null!;
@@ -98,7 +91,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class IamGroupUserAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class IamGroupUserAttachmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
@@ -109,9 +102,10 @@ namespace Pulumi.Minio
         public IamGroupUserAttachmentArgs()
         {
         }
+        public static new IamGroupUserAttachmentArgs Empty => new IamGroupUserAttachmentArgs();
     }
 
-    public sealed class IamGroupUserAttachmentState : Pulumi.ResourceArgs
+    public sealed class IamGroupUserAttachmentState : global::Pulumi.ResourceArgs
     {
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
@@ -122,5 +116,6 @@ namespace Pulumi.Minio
         public IamGroupUserAttachmentState()
         {
         }
+        public static new IamGroupUserAttachmentState Empty => new IamGroupUserAttachmentState();
     }
 }

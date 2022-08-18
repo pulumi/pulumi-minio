@@ -16,27 +16,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		testIamUser, err := minio.NewIamUser(ctx, "testIamUser", &minio.IamUserArgs{
-// 			ForceDestroy: pulumi.Bool(true),
-// 			Tags: pulumi.AnyMap{
-// 				"tag-key": pulumi.Any("tag-value"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("test", testIamUser.ID())
-// 		ctx.Export("status", testIamUser.Status)
-// 		ctx.Export("secret", testIamUser.Secret)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testIamUser, err := minio.NewIamUser(ctx, "testIamUser", &minio.IamUserArgs{
+//				ForceDestroy: pulumi.Bool(true),
+//				Tags: pulumi.AnyMap{
+//					"tag-key": pulumi.Any("tag-value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("test", testIamUser.ID())
+//			ctx.Export("status", testIamUser.Status)
+//			ctx.Export("secret", testIamUser.Secret)
+//			return nil
+//		})
+//	}
+//
 // ```
 type IamUser struct {
 	pulumi.CustomResourceState
@@ -162,7 +165,7 @@ func (i *IamUser) ToIamUserOutputWithContext(ctx context.Context) IamUserOutput 
 // IamUserArrayInput is an input type that accepts IamUserArray and IamUserArrayOutput values.
 // You can construct a concrete instance of `IamUserArrayInput` via:
 //
-//          IamUserArray{ IamUserArgs{...} }
+//	IamUserArray{ IamUserArgs{...} }
 type IamUserArrayInput interface {
 	pulumi.Input
 
@@ -187,7 +190,7 @@ func (i IamUserArray) ToIamUserArrayOutputWithContext(ctx context.Context) IamUs
 // IamUserMapInput is an input type that accepts IamUserMap and IamUserMapOutput values.
 // You can construct a concrete instance of `IamUserMapInput` via:
 //
-//          IamUserMap{ "key": IamUserArgs{...} }
+//	IamUserMap{ "key": IamUserArgs{...} }
 type IamUserMapInput interface {
 	pulumi.Input
 
@@ -221,6 +224,37 @@ func (o IamUserOutput) ToIamUserOutput() IamUserOutput {
 
 func (o IamUserOutput) ToIamUserOutputWithContext(ctx context.Context) IamUserOutput {
 	return o
+}
+
+// Disable user
+func (o IamUserOutput) DisableUser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IamUser) pulumi.BoolPtrOutput { return v.DisableUser }).(pulumi.BoolPtrOutput)
+}
+
+// Delete user even if it has non-Terraform-managed IAM access keys
+func (o IamUserOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IamUser) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+func (o IamUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o IamUserOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamUser) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+}
+
+func (o IamUserOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamUser) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o IamUserOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *IamUser) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// Rotate Minio User Secret Key
+func (o IamUserOutput) UpdateSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IamUser) pulumi.BoolPtrOutput { return v.UpdateSecret }).(pulumi.BoolPtrOutput)
 }
 
 type IamUserArrayOutput struct{ *pulumi.OutputState }

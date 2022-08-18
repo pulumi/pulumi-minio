@@ -13,16 +13,15 @@ namespace Pulumi.Minio
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var testPolicy = new Minio.IamPolicy("testPolicy", new()
     ///     {
-    ///         var testPolicy = new Minio.IamPolicy("testPolicy", new Minio.IamPolicyArgs
-    ///         {
-    ///             Policy = @"{
+    ///         Policy = @"{
     ///   ""Version"":""2012-10-17"",
     ///   ""Statement"": [
     ///     {
@@ -35,20 +34,18 @@ namespace Pulumi.Minio
     ///   ]
     /// }
     /// ",
-    ///         });
-    ///         this.MinioId = testPolicy.Id;
-    ///         this.MinioPolicy = testPolicy.Policy;
-    ///     }
+    ///     });
     /// 
-    ///     [Output("minioId")]
-    ///     public Output&lt;string&gt; MinioId { get; set; }
-    ///     [Output("minioPolicy")]
-    ///     public Output&lt;string&gt; MinioPolicy { get; set; }
-    /// }
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["minioId"] = testPolicy.Id,
+    ///         ["minioPolicy"] = testPolicy.Policy,
+    ///     };
+    /// });
     /// ```
     /// </summary>
     [MinioResourceType("minio:index/iamPolicy:IamPolicy")]
-    public partial class IamPolicy : Pulumi.CustomResource
+    public partial class IamPolicy : global::Pulumi.CustomResource
     {
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -103,7 +100,7 @@ namespace Pulumi.Minio
         }
     }
 
-    public sealed class IamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class IamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -117,9 +114,10 @@ namespace Pulumi.Minio
         public IamPolicyArgs()
         {
         }
+        public static new IamPolicyArgs Empty => new IamPolicyArgs();
     }
 
-    public sealed class IamPolicyState : Pulumi.ResourceArgs
+    public sealed class IamPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -133,5 +131,6 @@ namespace Pulumi.Minio
         public IamPolicyState()
         {
         }
+        public static new IamPolicyState Empty => new IamPolicyState();
     }
 }
