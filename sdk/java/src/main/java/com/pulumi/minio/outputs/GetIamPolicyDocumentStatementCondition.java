@@ -10,20 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetIamPolicyDocumentStatementCondition {
-    private final String test;
-    private final List<String> values;
-    private final String variable;
+    private String test;
+    private List<String> values;
+    private String variable;
 
-    @CustomType.Constructor
-    private GetIamPolicyDocumentStatementCondition(
-        @CustomType.Parameter("test") String test,
-        @CustomType.Parameter("values") List<String> values,
-        @CustomType.Parameter("variable") String variable) {
-        this.test = test;
-        this.values = values;
-        this.variable = variable;
-    }
-
+    private GetIamPolicyDocumentStatementCondition() {}
     public String test() {
         return this.test;
     }
@@ -41,16 +32,12 @@ public final class GetIamPolicyDocumentStatementCondition {
     public static Builder builder(GetIamPolicyDocumentStatementCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String test;
         private List<String> values;
         private String variable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIamPolicyDocumentStatementCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.test = defaults.test;
@@ -58,10 +45,12 @@ public final class GetIamPolicyDocumentStatementCondition {
     	      this.variable = defaults.variable;
         }
 
+        @CustomType.Setter
         public Builder test(String test) {
             this.test = Objects.requireNonNull(test);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
@@ -69,11 +58,17 @@ public final class GetIamPolicyDocumentStatementCondition {
         public Builder values(String... values) {
             return values(List.of(values));
         }
+        @CustomType.Setter
         public Builder variable(String variable) {
             this.variable = Objects.requireNonNull(variable);
             return this;
-        }        public GetIamPolicyDocumentStatementCondition build() {
-            return new GetIamPolicyDocumentStatementCondition(test, values, variable);
+        }
+        public GetIamPolicyDocumentStatementCondition build() {
+            final var o = new GetIamPolicyDocumentStatementCondition();
+            o.test = test;
+            o.values = values;
+            o.variable = variable;
+            return o;
         }
     }
 }

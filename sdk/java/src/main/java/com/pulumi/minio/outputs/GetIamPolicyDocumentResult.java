@@ -17,32 +17,15 @@ public final class GetIamPolicyDocumentResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String json;
-    private final @Nullable String overrideJson;
-    private final @Nullable String policyId;
-    private final @Nullable String sourceJson;
-    private final @Nullable List<GetIamPolicyDocumentStatement> statements;
-    private final @Nullable String version;
+    private String id;
+    private String json;
+    private @Nullable String overrideJson;
+    private @Nullable String policyId;
+    private @Nullable String sourceJson;
+    private @Nullable List<GetIamPolicyDocumentStatement> statements;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private GetIamPolicyDocumentResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("json") String json,
-        @CustomType.Parameter("overrideJson") @Nullable String overrideJson,
-        @CustomType.Parameter("policyId") @Nullable String policyId,
-        @CustomType.Parameter("sourceJson") @Nullable String sourceJson,
-        @CustomType.Parameter("statements") @Nullable List<GetIamPolicyDocumentStatement> statements,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.id = id;
-        this.json = json;
-        this.overrideJson = overrideJson;
-        this.policyId = policyId;
-        this.sourceJson = sourceJson;
-        this.statements = statements;
-        this.version = version;
-    }
-
+    private GetIamPolicyDocumentResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -76,7 +59,7 @@ public final class GetIamPolicyDocumentResult {
     public static Builder builder(GetIamPolicyDocumentResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String json;
@@ -85,11 +68,7 @@ public final class GetIamPolicyDocumentResult {
         private @Nullable String sourceJson;
         private @Nullable List<GetIamPolicyDocumentStatement> statements;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIamPolicyDocumentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -101,26 +80,32 @@ public final class GetIamPolicyDocumentResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder json(String json) {
             this.json = Objects.requireNonNull(json);
             return this;
         }
+        @CustomType.Setter
         public Builder overrideJson(@Nullable String overrideJson) {
             this.overrideJson = overrideJson;
             return this;
         }
+        @CustomType.Setter
         public Builder policyId(@Nullable String policyId) {
             this.policyId = policyId;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceJson(@Nullable String sourceJson) {
             this.sourceJson = sourceJson;
             return this;
         }
+        @CustomType.Setter
         public Builder statements(@Nullable List<GetIamPolicyDocumentStatement> statements) {
             this.statements = statements;
             return this;
@@ -128,11 +113,21 @@ public final class GetIamPolicyDocumentResult {
         public Builder statements(GetIamPolicyDocumentStatement... statements) {
             return statements(List.of(statements));
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public GetIamPolicyDocumentResult build() {
-            return new GetIamPolicyDocumentResult(id, json, overrideJson, policyId, sourceJson, statements, version);
+        }
+        public GetIamPolicyDocumentResult build() {
+            final var o = new GetIamPolicyDocumentResult();
+            o.id = id;
+            o.json = json;
+            o.overrideJson = overrideJson;
+            o.policyId = policyId;
+            o.sourceJson = sourceJson;
+            o.statements = statements;
+            o.version = version;
+            return o;
         }
     }
 }

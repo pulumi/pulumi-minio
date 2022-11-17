@@ -11,27 +11,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class IlmPolicyRule {
-    private final @Nullable String expiration;
-    private final @Nullable String filter;
+    private @Nullable String expiration;
+    private @Nullable String filter;
     /**
      * @return The ID of this resource.
      * 
      */
-    private final String id;
-    private final @Nullable String status;
+    private String id;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private IlmPolicyRule(
-        @CustomType.Parameter("expiration") @Nullable String expiration,
-        @CustomType.Parameter("filter") @Nullable String filter,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.expiration = expiration;
-        this.filter = filter;
-        this.id = id;
-        this.status = status;
-    }
-
+    private IlmPolicyRule() {}
     public Optional<String> expiration() {
         return Optional.ofNullable(this.expiration);
     }
@@ -56,17 +45,13 @@ public final class IlmPolicyRule {
     public static Builder builder(IlmPolicyRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expiration;
         private @Nullable String filter;
         private String id;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IlmPolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expiration = defaults.expiration;
@@ -75,23 +60,33 @@ public final class IlmPolicyRule {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder expiration(@Nullable String expiration) {
             this.expiration = expiration;
             return this;
         }
+        @CustomType.Setter
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public IlmPolicyRule build() {
-            return new IlmPolicyRule(expiration, filter, id, status);
+        }
+        public IlmPolicyRule build() {
+            final var o = new IlmPolicyRule();
+            o.expiration = expiration;
+            o.filter = filter;
+            o.id = id;
+            o.status = status;
+            return o;
         }
     }
 }
