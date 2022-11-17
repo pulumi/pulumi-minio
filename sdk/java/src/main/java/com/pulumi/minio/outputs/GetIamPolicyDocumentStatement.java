@@ -13,29 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIamPolicyDocumentStatement {
-    private final @Nullable List<String> actions;
-    private final @Nullable List<GetIamPolicyDocumentStatementCondition> conditions;
-    private final @Nullable String effect;
-    private final @Nullable String principal;
-    private final @Nullable List<String> resources;
-    private final @Nullable String sid;
+    private @Nullable List<String> actions;
+    private @Nullable List<GetIamPolicyDocumentStatementCondition> conditions;
+    private @Nullable String effect;
+    private @Nullable String principal;
+    private @Nullable List<String> resources;
+    private @Nullable String sid;
 
-    @CustomType.Constructor
-    private GetIamPolicyDocumentStatement(
-        @CustomType.Parameter("actions") @Nullable List<String> actions,
-        @CustomType.Parameter("conditions") @Nullable List<GetIamPolicyDocumentStatementCondition> conditions,
-        @CustomType.Parameter("effect") @Nullable String effect,
-        @CustomType.Parameter("principal") @Nullable String principal,
-        @CustomType.Parameter("resources") @Nullable List<String> resources,
-        @CustomType.Parameter("sid") @Nullable String sid) {
-        this.actions = actions;
-        this.conditions = conditions;
-        this.effect = effect;
-        this.principal = principal;
-        this.resources = resources;
-        this.sid = sid;
-    }
-
+    private GetIamPolicyDocumentStatement() {}
     public List<String> actions() {
         return this.actions == null ? List.of() : this.actions;
     }
@@ -62,7 +47,7 @@ public final class GetIamPolicyDocumentStatement {
     public static Builder builder(GetIamPolicyDocumentStatement defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> actions;
         private @Nullable List<GetIamPolicyDocumentStatementCondition> conditions;
@@ -70,11 +55,7 @@ public final class GetIamPolicyDocumentStatement {
         private @Nullable String principal;
         private @Nullable List<String> resources;
         private @Nullable String sid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIamPolicyDocumentStatement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
@@ -85,6 +66,7 @@ public final class GetIamPolicyDocumentStatement {
     	      this.sid = defaults.sid;
         }
 
+        @CustomType.Setter
         public Builder actions(@Nullable List<String> actions) {
             this.actions = actions;
             return this;
@@ -92,6 +74,7 @@ public final class GetIamPolicyDocumentStatement {
         public Builder actions(String... actions) {
             return actions(List.of(actions));
         }
+        @CustomType.Setter
         public Builder conditions(@Nullable List<GetIamPolicyDocumentStatementCondition> conditions) {
             this.conditions = conditions;
             return this;
@@ -99,14 +82,17 @@ public final class GetIamPolicyDocumentStatement {
         public Builder conditions(GetIamPolicyDocumentStatementCondition... conditions) {
             return conditions(List.of(conditions));
         }
+        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
+        @CustomType.Setter
         public Builder principal(@Nullable String principal) {
             this.principal = principal;
             return this;
         }
+        @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
             this.resources = resources;
             return this;
@@ -114,11 +100,20 @@ public final class GetIamPolicyDocumentStatement {
         public Builder resources(String... resources) {
             return resources(List.of(resources));
         }
+        @CustomType.Setter
         public Builder sid(@Nullable String sid) {
             this.sid = sid;
             return this;
-        }        public GetIamPolicyDocumentStatement build() {
-            return new GetIamPolicyDocumentStatement(actions, conditions, effect, principal, resources, sid);
+        }
+        public GetIamPolicyDocumentStatement build() {
+            final var o = new GetIamPolicyDocumentStatement();
+            o.actions = actions;
+            o.conditions = conditions;
+            o.effect = effect;
+            o.principal = principal;
+            o.resources = resources;
+            o.sid = sid;
+            return o;
         }
     }
 }
