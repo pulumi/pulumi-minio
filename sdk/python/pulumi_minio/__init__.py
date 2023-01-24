@@ -12,12 +12,15 @@ from .iam_group_policy import *
 from .iam_group_policy_attachment import *
 from .iam_group_user_attachment import *
 from .iam_policy import *
+from .iam_service_account import *
 from .iam_user import *
 from .iam_user_policy_attachment import *
 from .ilm_policy import *
 from .provider import *
 from .s3_bucket import *
+from .s3_bucket_notification import *
 from .s3_bucket_policy import *
+from .s3_bucket_versioning import *
 from .s3_object import *
 from ._inputs import *
 from . import outputs
@@ -82,6 +85,14 @@ _utilities.register(
  },
  {
   "pkg": "minio",
+  "mod": "index/iamServiceAccount",
+  "fqn": "pulumi_minio",
+  "classes": {
+   "minio:index/iamServiceAccount:IamServiceAccount": "IamServiceAccount"
+  }
+ },
+ {
+  "pkg": "minio",
   "mod": "index/iamUser",
   "fqn": "pulumi_minio",
   "classes": {
@@ -114,10 +125,26 @@ _utilities.register(
  },
  {
   "pkg": "minio",
+  "mod": "index/s3BucketNotification",
+  "fqn": "pulumi_minio",
+  "classes": {
+   "minio:index/s3BucketNotification:S3BucketNotification": "S3BucketNotification"
+  }
+ },
+ {
+  "pkg": "minio",
   "mod": "index/s3BucketPolicy",
   "fqn": "pulumi_minio",
   "classes": {
    "minio:index/s3BucketPolicy:S3BucketPolicy": "S3BucketPolicy"
+  }
+ },
+ {
+  "pkg": "minio",
+  "mod": "index/s3BucketVersioning",
+  "fqn": "pulumi_minio",
+  "classes": {
+   "minio:index/s3BucketVersioning:S3BucketVersioning": "S3BucketVersioning"
   }
  },
  {

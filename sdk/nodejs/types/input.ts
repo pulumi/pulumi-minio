@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface GetIamPolicyDocumentStatement {
     actions?: string[];
@@ -42,4 +43,24 @@ export interface IlmPolicyRule {
      */
     id: pulumi.Input<string>;
     status?: pulumi.Input<string>;
+}
+
+export interface S3BucketNotificationQueue {
+    events: pulumi.Input<pulumi.Input<string>[]>;
+    filterPrefix?: pulumi.Input<string>;
+    filterSuffix?: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id?: pulumi.Input<string>;
+    queueArn: pulumi.Input<string>;
+}
+
+export interface S3BucketVersioningVersioningConfiguration {
+    excludeFolders?: pulumi.Input<boolean>;
+    excludedPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Versioning status, one of "Enabled", "Suspended".
+     */
+    status: pulumi.Input<string>;
 }

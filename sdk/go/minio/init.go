@@ -32,6 +32,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IamGroupUserAttachment{}
 	case "minio:index/iamPolicy:IamPolicy":
 		r = &IamPolicy{}
+	case "minio:index/iamServiceAccount:IamServiceAccount":
+		r = &IamServiceAccount{}
 	case "minio:index/iamUser:IamUser":
 		r = &IamUser{}
 	case "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment":
@@ -40,8 +42,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IlmPolicy{}
 	case "minio:index/s3Bucket:S3Bucket":
 		r = &S3Bucket{}
+	case "minio:index/s3BucketNotification:S3BucketNotification":
+		r = &S3BucketNotification{}
 	case "minio:index/s3BucketPolicy:S3BucketPolicy":
 		r = &S3BucketPolicy{}
+	case "minio:index/s3BucketVersioning:S3BucketVersioning":
+		r = &S3BucketVersioning{}
 	case "minio:index/s3Object:S3Object":
 		r = &S3Object{}
 	default:
@@ -104,6 +110,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"minio",
+		"index/iamServiceAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"minio",
 		"index/iamUser",
 		&module{version},
 	)
@@ -124,7 +135,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"minio",
+		"index/s3BucketNotification",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"minio",
 		"index/s3BucketPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"minio",
+		"index/s3BucketVersioning",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

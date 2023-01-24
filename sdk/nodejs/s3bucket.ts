@@ -11,11 +11,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
  *
- * const stateTerraformS3 = new minio.S3Bucket("state_terraform_s3", {
+ * const stateTerraformS3 = new minio.S3Bucket("stateTerraformS3", {
  *     acl: "public",
  *     bucket: "state-terraform-s3",
  * });
- *
  * export const minioId = stateTerraformS3.id;
  * export const minioUrl = stateTerraformS3.bucketDomainName;
  * ```
@@ -49,6 +48,7 @@ export class S3Bucket extends pulumi.CustomResource {
     }
 
     public readonly acl!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly arn!: pulumi.Output<string>;
     public readonly bucket!: pulumi.Output<string>;
     public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
     public readonly bucketPrefix!: pulumi.Output<string | undefined>;
@@ -72,6 +72,7 @@ export class S3Bucket extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as S3BucketState | undefined;
             resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["arn"] = state ? state.arn : undefined;
             resourceInputs["bucket"] = state ? state.bucket : undefined;
             resourceInputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
             resourceInputs["bucketPrefix"] = state ? state.bucketPrefix : undefined;
@@ -84,6 +85,7 @@ export class S3Bucket extends pulumi.CustomResource {
             resourceInputs["bucketPrefix"] = args ? args.bucketPrefix : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["quota"] = args ? args.quota : undefined;
+            resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["bucketDomainName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -96,6 +98,7 @@ export class S3Bucket extends pulumi.CustomResource {
  */
 export interface S3BucketState {
     acl?: pulumi.Input<string>;
+    arn?: pulumi.Input<string>;
     bucket?: pulumi.Input<string>;
     bucketDomainName?: pulumi.Input<string>;
     bucketPrefix?: pulumi.Input<string>;

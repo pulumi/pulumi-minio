@@ -78,7 +78,9 @@ func Provider() tfbridge.ProviderInfo {
 		Config:      map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"minio_s3_bucket":                   {Tok: makeResource(mainMod, "S3Bucket")},
+			"minio_s3_bucket_notification":      {Tok: makeResource(mainMod, "S3BucketNotification")},
 			"minio_s3_bucket_policy":            {Tok: makeResource(mainMod, "S3BucketPolicy")},
+			"minio_s3_bucket_versioning":        {Tok: makeResource(mainMod, "S3BucketVersioning")},
 			"minio_s3_object":                   {Tok: makeResource(mainMod, "S3Object")},
 			"minio_iam_group":                   {Tok: makeResource(mainMod, "IamGroup")},
 			"minio_iam_group_membership":        {Tok: makeResource(mainMod, "IamGroupMembership")},
@@ -89,6 +91,7 @@ func Provider() tfbridge.ProviderInfo {
 			"minio_iam_group_policy_attachment": {Tok: makeResource(mainMod, "IamGroupPolicyAttachment")},
 			"minio_iam_group_user_attachment":   {Tok: makeResource(mainMod, "IamGroupUserAttachment")},
 			"minio_ilm_policy":                  {Tok: makeResource(mainMod, "IlmPolicy")},
+			"minio_iam_service_account":         {Tok: makeResource(mainMod, "IamServiceAccount")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"minio_iam_policy_document": {Tok: makeDataSource(mainMod, "getIamPolicyDocument")},

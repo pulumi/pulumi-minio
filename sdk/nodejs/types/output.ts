@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface GetIamPolicyDocumentStatement {
     actions?: string[];
@@ -26,6 +27,26 @@ export interface IlmPolicyRule {
      * The ID of this resource.
      */
     id: string;
+    status: string;
+}
+
+export interface S3BucketNotificationQueue {
+    events: string[];
+    filterPrefix?: string;
+    filterSuffix?: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    queueArn: string;
+}
+
+export interface S3BucketVersioningVersioningConfiguration {
+    excludeFolders?: boolean;
+    excludedPrefixes?: string[];
+    /**
+     * Versioning status, one of "Enabled", "Suspended".
+     */
     status: string;
 }
 

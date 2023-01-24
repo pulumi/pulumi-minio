@@ -11,13 +11,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
  *
- * const testIamUser = new minio.IamUser("test", {
+ * const testIamUser = new minio.IamUser("testIamUser", {
  *     forceDestroy: true,
  *     tags: {
  *         "tag-key": "tag-value",
  *     },
  * });
- *
  * export const test = testIamUser.id;
  * export const status = testIamUser.status;
  * export const secret = testIamUser.secret;
@@ -93,12 +92,14 @@ export class IamUser extends pulumi.CustomResource {
             resourceInputs["disableUser"] = args ? args.disableUser : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["updateSecret"] = args ? args.updateSecret : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(IamUser.__pulumiType, name, resourceInputs, opts);
     }
 }

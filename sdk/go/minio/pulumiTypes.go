@@ -125,6 +125,294 @@ func (o IlmPolicyRuleArrayOutput) Index(i pulumi.IntInput) IlmPolicyRuleOutput {
 	}).(IlmPolicyRuleOutput)
 }
 
+type S3BucketNotificationQueue struct {
+	Events       []string `pulumi:"events"`
+	FilterPrefix *string  `pulumi:"filterPrefix"`
+	FilterSuffix *string  `pulumi:"filterSuffix"`
+	// The ID of this resource.
+	Id       *string `pulumi:"id"`
+	QueueArn string  `pulumi:"queueArn"`
+}
+
+// S3BucketNotificationQueueInput is an input type that accepts S3BucketNotificationQueueArgs and S3BucketNotificationQueueOutput values.
+// You can construct a concrete instance of `S3BucketNotificationQueueInput` via:
+//
+//	S3BucketNotificationQueueArgs{...}
+type S3BucketNotificationQueueInput interface {
+	pulumi.Input
+
+	ToS3BucketNotificationQueueOutput() S3BucketNotificationQueueOutput
+	ToS3BucketNotificationQueueOutputWithContext(context.Context) S3BucketNotificationQueueOutput
+}
+
+type S3BucketNotificationQueueArgs struct {
+	Events       pulumi.StringArrayInput `pulumi:"events"`
+	FilterPrefix pulumi.StringPtrInput   `pulumi:"filterPrefix"`
+	FilterSuffix pulumi.StringPtrInput   `pulumi:"filterSuffix"`
+	// The ID of this resource.
+	Id       pulumi.StringPtrInput `pulumi:"id"`
+	QueueArn pulumi.StringInput    `pulumi:"queueArn"`
+}
+
+func (S3BucketNotificationQueueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketNotificationQueue)(nil)).Elem()
+}
+
+func (i S3BucketNotificationQueueArgs) ToS3BucketNotificationQueueOutput() S3BucketNotificationQueueOutput {
+	return i.ToS3BucketNotificationQueueOutputWithContext(context.Background())
+}
+
+func (i S3BucketNotificationQueueArgs) ToS3BucketNotificationQueueOutputWithContext(ctx context.Context) S3BucketNotificationQueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketNotificationQueueOutput)
+}
+
+// S3BucketNotificationQueueArrayInput is an input type that accepts S3BucketNotificationQueueArray and S3BucketNotificationQueueArrayOutput values.
+// You can construct a concrete instance of `S3BucketNotificationQueueArrayInput` via:
+//
+//	S3BucketNotificationQueueArray{ S3BucketNotificationQueueArgs{...} }
+type S3BucketNotificationQueueArrayInput interface {
+	pulumi.Input
+
+	ToS3BucketNotificationQueueArrayOutput() S3BucketNotificationQueueArrayOutput
+	ToS3BucketNotificationQueueArrayOutputWithContext(context.Context) S3BucketNotificationQueueArrayOutput
+}
+
+type S3BucketNotificationQueueArray []S3BucketNotificationQueueInput
+
+func (S3BucketNotificationQueueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3BucketNotificationQueue)(nil)).Elem()
+}
+
+func (i S3BucketNotificationQueueArray) ToS3BucketNotificationQueueArrayOutput() S3BucketNotificationQueueArrayOutput {
+	return i.ToS3BucketNotificationQueueArrayOutputWithContext(context.Background())
+}
+
+func (i S3BucketNotificationQueueArray) ToS3BucketNotificationQueueArrayOutputWithContext(ctx context.Context) S3BucketNotificationQueueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketNotificationQueueArrayOutput)
+}
+
+type S3BucketNotificationQueueOutput struct{ *pulumi.OutputState }
+
+func (S3BucketNotificationQueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketNotificationQueue)(nil)).Elem()
+}
+
+func (o S3BucketNotificationQueueOutput) ToS3BucketNotificationQueueOutput() S3BucketNotificationQueueOutput {
+	return o
+}
+
+func (o S3BucketNotificationQueueOutput) ToS3BucketNotificationQueueOutputWithContext(ctx context.Context) S3BucketNotificationQueueOutput {
+	return o
+}
+
+func (o S3BucketNotificationQueueOutput) Events() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3BucketNotificationQueue) []string { return v.Events }).(pulumi.StringArrayOutput)
+}
+
+func (o S3BucketNotificationQueueOutput) FilterPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3BucketNotificationQueue) *string { return v.FilterPrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o S3BucketNotificationQueueOutput) FilterSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3BucketNotificationQueue) *string { return v.FilterSuffix }).(pulumi.StringPtrOutput)
+}
+
+// The ID of this resource.
+func (o S3BucketNotificationQueueOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v S3BucketNotificationQueue) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o S3BucketNotificationQueueOutput) QueueArn() pulumi.StringOutput {
+	return o.ApplyT(func(v S3BucketNotificationQueue) string { return v.QueueArn }).(pulumi.StringOutput)
+}
+
+type S3BucketNotificationQueueArrayOutput struct{ *pulumi.OutputState }
+
+func (S3BucketNotificationQueueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]S3BucketNotificationQueue)(nil)).Elem()
+}
+
+func (o S3BucketNotificationQueueArrayOutput) ToS3BucketNotificationQueueArrayOutput() S3BucketNotificationQueueArrayOutput {
+	return o
+}
+
+func (o S3BucketNotificationQueueArrayOutput) ToS3BucketNotificationQueueArrayOutputWithContext(ctx context.Context) S3BucketNotificationQueueArrayOutput {
+	return o
+}
+
+func (o S3BucketNotificationQueueArrayOutput) Index(i pulumi.IntInput) S3BucketNotificationQueueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) S3BucketNotificationQueue {
+		return vs[0].([]S3BucketNotificationQueue)[vs[1].(int)]
+	}).(S3BucketNotificationQueueOutput)
+}
+
+type S3BucketVersioningVersioningConfiguration struct {
+	ExcludeFolders   *bool    `pulumi:"excludeFolders"`
+	ExcludedPrefixes []string `pulumi:"excludedPrefixes"`
+	// Versioning status, one of "Enabled", "Suspended".
+	Status string `pulumi:"status"`
+}
+
+// S3BucketVersioningVersioningConfigurationInput is an input type that accepts S3BucketVersioningVersioningConfigurationArgs and S3BucketVersioningVersioningConfigurationOutput values.
+// You can construct a concrete instance of `S3BucketVersioningVersioningConfigurationInput` via:
+//
+//	S3BucketVersioningVersioningConfigurationArgs{...}
+type S3BucketVersioningVersioningConfigurationInput interface {
+	pulumi.Input
+
+	ToS3BucketVersioningVersioningConfigurationOutput() S3BucketVersioningVersioningConfigurationOutput
+	ToS3BucketVersioningVersioningConfigurationOutputWithContext(context.Context) S3BucketVersioningVersioningConfigurationOutput
+}
+
+type S3BucketVersioningVersioningConfigurationArgs struct {
+	ExcludeFolders   pulumi.BoolPtrInput     `pulumi:"excludeFolders"`
+	ExcludedPrefixes pulumi.StringArrayInput `pulumi:"excludedPrefixes"`
+	// Versioning status, one of "Enabled", "Suspended".
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (S3BucketVersioningVersioningConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketVersioningVersioningConfiguration)(nil)).Elem()
+}
+
+func (i S3BucketVersioningVersioningConfigurationArgs) ToS3BucketVersioningVersioningConfigurationOutput() S3BucketVersioningVersioningConfigurationOutput {
+	return i.ToS3BucketVersioningVersioningConfigurationOutputWithContext(context.Background())
+}
+
+func (i S3BucketVersioningVersioningConfigurationArgs) ToS3BucketVersioningVersioningConfigurationOutputWithContext(ctx context.Context) S3BucketVersioningVersioningConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketVersioningVersioningConfigurationOutput)
+}
+
+func (i S3BucketVersioningVersioningConfigurationArgs) ToS3BucketVersioningVersioningConfigurationPtrOutput() S3BucketVersioningVersioningConfigurationPtrOutput {
+	return i.ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i S3BucketVersioningVersioningConfigurationArgs) ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(ctx context.Context) S3BucketVersioningVersioningConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketVersioningVersioningConfigurationOutput).ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(ctx)
+}
+
+// S3BucketVersioningVersioningConfigurationPtrInput is an input type that accepts S3BucketVersioningVersioningConfigurationArgs, S3BucketVersioningVersioningConfigurationPtr and S3BucketVersioningVersioningConfigurationPtrOutput values.
+// You can construct a concrete instance of `S3BucketVersioningVersioningConfigurationPtrInput` via:
+//
+//	        S3BucketVersioningVersioningConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type S3BucketVersioningVersioningConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToS3BucketVersioningVersioningConfigurationPtrOutput() S3BucketVersioningVersioningConfigurationPtrOutput
+	ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(context.Context) S3BucketVersioningVersioningConfigurationPtrOutput
+}
+
+type s3bucketVersioningVersioningConfigurationPtrType S3BucketVersioningVersioningConfigurationArgs
+
+func S3BucketVersioningVersioningConfigurationPtr(v *S3BucketVersioningVersioningConfigurationArgs) S3BucketVersioningVersioningConfigurationPtrInput {
+	return (*s3bucketVersioningVersioningConfigurationPtrType)(v)
+}
+
+func (*s3bucketVersioningVersioningConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3BucketVersioningVersioningConfiguration)(nil)).Elem()
+}
+
+func (i *s3bucketVersioningVersioningConfigurationPtrType) ToS3BucketVersioningVersioningConfigurationPtrOutput() S3BucketVersioningVersioningConfigurationPtrOutput {
+	return i.ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *s3bucketVersioningVersioningConfigurationPtrType) ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(ctx context.Context) S3BucketVersioningVersioningConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(S3BucketVersioningVersioningConfigurationPtrOutput)
+}
+
+type S3BucketVersioningVersioningConfigurationOutput struct{ *pulumi.OutputState }
+
+func (S3BucketVersioningVersioningConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*S3BucketVersioningVersioningConfiguration)(nil)).Elem()
+}
+
+func (o S3BucketVersioningVersioningConfigurationOutput) ToS3BucketVersioningVersioningConfigurationOutput() S3BucketVersioningVersioningConfigurationOutput {
+	return o
+}
+
+func (o S3BucketVersioningVersioningConfigurationOutput) ToS3BucketVersioningVersioningConfigurationOutputWithContext(ctx context.Context) S3BucketVersioningVersioningConfigurationOutput {
+	return o
+}
+
+func (o S3BucketVersioningVersioningConfigurationOutput) ToS3BucketVersioningVersioningConfigurationPtrOutput() S3BucketVersioningVersioningConfigurationPtrOutput {
+	return o.ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o S3BucketVersioningVersioningConfigurationOutput) ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(ctx context.Context) S3BucketVersioningVersioningConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3BucketVersioningVersioningConfiguration) *S3BucketVersioningVersioningConfiguration {
+		return &v
+	}).(S3BucketVersioningVersioningConfigurationPtrOutput)
+}
+
+func (o S3BucketVersioningVersioningConfigurationOutput) ExcludeFolders() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v S3BucketVersioningVersioningConfiguration) *bool { return v.ExcludeFolders }).(pulumi.BoolPtrOutput)
+}
+
+func (o S3BucketVersioningVersioningConfigurationOutput) ExcludedPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v S3BucketVersioningVersioningConfiguration) []string { return v.ExcludedPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Versioning status, one of "Enabled", "Suspended".
+func (o S3BucketVersioningVersioningConfigurationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v S3BucketVersioningVersioningConfiguration) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type S3BucketVersioningVersioningConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (S3BucketVersioningVersioningConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**S3BucketVersioningVersioningConfiguration)(nil)).Elem()
+}
+
+func (o S3BucketVersioningVersioningConfigurationPtrOutput) ToS3BucketVersioningVersioningConfigurationPtrOutput() S3BucketVersioningVersioningConfigurationPtrOutput {
+	return o
+}
+
+func (o S3BucketVersioningVersioningConfigurationPtrOutput) ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(ctx context.Context) S3BucketVersioningVersioningConfigurationPtrOutput {
+	return o
+}
+
+func (o S3BucketVersioningVersioningConfigurationPtrOutput) Elem() S3BucketVersioningVersioningConfigurationOutput {
+	return o.ApplyT(func(v *S3BucketVersioningVersioningConfiguration) S3BucketVersioningVersioningConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret S3BucketVersioningVersioningConfiguration
+		return ret
+	}).(S3BucketVersioningVersioningConfigurationOutput)
+}
+
+func (o S3BucketVersioningVersioningConfigurationPtrOutput) ExcludeFolders() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3BucketVersioningVersioningConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeFolders
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o S3BucketVersioningVersioningConfigurationPtrOutput) ExcludedPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *S3BucketVersioningVersioningConfiguration) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Versioning status, one of "Enabled", "Suspended".
+func (o S3BucketVersioningVersioningConfigurationPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *S3BucketVersioningVersioningConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetIamPolicyDocumentStatement struct {
 	Actions    []string                                 `pulumi:"actions"`
 	Conditions []GetIamPolicyDocumentStatementCondition `pulumi:"conditions"`
@@ -358,12 +646,20 @@ func (o GetIamPolicyDocumentStatementConditionArrayOutput) Index(i pulumi.IntInp
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IlmPolicyRuleInput)(nil)).Elem(), IlmPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IlmPolicyRuleArrayInput)(nil)).Elem(), IlmPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketNotificationQueueInput)(nil)).Elem(), S3BucketNotificationQueueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketNotificationQueueArrayInput)(nil)).Elem(), S3BucketNotificationQueueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketVersioningVersioningConfigurationInput)(nil)).Elem(), S3BucketVersioningVersioningConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*S3BucketVersioningVersioningConfigurationPtrInput)(nil)).Elem(), S3BucketVersioningVersioningConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementInput)(nil)).Elem(), GetIamPolicyDocumentStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementArrayInput)(nil)).Elem(), GetIamPolicyDocumentStatementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementConditionInput)(nil)).Elem(), GetIamPolicyDocumentStatementConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyDocumentStatementConditionArrayInput)(nil)).Elem(), GetIamPolicyDocumentStatementConditionArray{})
 	pulumi.RegisterOutputType(IlmPolicyRuleOutput{})
 	pulumi.RegisterOutputType(IlmPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(S3BucketNotificationQueueOutput{})
+	pulumi.RegisterOutputType(S3BucketNotificationQueueArrayOutput{})
+	pulumi.RegisterOutputType(S3BucketVersioningVersioningConfigurationOutput{})
+	pulumi.RegisterOutputType(S3BucketVersioningVersioningConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetIamPolicyDocumentStatementOutput{})
 	pulumi.RegisterOutputType(GetIamPolicyDocumentStatementArrayOutput{})
 	pulumi.RegisterOutputType(GetIamPolicyDocumentStatementConditionOutput{})

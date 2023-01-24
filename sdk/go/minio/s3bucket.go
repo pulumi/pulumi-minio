@@ -42,6 +42,7 @@ type S3Bucket struct {
 	pulumi.CustomResourceState
 
 	Acl              pulumi.StringPtrOutput `pulumi:"acl"`
+	Arn              pulumi.StringOutput    `pulumi:"arn"`
 	Bucket           pulumi.StringOutput    `pulumi:"bucket"`
 	BucketDomainName pulumi.StringOutput    `pulumi:"bucketDomainName"`
 	BucketPrefix     pulumi.StringPtrOutput `pulumi:"bucketPrefix"`
@@ -80,6 +81,7 @@ func GetS3Bucket(ctx *pulumi.Context,
 // Input properties used for looking up and filtering S3Bucket resources.
 type s3bucketState struct {
 	Acl              *string `pulumi:"acl"`
+	Arn              *string `pulumi:"arn"`
 	Bucket           *string `pulumi:"bucket"`
 	BucketDomainName *string `pulumi:"bucketDomainName"`
 	BucketPrefix     *string `pulumi:"bucketPrefix"`
@@ -90,6 +92,7 @@ type s3bucketState struct {
 
 type S3BucketState struct {
 	Acl              pulumi.StringPtrInput
+	Arn              pulumi.StringPtrInput
 	Bucket           pulumi.StringPtrInput
 	BucketDomainName pulumi.StringPtrInput
 	BucketPrefix     pulumi.StringPtrInput
@@ -210,6 +213,10 @@ func (o S3BucketOutput) ToS3BucketOutputWithContext(ctx context.Context) S3Bucke
 
 func (o S3BucketOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3Bucket) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
+}
+
+func (o S3BucketOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v *S3Bucket) pulumi.StringOutput { return v.Arn }).(pulumi.StringOutput)
 }
 
 func (o S3BucketOutput) Bucket() pulumi.StringOutput {

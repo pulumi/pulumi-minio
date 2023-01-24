@@ -45,6 +45,9 @@ Object.defineProperty(exports, "minioCertFile", {
     enumerable: true,
 });
 
+/**
+ * Disable SSL certificate verification (default: false)
+ */
 export declare const minioInsecure: boolean | undefined;
 Object.defineProperty(exports, "minioInsecure", {
     get() {
@@ -57,6 +60,17 @@ export declare const minioKeyFile: string | undefined;
 Object.defineProperty(exports, "minioKeyFile", {
     get() {
         return __config.get("minioKeyFile");
+    },
+    enumerable: true,
+});
+
+/**
+ * Minio Password
+ */
+export declare const minioPassword: string | undefined;
+Object.defineProperty(exports, "minioPassword", {
+    get() {
+        return __config.get("minioPassword");
     },
     enumerable: true,
 });
@@ -95,12 +109,34 @@ Object.defineProperty(exports, "minioServer", {
 });
 
 /**
+ * Minio Session Token
+ */
+export declare const minioSessionToken: string | undefined;
+Object.defineProperty(exports, "minioSessionToken", {
+    get() {
+        return __config.get("minioSessionToken");
+    },
+    enumerable: true,
+});
+
+/**
  * Minio SSL enabled (default: false)
  */
 export declare const minioSsl: boolean | undefined;
 Object.defineProperty(exports, "minioSsl", {
     get() {
         return __config.getObject<boolean>("minioSsl");
+    },
+    enumerable: true,
+});
+
+/**
+ * Minio User
+ */
+export declare const minioUser: string | undefined;
+Object.defineProperty(exports, "minioUser", {
+    get() {
+        return __config.get("minioUser");
     },
     enumerable: true,
 });

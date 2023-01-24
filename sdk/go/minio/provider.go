@@ -19,18 +19,28 @@ type Provider struct {
 	pulumi.ProviderResourceState
 
 	// Minio Access Key
-	MinioAccessKey pulumi.StringOutput `pulumi:"minioAccessKey"`
+	//
+	// Deprecated: use minio_user instead
+	MinioAccessKey pulumi.StringPtrOutput `pulumi:"minioAccessKey"`
 	// Minio API Version (type: string, options: v2 or v4, default: v4)
 	MinioApiVersion pulumi.StringPtrOutput `pulumi:"minioApiVersion"`
 	MinioCacertFile pulumi.StringPtrOutput `pulumi:"minioCacertFile"`
 	MinioCertFile   pulumi.StringPtrOutput `pulumi:"minioCertFile"`
 	MinioKeyFile    pulumi.StringPtrOutput `pulumi:"minioKeyFile"`
+	// Minio Password
+	MinioPassword pulumi.StringPtrOutput `pulumi:"minioPassword"`
 	// Minio Region (default: us-east-1)
 	MinioRegion pulumi.StringPtrOutput `pulumi:"minioRegion"`
 	// Minio Secret Key
-	MinioSecretKey pulumi.StringOutput `pulumi:"minioSecretKey"`
+	//
+	// Deprecated: use minio_password instead
+	MinioSecretKey pulumi.StringPtrOutput `pulumi:"minioSecretKey"`
 	// Minio Host and Port
 	MinioServer pulumi.StringOutput `pulumi:"minioServer"`
+	// Minio Session Token
+	MinioSessionToken pulumi.StringPtrOutput `pulumi:"minioSessionToken"`
+	// Minio User
+	MinioUser pulumi.StringPtrOutput `pulumi:"minioUser"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -40,12 +50,6 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.MinioAccessKey == nil {
-		return nil, errors.New("invalid value for required argument 'MinioAccessKey'")
-	}
-	if args.MinioSecretKey == nil {
-		return nil, errors.New("invalid value for required argument 'MinioSecretKey'")
-	}
 	if args.MinioServer == nil {
 		return nil, errors.New("invalid value for required argument 'MinioServer'")
 	}
@@ -59,41 +63,63 @@ func NewProvider(ctx *pulumi.Context,
 
 type providerArgs struct {
 	// Minio Access Key
-	MinioAccessKey string `pulumi:"minioAccessKey"`
+	//
+	// Deprecated: use minio_user instead
+	MinioAccessKey *string `pulumi:"minioAccessKey"`
 	// Minio API Version (type: string, options: v2 or v4, default: v4)
 	MinioApiVersion *string `pulumi:"minioApiVersion"`
 	MinioCacertFile *string `pulumi:"minioCacertFile"`
 	MinioCertFile   *string `pulumi:"minioCertFile"`
-	MinioInsecure   *bool   `pulumi:"minioInsecure"`
-	MinioKeyFile    *string `pulumi:"minioKeyFile"`
+	// Disable SSL certificate verification (default: false)
+	MinioInsecure *bool   `pulumi:"minioInsecure"`
+	MinioKeyFile  *string `pulumi:"minioKeyFile"`
+	// Minio Password
+	MinioPassword *string `pulumi:"minioPassword"`
 	// Minio Region (default: us-east-1)
 	MinioRegion *string `pulumi:"minioRegion"`
 	// Minio Secret Key
-	MinioSecretKey string `pulumi:"minioSecretKey"`
+	//
+	// Deprecated: use minio_password instead
+	MinioSecretKey *string `pulumi:"minioSecretKey"`
 	// Minio Host and Port
 	MinioServer string `pulumi:"minioServer"`
+	// Minio Session Token
+	MinioSessionToken *string `pulumi:"minioSessionToken"`
 	// Minio SSL enabled (default: false)
 	MinioSsl *bool `pulumi:"minioSsl"`
+	// Minio User
+	MinioUser *string `pulumi:"minioUser"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	// Minio Access Key
-	MinioAccessKey pulumi.StringInput
+	//
+	// Deprecated: use minio_user instead
+	MinioAccessKey pulumi.StringPtrInput
 	// Minio API Version (type: string, options: v2 or v4, default: v4)
 	MinioApiVersion pulumi.StringPtrInput
 	MinioCacertFile pulumi.StringPtrInput
 	MinioCertFile   pulumi.StringPtrInput
-	MinioInsecure   pulumi.BoolPtrInput
-	MinioKeyFile    pulumi.StringPtrInput
+	// Disable SSL certificate verification (default: false)
+	MinioInsecure pulumi.BoolPtrInput
+	MinioKeyFile  pulumi.StringPtrInput
+	// Minio Password
+	MinioPassword pulumi.StringPtrInput
 	// Minio Region (default: us-east-1)
 	MinioRegion pulumi.StringPtrInput
 	// Minio Secret Key
-	MinioSecretKey pulumi.StringInput
+	//
+	// Deprecated: use minio_password instead
+	MinioSecretKey pulumi.StringPtrInput
 	// Minio Host and Port
 	MinioServer pulumi.StringInput
+	// Minio Session Token
+	MinioSessionToken pulumi.StringPtrInput
 	// Minio SSL enabled (default: false)
 	MinioSsl pulumi.BoolPtrInput
+	// Minio User
+	MinioUser pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -134,8 +160,10 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 }
 
 // Minio Access Key
-func (o ProviderOutput) MinioAccessKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.MinioAccessKey }).(pulumi.StringOutput)
+//
+// Deprecated: use minio_user instead
+func (o ProviderOutput) MinioAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioAccessKey }).(pulumi.StringPtrOutput)
 }
 
 // Minio API Version (type: string, options: v2 or v4, default: v4)
@@ -155,19 +183,36 @@ func (o ProviderOutput) MinioKeyFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioKeyFile }).(pulumi.StringPtrOutput)
 }
 
+// Minio Password
+func (o ProviderOutput) MinioPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioPassword }).(pulumi.StringPtrOutput)
+}
+
 // Minio Region (default: us-east-1)
 func (o ProviderOutput) MinioRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioRegion }).(pulumi.StringPtrOutput)
 }
 
 // Minio Secret Key
-func (o ProviderOutput) MinioSecretKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.MinioSecretKey }).(pulumi.StringOutput)
+//
+// Deprecated: use minio_password instead
+func (o ProviderOutput) MinioSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioSecretKey }).(pulumi.StringPtrOutput)
 }
 
 // Minio Host and Port
 func (o ProviderOutput) MinioServer() pulumi.StringOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.MinioServer }).(pulumi.StringOutput)
+}
+
+// Minio Session Token
+func (o ProviderOutput) MinioSessionToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioSessionToken }).(pulumi.StringPtrOutput)
+}
+
+// Minio User
+func (o ProviderOutput) MinioUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioUser }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -27,8 +27,10 @@ export class Provider extends pulumi.ProviderResource {
 
     /**
      * Minio Access Key
+     *
+     * @deprecated use minio_user instead
      */
-    public readonly minioAccessKey!: pulumi.Output<string>;
+    public readonly minioAccessKey!: pulumi.Output<string | undefined>;
     /**
      * Minio API Version (type: string, options: v2 or v4, default: v4)
      */
@@ -37,17 +39,31 @@ export class Provider extends pulumi.ProviderResource {
     public readonly minioCertFile!: pulumi.Output<string | undefined>;
     public readonly minioKeyFile!: pulumi.Output<string | undefined>;
     /**
+     * Minio Password
+     */
+    public readonly minioPassword!: pulumi.Output<string | undefined>;
+    /**
      * Minio Region (default: us-east-1)
      */
     public readonly minioRegion!: pulumi.Output<string | undefined>;
     /**
      * Minio Secret Key
+     *
+     * @deprecated use minio_password instead
      */
-    public readonly minioSecretKey!: pulumi.Output<string>;
+    public readonly minioSecretKey!: pulumi.Output<string | undefined>;
     /**
      * Minio Host and Port
      */
     public readonly minioServer!: pulumi.Output<string>;
+    /**
+     * Minio Session Token
+     */
+    public readonly minioSessionToken!: pulumi.Output<string | undefined>;
+    /**
+     * Minio User
+     */
+    public readonly minioUser!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -60,12 +76,6 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.minioAccessKey === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'minioAccessKey'");
-            }
-            if ((!args || args.minioSecretKey === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'minioSecretKey'");
-            }
             if ((!args || args.minioServer === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'minioServer'");
             }
@@ -75,10 +85,13 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["minioCertFile"] = args ? args.minioCertFile : undefined;
             resourceInputs["minioInsecure"] = pulumi.output(args ? args.minioInsecure : undefined).apply(JSON.stringify);
             resourceInputs["minioKeyFile"] = args ? args.minioKeyFile : undefined;
+            resourceInputs["minioPassword"] = args ? args.minioPassword : undefined;
             resourceInputs["minioRegion"] = args ? args.minioRegion : undefined;
             resourceInputs["minioSecretKey"] = args ? args.minioSecretKey : undefined;
             resourceInputs["minioServer"] = args ? args.minioServer : undefined;
+            resourceInputs["minioSessionToken"] = args ? args.minioSessionToken : undefined;
             resourceInputs["minioSsl"] = pulumi.output(args ? args.minioSsl : undefined).apply(JSON.stringify);
+            resourceInputs["minioUser"] = args ? args.minioUser : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -91,30 +104,49 @@ export class Provider extends pulumi.ProviderResource {
 export interface ProviderArgs {
     /**
      * Minio Access Key
+     *
+     * @deprecated use minio_user instead
      */
-    minioAccessKey: pulumi.Input<string>;
+    minioAccessKey?: pulumi.Input<string>;
     /**
      * Minio API Version (type: string, options: v2 or v4, default: v4)
      */
     minioApiVersion?: pulumi.Input<string>;
     minioCacertFile?: pulumi.Input<string>;
     minioCertFile?: pulumi.Input<string>;
+    /**
+     * Disable SSL certificate verification (default: false)
+     */
     minioInsecure?: pulumi.Input<boolean>;
     minioKeyFile?: pulumi.Input<string>;
+    /**
+     * Minio Password
+     */
+    minioPassword?: pulumi.Input<string>;
     /**
      * Minio Region (default: us-east-1)
      */
     minioRegion?: pulumi.Input<string>;
     /**
      * Minio Secret Key
+     *
+     * @deprecated use minio_password instead
      */
-    minioSecretKey: pulumi.Input<string>;
+    minioSecretKey?: pulumi.Input<string>;
     /**
      * Minio Host and Port
      */
     minioServer: pulumi.Input<string>;
     /**
+     * Minio Session Token
+     */
+    minioSessionToken?: pulumi.Input<string>;
+    /**
      * Minio SSL enabled (default: false)
      */
     minioSsl?: pulumi.Input<boolean>;
+    /**
+     * Minio User
+     */
+    minioUser?: pulumi.Input<string>;
 }

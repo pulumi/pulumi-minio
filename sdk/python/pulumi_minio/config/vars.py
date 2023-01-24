@@ -39,11 +39,21 @@ class _ExportableConfig(types.ModuleType):
 
     @property
     def minio_insecure(self) -> Optional[bool]:
+        """
+        Disable SSL certificate verification (default: false)
+        """
         return __config__.get_bool('minioInsecure')
 
     @property
     def minio_key_file(self) -> Optional[str]:
         return __config__.get('minioKeyFile')
+
+    @property
+    def minio_password(self) -> Optional[str]:
+        """
+        Minio Password
+        """
+        return __config__.get('minioPassword')
 
     @property
     def minio_region(self) -> Optional[str]:
@@ -67,9 +77,23 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('minioServer')
 
     @property
+    def minio_session_token(self) -> Optional[str]:
+        """
+        Minio Session Token
+        """
+        return __config__.get('minioSessionToken')
+
+    @property
     def minio_ssl(self) -> Optional[bool]:
         """
         Minio SSL enabled (default: false)
         """
         return __config__.get_bool('minioSsl')
+
+    @property
+    def minio_user(self) -> Optional[str]:
+        """
+        Minio User
+        """
+        return __config__.get('minioUser')
 

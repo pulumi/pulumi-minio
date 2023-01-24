@@ -11,6 +11,8 @@ from . import _utilities
 
 __all__ = [
     'IlmPolicyRuleArgs',
+    'S3BucketNotificationQueueArgs',
+    'S3BucketVersioningVersioningConfigurationArgs',
     'GetIamPolicyDocumentStatementArgs',
     'GetIamPolicyDocumentStatementConditionArgs',
 ]
@@ -71,6 +73,121 @@ class IlmPolicyRuleArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class S3BucketNotificationQueueArgs:
+    def __init__(__self__, *,
+                 events: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 queue_arn: pulumi.Input[str],
+                 filter_prefix: Optional[pulumi.Input[str]] = None,
+                 filter_suffix: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: The ID of this resource.
+        """
+        pulumi.set(__self__, "events", events)
+        pulumi.set(__self__, "queue_arn", queue_arn)
+        if filter_prefix is not None:
+            pulumi.set(__self__, "filter_prefix", filter_prefix)
+        if filter_suffix is not None:
+            pulumi.set(__self__, "filter_suffix", filter_suffix)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def events(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "events")
+
+    @events.setter
+    def events(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "events", value)
+
+    @property
+    @pulumi.getter(name="queueArn")
+    def queue_arn(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "queue_arn")
+
+    @queue_arn.setter
+    def queue_arn(self, value: pulumi.Input[str]):
+        pulumi.set(self, "queue_arn", value)
+
+    @property
+    @pulumi.getter(name="filterPrefix")
+    def filter_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "filter_prefix")
+
+    @filter_prefix.setter
+    def filter_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter_prefix", value)
+
+    @property
+    @pulumi.getter(name="filterSuffix")
+    def filter_suffix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "filter_suffix")
+
+    @filter_suffix.setter
+    def filter_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter_suffix", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class S3BucketVersioningVersioningConfigurationArgs:
+    def __init__(__self__, *,
+                 status: pulumi.Input[str],
+                 exclude_folders: Optional[pulumi.Input[bool]] = None,
+                 excluded_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] status: Versioning status, one of "Enabled", "Suspended".
+        """
+        pulumi.set(__self__, "status", status)
+        if exclude_folders is not None:
+            pulumi.set(__self__, "exclude_folders", exclude_folders)
+        if excluded_prefixes is not None:
+            pulumi.set(__self__, "excluded_prefixes", excluded_prefixes)
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[str]:
+        """
+        Versioning status, one of "Enabled", "Suspended".
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[str]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="excludeFolders")
+    def exclude_folders(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "exclude_folders")
+
+    @exclude_folders.setter
+    def exclude_folders(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "exclude_folders", value)
+
+    @property
+    @pulumi.getter(name="excludedPrefixes")
+    def excluded_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "excluded_prefixes")
+
+    @excluded_prefixes.setter
+    def excluded_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_prefixes", value)
 
 
 @pulumi.input_type

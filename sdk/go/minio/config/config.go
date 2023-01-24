@@ -9,6 +9,8 @@ import (
 )
 
 // Minio Access Key
+//
+// Deprecated: use minio_user instead
 func GetMinioAccessKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "minio:minioAccessKey")
 }
@@ -23,11 +25,18 @@ func GetMinioCacertFile(ctx *pulumi.Context) string {
 func GetMinioCertFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "minio:minioCertFile")
 }
+
+// Disable SSL certificate verification (default: false)
 func GetMinioInsecure(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "minio:minioInsecure")
 }
 func GetMinioKeyFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "minio:minioKeyFile")
+}
+
+// Minio Password
+func GetMinioPassword(ctx *pulumi.Context) string {
+	return config.Get(ctx, "minio:minioPassword")
 }
 
 // Minio Region (default: us-east-1)
@@ -36,6 +45,8 @@ func GetMinioRegion(ctx *pulumi.Context) string {
 }
 
 // Minio Secret Key
+//
+// Deprecated: use minio_password instead
 func GetMinioSecretKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "minio:minioSecretKey")
 }
@@ -45,7 +56,17 @@ func GetMinioServer(ctx *pulumi.Context) string {
 	return config.Get(ctx, "minio:minioServer")
 }
 
+// Minio Session Token
+func GetMinioSessionToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "minio:minioSessionToken")
+}
+
 // Minio SSL enabled (default: false)
 func GetMinioSsl(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "minio:minioSsl")
+}
+
+// Minio User
+func GetMinioUser(ctx *pulumi.Context) string {
+	return config.Get(ctx, "minio:minioUser")
 }

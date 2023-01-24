@@ -5,20 +5,91 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./getIamPolicyDocument";
-export * from "./iamGroup";
-export * from "./iamGroupMembership";
-export * from "./iamGroupPolicy";
-export * from "./iamGroupPolicyAttachment";
-export * from "./iamGroupUserAttachment";
-export * from "./iamPolicy";
-export * from "./iamUser";
-export * from "./iamUserPolicyAttachment";
-export * from "./ilmPolicy";
-export * from "./provider";
-export * from "./s3bucket";
-export * from "./s3bucketPolicy";
-export * from "./s3object";
+export { GetIamPolicyDocumentArgs, GetIamPolicyDocumentResult, GetIamPolicyDocumentOutputArgs } from "./getIamPolicyDocument";
+export const getIamPolicyDocument: typeof import("./getIamPolicyDocument").getIamPolicyDocument = null as any;
+export const getIamPolicyDocumentOutput: typeof import("./getIamPolicyDocument").getIamPolicyDocumentOutput = null as any;
+utilities.lazyLoad(exports, ["getIamPolicyDocument","getIamPolicyDocumentOutput"], () => require("./getIamPolicyDocument"));
+
+export { IamGroupArgs, IamGroupState } from "./iamGroup";
+export type IamGroup = import("./iamGroup").IamGroup;
+export const IamGroup: typeof import("./iamGroup").IamGroup = null as any;
+utilities.lazyLoad(exports, ["IamGroup"], () => require("./iamGroup"));
+
+export { IamGroupMembershipArgs, IamGroupMembershipState } from "./iamGroupMembership";
+export type IamGroupMembership = import("./iamGroupMembership").IamGroupMembership;
+export const IamGroupMembership: typeof import("./iamGroupMembership").IamGroupMembership = null as any;
+utilities.lazyLoad(exports, ["IamGroupMembership"], () => require("./iamGroupMembership"));
+
+export { IamGroupPolicyArgs, IamGroupPolicyState } from "./iamGroupPolicy";
+export type IamGroupPolicy = import("./iamGroupPolicy").IamGroupPolicy;
+export const IamGroupPolicy: typeof import("./iamGroupPolicy").IamGroupPolicy = null as any;
+utilities.lazyLoad(exports, ["IamGroupPolicy"], () => require("./iamGroupPolicy"));
+
+export { IamGroupPolicyAttachmentArgs, IamGroupPolicyAttachmentState } from "./iamGroupPolicyAttachment";
+export type IamGroupPolicyAttachment = import("./iamGroupPolicyAttachment").IamGroupPolicyAttachment;
+export const IamGroupPolicyAttachment: typeof import("./iamGroupPolicyAttachment").IamGroupPolicyAttachment = null as any;
+utilities.lazyLoad(exports, ["IamGroupPolicyAttachment"], () => require("./iamGroupPolicyAttachment"));
+
+export { IamGroupUserAttachmentArgs, IamGroupUserAttachmentState } from "./iamGroupUserAttachment";
+export type IamGroupUserAttachment = import("./iamGroupUserAttachment").IamGroupUserAttachment;
+export const IamGroupUserAttachment: typeof import("./iamGroupUserAttachment").IamGroupUserAttachment = null as any;
+utilities.lazyLoad(exports, ["IamGroupUserAttachment"], () => require("./iamGroupUserAttachment"));
+
+export { IamPolicyArgs, IamPolicyState } from "./iamPolicy";
+export type IamPolicy = import("./iamPolicy").IamPolicy;
+export const IamPolicy: typeof import("./iamPolicy").IamPolicy = null as any;
+utilities.lazyLoad(exports, ["IamPolicy"], () => require("./iamPolicy"));
+
+export { IamServiceAccountArgs, IamServiceAccountState } from "./iamServiceAccount";
+export type IamServiceAccount = import("./iamServiceAccount").IamServiceAccount;
+export const IamServiceAccount: typeof import("./iamServiceAccount").IamServiceAccount = null as any;
+utilities.lazyLoad(exports, ["IamServiceAccount"], () => require("./iamServiceAccount"));
+
+export { IamUserArgs, IamUserState } from "./iamUser";
+export type IamUser = import("./iamUser").IamUser;
+export const IamUser: typeof import("./iamUser").IamUser = null as any;
+utilities.lazyLoad(exports, ["IamUser"], () => require("./iamUser"));
+
+export { IamUserPolicyAttachmentArgs, IamUserPolicyAttachmentState } from "./iamUserPolicyAttachment";
+export type IamUserPolicyAttachment = import("./iamUserPolicyAttachment").IamUserPolicyAttachment;
+export const IamUserPolicyAttachment: typeof import("./iamUserPolicyAttachment").IamUserPolicyAttachment = null as any;
+utilities.lazyLoad(exports, ["IamUserPolicyAttachment"], () => require("./iamUserPolicyAttachment"));
+
+export { IlmPolicyArgs, IlmPolicyState } from "./ilmPolicy";
+export type IlmPolicy = import("./ilmPolicy").IlmPolicy;
+export const IlmPolicy: typeof import("./ilmPolicy").IlmPolicy = null as any;
+utilities.lazyLoad(exports, ["IlmPolicy"], () => require("./ilmPolicy"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { S3BucketArgs, S3BucketState } from "./s3bucket";
+export type S3Bucket = import("./s3bucket").S3Bucket;
+export const S3Bucket: typeof import("./s3bucket").S3Bucket = null as any;
+utilities.lazyLoad(exports, ["S3Bucket"], () => require("./s3bucket"));
+
+export { S3BucketNotificationArgs, S3BucketNotificationState } from "./s3bucketNotification";
+export type S3BucketNotification = import("./s3bucketNotification").S3BucketNotification;
+export const S3BucketNotification: typeof import("./s3bucketNotification").S3BucketNotification = null as any;
+utilities.lazyLoad(exports, ["S3BucketNotification"], () => require("./s3bucketNotification"));
+
+export { S3BucketPolicyArgs, S3BucketPolicyState } from "./s3bucketPolicy";
+export type S3BucketPolicy = import("./s3bucketPolicy").S3BucketPolicy;
+export const S3BucketPolicy: typeof import("./s3bucketPolicy").S3BucketPolicy = null as any;
+utilities.lazyLoad(exports, ["S3BucketPolicy"], () => require("./s3bucketPolicy"));
+
+export { S3BucketVersioningArgs, S3BucketVersioningState } from "./s3bucketVersioning";
+export type S3BucketVersioning = import("./s3bucketVersioning").S3BucketVersioning;
+export const S3BucketVersioning: typeof import("./s3bucketVersioning").S3BucketVersioning = null as any;
+utilities.lazyLoad(exports, ["S3BucketVersioning"], () => require("./s3bucketVersioning"));
+
+export { S3ObjectArgs, S3ObjectState } from "./s3object";
+export type S3Object = import("./s3object").S3Object;
+export const S3Object: typeof import("./s3object").S3Object = null as any;
+utilities.lazyLoad(exports, ["S3Object"], () => require("./s3object"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -28,20 +99,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { IamGroup } from "./iamGroup";
-import { IamGroupMembership } from "./iamGroupMembership";
-import { IamGroupPolicy } from "./iamGroupPolicy";
-import { IamGroupPolicyAttachment } from "./iamGroupPolicyAttachment";
-import { IamGroupUserAttachment } from "./iamGroupUserAttachment";
-import { IamPolicy } from "./iamPolicy";
-import { IamUser } from "./iamUser";
-import { IamUserPolicyAttachment } from "./iamUserPolicyAttachment";
-import { IlmPolicy } from "./ilmPolicy";
-import { S3Bucket } from "./s3bucket";
-import { S3BucketPolicy } from "./s3bucketPolicy";
-import { S3Object } from "./s3object";
 
 const _module = {
     version: utilities.getVersion(),
@@ -59,6 +116,8 @@ const _module = {
                 return new IamGroupUserAttachment(name, <any>undefined, { urn })
             case "minio:index/iamPolicy:IamPolicy":
                 return new IamPolicy(name, <any>undefined, { urn })
+            case "minio:index/iamServiceAccount:IamServiceAccount":
+                return new IamServiceAccount(name, <any>undefined, { urn })
             case "minio:index/iamUser:IamUser":
                 return new IamUser(name, <any>undefined, { urn })
             case "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment":
@@ -67,8 +126,12 @@ const _module = {
                 return new IlmPolicy(name, <any>undefined, { urn })
             case "minio:index/s3Bucket:S3Bucket":
                 return new S3Bucket(name, <any>undefined, { urn })
+            case "minio:index/s3BucketNotification:S3BucketNotification":
+                return new S3BucketNotification(name, <any>undefined, { urn })
             case "minio:index/s3BucketPolicy:S3BucketPolicy":
                 return new S3BucketPolicy(name, <any>undefined, { urn })
+            case "minio:index/s3BucketVersioning:S3BucketVersioning":
+                return new S3BucketVersioning(name, <any>undefined, { urn })
             case "minio:index/s3Object:S3Object":
                 return new S3Object(name, <any>undefined, { urn })
             default:
@@ -82,15 +145,15 @@ pulumi.runtime.registerResourceModule("minio", "index/iamGroupPolicy", _module)
 pulumi.runtime.registerResourceModule("minio", "index/iamGroupPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("minio", "index/iamGroupUserAttachment", _module)
 pulumi.runtime.registerResourceModule("minio", "index/iamPolicy", _module)
+pulumi.runtime.registerResourceModule("minio", "index/iamServiceAccount", _module)
 pulumi.runtime.registerResourceModule("minio", "index/iamUser", _module)
 pulumi.runtime.registerResourceModule("minio", "index/iamUserPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("minio", "index/ilmPolicy", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3Bucket", _module)
+pulumi.runtime.registerResourceModule("minio", "index/s3BucketNotification", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3BucketPolicy", _module)
+pulumi.runtime.registerResourceModule("minio", "index/s3BucketVersioning", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3Object", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("minio", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

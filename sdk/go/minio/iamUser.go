@@ -63,6 +63,13 @@ func NewIamUser(ctx *pulumi.Context,
 		args = &IamUserArgs{}
 	}
 
+	if args.Secret != nil {
+		args.Secret = pulumi.ToSecret(args.Secret).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	var resource IamUser
 	err := ctx.RegisterResource("minio:index/iamUser:IamUser", name, args, &resource, opts...)
 	if err != nil {

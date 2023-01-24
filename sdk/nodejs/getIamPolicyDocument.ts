@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -48,11 +49,8 @@ import * as utilities from "./utilities";
  */
 export function getIamPolicyDocument(args?: GetIamPolicyDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPolicyDocumentResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("minio:index/getIamPolicyDocument:getIamPolicyDocument", {
         "overrideJson": args.overrideJson,
         "policyId": args.policyId,
@@ -88,9 +86,49 @@ export interface GetIamPolicyDocumentResult {
     readonly statements?: outputs.GetIamPolicyDocumentStatement[];
     readonly version?: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as minio from "@pulumi/minio";
+ *
+ * const example = minio.getIamPolicyDocument({
+ *     statements: [
+ *         {
+ *             sid: "1",
+ *             actions: [
+ *                 "s3:ListAllMyBuckets",
+ *                 "s3:GetBucketLocation",
+ *             ],
+ *             resources: ["arn:aws:s3:::*"],
+ *         },
+ *         {
+ *             actions: ["s3:ListBucket"],
+ *             resources: ["arn:aws:s3:::state-terraform-s3"],
+ *             conditions: [{
+ *                 test: "StringLike",
+ *                 variable: "s3:prefix",
+ *                 values: [
+ *                     "",
+ *                     "home/",
+ *                 ],
+ *             }],
+ *         },
+ *         {
+ *             actions: ["s3:PutObject"],
+ *             resources: [
+ *                 "arn:aws:s3:::state-terraform-s3",
+ *                 "arn:aws:s3:::state-terraform-s3/*",
+ *             ],
+ *         },
+ *     ],
+ * });
+ * const testPolicy = new minio.IamPolicy("testPolicy", {policy: example.then(example => example.json)});
+ * ```
+ */
 export function getIamPolicyDocumentOutput(args?: GetIamPolicyDocumentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamPolicyDocumentResult> {
-    return pulumi.output(args).apply(a => getIamPolicyDocument(a, opts))
+    return pulumi.output(args).apply((a: any) => getIamPolicyDocument(a, opts))
 }
 
 /**
