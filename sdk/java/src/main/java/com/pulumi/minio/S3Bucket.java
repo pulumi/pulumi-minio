@@ -59,6 +59,12 @@ public class S3Bucket extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> acl() {
         return Codegen.optional(this.acl);
     }
+    @Export(name="arn", type=String.class, parameters={})
+    private Output<String> arn;
+
+    public Output<String> arn() {
+        return this.arn;
+    }
     @Export(name="bucket", type=String.class, parameters={})
     private Output<String> bucket;
 

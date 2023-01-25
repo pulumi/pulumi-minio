@@ -11,9 +11,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
  *
- * const developerIamGroup = new minio.IamGroup("developer", {});
- * const testPolicy = new minio.IamGroupPolicy("test_policy", {
- *     policy: `{
+ * const developerIamGroup = new minio.IamGroup("developerIamGroup", {});
+ * const testPolicy = new minio.IamGroupPolicy("testPolicy", {policy: `{
  *   "Version":"2012-10-17",
  *   "Statement": [
  *     {
@@ -25,13 +24,12 @@ import * as utilities from "./utilities";
  *     }
  *   ]
  * }
- * `,
- * });
- * const developerIamGroupPolicyAttachment = new minio.IamGroupPolicyAttachment("developer", {
- *     groupName: minio_iam_group_group.name,
- *     policyName: minio_iam_policy_test_policy.id,
- * });
  *
+ * `});
+ * const developerIamGroupPolicyAttachment = new minio.IamGroupPolicyAttachment("developerIamGroupPolicyAttachment", {
+ *     groupName: minio_iam_group.group.name,
+ *     policyName: minio_iam_policy.test_policy.id,
+ * });
  * export const minioName = developerIamGroupPolicyAttachment.id;
  * export const minioUsers = developerIamGroupPolicyAttachment.groupName;
  * export const minioGroup = developerIamGroupPolicyAttachment.policyName;

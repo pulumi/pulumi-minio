@@ -24,8 +24,16 @@ minioCacertFile: Optional[str]
 minioCertFile: Optional[str]
 
 minioInsecure: Optional[bool]
+"""
+Disable SSL certificate verification (default: false)
+"""
 
 minioKeyFile: Optional[str]
+
+minioPassword: Optional[str]
+"""
+Minio Password
+"""
 
 minioRegion: Optional[str]
 """
@@ -42,8 +50,18 @@ minioServer: Optional[str]
 Minio Host and Port
 """
 
+minioSessionToken: Optional[str]
+"""
+Minio Session Token
+"""
+
 minioSsl: Optional[bool]
 """
 Minio SSL enabled (default: false)
+"""
+
+minioUser: Optional[str]
+"""
+Minio User
 """
 

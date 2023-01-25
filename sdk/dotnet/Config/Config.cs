@@ -30,7 +30,7 @@ namespace Pulumi.Minio
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("minio");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("minio");
 
         private static readonly __Value<string?> _minioAccessKey = new __Value<string?>(() => __config.Get("minioAccessKey"));
         /// <summary>
@@ -67,6 +67,9 @@ namespace Pulumi.Minio
         }
 
         private static readonly __Value<bool?> _minioInsecure = new __Value<bool?>(() => __config.GetBoolean("minioInsecure"));
+        /// <summary>
+        /// Disable SSL certificate verification (default: false)
+        /// </summary>
         public static bool? MinioInsecure
         {
             get => _minioInsecure.Get();
@@ -78,6 +81,16 @@ namespace Pulumi.Minio
         {
             get => _minioKeyFile.Get();
             set => _minioKeyFile.Set(value);
+        }
+
+        private static readonly __Value<string?> _minioPassword = new __Value<string?>(() => __config.Get("minioPassword"));
+        /// <summary>
+        /// Minio Password
+        /// </summary>
+        public static string? MinioPassword
+        {
+            get => _minioPassword.Get();
+            set => _minioPassword.Set(value);
         }
 
         private static readonly __Value<string?> _minioRegion = new __Value<string?>(() => __config.Get("minioRegion"));
@@ -110,6 +123,16 @@ namespace Pulumi.Minio
             set => _minioServer.Set(value);
         }
 
+        private static readonly __Value<string?> _minioSessionToken = new __Value<string?>(() => __config.Get("minioSessionToken"));
+        /// <summary>
+        /// Minio Session Token
+        /// </summary>
+        public static string? MinioSessionToken
+        {
+            get => _minioSessionToken.Get();
+            set => _minioSessionToken.Set(value);
+        }
+
         private static readonly __Value<bool?> _minioSsl = new __Value<bool?>(() => __config.GetBoolean("minioSsl"));
         /// <summary>
         /// Minio SSL enabled (default: false)
@@ -118,6 +141,16 @@ namespace Pulumi.Minio
         {
             get => _minioSsl.Get();
             set => _minioSsl.Set(value);
+        }
+
+        private static readonly __Value<string?> _minioUser = new __Value<string?>(() => __config.Get("minioUser"));
+        /// <summary>
+        /// Minio User
+        /// </summary>
+        public static string? MinioUser
+        {
+            get => _minioUser.Get();
+            set => _minioUser.Set(value);
         }
 
     }

@@ -90,7 +90,7 @@ namespace Pulumi.Minio
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIamPolicyDocumentResult> InvokeAsync(GetIamPolicyDocumentArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIamPolicyDocumentResult>("minio:index/getIamPolicyDocument:getIamPolicyDocument", args ?? new GetIamPolicyDocumentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIamPolicyDocumentResult>("minio:index/getIamPolicyDocument:getIamPolicyDocument", args ?? new GetIamPolicyDocumentArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -171,7 +171,7 @@ namespace Pulumi.Minio
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIamPolicyDocumentResult> Invoke(GetIamPolicyDocumentInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIamPolicyDocumentResult>("minio:index/getIamPolicyDocument:getIamPolicyDocument", args ?? new GetIamPolicyDocumentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyDocumentResult>("minio:index/getIamPolicyDocument:getIamPolicyDocument", args ?? new GetIamPolicyDocumentInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -93,6 +93,10 @@ namespace Pulumi.Minio
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -132,7 +136,16 @@ namespace Pulumi.Minio
         public Input<string>? Name { get; set; }
 
         [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        private Input<string>? _secret;
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("tags")]
         private InputMap<object>? _tags;
@@ -172,7 +185,16 @@ namespace Pulumi.Minio
         public Input<string>? Name { get; set; }
 
         [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        private Input<string>? _secret;
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("status")]
         public Input<string>? Status { get; set; }

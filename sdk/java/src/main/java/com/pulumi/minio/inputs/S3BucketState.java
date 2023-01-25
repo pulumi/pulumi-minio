@@ -24,6 +24,13 @@ public final class S3BucketState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.acl);
     }
 
+    @Import(name="arn")
+    private @Nullable Output<String> arn;
+
+    public Optional<Output<String>> arn() {
+        return Optional.ofNullable(this.arn);
+    }
+
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
@@ -71,6 +78,7 @@ public final class S3BucketState extends com.pulumi.resources.ResourceArgs {
 
     private S3BucketState(S3BucketState $) {
         this.acl = $.acl;
+        this.arn = $.arn;
         this.bucket = $.bucket;
         this.bucketDomainName = $.bucketDomainName;
         this.bucketPrefix = $.bucketPrefix;
@@ -103,6 +111,15 @@ public final class S3BucketState extends com.pulumi.resources.ResourceArgs {
 
         public Builder acl(String acl) {
             return acl(Output.of(acl));
+        }
+
+        public Builder arn(@Nullable Output<String> arn) {
+            $.arn = arn;
+            return this;
+        }
+
+        public Builder arn(String arn) {
+            return arn(Output.of(arn));
         }
 
         public Builder bucket(@Nullable Output<String> bucket) {

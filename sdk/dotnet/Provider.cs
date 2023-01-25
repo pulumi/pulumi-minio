@@ -22,7 +22,7 @@ namespace Pulumi.Minio
         /// Minio Access Key
         /// </summary>
         [Output("minioAccessKey")]
-        public Output<string> MinioAccessKey { get; private set; } = null!;
+        public Output<string?> MinioAccessKey { get; private set; } = null!;
 
         /// <summary>
         /// Minio API Version (type: string, options: v2 or v4, default: v4)
@@ -40,6 +40,12 @@ namespace Pulumi.Minio
         public Output<string?> MinioKeyFile { get; private set; } = null!;
 
         /// <summary>
+        /// Minio Password
+        /// </summary>
+        [Output("minioPassword")]
+        public Output<string?> MinioPassword { get; private set; } = null!;
+
+        /// <summary>
         /// Minio Region (default: us-east-1)
         /// </summary>
         [Output("minioRegion")]
@@ -49,13 +55,25 @@ namespace Pulumi.Minio
         /// Minio Secret Key
         /// </summary>
         [Output("minioSecretKey")]
-        public Output<string> MinioSecretKey { get; private set; } = null!;
+        public Output<string?> MinioSecretKey { get; private set; } = null!;
 
         /// <summary>
         /// Minio Host and Port
         /// </summary>
         [Output("minioServer")]
         public Output<string> MinioServer { get; private set; } = null!;
+
+        /// <summary>
+        /// Minio Session Token
+        /// </summary>
+        [Output("minioSessionToken")]
+        public Output<string?> MinioSessionToken { get; private set; } = null!;
+
+        /// <summary>
+        /// Minio User
+        /// </summary>
+        [Output("minioUser")]
+        public Output<string?> MinioUser { get; private set; } = null!;
 
 
         /// <summary>
@@ -88,8 +106,8 @@ namespace Pulumi.Minio
         /// <summary>
         /// Minio Access Key
         /// </summary>
-        [Input("minioAccessKey", required: true)]
-        public Input<string> MinioAccessKey { get; set; } = null!;
+        [Input("minioAccessKey")]
+        public Input<string>? MinioAccessKey { get; set; }
 
         /// <summary>
         /// Minio API Version (type: string, options: v2 or v4, default: v4)
@@ -103,11 +121,20 @@ namespace Pulumi.Minio
         [Input("minioCertFile")]
         public Input<string>? MinioCertFile { get; set; }
 
+        /// <summary>
+        /// Disable SSL certificate verification (default: false)
+        /// </summary>
         [Input("minioInsecure", json: true)]
         public Input<bool>? MinioInsecure { get; set; }
 
         [Input("minioKeyFile")]
         public Input<string>? MinioKeyFile { get; set; }
+
+        /// <summary>
+        /// Minio Password
+        /// </summary>
+        [Input("minioPassword")]
+        public Input<string>? MinioPassword { get; set; }
 
         /// <summary>
         /// Minio Region (default: us-east-1)
@@ -118,8 +145,8 @@ namespace Pulumi.Minio
         /// <summary>
         /// Minio Secret Key
         /// </summary>
-        [Input("minioSecretKey", required: true)]
-        public Input<string> MinioSecretKey { get; set; } = null!;
+        [Input("minioSecretKey")]
+        public Input<string>? MinioSecretKey { get; set; }
 
         /// <summary>
         /// Minio Host and Port
@@ -128,10 +155,22 @@ namespace Pulumi.Minio
         public Input<string> MinioServer { get; set; } = null!;
 
         /// <summary>
+        /// Minio Session Token
+        /// </summary>
+        [Input("minioSessionToken")]
+        public Input<string>? MinioSessionToken { get; set; }
+
+        /// <summary>
         /// Minio SSL enabled (default: false)
         /// </summary>
         [Input("minioSsl", json: true)]
         public Input<bool>? MinioSsl { get; set; }
+
+        /// <summary>
+        /// Minio User
+        /// </summary>
+        [Input("minioUser")]
+        public Input<string>? MinioUser { get; set; }
 
         public ProviderArgs()
         {

@@ -19,16 +19,24 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Minio Access Key
      * 
+     * @deprecated
+     * use minio_user instead
+     * 
      */
-    @Import(name="minioAccessKey", required=true)
-    private Output<String> minioAccessKey;
+    @Deprecated /* use minio_user instead */
+    @Import(name="minioAccessKey")
+    private @Nullable Output<String> minioAccessKey;
 
     /**
      * @return Minio Access Key
      * 
+     * @deprecated
+     * use minio_user instead
+     * 
      */
-    public Output<String> minioAccessKey() {
-        return this.minioAccessKey;
+    @Deprecated /* use minio_user instead */
+    public Optional<Output<String>> minioAccessKey() {
+        return Optional.ofNullable(this.minioAccessKey);
     }
 
     /**
@@ -60,9 +68,17 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.minioCertFile);
     }
 
+    /**
+     * Disable SSL certificate verification (default: false)
+     * 
+     */
     @Import(name="minioInsecure", json=true)
     private @Nullable Output<Boolean> minioInsecure;
 
+    /**
+     * @return Disable SSL certificate verification (default: false)
+     * 
+     */
     public Optional<Output<Boolean>> minioInsecure() {
         return Optional.ofNullable(this.minioInsecure);
     }
@@ -72,6 +88,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> minioKeyFile() {
         return Optional.ofNullable(this.minioKeyFile);
+    }
+
+    /**
+     * Minio Password
+     * 
+     */
+    @Import(name="minioPassword")
+    private @Nullable Output<String> minioPassword;
+
+    /**
+     * @return Minio Password
+     * 
+     */
+    public Optional<Output<String>> minioPassword() {
+        return Optional.ofNullable(this.minioPassword);
     }
 
     /**
@@ -92,16 +123,24 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Minio Secret Key
      * 
+     * @deprecated
+     * use minio_password instead
+     * 
      */
-    @Import(name="minioSecretKey", required=true)
-    private Output<String> minioSecretKey;
+    @Deprecated /* use minio_password instead */
+    @Import(name="minioSecretKey")
+    private @Nullable Output<String> minioSecretKey;
 
     /**
      * @return Minio Secret Key
      * 
+     * @deprecated
+     * use minio_password instead
+     * 
      */
-    public Output<String> minioSecretKey() {
-        return this.minioSecretKey;
+    @Deprecated /* use minio_password instead */
+    public Optional<Output<String>> minioSecretKey() {
+        return Optional.ofNullable(this.minioSecretKey);
     }
 
     /**
@@ -120,6 +159,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Minio Session Token
+     * 
+     */
+    @Import(name="minioSessionToken")
+    private @Nullable Output<String> minioSessionToken;
+
+    /**
+     * @return Minio Session Token
+     * 
+     */
+    public Optional<Output<String>> minioSessionToken() {
+        return Optional.ofNullable(this.minioSessionToken);
+    }
+
+    /**
      * Minio SSL enabled (default: false)
      * 
      */
@@ -134,6 +188,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.minioSsl);
     }
 
+    /**
+     * Minio User
+     * 
+     */
+    @Import(name="minioUser")
+    private @Nullable Output<String> minioUser;
+
+    /**
+     * @return Minio User
+     * 
+     */
+    public Optional<Output<String>> minioUser() {
+        return Optional.ofNullable(this.minioUser);
+    }
+
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
@@ -143,10 +212,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.minioCertFile = $.minioCertFile;
         this.minioInsecure = $.minioInsecure;
         this.minioKeyFile = $.minioKeyFile;
+        this.minioPassword = $.minioPassword;
         this.minioRegion = $.minioRegion;
         this.minioSecretKey = $.minioSecretKey;
         this.minioServer = $.minioServer;
+        this.minioSessionToken = $.minioSessionToken;
         this.minioSsl = $.minioSsl;
+        this.minioUser = $.minioUser;
     }
 
     public static Builder builder() {
@@ -172,8 +244,12 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * use minio_user instead
+         * 
          */
-        public Builder minioAccessKey(Output<String> minioAccessKey) {
+        @Deprecated /* use minio_user instead */
+        public Builder minioAccessKey(@Nullable Output<String> minioAccessKey) {
             $.minioAccessKey = minioAccessKey;
             return this;
         }
@@ -183,7 +259,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * use minio_user instead
+         * 
          */
+        @Deprecated /* use minio_user instead */
         public Builder minioAccessKey(String minioAccessKey) {
             return minioAccessKey(Output.of(minioAccessKey));
         }
@@ -227,11 +307,23 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return minioCertFile(Output.of(minioCertFile));
         }
 
+        /**
+         * @param minioInsecure Disable SSL certificate verification (default: false)
+         * 
+         * @return builder
+         * 
+         */
         public Builder minioInsecure(@Nullable Output<Boolean> minioInsecure) {
             $.minioInsecure = minioInsecure;
             return this;
         }
 
+        /**
+         * @param minioInsecure Disable SSL certificate verification (default: false)
+         * 
+         * @return builder
+         * 
+         */
         public Builder minioInsecure(Boolean minioInsecure) {
             return minioInsecure(Output.of(minioInsecure));
         }
@@ -243,6 +335,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder minioKeyFile(String minioKeyFile) {
             return minioKeyFile(Output.of(minioKeyFile));
+        }
+
+        /**
+         * @param minioPassword Minio Password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minioPassword(@Nullable Output<String> minioPassword) {
+            $.minioPassword = minioPassword;
+            return this;
+        }
+
+        /**
+         * @param minioPassword Minio Password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minioPassword(String minioPassword) {
+            return minioPassword(Output.of(minioPassword));
         }
 
         /**
@@ -271,8 +384,12 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * use minio_password instead
+         * 
          */
-        public Builder minioSecretKey(Output<String> minioSecretKey) {
+        @Deprecated /* use minio_password instead */
+        public Builder minioSecretKey(@Nullable Output<String> minioSecretKey) {
             $.minioSecretKey = minioSecretKey;
             return this;
         }
@@ -282,7 +399,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * use minio_password instead
+         * 
          */
+        @Deprecated /* use minio_password instead */
         public Builder minioSecretKey(String minioSecretKey) {
             return minioSecretKey(Output.of(minioSecretKey));
         }
@@ -309,6 +430,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param minioSessionToken Minio Session Token
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minioSessionToken(@Nullable Output<String> minioSessionToken) {
+            $.minioSessionToken = minioSessionToken;
+            return this;
+        }
+
+        /**
+         * @param minioSessionToken Minio Session Token
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minioSessionToken(String minioSessionToken) {
+            return minioSessionToken(Output.of(minioSessionToken));
+        }
+
+        /**
          * @param minioSsl Minio SSL enabled (default: false)
          * 
          * @return builder
@@ -329,9 +471,28 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return minioSsl(Output.of(minioSsl));
         }
 
+        /**
+         * @param minioUser Minio User
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minioUser(@Nullable Output<String> minioUser) {
+            $.minioUser = minioUser;
+            return this;
+        }
+
+        /**
+         * @param minioUser Minio User
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minioUser(String minioUser) {
+            return minioUser(Output.of(minioUser));
+        }
+
         public ProviderArgs build() {
-            $.minioAccessKey = Objects.requireNonNull($.minioAccessKey, "expected parameter 'minioAccessKey' to be non-null");
-            $.minioSecretKey = Objects.requireNonNull($.minioSecretKey, "expected parameter 'minioSecretKey' to be non-null");
             $.minioServer = Objects.requireNonNull($.minioServer, "expected parameter 'minioServer' to be non-null");
             return $;
         }

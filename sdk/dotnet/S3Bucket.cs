@@ -39,6 +39,9 @@ namespace Pulumi.Minio
         [Output("acl")]
         public Output<string?> Acl { get; private set; } = null!;
 
+        [Output("arn")]
+        public Output<string> Arn { get; private set; } = null!;
+
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
 
@@ -131,6 +134,9 @@ namespace Pulumi.Minio
     {
         [Input("acl")]
         public Input<string>? Acl { get; set; }
+
+        [Input("arn")]
+        public Input<string>? Arn { get; set; }
 
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }

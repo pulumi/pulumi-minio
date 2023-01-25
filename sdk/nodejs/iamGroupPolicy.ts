@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as minio from "@pulumi/minio";
  *
  * const developer = new minio.IamGroup("developer", {});
- * const testPolicy = new minio.IamGroupPolicy("test_policy", {
+ * const testPolicy = new minio.IamGroupPolicy("testPolicy", {
  *     group: developer.id,
  *     policy: `{
  *   "Version":"2012-10-17",
@@ -26,12 +26,12 @@ import * as utilities from "./utilities";
  *     }
  *   ]
  * }
+ *
  * `,
  * });
- *
- * export const minioName = minio_iam_group_membership_developer.id;
- * export const minioPolicy = minio_iam_group_membership_developer.policy;
- * export const minioGroup = minio_iam_group_membership_developer.group;
+ * export const minioName = minio_iam_group_membership.developer.id;
+ * export const minioPolicy = minio_iam_group_membership.developer.policy;
+ * export const minioGroup = minio_iam_group_membership.developer.group;
  * ```
  */
 export class IamGroupPolicy extends pulumi.CustomResource {

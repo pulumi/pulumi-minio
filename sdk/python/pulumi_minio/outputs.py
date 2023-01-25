@@ -12,6 +12,8 @@ from . import outputs
 
 __all__ = [
     'IlmPolicyRule',
+    'S3BucketNotificationQueue',
+    'S3BucketVersioningVersioningConfiguration',
     'GetIamPolicyDocumentStatementResult',
     'GetIamPolicyDocumentStatementConditionResult',
 ]
@@ -56,6 +58,129 @@ class IlmPolicyRule(dict):
     @pulumi.getter
     def status(self) -> Optional[str]:
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class S3BucketNotificationQueue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queueArn":
+            suggest = "queue_arn"
+        elif key == "filterPrefix":
+            suggest = "filter_prefix"
+        elif key == "filterSuffix":
+            suggest = "filter_suffix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in S3BucketNotificationQueue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        S3BucketNotificationQueue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        S3BucketNotificationQueue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 events: Sequence[str],
+                 queue_arn: str,
+                 filter_prefix: Optional[str] = None,
+                 filter_suffix: Optional[str] = None,
+                 id: Optional[str] = None):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "events", events)
+        pulumi.set(__self__, "queue_arn", queue_arn)
+        if filter_prefix is not None:
+            pulumi.set(__self__, "filter_prefix", filter_prefix)
+        if filter_suffix is not None:
+            pulumi.set(__self__, "filter_suffix", filter_suffix)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def events(self) -> Sequence[str]:
+        return pulumi.get(self, "events")
+
+    @property
+    @pulumi.getter(name="queueArn")
+    def queue_arn(self) -> str:
+        return pulumi.get(self, "queue_arn")
+
+    @property
+    @pulumi.getter(name="filterPrefix")
+    def filter_prefix(self) -> Optional[str]:
+        return pulumi.get(self, "filter_prefix")
+
+    @property
+    @pulumi.getter(name="filterSuffix")
+    def filter_suffix(self) -> Optional[str]:
+        return pulumi.get(self, "filter_suffix")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class S3BucketVersioningVersioningConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeFolders":
+            suggest = "exclude_folders"
+        elif key == "excludedPrefixes":
+            suggest = "excluded_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in S3BucketVersioningVersioningConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        S3BucketVersioningVersioningConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        S3BucketVersioningVersioningConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 status: str,
+                 exclude_folders: Optional[bool] = None,
+                 excluded_prefixes: Optional[Sequence[str]] = None):
+        """
+        :param str status: Versioning status, one of "Enabled", "Suspended".
+        """
+        pulumi.set(__self__, "status", status)
+        if exclude_folders is not None:
+            pulumi.set(__self__, "exclude_folders", exclude_folders)
+        if excluded_prefixes is not None:
+            pulumi.set(__self__, "excluded_prefixes", excluded_prefixes)
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        Versioning status, one of "Enabled", "Suspended".
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="excludeFolders")
+    def exclude_folders(self) -> Optional[bool]:
+        return pulumi.get(self, "exclude_folders")
+
+    @property
+    @pulumi.getter(name="excludedPrefixes")
+    def excluded_prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "excluded_prefixes")
 
 
 @pulumi.output_type

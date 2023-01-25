@@ -298,10 +298,12 @@ class IamUser(pulumi.CustomResource):
             __props__.__dict__["disable_user"] = disable_user
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["name"] = name
-            __props__.__dict__["secret"] = secret
+            __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["tags"] = tags
             __props__.__dict__["update_secret"] = update_secret
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(IamUser, __self__).__init__(
             'minio:index/iamUser:IamUser',
             resource_name,

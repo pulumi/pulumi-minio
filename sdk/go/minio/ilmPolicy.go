@@ -35,8 +35,8 @@ import (
 //			}
 //			_, err = minio.NewIlmPolicy(ctx, "bucket-lifecycle-rules", &minio.IlmPolicyArgs{
 //				Bucket: bucket.Bucket,
-//				Rules: IlmPolicyRuleArray{
-//					&IlmPolicyRuleArgs{
+//				Rules: minio.IlmPolicyRuleArray{
+//					&minio.IlmPolicyRuleArgs{
 //						Id:         pulumi.String("expire-7d"),
 //						Expiration: pulumi.String("7"),
 //					},

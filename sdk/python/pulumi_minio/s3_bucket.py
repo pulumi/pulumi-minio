@@ -87,6 +87,7 @@ class S3BucketArgs:
 class _S3BucketState:
     def __init__(__self__, *,
                  acl: Optional[pulumi.Input[str]] = None,
+                 arn: Optional[pulumi.Input[str]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  bucket_domain_name: Optional[pulumi.Input[str]] = None,
                  bucket_prefix: Optional[pulumi.Input[str]] = None,
@@ -98,6 +99,8 @@ class _S3BucketState:
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
         if bucket_domain_name is not None:
@@ -117,6 +120,15 @@ class _S3BucketState:
     @acl.setter
     def acl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "acl", value)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
 
     @property
     @pulumi.getter
@@ -250,6 +262,7 @@ class S3Bucket(pulumi.CustomResource):
             __props__.__dict__["bucket_prefix"] = bucket_prefix
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["quota"] = quota
+            __props__.__dict__["arn"] = None
             __props__.__dict__["bucket_domain_name"] = None
         super(S3Bucket, __self__).__init__(
             'minio:index/s3Bucket:S3Bucket',
@@ -262,6 +275,7 @@ class S3Bucket(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acl: Optional[pulumi.Input[str]] = None,
+            arn: Optional[pulumi.Input[str]] = None,
             bucket: Optional[pulumi.Input[str]] = None,
             bucket_domain_name: Optional[pulumi.Input[str]] = None,
             bucket_prefix: Optional[pulumi.Input[str]] = None,
@@ -281,6 +295,7 @@ class S3Bucket(pulumi.CustomResource):
         __props__ = _S3BucketState.__new__(_S3BucketState)
 
         __props__.__dict__["acl"] = acl
+        __props__.__dict__["arn"] = arn
         __props__.__dict__["bucket"] = bucket
         __props__.__dict__["bucket_domain_name"] = bucket_domain_name
         __props__.__dict__["bucket_prefix"] = bucket_prefix
@@ -292,6 +307,11 @@ class S3Bucket(pulumi.CustomResource):
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "acl")
+
+    @property
+    @pulumi.getter
+    def arn(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter

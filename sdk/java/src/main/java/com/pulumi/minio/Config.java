@@ -15,8 +15,8 @@ public final class Config {
  * Minio Access Key
  * 
  */
-    public String minioAccessKey() {
-        return Codegen.stringProp("minioAccessKey").config(config).require();
+    public Optional<String> minioAccessKey() {
+        return Codegen.stringProp("minioAccessKey").config(config).get();
     }
 /**
  * Minio API Version (type: string, options: v2 or v4, default: v4)
@@ -31,11 +31,22 @@ public final class Config {
     public Optional<String> minioCertFile() {
         return Codegen.stringProp("minioCertFile").config(config).get();
     }
+/**
+ * Disable SSL certificate verification (default: false)
+ * 
+ */
     public Optional<Boolean> minioInsecure() {
         return Codegen.booleanProp("minioInsecure").config(config).get();
     }
     public Optional<String> minioKeyFile() {
         return Codegen.stringProp("minioKeyFile").config(config).get();
+    }
+/**
+ * Minio Password
+ * 
+ */
+    public Optional<String> minioPassword() {
+        return Codegen.stringProp("minioPassword").config(config).get();
     }
 /**
  * Minio Region (default: us-east-1)
@@ -48,8 +59,8 @@ public final class Config {
  * Minio Secret Key
  * 
  */
-    public String minioSecretKey() {
-        return Codegen.stringProp("minioSecretKey").config(config).require();
+    public Optional<String> minioSecretKey() {
+        return Codegen.stringProp("minioSecretKey").config(config).get();
     }
 /**
  * Minio Host and Port
@@ -59,10 +70,24 @@ public final class Config {
         return Codegen.stringProp("minioServer").config(config).require();
     }
 /**
+ * Minio Session Token
+ * 
+ */
+    public Optional<String> minioSessionToken() {
+        return Codegen.stringProp("minioSessionToken").config(config).get();
+    }
+/**
  * Minio SSL enabled (default: false)
  * 
  */
     public Optional<Boolean> minioSsl() {
         return Codegen.booleanProp("minioSsl").config(config).get();
+    }
+/**
+ * Minio User
+ * 
+ */
+    public Optional<String> minioUser() {
+        return Codegen.stringProp("minioUser").config(config).get();
     }
 }

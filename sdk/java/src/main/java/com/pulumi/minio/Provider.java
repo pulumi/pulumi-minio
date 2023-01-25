@@ -25,16 +25,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     /**
      * Minio Access Key
      * 
+     * @deprecated
+     * use minio_user instead
+     * 
      */
+    @Deprecated /* use minio_user instead */
     @Export(name="minioAccessKey", type=String.class, parameters={})
-    private Output<String> minioAccessKey;
+    private Output</* @Nullable */ String> minioAccessKey;
 
     /**
      * @return Minio Access Key
      * 
      */
-    public Output<String> minioAccessKey() {
-        return this.minioAccessKey;
+    public Output<Optional<String>> minioAccessKey() {
+        return Codegen.optional(this.minioAccessKey);
     }
     /**
      * Minio API Version (type: string, options: v2 or v4, default: v4)
@@ -69,6 +73,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.minioKeyFile);
     }
     /**
+     * Minio Password
+     * 
+     */
+    @Export(name="minioPassword", type=String.class, parameters={})
+    private Output</* @Nullable */ String> minioPassword;
+
+    /**
+     * @return Minio Password
+     * 
+     */
+    public Output<Optional<String>> minioPassword() {
+        return Codegen.optional(this.minioPassword);
+    }
+    /**
      * Minio Region (default: us-east-1)
      * 
      */
@@ -85,16 +103,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     /**
      * Minio Secret Key
      * 
+     * @deprecated
+     * use minio_password instead
+     * 
      */
+    @Deprecated /* use minio_password instead */
     @Export(name="minioSecretKey", type=String.class, parameters={})
-    private Output<String> minioSecretKey;
+    private Output</* @Nullable */ String> minioSecretKey;
 
     /**
      * @return Minio Secret Key
      * 
      */
-    public Output<String> minioSecretKey() {
-        return this.minioSecretKey;
+    public Output<Optional<String>> minioSecretKey() {
+        return Codegen.optional(this.minioSecretKey);
     }
     /**
      * Minio Host and Port
@@ -109,6 +131,34 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      */
     public Output<String> minioServer() {
         return this.minioServer;
+    }
+    /**
+     * Minio Session Token
+     * 
+     */
+    @Export(name="minioSessionToken", type=String.class, parameters={})
+    private Output</* @Nullable */ String> minioSessionToken;
+
+    /**
+     * @return Minio Session Token
+     * 
+     */
+    public Output<Optional<String>> minioSessionToken() {
+        return Codegen.optional(this.minioSessionToken);
+    }
+    /**
+     * Minio User
+     * 
+     */
+    @Export(name="minioUser", type=String.class, parameters={})
+    private Output</* @Nullable */ String> minioUser;
+
+    /**
+     * @return Minio User
+     * 
+     */
+    public Output<Optional<String>> minioUser() {
+        return Codegen.optional(this.minioUser);
     }
 
     /**

@@ -24,9 +24,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := minio.GetIamPolicyDocument(ctx, &GetIamPolicyDocumentArgs{
-//				Statements: []GetIamPolicyDocumentStatement{
-//					GetIamPolicyDocumentStatement{
+//			example, err := minio.GetIamPolicyDocument(ctx, &minio.GetIamPolicyDocumentArgs{
+//				Statements: pulumi.Array{
+//					minio.GetIamPolicyDocumentStatement{
 //						Sid: pulumi.StringRef("1"),
 //						Actions: []string{
 //							"s3:ListAllMyBuckets",
@@ -36,15 +36,15 @@ import (
 //							"arn:aws:s3:::*",
 //						},
 //					},
-//					GetIamPolicyDocumentStatement{
+//					minio.GetIamPolicyDocumentStatement{
 //						Actions: []string{
 //							"s3:ListBucket",
 //						},
 //						Resources: []string{
 //							"arn:aws:s3:::state-terraform-s3",
 //						},
-//						Conditions: []GetIamPolicyDocumentStatementCondition{
-//							GetIamPolicyDocumentStatementCondition{
+//						Conditions: []minio.GetIamPolicyDocumentStatementCondition{
+//							{
 //								Test:     "StringLike",
 //								Variable: "s3:prefix",
 //								Values: []string{
@@ -54,7 +54,7 @@ import (
 //							},
 //						},
 //					},
-//					GetIamPolicyDocumentStatement{
+//					minio.GetIamPolicyDocumentStatement{
 //						Actions: []string{
 //							"s3:PutObject",
 //						},
@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			_, err = minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
-//				Policy: pulumi.String(example.Json),
+//				Policy: *pulumi.String(example.Json),
 //			})
 //			if err != nil {
 //				return err
