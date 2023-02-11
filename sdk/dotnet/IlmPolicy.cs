@@ -34,7 +34,12 @@ namespace Pulumi.Minio
     ///             new Minio.Inputs.IlmPolicyRuleArgs
     ///             {
     ///                 Id = "expire-7d",
-    ///                 Expiration = "7",
+    ///                 Expiration = "7d",
+    ///                 Filter = "prefix/",
+    ///                 Tags = 
+    ///                 {
+    ///                     { "app", "myapp" },
+    ///                 },
     ///             },
     ///         },
     ///     });

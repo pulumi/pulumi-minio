@@ -21,13 +21,23 @@ export interface GetIamPolicyDocumentStatementCondition {
 }
 
 export interface IlmPolicyRule {
+    /**
+     * The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
+     */
     expiration?: string;
+    /**
+     * Correspond to "prefix" value
+     */
     filter?: string;
     /**
      * The ID of this resource.
      */
     id: string;
     status: string;
+    /**
+     * List of tags to use in filter
+     */
+    tags?: {[key: string]: any};
 }
 
 export interface S3BucketNotificationQueue {

@@ -36,13 +36,23 @@ export interface GetIamPolicyDocumentStatementConditionArgs {
 }
 
 export interface IlmPolicyRule {
+    /**
+     * The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
+     */
     expiration?: pulumi.Input<string>;
+    /**
+     * Correspond to "prefix" value
+     */
     filter?: pulumi.Input<string>;
     /**
      * The ID of this resource.
      */
     id: pulumi.Input<string>;
     status?: pulumi.Input<string>;
+    /**
+     * List of tags to use in filter
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 export interface S3BucketNotificationQueue {

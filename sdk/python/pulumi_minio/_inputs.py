@@ -23,9 +23,13 @@ class IlmPolicyRuleArgs:
                  id: pulumi.Input[str],
                  expiration: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         :param pulumi.Input[str] id: The ID of this resource.
+        :param pulumi.Input[str] expiration: The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
+        :param pulumi.Input[str] filter: Correspond to "prefix" value
+        :param pulumi.Input[Mapping[str, Any]] tags: List of tags to use in filter
         """
         pulumi.set(__self__, "id", id)
         if expiration is not None:
@@ -34,6 +38,8 @@ class IlmPolicyRuleArgs:
             pulumi.set(__self__, "filter", filter)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -50,6 +56,9 @@ class IlmPolicyRuleArgs:
     @property
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
+        """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
@@ -59,6 +68,9 @@ class IlmPolicyRuleArgs:
     @property
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Correspond to "prefix" value
+        """
         return pulumi.get(self, "filter")
 
     @filter.setter
@@ -73,6 +85,18 @@ class IlmPolicyRuleArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        List of tags to use in filter
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
