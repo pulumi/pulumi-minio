@@ -24,9 +24,13 @@ class IlmPolicyRule(dict):
                  id: str,
                  expiration: Optional[str] = None,
                  filter: Optional[str] = None,
-                 status: Optional[str] = None):
+                 status: Optional[str] = None,
+                 tags: Optional[Mapping[str, Any]] = None):
         """
         :param str id: The ID of this resource.
+        :param str expiration: The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
+        :param str filter: Correspond to "prefix" value
+        :param Mapping[str, Any] tags: List of tags to use in filter
         """
         pulumi.set(__self__, "id", id)
         if expiration is not None:
@@ -35,6 +39,8 @@ class IlmPolicyRule(dict):
             pulumi.set(__self__, "filter", filter)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -47,17 +53,31 @@ class IlmPolicyRule(dict):
     @property
     @pulumi.getter
     def expiration(self) -> Optional[str]:
+        """
+        The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
+        """
         return pulumi.get(self, "expiration")
 
     @property
     @pulumi.getter
     def filter(self) -> Optional[str]:
+        """
+        Correspond to "prefix" value
+        """
         return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        List of tags to use in filter
+        """
+        return pulumi.get(self, "tags")
 
 
 @pulumi.output_type

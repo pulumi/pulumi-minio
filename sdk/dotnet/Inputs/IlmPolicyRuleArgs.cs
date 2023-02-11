@@ -12,9 +12,15 @@ namespace Pulumi.Minio.Inputs
 
     public sealed class IlmPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
+        /// </summary>
         [Input("expiration")]
         public Input<string>? Expiration { get; set; }
 
+        /// <summary>
+        /// Correspond to "prefix" value
+        /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
@@ -26,6 +32,18 @@ namespace Pulumi.Minio.Inputs
 
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// List of tags to use in filter
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public IlmPolicyRuleArgs()
         {

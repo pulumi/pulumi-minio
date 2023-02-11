@@ -5,7 +5,9 @@ package com.pulumi.minio.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,16 +17,32 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final IlmPolicyRuleArgs Empty = new IlmPolicyRuleArgs();
 
+    /**
+     * The expiration as a duration (5d), date (1970-01-01), or &#34;DeleteMarker&#34;
+     * 
+     */
     @Import(name="expiration")
     private @Nullable Output<String> expiration;
 
+    /**
+     * @return The expiration as a duration (5d), date (1970-01-01), or &#34;DeleteMarker&#34;
+     * 
+     */
     public Optional<Output<String>> expiration() {
         return Optional.ofNullable(this.expiration);
     }
 
+    /**
+     * Correspond to &#34;prefix&#34; value
+     * 
+     */
     @Import(name="filter")
     private @Nullable Output<String> filter;
 
+    /**
+     * @return Correspond to &#34;prefix&#34; value
+     * 
+     */
     public Optional<Output<String>> filter() {
         return Optional.ofNullable(this.filter);
     }
@@ -51,6 +69,21 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * List of tags to use in filter
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return List of tags to use in filter
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private IlmPolicyRuleArgs() {}
 
     private IlmPolicyRuleArgs(IlmPolicyRuleArgs $) {
@@ -58,6 +91,7 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.filter = $.filter;
         this.id = $.id;
         this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -78,20 +112,44 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
             $ = new IlmPolicyRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param expiration The expiration as a duration (5d), date (1970-01-01), or &#34;DeleteMarker&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiration(@Nullable Output<String> expiration) {
             $.expiration = expiration;
             return this;
         }
 
+        /**
+         * @param expiration The expiration as a duration (5d), date (1970-01-01), or &#34;DeleteMarker&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder expiration(String expiration) {
             return expiration(Output.of(expiration));
         }
 
+        /**
+         * @param filter Correspond to &#34;prefix&#34; value
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(@Nullable Output<String> filter) {
             $.filter = filter;
             return this;
         }
 
+        /**
+         * @param filter Correspond to &#34;prefix&#34; value
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(String filter) {
             return filter(Output.of(filter));
         }
@@ -124,6 +182,27 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags List of tags to use in filter
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags List of tags to use in filter
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public IlmPolicyRuleArgs build() {
