@@ -13,13 +13,23 @@ namespace Pulumi.Minio.Outputs
     [OutputType]
     public sealed class IlmPolicyRule
     {
+        /// <summary>
+        /// The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
+        /// </summary>
         public readonly string? Expiration;
+        /// <summary>
+        /// Correspond to "prefix" value
+        /// </summary>
         public readonly string? Filter;
         /// <summary>
         /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         public readonly string? Status;
+        /// <summary>
+        /// List of tags to use in filter
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? Tags;
 
         [OutputConstructor]
         private IlmPolicyRule(
@@ -29,12 +39,15 @@ namespace Pulumi.Minio.Outputs
 
             string id,
 
-            string? status)
+            string? status,
+
+            ImmutableDictionary<string, object>? tags)
         {
             Expiration = expiration;
             Filter = filter;
             Id = id;
             Status = status;
+            Tags = tags;
         }
     }
 }

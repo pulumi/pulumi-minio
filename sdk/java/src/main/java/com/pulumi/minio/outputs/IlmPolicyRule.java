@@ -4,14 +4,24 @@
 package com.pulumi.minio.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class IlmPolicyRule {
+    /**
+     * @return The expiration as a duration (5d), date (1970-01-01), or &#34;DeleteMarker&#34;
+     * 
+     */
     private @Nullable String expiration;
+    /**
+     * @return Correspond to &#34;prefix&#34; value
+     * 
+     */
     private @Nullable String filter;
     /**
      * @return The ID of this resource.
@@ -19,11 +29,24 @@ public final class IlmPolicyRule {
      */
     private String id;
     private @Nullable String status;
+    /**
+     * @return List of tags to use in filter
+     * 
+     */
+    private @Nullable Map<String,Object> tags;
 
     private IlmPolicyRule() {}
+    /**
+     * @return The expiration as a duration (5d), date (1970-01-01), or &#34;DeleteMarker&#34;
+     * 
+     */
     public Optional<String> expiration() {
         return Optional.ofNullable(this.expiration);
     }
+    /**
+     * @return Correspond to &#34;prefix&#34; value
+     * 
+     */
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
     }
@@ -36,6 +59,13 @@ public final class IlmPolicyRule {
     }
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
+    }
+    /**
+     * @return List of tags to use in filter
+     * 
+     */
+    public Map<String,Object> tags() {
+        return this.tags == null ? Map.of() : this.tags;
     }
 
     public static Builder builder() {
@@ -51,6 +81,7 @@ public final class IlmPolicyRule {
         private @Nullable String filter;
         private String id;
         private @Nullable String status;
+        private @Nullable Map<String,Object> tags;
         public Builder() {}
         public Builder(IlmPolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -58,6 +89,7 @@ public final class IlmPolicyRule {
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -80,12 +112,18 @@ public final class IlmPolicyRule {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder tags(@Nullable Map<String,Object> tags) {
+            this.tags = tags;
+            return this;
+        }
         public IlmPolicyRule build() {
             final var o = new IlmPolicyRule();
             o.expiration = expiration;
             o.filter = filter;
             o.id = id;
             o.status = status;
+            o.tags = tags;
             return o;
         }
     }
