@@ -18,8 +18,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-minio/sdk/go/minio"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -32,21 +30,7 @@ import (
 //				return err
 //			}
 //			testPolicy, err := minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
-//				Policy: pulumi.String(fmt.Sprintf(`{
-//	  "Version":"2012-10-17",
-//	  "Statement": [
-//	    {
-//	      "Sid":"ListAllBucket",
-//	      "Effect": "Allow",
-//	      "Action": ["s3:PutObject"],
-//	      "Principal":"*",
-//	      "Resource": "arn:aws:s3:::state-terraform-s3/*"
-//	    }
-//	  ]
-//	}
-//
-// `)),
-//
+//				Policy: pulumi.String("{\n  \"Version\":\"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\":\"ListAllBucket\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\"s3:PutObject\"],\n      \"Principal\":\"*\",\n      \"Resource\": \"arn:aws:s3:::state-terraform-s3/*\"\n    }\n  ]\n}\n\n"),
 //			})
 //			if err != nil {
 //				return err
