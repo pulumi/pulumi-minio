@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
@@ -55,7 +56,6 @@ import javax.annotation.Nullable;
  *     }
  *   ]
  * }
- * 
  *             &#34;&#34;&#34;)
  *             .build());
  * 
@@ -67,6 +67,11 @@ import javax.annotation.Nullable;
  *         ctx.export(&#34;minioName&#34;, developerIamGroupPolicyAttachment.id());
  *         ctx.export(&#34;minioUsers&#34;, developerIamGroupPolicyAttachment.groupName());
  *         ctx.export(&#34;minioGroup&#34;, developerIamGroupPolicyAttachment.policyName());
+ *         var developerIndex_iamGroupPolicyAttachmentIamGroupPolicyAttachment = new IamGroupPolicyAttachment(&#34;developerIndex/iamGroupPolicyAttachmentIamGroupPolicyAttachment&#34;, IamGroupPolicyAttachmentArgs.builder()        
+ *             .userName(&#34;OU=Unit,DC=example,DC=com&#34;)
+ *             .policyName(minio_iam_policy.test_policy().id())
+ *             .build());
+ * 
  *     }
  * }
  * ```

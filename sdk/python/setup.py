@@ -38,6 +38,7 @@ def readme():
 
 
 setup(name='pulumi_minio',
+      python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating and managing minio cloud resources.",
       long_description=readme(),

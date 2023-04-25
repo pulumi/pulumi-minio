@@ -30,21 +30,28 @@ import (
 //				return err
 //			}
 //			testPolicy, err := minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
-//				Policy: pulumi.String("{\n  \"Version\":\"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\":\"ListAllBucket\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\"s3:PutObject\"],\n      \"Principal\":\"*\",\n      \"Resource\": \"arn:aws:s3:::state-terraform-s3/*\"\n    }\n  ]\n}\n\n"),
+//				Policy: pulumi.String("{\n  \"Version\":\"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\":\"ListAllBucket\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\"s3:PutObject\"],\n      \"Principal\":\"*\",\n      \"Resource\": \"arn:aws:s3:::state-terraform-s3/*\"\n    }\n  ]\n}\n"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			developer, err := minio.NewIamUserPolicyAttachment(ctx, "developer", &minio.IamUserPolicyAttachmentArgs{
-//				PolicyName: testPolicy.ID(),
+//			developerIamUserPolicyAttachment, err := minio.NewIamUserPolicyAttachment(ctx, "developerIamUserPolicyAttachment", &minio.IamUserPolicyAttachmentArgs{
 //				UserName:   testUser.ID(),
+//				PolicyName: testPolicy.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("minioName", developer.ID())
-//			ctx.Export("minioUsers", developer.UserName)
-//			ctx.Export("minioGroup", developer.PolicyName)
+//			ctx.Export("minioName", developerIamUserPolicyAttachment.ID())
+//			ctx.Export("minioUsers", developerIamUserPolicyAttachment.UserName)
+//			ctx.Export("minioGroup", developerIamUserPolicyAttachment.PolicyName)
+//			_, err = minio.NewIamUserPolicyAttachment(ctx, "developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment", &minio.IamUserPolicyAttachmentArgs{
+//				UserName:   pulumi.String("CN=My User,OU=Unit,DC=example,DC=com"),
+//				PolicyName: testPolicy.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

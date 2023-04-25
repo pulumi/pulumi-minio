@@ -101,14 +101,16 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
             }
           ]
         }
-
         \"\"\")
-        developer = minio.IamUserPolicyAttachment("developer",
-            policy_name=test_policy.id,
-            user_name=test_user.id)
-        pulumi.export("minioName", developer.id)
-        pulumi.export("minioUsers", developer.user_name)
-        pulumi.export("minioGroup", developer.policy_name)
+        developer_iam_user_policy_attachment = minio.IamUserPolicyAttachment("developerIamUserPolicyAttachment",
+            user_name=test_user.id,
+            policy_name=test_policy.id)
+        pulumi.export("minioName", developer_iam_user_policy_attachment.id)
+        pulumi.export("minioUsers", developer_iam_user_policy_attachment.user_name)
+        pulumi.export("minioGroup", developer_iam_user_policy_attachment.policy_name)
+        developer_index_iam_user_policy_attachment_iam_user_policy_attachment = minio.IamUserPolicyAttachment("developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment",
+            user_name="CN=My User,OU=Unit,DC=example,DC=com",
+            policy_name=test_policy.id)
         ```
 
         :param str resource_name: The name of the resource.
@@ -140,14 +142,16 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
             }
           ]
         }
-
         \"\"\")
-        developer = minio.IamUserPolicyAttachment("developer",
-            policy_name=test_policy.id,
-            user_name=test_user.id)
-        pulumi.export("minioName", developer.id)
-        pulumi.export("minioUsers", developer.user_name)
-        pulumi.export("minioGroup", developer.policy_name)
+        developer_iam_user_policy_attachment = minio.IamUserPolicyAttachment("developerIamUserPolicyAttachment",
+            user_name=test_user.id,
+            policy_name=test_policy.id)
+        pulumi.export("minioName", developer_iam_user_policy_attachment.id)
+        pulumi.export("minioUsers", developer_iam_user_policy_attachment.user_name)
+        pulumi.export("minioGroup", developer_iam_user_policy_attachment.policy_name)
+        developer_index_iam_user_policy_attachment_iam_user_policy_attachment = minio.IamUserPolicyAttachment("developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment",
+            user_name="CN=My User,OU=Unit,DC=example,DC=com",
+            policy_name=test_policy.id)
         ```
 
         :param str resource_name: The name of the resource.
