@@ -16,6 +16,7 @@ namespace Pulumi.Minio
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 

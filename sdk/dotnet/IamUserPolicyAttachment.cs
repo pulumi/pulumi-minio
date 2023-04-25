@@ -14,6 +14,7 @@ namespace Pulumi.Minio
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Minio = Pulumi.Minio;
     /// 
@@ -35,21 +36,26 @@ namespace Pulumi.Minio
     ///     }
     ///   ]
     /// }
-    /// 
     /// ",
     ///     });
     /// 
-    ///     var developer = new Minio.IamUserPolicyAttachment("developer", new()
+    ///     var developerIamUserPolicyAttachment = new Minio.IamUserPolicyAttachment("developerIamUserPolicyAttachment", new()
     ///     {
-    ///         PolicyName = testPolicy.Id,
     ///         UserName = testUser.Id,
+    ///         PolicyName = testPolicy.Id,
+    ///     });
+    /// 
+    ///     var developerIndex_iamUserPolicyAttachmentIamUserPolicyAttachment = new Minio.IamUserPolicyAttachment("developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment", new()
+    ///     {
+    ///         UserName = "CN=My User,OU=Unit,DC=example,DC=com",
+    ///         PolicyName = testPolicy.Id,
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["minioName"] = developer.Id,
-    ///         ["minioUsers"] = developer.UserName,
-    ///         ["minioGroup"] = developer.PolicyName,
+    ///         ["minioName"] = developerIamUserPolicyAttachment.Id,
+    ///         ["minioUsers"] = developerIamUserPolicyAttachment.UserName,
+    ///         ["minioGroup"] = developerIamUserPolicyAttachment.PolicyName,
     ///     };
     /// });
     /// ```

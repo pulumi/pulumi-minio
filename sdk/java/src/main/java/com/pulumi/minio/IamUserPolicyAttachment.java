@@ -55,18 +55,22 @@ import javax.annotation.Nullable;
  *     }
  *   ]
  * }
- * 
  *             &#34;&#34;&#34;)
  *             .build());
  * 
- *         var developer = new IamUserPolicyAttachment(&#34;developer&#34;, IamUserPolicyAttachmentArgs.builder()        
- *             .policyName(testPolicy.id())
+ *         var developerIamUserPolicyAttachment = new IamUserPolicyAttachment(&#34;developerIamUserPolicyAttachment&#34;, IamUserPolicyAttachmentArgs.builder()        
  *             .userName(testUser.id())
+ *             .policyName(testPolicy.id())
  *             .build());
  * 
- *         ctx.export(&#34;minioName&#34;, developer.id());
- *         ctx.export(&#34;minioUsers&#34;, developer.userName());
- *         ctx.export(&#34;minioGroup&#34;, developer.policyName());
+ *         ctx.export(&#34;minioName&#34;, developerIamUserPolicyAttachment.id());
+ *         ctx.export(&#34;minioUsers&#34;, developerIamUserPolicyAttachment.userName());
+ *         ctx.export(&#34;minioGroup&#34;, developerIamUserPolicyAttachment.policyName());
+ *         var developerIndex_iamUserPolicyAttachmentIamUserPolicyAttachment = new IamUserPolicyAttachment(&#34;developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment&#34;, IamUserPolicyAttachmentArgs.builder()        
+ *             .userName(&#34;CN=My User,OU=Unit,DC=example,DC=com&#34;)
+ *             .policyName(testPolicy.id())
+ *             .build());
+ * 
  *     }
  * }
  * ```

@@ -24,15 +24,18 @@ import * as utilities from "./utilities";
  *     }
  *   ]
  * }
- *
  * `});
- * const developer = new minio.IamUserPolicyAttachment("developer", {
- *     policyName: testPolicy.id,
+ * const developerIamUserPolicyAttachment = new minio.IamUserPolicyAttachment("developerIamUserPolicyAttachment", {
  *     userName: testUser.id,
+ *     policyName: testPolicy.id,
  * });
- * export const minioName = developer.id;
- * export const minioUsers = developer.userName;
- * export const minioGroup = developer.policyName;
+ * export const minioName = developerIamUserPolicyAttachment.id;
+ * export const minioUsers = developerIamUserPolicyAttachment.userName;
+ * export const minioGroup = developerIamUserPolicyAttachment.policyName;
+ * const developerIndex_iamUserPolicyAttachmentIamUserPolicyAttachment = new minio.IamUserPolicyAttachment("developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment", {
+ *     userName: "CN=My User,OU=Unit,DC=example,DC=com",
+ *     policyName: testPolicy.id,
+ * });
  * ```
  */
 export class IamUserPolicyAttachment extends pulumi.CustomResource {
