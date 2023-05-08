@@ -993,6 +993,10 @@
                 "forceDestroy": {
                     "type": "boolean"
                 },
+                "objectLocking": {
+                    "type": "boolean",
+                    "description": "- Whether object locking should be enabled for the bucket.\n"
+                },
                 "quota": {
                     "type": "integer",
                     "description": "The limit of the amount of data in the bucket (bytes).\n"
@@ -1017,6 +1021,11 @@
                 },
                 "forceDestroy": {
                     "type": "boolean"
+                },
+                "objectLocking": {
+                    "type": "boolean",
+                    "description": "- Whether object locking should be enabled for the bucket.\n",
+                    "willReplaceOnChanges": true
                 },
                 "quota": {
                     "type": "integer",
@@ -1045,6 +1054,11 @@
                     },
                     "forceDestroy": {
                         "type": "boolean"
+                    },
+                    "objectLocking": {
+                        "type": "boolean",
+                        "description": "- Whether object locking should be enabled for the bucket.\n",
+                        "willReplaceOnChanges": true
                     },
                     "quota": {
                         "type": "integer",
