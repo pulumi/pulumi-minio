@@ -60,6 +60,21 @@ public final class S3BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * - Whether object locking should be enabled for the bucket.
+     * 
+     */
+    @Import(name="objectLocking")
+    private @Nullable Output<Boolean> objectLocking;
+
+    /**
+     * @return - Whether object locking should be enabled for the bucket.
+     * 
+     */
+    public Optional<Output<Boolean>> objectLocking() {
+        return Optional.ofNullable(this.objectLocking);
+    }
+
+    /**
      * The limit of the amount of data in the bucket (bytes).
      * 
      */
@@ -83,6 +98,7 @@ public final class S3BucketState extends com.pulumi.resources.ResourceArgs {
         this.bucketDomainName = $.bucketDomainName;
         this.bucketPrefix = $.bucketPrefix;
         this.forceDestroy = $.forceDestroy;
+        this.objectLocking = $.objectLocking;
         this.quota = $.quota;
     }
 
@@ -156,6 +172,27 @@ public final class S3BucketState extends com.pulumi.resources.ResourceArgs {
 
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
+        }
+
+        /**
+         * @param objectLocking - Whether object locking should be enabled for the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectLocking(@Nullable Output<Boolean> objectLocking) {
+            $.objectLocking = objectLocking;
+            return this;
+        }
+
+        /**
+         * @param objectLocking - Whether object locking should be enabled for the bucket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectLocking(Boolean objectLocking) {
+            return objectLocking(Output.of(objectLocking));
         }
 
         /**

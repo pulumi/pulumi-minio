@@ -47,6 +47,8 @@ type S3Bucket struct {
 	BucketDomainName pulumi.StringOutput    `pulumi:"bucketDomainName"`
 	BucketPrefix     pulumi.StringPtrOutput `pulumi:"bucketPrefix"`
 	ForceDestroy     pulumi.BoolPtrOutput   `pulumi:"forceDestroy"`
+	// - Whether object locking should be enabled for the bucket.
+	ObjectLocking pulumi.BoolPtrOutput `pulumi:"objectLocking"`
 	// The limit of the amount of data in the bucket (bytes).
 	Quota pulumi.IntPtrOutput `pulumi:"quota"`
 }
@@ -86,6 +88,8 @@ type s3bucketState struct {
 	BucketDomainName *string `pulumi:"bucketDomainName"`
 	BucketPrefix     *string `pulumi:"bucketPrefix"`
 	ForceDestroy     *bool   `pulumi:"forceDestroy"`
+	// - Whether object locking should be enabled for the bucket.
+	ObjectLocking *bool `pulumi:"objectLocking"`
 	// The limit of the amount of data in the bucket (bytes).
 	Quota *int `pulumi:"quota"`
 }
@@ -97,6 +101,8 @@ type S3BucketState struct {
 	BucketDomainName pulumi.StringPtrInput
 	BucketPrefix     pulumi.StringPtrInput
 	ForceDestroy     pulumi.BoolPtrInput
+	// - Whether object locking should be enabled for the bucket.
+	ObjectLocking pulumi.BoolPtrInput
 	// The limit of the amount of data in the bucket (bytes).
 	Quota pulumi.IntPtrInput
 }
@@ -110,6 +116,8 @@ type s3bucketArgs struct {
 	Bucket       *string `pulumi:"bucket"`
 	BucketPrefix *string `pulumi:"bucketPrefix"`
 	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	// - Whether object locking should be enabled for the bucket.
+	ObjectLocking *bool `pulumi:"objectLocking"`
 	// The limit of the amount of data in the bucket (bytes).
 	Quota *int `pulumi:"quota"`
 }
@@ -120,6 +128,8 @@ type S3BucketArgs struct {
 	Bucket       pulumi.StringPtrInput
 	BucketPrefix pulumi.StringPtrInput
 	ForceDestroy pulumi.BoolPtrInput
+	// - Whether object locking should be enabled for the bucket.
+	ObjectLocking pulumi.BoolPtrInput
 	// The limit of the amount of data in the bucket (bytes).
 	Quota pulumi.IntPtrInput
 }
@@ -233,6 +243,11 @@ func (o S3BucketOutput) BucketPrefix() pulumi.StringPtrOutput {
 
 func (o S3BucketOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *S3Bucket) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// - Whether object locking should be enabled for the bucket.
+func (o S3BucketOutput) ObjectLocking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3Bucket) pulumi.BoolPtrOutput { return v.ObjectLocking }).(pulumi.BoolPtrOutput)
 }
 
 // The limit of the amount of data in the bucket (bytes).

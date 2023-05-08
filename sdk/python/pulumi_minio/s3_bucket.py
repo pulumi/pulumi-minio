@@ -18,9 +18,11 @@ class S3BucketArgs:
                  bucket: Optional[pulumi.Input[str]] = None,
                  bucket_prefix: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 object_locking: Optional[pulumi.Input[bool]] = None,
                  quota: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a S3Bucket resource.
+        :param pulumi.Input[bool] object_locking: - Whether object locking should be enabled for the bucket.
         :param pulumi.Input[int] quota: The limit of the amount of data in the bucket (bytes).
         """
         if acl is not None:
@@ -31,6 +33,8 @@ class S3BucketArgs:
             pulumi.set(__self__, "bucket_prefix", bucket_prefix)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if object_locking is not None:
+            pulumi.set(__self__, "object_locking", object_locking)
         if quota is not None:
             pulumi.set(__self__, "quota", quota)
 
@@ -71,6 +75,18 @@ class S3BucketArgs:
         pulumi.set(self, "force_destroy", value)
 
     @property
+    @pulumi.getter(name="objectLocking")
+    def object_locking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        - Whether object locking should be enabled for the bucket.
+        """
+        return pulumi.get(self, "object_locking")
+
+    @object_locking.setter
+    def object_locking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "object_locking", value)
+
+    @property
     @pulumi.getter
     def quota(self) -> Optional[pulumi.Input[int]]:
         """
@@ -92,9 +108,11 @@ class _S3BucketState:
                  bucket_domain_name: Optional[pulumi.Input[str]] = None,
                  bucket_prefix: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 object_locking: Optional[pulumi.Input[bool]] = None,
                  quota: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering S3Bucket resources.
+        :param pulumi.Input[bool] object_locking: - Whether object locking should be enabled for the bucket.
         :param pulumi.Input[int] quota: The limit of the amount of data in the bucket (bytes).
         """
         if acl is not None:
@@ -109,6 +127,8 @@ class _S3BucketState:
             pulumi.set(__self__, "bucket_prefix", bucket_prefix)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if object_locking is not None:
+            pulumi.set(__self__, "object_locking", object_locking)
         if quota is not None:
             pulumi.set(__self__, "quota", quota)
 
@@ -167,6 +187,18 @@ class _S3BucketState:
         pulumi.set(self, "force_destroy", value)
 
     @property
+    @pulumi.getter(name="objectLocking")
+    def object_locking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        - Whether object locking should be enabled for the bucket.
+        """
+        return pulumi.get(self, "object_locking")
+
+    @object_locking.setter
+    def object_locking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "object_locking", value)
+
+    @property
     @pulumi.getter
     def quota(self) -> Optional[pulumi.Input[int]]:
         """
@@ -188,6 +220,7 @@ class S3Bucket(pulumi.CustomResource):
                  bucket: Optional[pulumi.Input[str]] = None,
                  bucket_prefix: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 object_locking: Optional[pulumi.Input[bool]] = None,
                  quota: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -206,6 +239,7 @@ class S3Bucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] object_locking: - Whether object locking should be enabled for the bucket.
         :param pulumi.Input[int] quota: The limit of the amount of data in the bucket (bytes).
         """
         ...
@@ -247,6 +281,7 @@ class S3Bucket(pulumi.CustomResource):
                  bucket: Optional[pulumi.Input[str]] = None,
                  bucket_prefix: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 object_locking: Optional[pulumi.Input[bool]] = None,
                  quota: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -261,6 +296,7 @@ class S3Bucket(pulumi.CustomResource):
             __props__.__dict__["bucket"] = bucket
             __props__.__dict__["bucket_prefix"] = bucket_prefix
             __props__.__dict__["force_destroy"] = force_destroy
+            __props__.__dict__["object_locking"] = object_locking
             __props__.__dict__["quota"] = quota
             __props__.__dict__["arn"] = None
             __props__.__dict__["bucket_domain_name"] = None
@@ -280,6 +316,7 @@ class S3Bucket(pulumi.CustomResource):
             bucket_domain_name: Optional[pulumi.Input[str]] = None,
             bucket_prefix: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
+            object_locking: Optional[pulumi.Input[bool]] = None,
             quota: Optional[pulumi.Input[int]] = None) -> 'S3Bucket':
         """
         Get an existing S3Bucket resource's state with the given name, id, and optional extra
@@ -288,6 +325,7 @@ class S3Bucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] object_locking: - Whether object locking should be enabled for the bucket.
         :param pulumi.Input[int] quota: The limit of the amount of data in the bucket (bytes).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -300,6 +338,7 @@ class S3Bucket(pulumi.CustomResource):
         __props__.__dict__["bucket_domain_name"] = bucket_domain_name
         __props__.__dict__["bucket_prefix"] = bucket_prefix
         __props__.__dict__["force_destroy"] = force_destroy
+        __props__.__dict__["object_locking"] = object_locking
         __props__.__dict__["quota"] = quota
         return S3Bucket(resource_name, opts=opts, __props__=__props__)
 
@@ -332,6 +371,14 @@ class S3Bucket(pulumi.CustomResource):
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "force_destroy")
+
+    @property
+    @pulumi.getter(name="objectLocking")
+    def object_locking(self) -> pulumi.Output[Optional[bool]]:
+        """
+        - Whether object locking should be enabled for the bucket.
+        """
+        return pulumi.get(self, "object_locking")
 
     @property
     @pulumi.getter
