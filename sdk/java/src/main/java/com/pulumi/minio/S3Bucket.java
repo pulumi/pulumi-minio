@@ -90,6 +90,20 @@ public class S3Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDestroy);
     }
     /**
+     * - Whether object locking should be enabled for the bucket.
+     * 
+     */
+    @Export(name="objectLocking", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> objectLocking;
+
+    /**
+     * @return - Whether object locking should be enabled for the bucket.
+     * 
+     */
+    public Output<Optional<Boolean>> objectLocking() {
+        return Codegen.optional(this.objectLocking);
+    }
+    /**
      * The limit of the amount of data in the bucket (bytes).
      * 
      */

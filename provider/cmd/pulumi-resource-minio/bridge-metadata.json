@@ -5,7 +5,12 @@
                 "current": "minio:index/iamGroup:IamGroup"
             },
             "minio_iam_group_membership": {
-                "current": "minio:index/iamGroupMembership:IamGroupMembership"
+                "current": "minio:index/iamGroupMembership:IamGroupMembership",
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "minio_iam_group_policy": {
                 "current": "minio:index/iamGroupPolicy:IamGroupPolicy"
@@ -29,19 +34,48 @@
                 "current": "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment"
             },
             "minio_ilm_policy": {
-                "current": "minio:index/ilmPolicy:IlmPolicy"
+                "current": "minio:index/ilmPolicy:IlmPolicy",
+                "fields": {
+                    "rule": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "minio_s3_bucket": {
                 "current": "minio:index/s3Bucket:S3Bucket"
             },
             "minio_s3_bucket_notification": {
-                "current": "minio:index/s3BucketNotification:S3BucketNotification"
+                "current": "minio:index/s3BucketNotification:S3BucketNotification",
+                "fields": {
+                    "queue": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "events": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "minio_s3_bucket_policy": {
                 "current": "minio:index/s3BucketPolicy:S3BucketPolicy"
             },
             "minio_s3_bucket_versioning": {
-                "current": "minio:index/s3BucketVersioning:S3BucketVersioning"
+                "current": "minio:index/s3BucketVersioning:S3BucketVersioning",
+                "fields": {
+                    "versioning_configuration": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "excluded_prefixes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "minio_s3_object": {
                 "current": "minio:index/s3Object:S3Object"
@@ -134,7 +168,8 @@
             "minio:index/s3Bucket:S3Bucket": {
                 "bucketDomainName": "bucket_domain_name",
                 "bucketPrefix": "bucket_prefix",
-                "forceDestroy": "force_destroy"
+                "forceDestroy": "force_destroy",
+                "objectLocking": "object_locking"
             },
             "minio:index/s3BucketNotification:S3BucketNotification": {
                 "queues": "queue"

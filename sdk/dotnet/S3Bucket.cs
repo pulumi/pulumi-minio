@@ -56,6 +56,12 @@ namespace Pulumi.Minio
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         /// <summary>
+        /// - Whether object locking should be enabled for the bucket.
+        /// </summary>
+        [Output("objectLocking")]
+        public Output<bool?> ObjectLocking { get; private set; } = null!;
+
+        /// <summary>
         /// The limit of the amount of data in the bucket (bytes).
         /// </summary>
         [Output("quota")]
@@ -120,6 +126,12 @@ namespace Pulumi.Minio
         public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
+        /// - Whether object locking should be enabled for the bucket.
+        /// </summary>
+        [Input("objectLocking")]
+        public Input<bool>? ObjectLocking { get; set; }
+
+        /// <summary>
         /// The limit of the amount of data in the bucket (bytes).
         /// </summary>
         [Input("quota")]
@@ -150,6 +162,12 @@ namespace Pulumi.Minio
 
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
+
+        /// <summary>
+        /// - Whether object locking should be enabled for the bucket.
+        /// </summary>
+        [Input("objectLocking")]
+        public Input<bool>? ObjectLocking { get; set; }
 
         /// <summary>
         /// The limit of the amount of data in the bucket (bytes).
