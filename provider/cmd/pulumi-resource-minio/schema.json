@@ -1024,8 +1024,7 @@
                 },
                 "objectLocking": {
                     "type": "boolean",
-                    "description": "- Whether object locking should be enabled for the bucket.\n",
-                    "willReplaceOnChanges": true
+                    "description": "- Whether object locking should be enabled for the bucket.\n"
                 },
                 "quota": {
                     "type": "integer",
@@ -1057,8 +1056,7 @@
                     },
                     "objectLocking": {
                         "type": "boolean",
-                        "description": "- Whether object locking should be enabled for the bucket.\n",
-                        "willReplaceOnChanges": true
+                        "description": "- Whether object locking should be enabled for the bucket.\n"
                     },
                     "quota": {
                         "type": "integer",
