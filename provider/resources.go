@@ -131,7 +131,7 @@ func Provider() tfbridge.ProviderInfo {
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
-	prov.ComputeTokens(tfbridgetokens.SingleModule("minio_", mainMod,
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("minio_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
