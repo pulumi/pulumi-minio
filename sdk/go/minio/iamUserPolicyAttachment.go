@@ -30,7 +30,21 @@ import (
 //				return err
 //			}
 //			testPolicy, err := minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
-//				Policy: pulumi.String("{\n  \"Version\":\"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\":\"ListAllBucket\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\"s3:PutObject\"],\n      \"Principal\":\"*\",\n      \"Resource\": \"arn:aws:s3:::state-terraform-s3/*\"\n    }\n  ]\n}\n"),
+//				Policy: pulumi.String(`{
+//	  "Version":"2012-10-17",
+//	  "Statement": [
+//	    {
+//	      "Sid":"ListAllBucket",
+//	      "Effect": "Allow",
+//	      "Action": ["s3:PutObject"],
+//	      "Principal":"*",
+//	      "Resource": "arn:aws:s3:::state-terraform-s3/*"
+//	    }
+//	  ]
+//	}
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
