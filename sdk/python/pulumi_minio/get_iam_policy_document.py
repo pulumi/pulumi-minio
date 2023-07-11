@@ -155,13 +155,13 @@ def get_iam_policy_document(override_json: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('minio:index/getIamPolicyDocument:getIamPolicyDocument', __args__, opts=opts, typ=GetIamPolicyDocumentResult).value
 
     return AwaitableGetIamPolicyDocumentResult(
-        id=__ret__.id,
-        json=__ret__.json,
-        override_json=__ret__.override_json,
-        policy_id=__ret__.policy_id,
-        source_json=__ret__.source_json,
-        statements=__ret__.statements,
-        version=__ret__.version)
+        id=pulumi.get(__ret__, 'id'),
+        json=pulumi.get(__ret__, 'json'),
+        override_json=pulumi.get(__ret__, 'override_json'),
+        policy_id=pulumi.get(__ret__, 'policy_id'),
+        source_json=pulumi.get(__ret__, 'source_json'),
+        statements=pulumi.get(__ret__, 'statements'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_iam_policy_document)

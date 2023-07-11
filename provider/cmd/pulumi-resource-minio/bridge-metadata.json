@@ -83,7 +83,32 @@
         },
         "datasources": {
             "minio_iam_policy_document": {
-                "current": "minio:index/getIamPolicyDocument:getIamPolicyDocument"
+                "current": "minio:index/getIamPolicyDocument:getIamPolicyDocument",
+                "fields": {
+                    "statement": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
+                                "condition": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "resources": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     },

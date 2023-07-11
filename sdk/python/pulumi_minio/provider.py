@@ -90,6 +90,9 @@ class ProviderArgs:
         """
         Minio Access Key
         """
+        warnings.warn("""use minio_user instead""", DeprecationWarning)
+        pulumi.log.warn("""minio_access_key is deprecated: use minio_user instead""")
+
         return pulumi.get(self, "minio_access_key")
 
     @minio_access_key.setter
@@ -177,6 +180,9 @@ class ProviderArgs:
         """
         Minio Secret Key
         """
+        warnings.warn("""use minio_password instead""", DeprecationWarning)
+        pulumi.log.warn("""minio_secret_key is deprecated: use minio_password instead""")
+
         return pulumi.get(self, "minio_secret_key")
 
     @minio_secret_key.setter
@@ -340,6 +346,9 @@ class Provider(pulumi.ProviderResource):
         """
         Minio Access Key
         """
+        warnings.warn("""use minio_user instead""", DeprecationWarning)
+        pulumi.log.warn("""minio_access_key is deprecated: use minio_user instead""")
+
         return pulumi.get(self, "minio_access_key")
 
     @property
@@ -387,6 +396,9 @@ class Provider(pulumi.ProviderResource):
         """
         Minio Secret Key
         """
+        warnings.warn("""use minio_password instead""", DeprecationWarning)
+        pulumi.log.warn("""minio_secret_key is deprecated: use minio_password instead""")
+
         return pulumi.get(self, "minio_secret_key")
 
     @property
