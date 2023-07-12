@@ -112,12 +112,10 @@
         "minio:index/IlmPolicyRule:IlmPolicyRule": {
             "properties": {
                 "expiration": {
-                    "type": "string",
-                    "description": "The expiration as a duration (5d), date (1970-01-01), or \"DeleteMarker\"\n"
+                    "type": "string"
                 },
                 "filter": {
-                    "type": "string",
-                    "description": "Correspond to \"prefix\" value\n"
+                    "type": "string"
                 },
                 "id": {
                     "type": "string",
@@ -130,8 +128,7 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
-                    },
-                    "description": "List of tags to use in filter\n"
+                    }
                 }
             },
             "type": "object",
@@ -196,8 +193,7 @@
                     }
                 },
                 "status": {
-                    "type": "string",
-                    "description": "Versioning status, one of \"Enabled\", \"Suspended\".\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -925,7 +921,7 @@
             }
         },
         "minio:index/ilmPolicy:IlmPolicy": {
-            "description": "`minio.IlmPolicy` handles lifecycle settings for a given `minio.S3Bucket`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as minio from \"@pulumi/minio\";\n\nconst bucket = new minio.S3Bucket(\"bucket\", {bucket: \"bucket\"});\nconst bucket_lifecycle_rules = new minio.IlmPolicy(\"bucket-lifecycle-rules\", {\n    bucket: bucket.bucket,\n    rules: [{\n        id: \"expire-7d\",\n        expiration: \"7d\",\n        filter: \"prefix/\",\n        tags: {\n            app: \"myapp\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_minio as minio\n\nbucket = minio.S3Bucket(\"bucket\", bucket=\"bucket\")\nbucket_lifecycle_rules = minio.IlmPolicy(\"bucket-lifecycle-rules\",\n    bucket=bucket.bucket,\n    rules=[minio.IlmPolicyRuleArgs(\n        id=\"expire-7d\",\n        expiration=\"7d\",\n        filter=\"prefix/\",\n        tags={\n            \"app\": \"myapp\",\n        },\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Minio = Pulumi.Minio;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bucket = new Minio.S3Bucket(\"bucket\", new()\n    {\n        Bucket = \"bucket\",\n    });\n\n    var bucket_lifecycle_rules = new Minio.IlmPolicy(\"bucket-lifecycle-rules\", new()\n    {\n        Bucket = bucket.Bucket,\n        Rules = new[]\n        {\n            new Minio.Inputs.IlmPolicyRuleArgs\n            {\n                Id = \"expire-7d\",\n                Expiration = \"7d\",\n                Filter = \"prefix/\",\n                Tags = \n                {\n                    { \"app\", \"myapp\" },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-minio/sdk/go/minio\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbucket, err := minio.NewS3Bucket(ctx, \"bucket\", \u0026minio.S3BucketArgs{\n\t\t\tBucket: pulumi.String(\"bucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = minio.NewIlmPolicy(ctx, \"bucket-lifecycle-rules\", \u0026minio.IlmPolicyArgs{\n\t\t\tBucket: bucket.Bucket,\n\t\t\tRules: minio.IlmPolicyRuleArray{\n\t\t\t\t\u0026minio.IlmPolicyRuleArgs{\n\t\t\t\t\tId:         pulumi.String(\"expire-7d\"),\n\t\t\t\t\tExpiration: pulumi.String(\"7d\"),\n\t\t\t\t\tFilter:     pulumi.String(\"prefix/\"),\n\t\t\t\t\tTags: pulumi.AnyMap{\n\t\t\t\t\t\t\"app\": pulumi.Any(\"myapp\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.minio.S3Bucket;\nimport com.pulumi.minio.S3BucketArgs;\nimport com.pulumi.minio.IlmPolicy;\nimport com.pulumi.minio.IlmPolicyArgs;\nimport com.pulumi.minio.inputs.IlmPolicyRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bucket = new S3Bucket(\"bucket\", S3BucketArgs.builder()        \n            .bucket(\"bucket\")\n            .build());\n\n        var bucket_lifecycle_rules = new IlmPolicy(\"bucket-lifecycle-rules\", IlmPolicyArgs.builder()        \n            .bucket(bucket.bucket())\n            .rules(IlmPolicyRuleArgs.builder()\n                .id(\"expire-7d\")\n                .expiration(\"7d\")\n                .filter(\"prefix/\")\n                .tags(Map.of(\"app\", \"myapp\"))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bucket:\n    type: minio:S3Bucket\n    properties:\n      bucket: bucket\n  bucket-lifecycle-rules:\n    type: minio:IlmPolicy\n    properties:\n      bucket: ${bucket.bucket}\n      rules:\n        - id: expire-7d\n          expiration: 7d\n          filter: prefix/\n          tags:\n            app: myapp\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "`minio.IlmPolicy` handles lifecycle settings for a given `minio.S3Bucket`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as minio from \"@pulumi/minio\";\n\nconst bucket = new minio.S3Bucket(\"bucket\", {bucket: \"bucket\"});\nconst bucket_lifecycle_rules = new minio.IlmPolicy(\"bucket-lifecycle-rules\", {\n    bucket: bucket.bucket,\n    rules: [{\n        id: \"expire-7d\",\n        expiration: \"7d\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_minio as minio\n\nbucket = minio.S3Bucket(\"bucket\", bucket=\"bucket\")\nbucket_lifecycle_rules = minio.IlmPolicy(\"bucket-lifecycle-rules\",\n    bucket=bucket.bucket,\n    rules=[minio.IlmPolicyRuleArgs(\n        id=\"expire-7d\",\n        expiration=\"7d\",\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Minio = Pulumi.Minio;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bucket = new Minio.S3Bucket(\"bucket\", new()\n    {\n        Bucket = \"bucket\",\n    });\n\n    var bucket_lifecycle_rules = new Minio.IlmPolicy(\"bucket-lifecycle-rules\", new()\n    {\n        Bucket = bucket.Bucket,\n        Rules = new[]\n        {\n            new Minio.Inputs.IlmPolicyRuleArgs\n            {\n                Id = \"expire-7d\",\n                Expiration = \"7d\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-minio/sdk/go/minio\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbucket, err := minio.NewS3Bucket(ctx, \"bucket\", \u0026minio.S3BucketArgs{\n\t\t\tBucket: pulumi.String(\"bucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = minio.NewIlmPolicy(ctx, \"bucket-lifecycle-rules\", \u0026minio.IlmPolicyArgs{\n\t\t\tBucket: bucket.Bucket,\n\t\t\tRules: minio.IlmPolicyRuleArray{\n\t\t\t\t\u0026minio.IlmPolicyRuleArgs{\n\t\t\t\t\tId:         pulumi.String(\"expire-7d\"),\n\t\t\t\t\tExpiration: pulumi.String(\"7d\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.minio.S3Bucket;\nimport com.pulumi.minio.S3BucketArgs;\nimport com.pulumi.minio.IlmPolicy;\nimport com.pulumi.minio.IlmPolicyArgs;\nimport com.pulumi.minio.inputs.IlmPolicyRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bucket = new S3Bucket(\"bucket\", S3BucketArgs.builder()        \n            .bucket(\"bucket\")\n            .build());\n\n        var bucket_lifecycle_rules = new IlmPolicy(\"bucket-lifecycle-rules\", IlmPolicyArgs.builder()        \n            .bucket(bucket.bucket())\n            .rules(IlmPolicyRuleArgs.builder()\n                .id(\"expire-7d\")\n                .expiration(\"7d\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bucket:\n    type: minio:S3Bucket\n    properties:\n      bucket: bucket\n  bucket-lifecycle-rules:\n    type: minio:IlmPolicy\n    properties:\n      bucket: ${bucket.bucket}\n      rules:\n        - id: expire-7d\n          expiration: 7d\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "bucket": {
                     "type": "string"
@@ -974,6 +970,35 @@
                 "type": "object"
             }
         },
+        "minio:index/kmsKey:KmsKey": {
+            "properties": {
+                "keyId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "keyId"
+            ],
+            "inputProperties": {
+                "keyId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "keyId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KmsKey resources.\n",
+                "properties": {
+                    "keyId": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "minio:index/s3Bucket:S3Bucket": {
             "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as minio from \"@pulumi/minio\";\n\nconst stateTerraformS3 = new minio.S3Bucket(\"stateTerraformS3\", {\n    acl: \"public\",\n    bucket: \"state-terraform-s3\",\n});\nexport const minioId = stateTerraformS3.id;\nexport const minioUrl = stateTerraformS3.bucketDomainName;\n```\n```python\nimport pulumi\nimport pulumi_minio as minio\n\nstate_terraform_s3 = minio.S3Bucket(\"stateTerraformS3\",\n    acl=\"public\",\n    bucket=\"state-terraform-s3\")\npulumi.export(\"minioId\", state_terraform_s3.id)\npulumi.export(\"minioUrl\", state_terraform_s3.bucket_domain_name)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Minio = Pulumi.Minio;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var stateTerraformS3 = new Minio.S3Bucket(\"stateTerraformS3\", new()\n    {\n        Acl = \"public\",\n        Bucket = \"state-terraform-s3\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"minioId\"] = stateTerraformS3.Id,\n        [\"minioUrl\"] = stateTerraformS3.BucketDomainName,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-minio/sdk/go/minio\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tstateTerraformS3, err := minio.NewS3Bucket(ctx, \"stateTerraformS3\", \u0026minio.S3BucketArgs{\n\t\t\tAcl:    pulumi.String(\"public\"),\n\t\t\tBucket: pulumi.String(\"state-terraform-s3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"minioId\", stateTerraformS3.ID())\n\t\tctx.Export(\"minioUrl\", stateTerraformS3.BucketDomainName)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.minio.S3Bucket;\nimport com.pulumi.minio.S3BucketArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var stateTerraformS3 = new S3Bucket(\"stateTerraformS3\", S3BucketArgs.builder()        \n            .acl(\"public\")\n            .bucket(\"state-terraform-s3\")\n            .build());\n\n        ctx.export(\"minioId\", stateTerraformS3.id());\n        ctx.export(\"minioUrl\", stateTerraformS3.bucketDomainName());\n    }\n}\n```\n```yaml\nresources:\n  stateTerraformS3:\n    type: minio:S3Bucket\n    properties:\n      acl: public\n      bucket: state-terraform-s3\noutputs:\n  minioId: ${stateTerraformS3.id}\n  minioUrl: ${stateTerraformS3.bucketDomainName}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -996,12 +1021,10 @@
                     "type": "boolean"
                 },
                 "objectLocking": {
-                    "type": "boolean",
-                    "description": "- Whether object locking should be enabled for the bucket.\n"
+                    "type": "boolean"
                 },
                 "quota": {
-                    "type": "integer",
-                    "description": "The limit of the amount of data in the bucket (bytes).\n"
+                    "type": "integer"
                 }
             },
             "required": [
@@ -1025,12 +1048,10 @@
                     "type": "boolean"
                 },
                 "objectLocking": {
-                    "type": "boolean",
-                    "description": "- Whether object locking should be enabled for the bucket.\n"
+                    "type": "boolean"
                 },
                 "quota": {
-                    "type": "integer",
-                    "description": "The limit of the amount of data in the bucket (bytes).\n"
+                    "type": "integer"
                 }
             },
             "stateInputs": {
@@ -1057,19 +1078,16 @@
                         "type": "boolean"
                     },
                     "objectLocking": {
-                        "type": "boolean",
-                        "description": "- Whether object locking should be enabled for the bucket.\n"
+                        "type": "boolean"
                     },
                     "quota": {
-                        "type": "integer",
-                        "description": "The limit of the amount of data in the bucket (bytes).\n"
+                        "type": "integer"
                     }
                 },
                 "type": "object"
             }
         },
         "minio:index/s3BucketNotification:S3BucketNotification": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as minio from \"@pulumi/minio\";\n\nconst bucketS3Bucket = new minio.S3Bucket(\"bucketS3Bucket\", {bucket: \"example-bucket\"});\nconst bucketS3BucketNotification = new minio.S3BucketNotification(\"bucketS3BucketNotification\", {\n    bucket: minio_s3_bucket.state_terraform_s3.bucket,\n    queues: [{\n        id: \"notification-queue\",\n        queueArn: \"arn:minio:sqs::primary:webhook\",\n        events: [\n            \"s3:ObjectCreated:*\",\n            \"s3:ObjectRemoved:Delete\",\n        ],\n        filterPrefix: \"example/\",\n        filterSuffix: \".png\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_minio as minio\n\nbucket_s3_bucket = minio.S3Bucket(\"bucketS3Bucket\", bucket=\"example-bucket\")\nbucket_s3_bucket_notification = minio.S3BucketNotification(\"bucketS3BucketNotification\",\n    bucket=minio_s3_bucket[\"state_terraform_s3\"][\"bucket\"],\n    queues=[minio.S3BucketNotificationQueueArgs(\n        id=\"notification-queue\",\n        queue_arn=\"arn:minio:sqs::primary:webhook\",\n        events=[\n            \"s3:ObjectCreated:*\",\n            \"s3:ObjectRemoved:Delete\",\n        ],\n        filter_prefix=\"example/\",\n        filter_suffix=\".png\",\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Minio = Pulumi.Minio;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bucketS3Bucket = new Minio.S3Bucket(\"bucketS3Bucket\", new()\n    {\n        Bucket = \"example-bucket\",\n    });\n\n    var bucketS3BucketNotification = new Minio.S3BucketNotification(\"bucketS3BucketNotification\", new()\n    {\n        Bucket = minio_s3_bucket.State_terraform_s3.Bucket,\n        Queues = new[]\n        {\n            new Minio.Inputs.S3BucketNotificationQueueArgs\n            {\n                Id = \"notification-queue\",\n                QueueArn = \"arn:minio:sqs::primary:webhook\",\n                Events = new[]\n                {\n                    \"s3:ObjectCreated:*\",\n                    \"s3:ObjectRemoved:Delete\",\n                },\n                FilterPrefix = \"example/\",\n                FilterSuffix = \".png\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-minio/sdk/go/minio\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := minio.NewS3Bucket(ctx, \"bucketS3Bucket\", \u0026minio.S3BucketArgs{\n\t\t\tBucket: pulumi.String(\"example-bucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = minio.NewS3BucketNotification(ctx, \"bucketS3BucketNotification\", \u0026minio.S3BucketNotificationArgs{\n\t\t\tBucket: pulumi.Any(minio_s3_bucket.State_terraform_s3.Bucket),\n\t\t\tQueues: minio.S3BucketNotificationQueueArray{\n\t\t\t\t\u0026minio.S3BucketNotificationQueueArgs{\n\t\t\t\t\tId:       pulumi.String(\"notification-queue\"),\n\t\t\t\t\tQueueArn: pulumi.String(\"arn:minio:sqs::primary:webhook\"),\n\t\t\t\t\tEvents: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"s3:ObjectCreated:*\"),\n\t\t\t\t\t\tpulumi.String(\"s3:ObjectRemoved:Delete\"),\n\t\t\t\t\t},\n\t\t\t\t\tFilterPrefix: pulumi.String(\"example/\"),\n\t\t\t\t\tFilterSuffix: pulumi.String(\".png\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.minio.S3Bucket;\nimport com.pulumi.minio.S3BucketArgs;\nimport com.pulumi.minio.S3BucketNotification;\nimport com.pulumi.minio.S3BucketNotificationArgs;\nimport com.pulumi.minio.inputs.S3BucketNotificationQueueArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bucketS3Bucket = new S3Bucket(\"bucketS3Bucket\", S3BucketArgs.builder()        \n            .bucket(\"example-bucket\")\n            .build());\n\n        var bucketS3BucketNotification = new S3BucketNotification(\"bucketS3BucketNotification\", S3BucketNotificationArgs.builder()        \n            .bucket(minio_s3_bucket.state_terraform_s3().bucket())\n            .queues(S3BucketNotificationQueueArgs.builder()\n                .id(\"notification-queue\")\n                .queueArn(\"arn:minio:sqs::primary:webhook\")\n                .events(                \n                    \"s3:ObjectCreated:*\",\n                    \"s3:ObjectRemoved:Delete\")\n                .filterPrefix(\"example/\")\n                .filterSuffix(\".png\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bucketS3Bucket:\n    type: minio:S3Bucket\n    properties:\n      bucket: example-bucket\n  bucketS3BucketNotification:\n    type: minio:S3BucketNotification\n    properties:\n      bucket: ${minio_s3_bucket.state_terraform_s3.bucket}\n      queues:\n        - id: notification-queue\n          queueArn: arn:minio:sqs::primary:webhook\n          events:\n            - s3:ObjectCreated:*\n            - s3:ObjectRemoved:Delete\n          filterPrefix: example/\n          filterSuffix: .png\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "bucket": {
                     "type": "string"
@@ -1117,7 +1135,6 @@
             }
         },
         "minio:index/s3BucketPolicy:S3BucketPolicy": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as minio from \"@pulumi/minio\";\n\nconst bucketS3Bucket = new minio.S3Bucket(\"bucketS3Bucket\", {bucket: \"example-bucket\"});\nconst bucketS3BucketPolicy = new minio.S3BucketPolicy(\"bucketS3BucketPolicy\", {\n    bucket: bucketS3Bucket.bucket,\n    policy: pulumi.interpolate`{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n     \"Principal\": {\"AWS\": [\"*\"]},\n      \"Resource\": [\"arn:aws:s3:::${bucketS3Bucket.bucket}\"],\n     \"Action\": [\"s3:ListBucket\"]\n    }\n  ]\n}\n`,\n});\n```\n```python\nimport pulumi\nimport pulumi_minio as minio\n\nbucket_s3_bucket = minio.S3Bucket(\"bucketS3Bucket\", bucket=\"example-bucket\")\nbucket_s3_bucket_policy = minio.S3BucketPolicy(\"bucketS3BucketPolicy\",\n    bucket=bucket_s3_bucket.bucket,\n    policy=bucket_s3_bucket.bucket.apply(lambda bucket: f\"\"\"{{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {{\n      \"Effect\": \"Allow\",\n     \"Principal\": {{\"AWS\": [\"*\"]}},\n      \"Resource\": [\"arn:aws:s3:::{bucket}\"],\n     \"Action\": [\"s3:ListBucket\"]\n    }}\n  ]\n}}\n\"\"\"))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Minio = Pulumi.Minio;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bucketS3Bucket = new Minio.S3Bucket(\"bucketS3Bucket\", new()\n    {\n        Bucket = \"example-bucket\",\n    });\n\n    var bucketS3BucketPolicy = new Minio.S3BucketPolicy(\"bucketS3BucketPolicy\", new()\n    {\n        Bucket = bucketS3Bucket.Bucket,\n        Policy = bucketS3Bucket.Bucket.Apply(bucket =\u003e @$\"{{\n  \"\"Version\"\": \"\"2012-10-17\"\",\n  \"\"Statement\"\": [\n    {{\n      \"\"Effect\"\": \"\"Allow\"\",\n     \"\"Principal\"\": {{\"\"AWS\"\": [\"\"*\"\"]}},\n      \"\"Resource\"\": [\"\"arn:aws:s3:::{bucket}\"\"],\n     \"\"Action\"\": [\"\"s3:ListBucket\"\"]\n    }}\n  ]\n}}\n\"),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-minio/sdk/go/minio\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbucketS3Bucket, err := minio.NewS3Bucket(ctx, \"bucketS3Bucket\", \u0026minio.S3BucketArgs{\n\t\t\tBucket: pulumi.String(\"example-bucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = minio.NewS3BucketPolicy(ctx, \"bucketS3BucketPolicy\", \u0026minio.S3BucketPolicyArgs{\n\t\t\tBucket: bucketS3Bucket.Bucket,\n\t\t\tPolicy: bucketS3Bucket.Bucket.ApplyT(func(bucket string) (string, error) {\n\t\t\t\treturn fmt.Sprintf(`{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n     \"Principal\": {\"AWS\": [\"*\"]},\n      \"Resource\": [\"arn:aws:s3:::%v\"],\n     \"Action\": [\"s3:ListBucket\"]\n    }\n  ]\n}\n`, bucket), nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.minio.S3Bucket;\nimport com.pulumi.minio.S3BucketArgs;\nimport com.pulumi.minio.S3BucketPolicy;\nimport com.pulumi.minio.S3BucketPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bucketS3Bucket = new S3Bucket(\"bucketS3Bucket\", S3BucketArgs.builder()        \n            .bucket(\"example-bucket\")\n            .build());\n\n        var bucketS3BucketPolicy = new S3BucketPolicy(\"bucketS3BucketPolicy\", S3BucketPolicyArgs.builder()        \n            .bucket(bucketS3Bucket.bucket())\n            .policy(bucketS3Bucket.bucket().applyValue(bucket -\u003e \"\"\"\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n     \"Principal\": {\"AWS\": [\"*\"]},\n      \"Resource\": [\"arn:aws:s3:::%s\"],\n     \"Action\": [\"s3:ListBucket\"]\n    }\n  ]\n}\n\", bucket)))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bucketS3Bucket:\n    type: minio:S3Bucket\n    properties:\n      bucket: example-bucket\n  bucketS3BucketPolicy:\n    type: minio:S3BucketPolicy\n    properties:\n      bucket: ${bucketS3Bucket.bucket}\n      policy: |\n        {\n          \"Version\": \"2012-10-17\",\n          \"Statement\": [\n            {\n              \"Effect\": \"Allow\",\n             \"Principal\": {\"AWS\": [\"*\"]},\n              \"Resource\": [\"arn:aws:s3:::${bucketS3Bucket.bucket}\"],\n             \"Action\": [\"s3:ListBucket\"]\n            }\n          ]\n        }\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "bucket": {
                     "type": "string"
@@ -1157,8 +1174,58 @@
                 "type": "object"
             }
         },
+        "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption": {
+            "properties": {
+                "bucket": {
+                    "type": "string"
+                },
+                "encryptionType": {
+                    "type": "string"
+                },
+                "kmsKeyId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "bucket",
+                "encryptionType",
+                "kmsKeyId"
+            ],
+            "inputProperties": {
+                "bucket": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "encryptionType": {
+                    "type": "string"
+                },
+                "kmsKeyId": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "bucket",
+                "encryptionType",
+                "kmsKeyId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering S3BucketServerSideEncryption resources.\n",
+                "properties": {
+                    "bucket": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "encryptionType": {
+                        "type": "string"
+                    },
+                    "kmsKeyId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "minio:index/s3BucketVersioning:S3BucketVersioning": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as minio from \"@pulumi/minio\";\n\nconst bucketS3Bucket = new minio.S3Bucket(\"bucketS3Bucket\", {bucket: \"example-bucket\"});\nconst bucketS3BucketVersioning = new minio.S3BucketVersioning(\"bucketS3BucketVersioning\", {\n    bucket: bucketS3Bucket.bucket,\n    versioningConfiguration: {\n        status: \"Enabled\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_minio as minio\n\nbucket_s3_bucket = minio.S3Bucket(\"bucketS3Bucket\", bucket=\"example-bucket\")\nbucket_s3_bucket_versioning = minio.S3BucketVersioning(\"bucketS3BucketVersioning\",\n    bucket=bucket_s3_bucket.bucket,\n    versioning_configuration=minio.S3BucketVersioningVersioningConfigurationArgs(\n        status=\"Enabled\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Minio = Pulumi.Minio;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bucketS3Bucket = new Minio.S3Bucket(\"bucketS3Bucket\", new()\n    {\n        Bucket = \"example-bucket\",\n    });\n\n    var bucketS3BucketVersioning = new Minio.S3BucketVersioning(\"bucketS3BucketVersioning\", new()\n    {\n        Bucket = bucketS3Bucket.Bucket,\n        VersioningConfiguration = new Minio.Inputs.S3BucketVersioningVersioningConfigurationArgs\n        {\n            Status = \"Enabled\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-minio/sdk/go/minio\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbucketS3Bucket, err := minio.NewS3Bucket(ctx, \"bucketS3Bucket\", \u0026minio.S3BucketArgs{\n\t\t\tBucket: pulumi.String(\"example-bucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = minio.NewS3BucketVersioning(ctx, \"bucketS3BucketVersioning\", \u0026minio.S3BucketVersioningArgs{\n\t\t\tBucket: bucketS3Bucket.Bucket,\n\t\t\tVersioningConfiguration: \u0026minio.S3BucketVersioningVersioningConfigurationArgs{\n\t\t\t\tStatus: pulumi.String(\"Enabled\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.minio.S3Bucket;\nimport com.pulumi.minio.S3BucketArgs;\nimport com.pulumi.minio.S3BucketVersioning;\nimport com.pulumi.minio.S3BucketVersioningArgs;\nimport com.pulumi.minio.inputs.S3BucketVersioningVersioningConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bucketS3Bucket = new S3Bucket(\"bucketS3Bucket\", S3BucketArgs.builder()        \n            .bucket(\"example-bucket\")\n            .build());\n\n        var bucketS3BucketVersioning = new S3BucketVersioning(\"bucketS3BucketVersioning\", S3BucketVersioningArgs.builder()        \n            .bucket(bucketS3Bucket.bucket())\n            .versioningConfiguration(S3BucketVersioningVersioningConfigurationArgs.builder()\n                .status(\"Enabled\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bucketS3Bucket:\n    type: minio:S3Bucket\n    properties:\n      bucket: example-bucket\n  bucketS3BucketVersioning:\n    type: minio:S3BucketVersioning\n    properties:\n      bucket: ${bucketS3Bucket.bucket}\n      versioningConfiguration:\n        status: Enabled\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "bucket": {
                     "type": "string"
