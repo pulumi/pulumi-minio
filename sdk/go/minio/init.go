@@ -40,12 +40,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IamUserPolicyAttachment{}
 	case "minio:index/ilmPolicy:IlmPolicy":
 		r = &IlmPolicy{}
+	case "minio:index/kmsKey:KmsKey":
+		r = &KmsKey{}
 	case "minio:index/s3Bucket:S3Bucket":
 		r = &S3Bucket{}
 	case "minio:index/s3BucketNotification:S3BucketNotification":
 		r = &S3BucketNotification{}
 	case "minio:index/s3BucketPolicy:S3BucketPolicy":
 		r = &S3BucketPolicy{}
+	case "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption":
+		r = &S3BucketServerSideEncryption{}
 	case "minio:index/s3BucketVersioning:S3BucketVersioning":
 		r = &S3BucketVersioning{}
 	case "minio:index/s3Object:S3Object":
@@ -130,6 +134,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"minio",
+		"index/kmsKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"minio",
 		"index/s3Bucket",
 		&module{version},
 	)
@@ -141,6 +150,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"minio",
 		"index/s3BucketPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"minio",
+		"index/s3BucketServerSideEncryption",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

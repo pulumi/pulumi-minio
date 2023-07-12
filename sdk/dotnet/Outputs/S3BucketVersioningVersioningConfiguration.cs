@@ -15,9 +15,6 @@ namespace Pulumi.Minio.Outputs
     {
         public readonly bool? ExcludeFolders;
         public readonly ImmutableArray<string> ExcludedPrefixes;
-        /// <summary>
-        /// Versioning status, one of "Enabled", "Suspended".
-        /// </summary>
         public readonly string Status;
 
         [OutputConstructor]

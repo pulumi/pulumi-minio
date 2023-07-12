@@ -6,22 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as minio from "@pulumi/minio";
- *
- * const bucketS3Bucket = new minio.S3Bucket("bucketS3Bucket", {bucket: "example-bucket"});
- * const bucketS3BucketVersioning = new minio.S3BucketVersioning("bucketS3BucketVersioning", {
- *     bucket: bucketS3Bucket.bucket,
- *     versioningConfiguration: {
- *         status: "Enabled",
- *     },
- * });
- * ```
- */
 export class S3BucketVersioning extends pulumi.CustomResource {
     /**
      * Get an existing S3BucketVersioning resource's state with the given name, ID, and optional extra

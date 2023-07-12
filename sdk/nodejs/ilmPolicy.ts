@@ -21,10 +21,6 @@ import * as utilities from "./utilities";
  *     rules: [{
  *         id: "expire-7d",
  *         expiration: "7d",
- *         filter: "prefix/",
- *         tags: {
- *             app: "myapp",
- *         },
  *     }],
  * });
  * ```

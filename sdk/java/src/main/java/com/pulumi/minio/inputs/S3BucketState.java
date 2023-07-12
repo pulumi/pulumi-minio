@@ -59,32 +59,16 @@ public final class S3BucketState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.forceDestroy);
     }
 
-    /**
-     * - Whether object locking should be enabled for the bucket.
-     * 
-     */
     @Import(name="objectLocking")
     private @Nullable Output<Boolean> objectLocking;
 
-    /**
-     * @return - Whether object locking should be enabled for the bucket.
-     * 
-     */
     public Optional<Output<Boolean>> objectLocking() {
         return Optional.ofNullable(this.objectLocking);
     }
 
-    /**
-     * The limit of the amount of data in the bucket (bytes).
-     * 
-     */
     @Import(name="quota")
     private @Nullable Output<Integer> quota;
 
-    /**
-     * @return The limit of the amount of data in the bucket (bytes).
-     * 
-     */
     public Optional<Output<Integer>> quota() {
         return Optional.ofNullable(this.quota);
     }
@@ -174,44 +158,20 @@ public final class S3BucketState extends com.pulumi.resources.ResourceArgs {
             return forceDestroy(Output.of(forceDestroy));
         }
 
-        /**
-         * @param objectLocking - Whether object locking should be enabled for the bucket.
-         * 
-         * @return builder
-         * 
-         */
         public Builder objectLocking(@Nullable Output<Boolean> objectLocking) {
             $.objectLocking = objectLocking;
             return this;
         }
 
-        /**
-         * @param objectLocking - Whether object locking should be enabled for the bucket.
-         * 
-         * @return builder
-         * 
-         */
         public Builder objectLocking(Boolean objectLocking) {
             return objectLocking(Output.of(objectLocking));
         }
 
-        /**
-         * @param quota The limit of the amount of data in the bucket (bytes).
-         * 
-         * @return builder
-         * 
-         */
         public Builder quota(@Nullable Output<Integer> quota) {
             $.quota = quota;
             return this;
         }
 
-        /**
-         * @param quota The limit of the amount of data in the bucket (bytes).
-         * 
-         * @return builder
-         * 
-         */
         public Builder quota(Integer quota) {
             return quota(Output.of(quota));
         }

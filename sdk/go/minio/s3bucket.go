@@ -47,10 +47,8 @@ type S3Bucket struct {
 	BucketDomainName pulumi.StringOutput    `pulumi:"bucketDomainName"`
 	BucketPrefix     pulumi.StringPtrOutput `pulumi:"bucketPrefix"`
 	ForceDestroy     pulumi.BoolPtrOutput   `pulumi:"forceDestroy"`
-	// - Whether object locking should be enabled for the bucket.
-	ObjectLocking pulumi.BoolPtrOutput `pulumi:"objectLocking"`
-	// The limit of the amount of data in the bucket (bytes).
-	Quota pulumi.IntPtrOutput `pulumi:"quota"`
+	ObjectLocking    pulumi.BoolPtrOutput   `pulumi:"objectLocking"`
+	Quota            pulumi.IntPtrOutput    `pulumi:"quota"`
 }
 
 // NewS3Bucket registers a new resource with the given unique name, arguments, and options.
@@ -88,10 +86,8 @@ type s3bucketState struct {
 	BucketDomainName *string `pulumi:"bucketDomainName"`
 	BucketPrefix     *string `pulumi:"bucketPrefix"`
 	ForceDestroy     *bool   `pulumi:"forceDestroy"`
-	// - Whether object locking should be enabled for the bucket.
-	ObjectLocking *bool `pulumi:"objectLocking"`
-	// The limit of the amount of data in the bucket (bytes).
-	Quota *int `pulumi:"quota"`
+	ObjectLocking    *bool   `pulumi:"objectLocking"`
+	Quota            *int    `pulumi:"quota"`
 }
 
 type S3BucketState struct {
@@ -101,10 +97,8 @@ type S3BucketState struct {
 	BucketDomainName pulumi.StringPtrInput
 	BucketPrefix     pulumi.StringPtrInput
 	ForceDestroy     pulumi.BoolPtrInput
-	// - Whether object locking should be enabled for the bucket.
-	ObjectLocking pulumi.BoolPtrInput
-	// The limit of the amount of data in the bucket (bytes).
-	Quota pulumi.IntPtrInput
+	ObjectLocking    pulumi.BoolPtrInput
+	Quota            pulumi.IntPtrInput
 }
 
 func (S3BucketState) ElementType() reflect.Type {
@@ -112,26 +106,22 @@ func (S3BucketState) ElementType() reflect.Type {
 }
 
 type s3bucketArgs struct {
-	Acl          *string `pulumi:"acl"`
-	Bucket       *string `pulumi:"bucket"`
-	BucketPrefix *string `pulumi:"bucketPrefix"`
-	ForceDestroy *bool   `pulumi:"forceDestroy"`
-	// - Whether object locking should be enabled for the bucket.
-	ObjectLocking *bool `pulumi:"objectLocking"`
-	// The limit of the amount of data in the bucket (bytes).
-	Quota *int `pulumi:"quota"`
+	Acl           *string `pulumi:"acl"`
+	Bucket        *string `pulumi:"bucket"`
+	BucketPrefix  *string `pulumi:"bucketPrefix"`
+	ForceDestroy  *bool   `pulumi:"forceDestroy"`
+	ObjectLocking *bool   `pulumi:"objectLocking"`
+	Quota         *int    `pulumi:"quota"`
 }
 
 // The set of arguments for constructing a S3Bucket resource.
 type S3BucketArgs struct {
-	Acl          pulumi.StringPtrInput
-	Bucket       pulumi.StringPtrInput
-	BucketPrefix pulumi.StringPtrInput
-	ForceDestroy pulumi.BoolPtrInput
-	// - Whether object locking should be enabled for the bucket.
+	Acl           pulumi.StringPtrInput
+	Bucket        pulumi.StringPtrInput
+	BucketPrefix  pulumi.StringPtrInput
+	ForceDestroy  pulumi.BoolPtrInput
 	ObjectLocking pulumi.BoolPtrInput
-	// The limit of the amount of data in the bucket (bytes).
-	Quota pulumi.IntPtrInput
+	Quota         pulumi.IntPtrInput
 }
 
 func (S3BucketArgs) ElementType() reflect.Type {
@@ -245,12 +235,10 @@ func (o S3BucketOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *S3Bucket) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
-// - Whether object locking should be enabled for the bucket.
 func (o S3BucketOutput) ObjectLocking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *S3Bucket) pulumi.BoolPtrOutput { return v.ObjectLocking }).(pulumi.BoolPtrOutput)
 }
 
-// The limit of the amount of data in the bucket (bytes).
 func (o S3BucketOutput) Quota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *S3Bucket) pulumi.IntPtrOutput { return v.Quota }).(pulumi.IntPtrOutput)
 }

@@ -41,6 +41,9 @@
                     }
                 }
             },
+            "minio_kms_key": {
+                "current": "minio:index/kmsKey:KmsKey"
+            },
             "minio_s3_bucket": {
                 "current": "minio:index/s3Bucket:S3Bucket"
             },
@@ -61,6 +64,9 @@
             },
             "minio_s3_bucket_policy": {
                 "current": "minio:index/s3BucketPolicy:S3BucketPolicy"
+            },
+            "minio_s3_bucket_server_side_encryption": {
+                "current": "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption"
             },
             "minio_s3_bucket_versioning": {
                 "current": "minio:index/s3BucketVersioning:S3BucketVersioning",
@@ -124,9 +130,11 @@
             "minio:index/iamUser:IamUser": "minio_iam_user",
             "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment": "minio_iam_user_policy_attachment",
             "minio:index/ilmPolicy:IlmPolicy": "minio_ilm_policy",
+            "minio:index/kmsKey:KmsKey": "minio_kms_key",
             "minio:index/s3Bucket:S3Bucket": "minio_s3_bucket",
             "minio:index/s3BucketNotification:S3BucketNotification": "minio_s3_bucket_notification",
             "minio:index/s3BucketPolicy:S3BucketPolicy": "minio_s3_bucket_policy",
+            "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption": "minio_s3_bucket_server_side_encryption",
             "minio:index/s3BucketVersioning:S3BucketVersioning": "minio_s3_bucket_versioning",
             "minio:index/s3Object:S3Object": "minio_s3_object"
         },
@@ -190,6 +198,9 @@
             "minio:index/ilmPolicy:IlmPolicy": {
                 "rules": "rule"
             },
+            "minio:index/kmsKey:KmsKey": {
+                "keyId": "key_id"
+            },
             "minio:index/s3Bucket:S3Bucket": {
                 "bucketDomainName": "bucket_domain_name",
                 "bucketPrefix": "bucket_prefix",
@@ -198,6 +209,10 @@
             },
             "minio:index/s3BucketNotification:S3BucketNotification": {
                 "queues": "queue"
+            },
+            "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption": {
+                "encryptionType": "encryption_type",
+                "kmsKeyId": "kms_key_id"
             },
             "minio:index/s3BucketVersioning:S3BucketVersioning": {
                 "versioningConfiguration": "versioning_configuration"

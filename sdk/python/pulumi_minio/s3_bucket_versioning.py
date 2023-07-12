@@ -84,20 +84,7 @@ class S3BucketVersioning(pulumi.CustomResource):
                  versioning_configuration: Optional[pulumi.Input[pulumi.InputType['S3BucketVersioningVersioningConfigurationArgs']]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        bucket_s3_bucket = minio.S3Bucket("bucketS3Bucket", bucket="example-bucket")
-        bucket_s3_bucket_versioning = minio.S3BucketVersioning("bucketS3BucketVersioning",
-            bucket=bucket_s3_bucket.bucket,
-            versioning_configuration=minio.S3BucketVersioningVersioningConfigurationArgs(
-                status="Enabled",
-            ))
-        ```
-
+        Create a S3BucketVersioning resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -108,20 +95,7 @@ class S3BucketVersioning(pulumi.CustomResource):
                  args: S3BucketVersioningArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        bucket_s3_bucket = minio.S3Bucket("bucketS3Bucket", bucket="example-bucket")
-        bucket_s3_bucket_versioning = minio.S3BucketVersioning("bucketS3BucketVersioning",
-            bucket=bucket_s3_bucket.bucket,
-            versioning_configuration=minio.S3BucketVersioningVersioningConfigurationArgs(
-                status="Enabled",
-            ))
-        ```
-
+        Create a S3BucketVersioning resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param S3BucketVersioningArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

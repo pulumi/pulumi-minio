@@ -9,42 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Minio = Pulumi.Minio;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var bucketS3Bucket = new Minio.S3Bucket("bucketS3Bucket", new()
-    ///     {
-    ///         Bucket = "example-bucket",
-    ///     });
-    /// 
-    ///     var bucketS3BucketPolicy = new Minio.S3BucketPolicy("bucketS3BucketPolicy", new()
-    ///     {
-    ///         Bucket = bucketS3Bucket.Bucket,
-    ///         Policy = bucketS3Bucket.Bucket.Apply(bucket =&gt; @$"{{
-    ///   ""Version"": ""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {{
-    ///       ""Effect"": ""Allow"",
-    ///      ""Principal"": {{""AWS"": [""*""]}},
-    ///       ""Resource"": [""arn:aws:s3:::{bucket}""],
-    ///      ""Action"": [""s3:ListBucket""]
-    ///     }}
-    ///   ]
-    /// }}
-    /// "),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [MinioResourceType("minio:index/s3BucketPolicy:S3BucketPolicy")]
     public partial class S3BucketPolicy : global::Pulumi.CustomResource
     {

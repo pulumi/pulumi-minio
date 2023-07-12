@@ -23,9 +23,6 @@ namespace Pulumi.Minio.Inputs
             set => _excludedPrefixes = value;
         }
 
-        /// <summary>
-        /// Versioning status, one of "Enabled", "Suspended".
-        /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 

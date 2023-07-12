@@ -85,27 +85,7 @@ class S3BucketNotification(pulumi.CustomResource):
                  queues: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['S3BucketNotificationQueueArgs']]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        bucket_s3_bucket = minio.S3Bucket("bucketS3Bucket", bucket="example-bucket")
-        bucket_s3_bucket_notification = minio.S3BucketNotification("bucketS3BucketNotification",
-            bucket=minio_s3_bucket["state_terraform_s3"]["bucket"],
-            queues=[minio.S3BucketNotificationQueueArgs(
-                id="notification-queue",
-                queue_arn="arn:minio:sqs::primary:webhook",
-                events=[
-                    "s3:ObjectCreated:*",
-                    "s3:ObjectRemoved:Delete",
-                ],
-                filter_prefix="example/",
-                filter_suffix=".png",
-            )])
-        ```
-
+        Create a S3BucketNotification resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -116,27 +96,7 @@ class S3BucketNotification(pulumi.CustomResource):
                  args: S3BucketNotificationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        bucket_s3_bucket = minio.S3Bucket("bucketS3Bucket", bucket="example-bucket")
-        bucket_s3_bucket_notification = minio.S3BucketNotification("bucketS3BucketNotification",
-            bucket=minio_s3_bucket["state_terraform_s3"]["bucket"],
-            queues=[minio.S3BucketNotificationQueueArgs(
-                id="notification-queue",
-                queue_arn="arn:minio:sqs::primary:webhook",
-                events=[
-                    "s3:ObjectCreated:*",
-                    "s3:ObjectRemoved:Delete",
-                ],
-                filter_prefix="example/",
-                filter_suffix=".png",
-            )])
-        ```
-
+        Create a S3BucketNotification resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param S3BucketNotificationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

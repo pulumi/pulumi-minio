@@ -11,49 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := minio.NewS3Bucket(ctx, "bucketS3Bucket", &minio.S3BucketArgs{
-//				Bucket: pulumi.String("example-bucket"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = minio.NewS3BucketNotification(ctx, "bucketS3BucketNotification", &minio.S3BucketNotificationArgs{
-//				Bucket: pulumi.Any(minio_s3_bucket.State_terraform_s3.Bucket),
-//				Queues: minio.S3BucketNotificationQueueArray{
-//					&minio.S3BucketNotificationQueueArgs{
-//						Id:       pulumi.String("notification-queue"),
-//						QueueArn: pulumi.String("arn:minio:sqs::primary:webhook"),
-//						Events: pulumi.StringArray{
-//							pulumi.String("s3:ObjectCreated:*"),
-//							pulumi.String("s3:ObjectRemoved:Delete"),
-//						},
-//						FilterPrefix: pulumi.String("example/"),
-//						FilterSuffix: pulumi.String(".png"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type S3BucketNotification struct {
 	pulumi.CustomResourceState
 

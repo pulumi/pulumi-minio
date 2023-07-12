@@ -36,11 +36,6 @@ namespace Pulumi.Minio
     ///             {
     ///                 Id = "expire-7d",
     ///                 Expiration = "7d",
-    ///                 Filter = "prefix/",
-    ///                 Tags = 
-    ///                 {
-    ///                     { "app", "myapp" },
-    ///                 },
     ///             },
     ///         },
     ///     });

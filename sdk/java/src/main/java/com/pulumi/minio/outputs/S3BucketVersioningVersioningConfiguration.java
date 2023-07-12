@@ -15,10 +15,6 @@ import javax.annotation.Nullable;
 public final class S3BucketVersioningVersioningConfiguration {
     private @Nullable Boolean excludeFolders;
     private @Nullable List<String> excludedPrefixes;
-    /**
-     * @return Versioning status, one of &#34;Enabled&#34;, &#34;Suspended&#34;.
-     * 
-     */
     private String status;
 
     private S3BucketVersioningVersioningConfiguration() {}
@@ -28,10 +24,6 @@ public final class S3BucketVersioningVersioningConfiguration {
     public List<String> excludedPrefixes() {
         return this.excludedPrefixes == null ? List.of() : this.excludedPrefixes;
     }
-    /**
-     * @return Versioning status, one of &#34;Enabled&#34;, &#34;Suspended&#34;.
-     * 
-     */
     public String status() {
         return this.status;
     }
