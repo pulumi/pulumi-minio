@@ -28,9 +28,6 @@ class IlmPolicyRule(dict):
                  tags: Optional[Mapping[str, Any]] = None):
         """
         :param str id: The ID of this resource.
-        :param str expiration: The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
-        :param str filter: Correspond to "prefix" value
-        :param Mapping[str, Any] tags: List of tags to use in filter
         """
         pulumi.set(__self__, "id", id)
         if expiration is not None:
@@ -53,17 +50,11 @@ class IlmPolicyRule(dict):
     @property
     @pulumi.getter
     def expiration(self) -> Optional[str]:
-        """
-        The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
-        """
         return pulumi.get(self, "expiration")
 
     @property
     @pulumi.getter
     def filter(self) -> Optional[str]:
-        """
-        Correspond to "prefix" value
-        """
         return pulumi.get(self, "filter")
 
     @property
@@ -74,9 +65,6 @@ class IlmPolicyRule(dict):
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
-        """
-        List of tags to use in filter
-        """
         return pulumi.get(self, "tags")
 
 
@@ -175,9 +163,6 @@ class S3BucketVersioningVersioningConfiguration(dict):
                  status: str,
                  exclude_folders: Optional[bool] = None,
                  excluded_prefixes: Optional[Sequence[str]] = None):
-        """
-        :param str status: Versioning status, one of "Enabled", "Suspended".
-        """
         pulumi.set(__self__, "status", status)
         if exclude_folders is not None:
             pulumi.set(__self__, "exclude_folders", exclude_folders)
@@ -187,9 +172,6 @@ class S3BucketVersioningVersioningConfiguration(dict):
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        Versioning status, one of "Enabled", "Suspended".
-        """
         return pulumi.get(self, "status")
 
     @property

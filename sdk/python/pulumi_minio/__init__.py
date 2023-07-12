@@ -16,10 +16,12 @@ from .iam_service_account import *
 from .iam_user import *
 from .iam_user_policy_attachment import *
 from .ilm_policy import *
+from .kms_key import *
 from .provider import *
 from .s3_bucket import *
 from .s3_bucket_notification import *
 from .s3_bucket_policy import *
+from .s3_bucket_server_side_encryption import *
 from .s3_bucket_versioning import *
 from .s3_object import *
 from ._inputs import *
@@ -117,6 +119,14 @@ _utilities.register(
  },
  {
   "pkg": "minio",
+  "mod": "index/kmsKey",
+  "fqn": "pulumi_minio",
+  "classes": {
+   "minio:index/kmsKey:KmsKey": "KmsKey"
+  }
+ },
+ {
+  "pkg": "minio",
   "mod": "index/s3Bucket",
   "fqn": "pulumi_minio",
   "classes": {
@@ -137,6 +147,14 @@ _utilities.register(
   "fqn": "pulumi_minio",
   "classes": {
    "minio:index/s3BucketPolicy:S3BucketPolicy": "S3BucketPolicy"
+  }
+ },
+ {
+  "pkg": "minio",
+  "mod": "index/s3BucketServerSideEncryption",
+  "fqn": "pulumi_minio",
+  "classes": {
+   "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption": "S3BucketServerSideEncryption"
   }
  },
  {

@@ -39,10 +39,6 @@ import (
 //					&minio.IlmPolicyRuleArgs{
 //						Id:         pulumi.String("expire-7d"),
 //						Expiration: pulumi.String("7d"),
-//						Filter:     pulumi.String("prefix/"),
-//						Tags: pulumi.AnyMap{
-//							"app": pulumi.Any("myapp"),
-//						},
 //					},
 //				},
 //			})

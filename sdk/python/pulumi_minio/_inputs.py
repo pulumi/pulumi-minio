@@ -27,9 +27,6 @@ class IlmPolicyRuleArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         :param pulumi.Input[str] id: The ID of this resource.
-        :param pulumi.Input[str] expiration: The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
-        :param pulumi.Input[str] filter: Correspond to "prefix" value
-        :param pulumi.Input[Mapping[str, Any]] tags: List of tags to use in filter
         """
         pulumi.set(__self__, "id", id)
         if expiration is not None:
@@ -56,9 +53,6 @@ class IlmPolicyRuleArgs:
     @property
     @pulumi.getter
     def expiration(self) -> Optional[pulumi.Input[str]]:
-        """
-        The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
-        """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
@@ -68,9 +62,6 @@ class IlmPolicyRuleArgs:
     @property
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
-        """
-        Correspond to "prefix" value
-        """
         return pulumi.get(self, "filter")
 
     @filter.setter
@@ -89,9 +80,6 @@ class IlmPolicyRuleArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        List of tags to use in filter
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -174,9 +162,6 @@ class S3BucketVersioningVersioningConfigurationArgs:
                  status: pulumi.Input[str],
                  exclude_folders: Optional[pulumi.Input[bool]] = None,
                  excluded_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] status: Versioning status, one of "Enabled", "Suspended".
-        """
         pulumi.set(__self__, "status", status)
         if exclude_folders is not None:
             pulumi.set(__self__, "exclude_folders", exclude_folders)
@@ -186,9 +171,6 @@ class S3BucketVersioningVersioningConfigurationArgs:
     @property
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
-        """
-        Versioning status, one of "Enabled", "Suspended".
-        """
         return pulumi.get(self, "status")
 
     @status.setter

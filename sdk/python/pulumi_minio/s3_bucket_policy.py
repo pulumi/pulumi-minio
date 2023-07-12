@@ -82,29 +82,7 @@ class S3BucketPolicy(pulumi.CustomResource):
                  policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        bucket_s3_bucket = minio.S3Bucket("bucketS3Bucket", bucket="example-bucket")
-        bucket_s3_bucket_policy = minio.S3BucketPolicy("bucketS3BucketPolicy",
-            bucket=bucket_s3_bucket.bucket,
-            policy=bucket_s3_bucket.bucket.apply(lambda bucket: f\"\"\"{{
-          "Version": "2012-10-17",
-          "Statement": [
-            {{
-              "Effect": "Allow",
-             "Principal": {{"AWS": ["*"]}},
-              "Resource": ["arn:aws:s3:::{bucket}"],
-             "Action": ["s3:ListBucket"]
-            }}
-          ]
-        }}
-        \"\"\"))
-        ```
-
+        Create a S3BucketPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -115,29 +93,7 @@ class S3BucketPolicy(pulumi.CustomResource):
                  args: S3BucketPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        bucket_s3_bucket = minio.S3Bucket("bucketS3Bucket", bucket="example-bucket")
-        bucket_s3_bucket_policy = minio.S3BucketPolicy("bucketS3BucketPolicy",
-            bucket=bucket_s3_bucket.bucket,
-            policy=bucket_s3_bucket.bucket.apply(lambda bucket: f\"\"\"{{
-          "Version": "2012-10-17",
-          "Statement": [
-            {{
-              "Effect": "Allow",
-             "Principal": {{"AWS": ["*"]}},
-              "Resource": ["arn:aws:s3:::{bucket}"],
-             "Action": ["s3:ListBucket"]
-            }}
-          ]
-        }}
-        \"\"\"))
-        ```
-
+        Create a S3BucketPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param S3BucketPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

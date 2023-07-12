@@ -11,55 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bucketS3Bucket, err := minio.NewS3Bucket(ctx, "bucketS3Bucket", &minio.S3BucketArgs{
-//				Bucket: pulumi.String("example-bucket"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = minio.NewS3BucketPolicy(ctx, "bucketS3BucketPolicy", &minio.S3BucketPolicyArgs{
-//				Bucket: bucketS3Bucket.Bucket,
-//				Policy: bucketS3Bucket.Bucket.ApplyT(func(bucket string) (string, error) {
-//					return fmt.Sprintf(`{
-//	  "Version": "2012-10-17",
-//	  "Statement": [
-//	    {
-//	      "Effect": "Allow",
-//	     "Principal": {"AWS": ["*"]},
-//	      "Resource": ["arn:aws:s3:::%v"],
-//	     "Action": ["s3:ListBucket"]
-//	    }
-//	  ]
-//	}
-//
-// `, bucket), nil
-//
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type S3BucketPolicy struct {
 	pulumi.CustomResourceState
 

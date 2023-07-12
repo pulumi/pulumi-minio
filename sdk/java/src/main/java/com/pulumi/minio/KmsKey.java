@@ -7,40 +7,34 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.minio.S3BucketPolicyArgs;
+import com.pulumi.minio.KmsKeyArgs;
 import com.pulumi.minio.Utilities;
-import com.pulumi.minio.inputs.S3BucketPolicyState;
+import com.pulumi.minio.inputs.KmsKeyState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
-@ResourceType(type="minio:index/s3BucketPolicy:S3BucketPolicy")
-public class S3BucketPolicy extends com.pulumi.resources.CustomResource {
-    @Export(name="bucket", type=String.class, parameters={})
-    private Output<String> bucket;
+@ResourceType(type="minio:index/kmsKey:KmsKey")
+public class KmsKey extends com.pulumi.resources.CustomResource {
+    @Export(name="keyId", type=String.class, parameters={})
+    private Output<String> keyId;
 
-    public Output<String> bucket() {
-        return this.bucket;
-    }
-    @Export(name="policy", type=String.class, parameters={})
-    private Output<String> policy;
-
-    public Output<String> policy() {
-        return this.policy;
+    public Output<String> keyId() {
+        return this.keyId;
     }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public S3BucketPolicy(String name) {
-        this(name, S3BucketPolicyArgs.Empty);
+    public KmsKey(String name) {
+        this(name, KmsKeyArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public S3BucketPolicy(String name, S3BucketPolicyArgs args) {
+    public KmsKey(String name, KmsKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -49,12 +43,12 @@ public class S3BucketPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public S3BucketPolicy(String name, S3BucketPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/s3BucketPolicy:S3BucketPolicy", name, args == null ? S3BucketPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public KmsKey(String name, KmsKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/kmsKey:KmsKey", name, args == null ? KmsKeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private S3BucketPolicy(String name, Output<String> id, @Nullable S3BucketPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/s3BucketPolicy:S3BucketPolicy", name, state, makeResourceOptions(options, id));
+    private KmsKey(String name, Output<String> id, @Nullable KmsKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/kmsKey:KmsKey", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -73,7 +67,7 @@ public class S3BucketPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static S3BucketPolicy get(String name, Output<String> id, @Nullable S3BucketPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new S3BucketPolicy(name, id, state, options);
+    public static KmsKey get(String name, Output<String> id, @Nullable KmsKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new KmsKey(name, id, state, options);
     }
 }

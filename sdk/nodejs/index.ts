@@ -60,6 +60,11 @@ export type IlmPolicy = import("./ilmPolicy").IlmPolicy;
 export const IlmPolicy: typeof import("./ilmPolicy").IlmPolicy = null as any;
 utilities.lazyLoad(exports, ["IlmPolicy"], () => require("./ilmPolicy"));
 
+export { KmsKeyArgs, KmsKeyState } from "./kmsKey";
+export type KmsKey = import("./kmsKey").KmsKey;
+export const KmsKey: typeof import("./kmsKey").KmsKey = null as any;
+utilities.lazyLoad(exports, ["KmsKey"], () => require("./kmsKey"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
@@ -79,6 +84,11 @@ export { S3BucketPolicyArgs, S3BucketPolicyState } from "./s3bucketPolicy";
 export type S3BucketPolicy = import("./s3bucketPolicy").S3BucketPolicy;
 export const S3BucketPolicy: typeof import("./s3bucketPolicy").S3BucketPolicy = null as any;
 utilities.lazyLoad(exports, ["S3BucketPolicy"], () => require("./s3bucketPolicy"));
+
+export { S3BucketServerSideEncryptionArgs, S3BucketServerSideEncryptionState } from "./s3bucketServerSideEncryption";
+export type S3BucketServerSideEncryption = import("./s3bucketServerSideEncryption").S3BucketServerSideEncryption;
+export const S3BucketServerSideEncryption: typeof import("./s3bucketServerSideEncryption").S3BucketServerSideEncryption = null as any;
+utilities.lazyLoad(exports, ["S3BucketServerSideEncryption"], () => require("./s3bucketServerSideEncryption"));
 
 export { S3BucketVersioningArgs, S3BucketVersioningState } from "./s3bucketVersioning";
 export type S3BucketVersioning = import("./s3bucketVersioning").S3BucketVersioning;
@@ -124,12 +134,16 @@ const _module = {
                 return new IamUserPolicyAttachment(name, <any>undefined, { urn })
             case "minio:index/ilmPolicy:IlmPolicy":
                 return new IlmPolicy(name, <any>undefined, { urn })
+            case "minio:index/kmsKey:KmsKey":
+                return new KmsKey(name, <any>undefined, { urn })
             case "minio:index/s3Bucket:S3Bucket":
                 return new S3Bucket(name, <any>undefined, { urn })
             case "minio:index/s3BucketNotification:S3BucketNotification":
                 return new S3BucketNotification(name, <any>undefined, { urn })
             case "minio:index/s3BucketPolicy:S3BucketPolicy":
                 return new S3BucketPolicy(name, <any>undefined, { urn })
+            case "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption":
+                return new S3BucketServerSideEncryption(name, <any>undefined, { urn })
             case "minio:index/s3BucketVersioning:S3BucketVersioning":
                 return new S3BucketVersioning(name, <any>undefined, { urn })
             case "minio:index/s3Object:S3Object":
@@ -149,9 +163,11 @@ pulumi.runtime.registerResourceModule("minio", "index/iamServiceAccount", _modul
 pulumi.runtime.registerResourceModule("minio", "index/iamUser", _module)
 pulumi.runtime.registerResourceModule("minio", "index/iamUserPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("minio", "index/ilmPolicy", _module)
+pulumi.runtime.registerResourceModule("minio", "index/kmsKey", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3Bucket", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3BucketNotification", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3BucketPolicy", _module)
+pulumi.runtime.registerResourceModule("minio", "index/s3BucketServerSideEncryption", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3BucketVersioning", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3Object", _module)
 pulumi.runtime.registerResourcePackage("minio", {

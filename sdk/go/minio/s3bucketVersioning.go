@@ -11,40 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bucketS3Bucket, err := minio.NewS3Bucket(ctx, "bucketS3Bucket", &minio.S3BucketArgs{
-//				Bucket: pulumi.String("example-bucket"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = minio.NewS3BucketVersioning(ctx, "bucketS3BucketVersioning", &minio.S3BucketVersioningArgs{
-//				Bucket: bucketS3Bucket.Bucket,
-//				VersioningConfiguration: &minio.S3BucketVersioningVersioningConfigurationArgs{
-//					Status: pulumi.String("Enabled"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type S3BucketVersioning struct {
 	pulumi.CustomResourceState
 

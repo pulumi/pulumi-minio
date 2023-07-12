@@ -9,45 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Minio = Pulumi.Minio;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var bucketS3Bucket = new Minio.S3Bucket("bucketS3Bucket", new()
-    ///     {
-    ///         Bucket = "example-bucket",
-    ///     });
-    /// 
-    ///     var bucketS3BucketNotification = new Minio.S3BucketNotification("bucketS3BucketNotification", new()
-    ///     {
-    ///         Bucket = minio_s3_bucket.State_terraform_s3.Bucket,
-    ///         Queues = new[]
-    ///         {
-    ///             new Minio.Inputs.S3BucketNotificationQueueArgs
-    ///             {
-    ///                 Id = "notification-queue",
-    ///                 QueueArn = "arn:minio:sqs::primary:webhook",
-    ///                 Events = new[]
-    ///                 {
-    ///                     "s3:ObjectCreated:*",
-    ///                     "s3:ObjectRemoved:Delete",
-    ///                 },
-    ///                 FilterPrefix = "example/",
-    ///                 FilterSuffix = ".png",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [MinioResourceType("minio:index/s3BucketNotification:S3BucketNotification")]
     public partial class S3BucketNotification : global::Pulumi.CustomResource
     {

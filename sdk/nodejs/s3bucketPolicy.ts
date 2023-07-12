@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as minio from "@pulumi/minio";
- *
- * const bucketS3Bucket = new minio.S3Bucket("bucketS3Bucket", {bucket: "example-bucket"});
- * const bucketS3BucketPolicy = new minio.S3BucketPolicy("bucketS3BucketPolicy", {
- *     bucket: bucketS3Bucket.bucket,
- *     policy: pulumi.interpolate`{
- *   "Version": "2012-10-17",
- *   "Statement": [
- *     {
- *       "Effect": "Allow",
- *      "Principal": {"AWS": ["*"]},
- *       "Resource": ["arn:aws:s3:::${bucketS3Bucket.bucket}"],
- *      "Action": ["s3:ListBucket"]
- *     }
- *   ]
- * }
- * `,
- * });
- * ```
- */
 export class S3BucketPolicy extends pulumi.CustomResource {
     /**
      * Get an existing S3BucketPolicy resource's state with the given name, ID, and optional extra

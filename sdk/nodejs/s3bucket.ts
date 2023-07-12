@@ -53,13 +53,7 @@ export class S3Bucket extends pulumi.CustomResource {
     public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
     public readonly bucketPrefix!: pulumi.Output<string | undefined>;
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    /**
-     * - Whether object locking should be enabled for the bucket.
-     */
     public readonly objectLocking!: pulumi.Output<boolean | undefined>;
-    /**
-     * The limit of the amount of data in the bucket (bytes).
-     */
     public readonly quota!: pulumi.Output<number | undefined>;
 
     /**
@@ -109,13 +103,7 @@ export interface S3BucketState {
     bucketDomainName?: pulumi.Input<string>;
     bucketPrefix?: pulumi.Input<string>;
     forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * - Whether object locking should be enabled for the bucket.
-     */
     objectLocking?: pulumi.Input<boolean>;
-    /**
-     * The limit of the amount of data in the bucket (bytes).
-     */
     quota?: pulumi.Input<number>;
 }
 
@@ -127,12 +115,6 @@ export interface S3BucketArgs {
     bucket?: pulumi.Input<string>;
     bucketPrefix?: pulumi.Input<string>;
     forceDestroy?: pulumi.Input<boolean>;
-    /**
-     * - Whether object locking should be enabled for the bucket.
-     */
     objectLocking?: pulumi.Input<boolean>;
-    /**
-     * The limit of the amount of data in the bucket (bytes).
-     */
     quota?: pulumi.Input<number>;
 }

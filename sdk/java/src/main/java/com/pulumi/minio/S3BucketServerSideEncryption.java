@@ -7,41 +7,46 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.minio.S3BucketVersioningArgs;
+import com.pulumi.minio.S3BucketServerSideEncryptionArgs;
 import com.pulumi.minio.Utilities;
-import com.pulumi.minio.inputs.S3BucketVersioningState;
-import com.pulumi.minio.outputs.S3BucketVersioningVersioningConfiguration;
+import com.pulumi.minio.inputs.S3BucketServerSideEncryptionState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
-@ResourceType(type="minio:index/s3BucketVersioning:S3BucketVersioning")
-public class S3BucketVersioning extends com.pulumi.resources.CustomResource {
+@ResourceType(type="minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption")
+public class S3BucketServerSideEncryption extends com.pulumi.resources.CustomResource {
     @Export(name="bucket", type=String.class, parameters={})
     private Output<String> bucket;
 
     public Output<String> bucket() {
         return this.bucket;
     }
-    @Export(name="versioningConfiguration", type=S3BucketVersioningVersioningConfiguration.class, parameters={})
-    private Output<S3BucketVersioningVersioningConfiguration> versioningConfiguration;
+    @Export(name="encryptionType", type=String.class, parameters={})
+    private Output<String> encryptionType;
 
-    public Output<S3BucketVersioningVersioningConfiguration> versioningConfiguration() {
-        return this.versioningConfiguration;
+    public Output<String> encryptionType() {
+        return this.encryptionType;
+    }
+    @Export(name="kmsKeyId", type=String.class, parameters={})
+    private Output<String> kmsKeyId;
+
+    public Output<String> kmsKeyId() {
+        return this.kmsKeyId;
     }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public S3BucketVersioning(String name) {
-        this(name, S3BucketVersioningArgs.Empty);
+    public S3BucketServerSideEncryption(String name) {
+        this(name, S3BucketServerSideEncryptionArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public S3BucketVersioning(String name, S3BucketVersioningArgs args) {
+    public S3BucketServerSideEncryption(String name, S3BucketServerSideEncryptionArgs args) {
         this(name, args, null);
     }
     /**
@@ -50,12 +55,12 @@ public class S3BucketVersioning extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public S3BucketVersioning(String name, S3BucketVersioningArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/s3BucketVersioning:S3BucketVersioning", name, args == null ? S3BucketVersioningArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public S3BucketServerSideEncryption(String name, S3BucketServerSideEncryptionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption", name, args == null ? S3BucketServerSideEncryptionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private S3BucketVersioning(String name, Output<String> id, @Nullable S3BucketVersioningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/s3BucketVersioning:S3BucketVersioning", name, state, makeResourceOptions(options, id));
+    private S3BucketServerSideEncryption(String name, Output<String> id, @Nullable S3BucketServerSideEncryptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -74,7 +79,7 @@ public class S3BucketVersioning extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static S3BucketVersioning get(String name, Output<String> id, @Nullable S3BucketVersioningState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new S3BucketVersioning(name, id, state, options);
+    public static S3BucketServerSideEncryption get(String name, Output<String> id, @Nullable S3BucketServerSideEncryptionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new S3BucketServerSideEncryption(name, id, state, options);
     }
 }

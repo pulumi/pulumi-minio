@@ -6,29 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as minio from "@pulumi/minio";
- *
- * const bucketS3Bucket = new minio.S3Bucket("bucketS3Bucket", {bucket: "example-bucket"});
- * const bucketS3BucketNotification = new minio.S3BucketNotification("bucketS3BucketNotification", {
- *     bucket: minio_s3_bucket.state_terraform_s3.bucket,
- *     queues: [{
- *         id: "notification-queue",
- *         queueArn: "arn:minio:sqs::primary:webhook",
- *         events: [
- *             "s3:ObjectCreated:*",
- *             "s3:ObjectRemoved:Delete",
- *         ],
- *         filterPrefix: "example/",
- *         filterSuffix: ".png",
- *     }],
- * });
- * ```
- */
 export class S3BucketNotification extends pulumi.CustomResource {
     /**
      * Get an existing S3BucketNotification resource's state with the given name, ID, and optional extra

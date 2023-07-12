@@ -11,15 +11,12 @@ import (
 )
 
 type IlmPolicyRule struct {
-	// The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
 	Expiration *string `pulumi:"expiration"`
-	// Correspond to "prefix" value
-	Filter *string `pulumi:"filter"`
+	Filter     *string `pulumi:"filter"`
 	// The ID of this resource.
-	Id     string  `pulumi:"id"`
-	Status *string `pulumi:"status"`
-	// List of tags to use in filter
-	Tags map[string]interface{} `pulumi:"tags"`
+	Id     string                 `pulumi:"id"`
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
 }
 
 // IlmPolicyRuleInput is an input type that accepts IlmPolicyRuleArgs and IlmPolicyRuleOutput values.
@@ -34,15 +31,12 @@ type IlmPolicyRuleInput interface {
 }
 
 type IlmPolicyRuleArgs struct {
-	// The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
 	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
-	// Correspond to "prefix" value
-	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	Filter     pulumi.StringPtrInput `pulumi:"filter"`
 	// The ID of this resource.
 	Id     pulumi.StringInput    `pulumi:"id"`
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// List of tags to use in filter
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags   pulumi.MapInput       `pulumi:"tags"`
 }
 
 func (IlmPolicyRuleArgs) ElementType() reflect.Type {
@@ -96,12 +90,10 @@ func (o IlmPolicyRuleOutput) ToIlmPolicyRuleOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The expiration as a duration (5d), date (1970-01-01), or "DeleteMarker"
 func (o IlmPolicyRuleOutput) Expiration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IlmPolicyRule) *string { return v.Expiration }).(pulumi.StringPtrOutput)
 }
 
-// Correspond to "prefix" value
 func (o IlmPolicyRuleOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IlmPolicyRule) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -115,7 +107,6 @@ func (o IlmPolicyRuleOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IlmPolicyRule) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// List of tags to use in filter
 func (o IlmPolicyRuleOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v IlmPolicyRule) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
@@ -264,8 +255,7 @@ func (o S3BucketNotificationQueueArrayOutput) Index(i pulumi.IntInput) S3BucketN
 type S3BucketVersioningVersioningConfiguration struct {
 	ExcludeFolders   *bool    `pulumi:"excludeFolders"`
 	ExcludedPrefixes []string `pulumi:"excludedPrefixes"`
-	// Versioning status, one of "Enabled", "Suspended".
-	Status string `pulumi:"status"`
+	Status           string   `pulumi:"status"`
 }
 
 // S3BucketVersioningVersioningConfigurationInput is an input type that accepts S3BucketVersioningVersioningConfigurationArgs and S3BucketVersioningVersioningConfigurationOutput values.
@@ -282,8 +272,7 @@ type S3BucketVersioningVersioningConfigurationInput interface {
 type S3BucketVersioningVersioningConfigurationArgs struct {
 	ExcludeFolders   pulumi.BoolPtrInput     `pulumi:"excludeFolders"`
 	ExcludedPrefixes pulumi.StringArrayInput `pulumi:"excludedPrefixes"`
-	// Versioning status, one of "Enabled", "Suspended".
-	Status pulumi.StringInput `pulumi:"status"`
+	Status           pulumi.StringInput      `pulumi:"status"`
 }
 
 func (S3BucketVersioningVersioningConfigurationArgs) ElementType() reflect.Type {
@@ -371,7 +360,6 @@ func (o S3BucketVersioningVersioningConfigurationOutput) ExcludedPrefixes() pulu
 	return o.ApplyT(func(v S3BucketVersioningVersioningConfiguration) []string { return v.ExcludedPrefixes }).(pulumi.StringArrayOutput)
 }
 
-// Versioning status, one of "Enabled", "Suspended".
 func (o S3BucketVersioningVersioningConfigurationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v S3BucketVersioningVersioningConfiguration) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -418,7 +406,6 @@ func (o S3BucketVersioningVersioningConfigurationPtrOutput) ExcludedPrefixes() p
 	}).(pulumi.StringArrayOutput)
 }
 
-// Versioning status, one of "Enabled", "Suspended".
 func (o S3BucketVersioningVersioningConfigurationPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3BucketVersioningVersioningConfiguration) *string {
 		if v == nil {

@@ -31,17 +31,9 @@ public final class S3BucketVersioningVersioningConfigurationArgs extends com.pul
         return Optional.ofNullable(this.excludedPrefixes);
     }
 
-    /**
-     * Versioning status, one of &#34;Enabled&#34;, &#34;Suspended&#34;.
-     * 
-     */
     @Import(name="status", required=true)
     private Output<String> status;
 
-    /**
-     * @return Versioning status, one of &#34;Enabled&#34;, &#34;Suspended&#34;.
-     * 
-     */
     public Output<String> status() {
         return this.status;
     }
@@ -94,23 +86,11 @@ public final class S3BucketVersioningVersioningConfigurationArgs extends com.pul
             return excludedPrefixes(List.of(excludedPrefixes));
         }
 
-        /**
-         * @param status Versioning status, one of &#34;Enabled&#34;, &#34;Suspended&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(Output<String> status) {
             $.status = status;
             return this;
         }
 
-        /**
-         * @param status Versioning status, one of &#34;Enabled&#34;, &#34;Suspended&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

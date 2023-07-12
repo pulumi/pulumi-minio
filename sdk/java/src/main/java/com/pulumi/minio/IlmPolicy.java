@@ -52,8 +52,6 @@ import javax.annotation.Nullable;
  *             .rules(IlmPolicyRuleArgs.builder()
  *                 .id(&#34;expire-7d&#34;)
  *                 .expiration(&#34;7d&#34;)
- *                 .filter(&#34;prefix/&#34;)
- *                 .tags(Map.of(&#34;app&#34;, &#34;myapp&#34;))
  *                 .build())
  *             .build());
  * 

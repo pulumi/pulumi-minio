@@ -98,10 +98,6 @@ class IlmPolicy(pulumi.CustomResource):
             rules=[minio.IlmPolicyRuleArgs(
                 id="expire-7d",
                 expiration="7d",
-                filter="prefix/",
-                tags={
-                    "app": "myapp",
-                },
             )])
         ```
 
@@ -129,10 +125,6 @@ class IlmPolicy(pulumi.CustomResource):
             rules=[minio.IlmPolicyRuleArgs(
                 id="expire-7d",
                 expiration="7d",
-                filter="prefix/",
-                tags={
-                    "app": "myapp",
-                },
             )])
         ```
 
