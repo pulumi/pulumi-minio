@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,6 +32,7 @@ func NewIamGroupPolicyAttachment(ctx *pulumi.Context,
 	if args.PolicyName == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamGroupPolicyAttachment
 	err := ctx.RegisterResource("minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +76,7 @@ func NewS3Object(ctx *pulumi.Context,
 	if args.ObjectName == nil {
 		return nil, errors.New("invalid value for required argument 'ObjectName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource S3Object
 	err := ctx.RegisterResource("minio:index/s3Object:S3Object", name, args, &resource, opts...)
 	if err != nil {

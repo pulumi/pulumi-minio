@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ func NewIamGroup(ctx *pulumi.Context,
 		args = &IamGroupArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamGroup
 	err := ctx.RegisterResource("minio:index/iamGroup:IamGroup", name, args, &resource, opts...)
 	if err != nil {
