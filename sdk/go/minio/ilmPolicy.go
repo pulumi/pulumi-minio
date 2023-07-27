@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,6 +71,7 @@ func NewIlmPolicy(ctx *pulumi.Context,
 	if args.Rules == nil {
 		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IlmPolicy
 	err := ctx.RegisterResource("minio:index/ilmPolicy:IlmPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +81,7 @@ import (
 //
 // ```
 func GetIamPolicyDocument(ctx *pulumi.Context, args *GetIamPolicyDocumentArgs, opts ...pulumi.InvokeOption) (*GetIamPolicyDocumentResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIamPolicyDocumentResult
 	err := ctx.Invoke("minio:index/getIamPolicyDocument:getIamPolicyDocument", args, &rv, opts...)
 	if err != nil {

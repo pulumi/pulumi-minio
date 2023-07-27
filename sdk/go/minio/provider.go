@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,6 +54,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args.MinioServer == nil {
 		return nil, errors.New("invalid value for required argument 'MinioServer'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:minio", name, args, &resource, opts...)
 	if err != nil {

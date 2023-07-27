@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,6 +29,7 @@ func NewS3BucketNotification(ctx *pulumi.Context,
 	if args.Bucket == nil {
 		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource S3BucketNotification
 	err := ctx.RegisterResource("minio:index/s3BucketNotification:S3BucketNotification", name, args, &resource, opts...)
 	if err != nil {

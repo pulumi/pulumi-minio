@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,6 +75,7 @@ func NewIamServiceAccount(ctx *pulumi.Context,
 		"secretKey",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamServiceAccount
 	err := ctx.RegisterResource("minio:index/iamServiceAccount:IamServiceAccount", name, args, &resource, opts...)
 	if err != nil {

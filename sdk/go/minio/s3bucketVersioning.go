@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,6 +32,7 @@ func NewS3BucketVersioning(ctx *pulumi.Context,
 	if args.VersioningConfiguration == nil {
 		return nil, errors.New("invalid value for required argument 'VersioningConfiguration'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource S3BucketVersioning
 	err := ctx.RegisterResource("minio:index/s3BucketVersioning:S3BucketVersioning", name, args, &resource, opts...)
 	if err != nil {

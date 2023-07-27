@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,6 +59,7 @@ func NewS3Bucket(ctx *pulumi.Context,
 		args = &S3BucketArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource S3Bucket
 	err := ctx.RegisterResource("minio:index/s3Bucket:S3Bucket", name, args, &resource, opts...)
 	if err != nil {
