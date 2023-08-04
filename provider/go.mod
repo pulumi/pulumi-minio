@@ -11,8 +11,8 @@ replace (
 )
 
 require (
-	github.com/aminueza/terraform-provider-minio v1.17.1
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.54.3
+	github.com/aminueza/terraform-provider-minio v1.17.2
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.56.0
 	github.com/pulumi/pulumi/sdk/v3 v3.76.1
 )
 
@@ -57,7 +57,7 @@ require (
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/armon/go-metrics v0.4.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
-	github.com/aws/aws-sdk-go v1.44.306 // indirect
+	github.com/aws/aws-sdk-go v1.44.312 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.17.3 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.4.3 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.15.15 // indirect
