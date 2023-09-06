@@ -38,6 +38,21 @@ public final class IamServiceAccountState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.disableUser);
     }
 
+    /**
+     * policy of service account
+     * 
+     */
+    @Import(name="policy")
+    private @Nullable Output<String> policy;
+
+    /**
+     * @return policy of service account
+     * 
+     */
+    public Optional<Output<String>> policy() {
+        return Optional.ofNullable(this.policy);
+    }
+
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
@@ -79,6 +94,7 @@ public final class IamServiceAccountState extends com.pulumi.resources.ResourceA
     private IamServiceAccountState(IamServiceAccountState $) {
         this.accessKey = $.accessKey;
         this.disableUser = $.disableUser;
+        this.policy = $.policy;
         this.secretKey = $.secretKey;
         this.status = $.status;
         this.targetUser = $.targetUser;
@@ -131,6 +147,27 @@ public final class IamServiceAccountState extends com.pulumi.resources.ResourceA
          */
         public Builder disableUser(Boolean disableUser) {
             return disableUser(Output.of(disableUser));
+        }
+
+        /**
+         * @param policy policy of service account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(@Nullable Output<String> policy) {
+            $.policy = policy;
+            return this;
+        }
+
+        /**
+         * @param policy policy of service account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(String policy) {
+            return policy(Output.of(policy));
         }
 
         public Builder secretKey(@Nullable Output<String> secretKey) {

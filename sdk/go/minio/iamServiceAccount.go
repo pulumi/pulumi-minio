@@ -54,9 +54,11 @@ type IamServiceAccount struct {
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// Disable service account
 	DisableUser pulumi.BoolPtrOutput `pulumi:"disableUser"`
-	SecretKey   pulumi.StringOutput  `pulumi:"secretKey"`
-	Status      pulumi.StringOutput  `pulumi:"status"`
-	TargetUser  pulumi.StringOutput  `pulumi:"targetUser"`
+	// policy of service account
+	Policy     pulumi.StringPtrOutput `pulumi:"policy"`
+	SecretKey  pulumi.StringOutput    `pulumi:"secretKey"`
+	Status     pulumi.StringOutput    `pulumi:"status"`
+	TargetUser pulumi.StringOutput    `pulumi:"targetUser"`
 	// rotate secret key
 	UpdateSecret pulumi.BoolPtrOutput `pulumi:"updateSecret"`
 }
@@ -100,10 +102,12 @@ func GetIamServiceAccount(ctx *pulumi.Context,
 type iamServiceAccountState struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// Disable service account
-	DisableUser *bool   `pulumi:"disableUser"`
-	SecretKey   *string `pulumi:"secretKey"`
-	Status      *string `pulumi:"status"`
-	TargetUser  *string `pulumi:"targetUser"`
+	DisableUser *bool `pulumi:"disableUser"`
+	// policy of service account
+	Policy     *string `pulumi:"policy"`
+	SecretKey  *string `pulumi:"secretKey"`
+	Status     *string `pulumi:"status"`
+	TargetUser *string `pulumi:"targetUser"`
 	// rotate secret key
 	UpdateSecret *bool `pulumi:"updateSecret"`
 }
@@ -112,9 +116,11 @@ type IamServiceAccountState struct {
 	AccessKey pulumi.StringPtrInput
 	// Disable service account
 	DisableUser pulumi.BoolPtrInput
-	SecretKey   pulumi.StringPtrInput
-	Status      pulumi.StringPtrInput
-	TargetUser  pulumi.StringPtrInput
+	// policy of service account
+	Policy     pulumi.StringPtrInput
+	SecretKey  pulumi.StringPtrInput
+	Status     pulumi.StringPtrInput
+	TargetUser pulumi.StringPtrInput
 	// rotate secret key
 	UpdateSecret pulumi.BoolPtrInput
 }
@@ -125,8 +131,10 @@ func (IamServiceAccountState) ElementType() reflect.Type {
 
 type iamServiceAccountArgs struct {
 	// Disable service account
-	DisableUser *bool  `pulumi:"disableUser"`
-	TargetUser  string `pulumi:"targetUser"`
+	DisableUser *bool `pulumi:"disableUser"`
+	// policy of service account
+	Policy     *string `pulumi:"policy"`
+	TargetUser string  `pulumi:"targetUser"`
 	// rotate secret key
 	UpdateSecret *bool `pulumi:"updateSecret"`
 }
@@ -135,7 +143,9 @@ type iamServiceAccountArgs struct {
 type IamServiceAccountArgs struct {
 	// Disable service account
 	DisableUser pulumi.BoolPtrInput
-	TargetUser  pulumi.StringInput
+	// policy of service account
+	Policy     pulumi.StringPtrInput
+	TargetUser pulumi.StringInput
 	// rotate secret key
 	UpdateSecret pulumi.BoolPtrInput
 }
@@ -234,6 +244,11 @@ func (o IamServiceAccountOutput) AccessKey() pulumi.StringOutput {
 // Disable service account
 func (o IamServiceAccountOutput) DisableUser() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IamServiceAccount) pulumi.BoolPtrOutput { return v.DisableUser }).(pulumi.BoolPtrOutput)
+}
+
+// policy of service account
+func (o IamServiceAccountOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamServiceAccount) pulumi.StringPtrOutput { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
 func (o IamServiceAccountOutput) SecretKey() pulumi.StringOutput {

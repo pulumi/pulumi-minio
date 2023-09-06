@@ -55,6 +55,10 @@ export class IamServiceAccount extends pulumi.CustomResource {
      * Disable service account
      */
     public readonly disableUser!: pulumi.Output<boolean | undefined>;
+    /**
+     * policy of service account
+     */
+    public readonly policy!: pulumi.Output<string | undefined>;
     public /*out*/ readonly secretKey!: pulumi.Output<string>;
     public /*out*/ readonly status!: pulumi.Output<string>;
     public readonly targetUser!: pulumi.Output<string>;
@@ -78,6 +82,7 @@ export class IamServiceAccount extends pulumi.CustomResource {
             const state = argsOrState as IamServiceAccountState | undefined;
             resourceInputs["accessKey"] = state ? state.accessKey : undefined;
             resourceInputs["disableUser"] = state ? state.disableUser : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
             resourceInputs["secretKey"] = state ? state.secretKey : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["targetUser"] = state ? state.targetUser : undefined;
@@ -88,6 +93,7 @@ export class IamServiceAccount extends pulumi.CustomResource {
                 throw new Error("Missing required property 'targetUser'");
             }
             resourceInputs["disableUser"] = args ? args.disableUser : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
             resourceInputs["targetUser"] = args ? args.targetUser : undefined;
             resourceInputs["updateSecret"] = args ? args.updateSecret : undefined;
             resourceInputs["accessKey"] = undefined /*out*/;
@@ -110,6 +116,10 @@ export interface IamServiceAccountState {
      * Disable service account
      */
     disableUser?: pulumi.Input<boolean>;
+    /**
+     * policy of service account
+     */
+    policy?: pulumi.Input<string>;
     secretKey?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
     targetUser?: pulumi.Input<string>;
@@ -127,6 +137,10 @@ export interface IamServiceAccountArgs {
      * Disable service account
      */
     disableUser?: pulumi.Input<boolean>;
+    /**
+     * policy of service account
+     */
+    policy?: pulumi.Input<string>;
     targetUser: pulumi.Input<string>;
     /**
      * rotate secret key
