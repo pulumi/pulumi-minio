@@ -54,6 +54,12 @@ namespace Pulumi.Minio
         [Output("disableUser")]
         public Output<bool?> DisableUser { get; private set; } = null!;
 
+        /// <summary>
+        /// policy of service account
+        /// </summary>
+        [Output("policy")]
+        public Output<string?> Policy { get; private set; } = null!;
+
         [Output("secretKey")]
         public Output<string> SecretKey { get; private set; } = null!;
 
@@ -125,6 +131,12 @@ namespace Pulumi.Minio
         [Input("disableUser")]
         public Input<bool>? DisableUser { get; set; }
 
+        /// <summary>
+        /// policy of service account
+        /// </summary>
+        [Input("policy")]
+        public Input<string>? Policy { get; set; }
+
         [Input("targetUser", required: true)]
         public Input<string> TargetUser { get; set; } = null!;
 
@@ -150,6 +162,12 @@ namespace Pulumi.Minio
         /// </summary>
         [Input("disableUser")]
         public Input<bool>? DisableUser { get; set; }
+
+        /// <summary>
+        /// policy of service account
+        /// </summary>
+        [Input("policy")]
+        public Input<string>? Policy { get; set; }
 
         [Input("secretKey")]
         private Input<string>? _secretKey;

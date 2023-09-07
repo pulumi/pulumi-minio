@@ -16,15 +16,19 @@ class IamServiceAccountArgs:
     def __init__(__self__, *,
                  target_user: pulumi.Input[str],
                  disable_user: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  update_secret: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a IamServiceAccount resource.
         :param pulumi.Input[bool] disable_user: Disable service account
+        :param pulumi.Input[str] policy: policy of service account
         :param pulumi.Input[bool] update_secret: rotate secret key
         """
         pulumi.set(__self__, "target_user", target_user)
         if disable_user is not None:
             pulumi.set(__self__, "disable_user", disable_user)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if update_secret is not None:
             pulumi.set(__self__, "update_secret", update_secret)
 
@@ -50,6 +54,18 @@ class IamServiceAccountArgs:
         pulumi.set(self, "disable_user", value)
 
     @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        policy of service account
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
     @pulumi.getter(name="updateSecret")
     def update_secret(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -67,6 +83,7 @@ class _IamServiceAccountState:
     def __init__(__self__, *,
                  access_key: Optional[pulumi.Input[str]] = None,
                  disable_user: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  target_user: Optional[pulumi.Input[str]] = None,
@@ -74,12 +91,15 @@ class _IamServiceAccountState:
         """
         Input properties used for looking up and filtering IamServiceAccount resources.
         :param pulumi.Input[bool] disable_user: Disable service account
+        :param pulumi.Input[str] policy: policy of service account
         :param pulumi.Input[bool] update_secret: rotate secret key
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if disable_user is not None:
             pulumi.set(__self__, "disable_user", disable_user)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
         if status is not None:
@@ -109,6 +129,18 @@ class _IamServiceAccountState:
     @disable_user.setter
     def disable_user(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_user", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        policy of service account
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter(name="secretKey")
@@ -156,6 +188,7 @@ class IamServiceAccount(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disable_user: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  target_user: Optional[pulumi.Input[str]] = None,
                  update_secret: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -179,6 +212,7 @@ class IamServiceAccount(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_user: Disable service account
+        :param pulumi.Input[str] policy: policy of service account
         :param pulumi.Input[bool] update_secret: rotate secret key
         """
         ...
@@ -220,6 +254,7 @@ class IamServiceAccount(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disable_user: Optional[pulumi.Input[bool]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  target_user: Optional[pulumi.Input[str]] = None,
                  update_secret: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -232,6 +267,7 @@ class IamServiceAccount(pulumi.CustomResource):
             __props__ = IamServiceAccountArgs.__new__(IamServiceAccountArgs)
 
             __props__.__dict__["disable_user"] = disable_user
+            __props__.__dict__["policy"] = policy
             if target_user is None and not opts.urn:
                 raise TypeError("Missing required property 'target_user'")
             __props__.__dict__["target_user"] = target_user
@@ -253,6 +289,7 @@ class IamServiceAccount(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_key: Optional[pulumi.Input[str]] = None,
             disable_user: Optional[pulumi.Input[bool]] = None,
+            policy: Optional[pulumi.Input[str]] = None,
             secret_key: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             target_user: Optional[pulumi.Input[str]] = None,
@@ -265,6 +302,7 @@ class IamServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_user: Disable service account
+        :param pulumi.Input[str] policy: policy of service account
         :param pulumi.Input[bool] update_secret: rotate secret key
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -273,6 +311,7 @@ class IamServiceAccount(pulumi.CustomResource):
 
         __props__.__dict__["access_key"] = access_key
         __props__.__dict__["disable_user"] = disable_user
+        __props__.__dict__["policy"] = policy
         __props__.__dict__["secret_key"] = secret_key
         __props__.__dict__["status"] = status
         __props__.__dict__["target_user"] = target_user
@@ -291,6 +330,14 @@ class IamServiceAccount(pulumi.CustomResource):
         Disable service account
         """
         return pulumi.get(self, "disable_user")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        policy of service account
+        """
+        return pulumi.get(self, "policy")
 
     @property
     @pulumi.getter(name="secretKey")

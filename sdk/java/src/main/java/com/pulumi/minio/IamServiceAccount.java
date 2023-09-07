@@ -79,6 +79,20 @@ public class IamServiceAccount extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> disableUser() {
         return Codegen.optional(this.disableUser);
     }
+    /**
+     * policy of service account
+     * 
+     */
+    @Export(name="policy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> policy;
+
+    /**
+     * @return policy of service account
+     * 
+     */
+    public Output<Optional<String>> policy() {
+        return Codegen.optional(this.policy);
+    }
     @Export(name="secretKey", type=String.class, parameters={})
     private Output<String> secretKey;
 

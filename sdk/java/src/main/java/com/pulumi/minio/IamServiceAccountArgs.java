@@ -31,6 +31,21 @@ public final class IamServiceAccountArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.disableUser);
     }
 
+    /**
+     * policy of service account
+     * 
+     */
+    @Import(name="policy")
+    private @Nullable Output<String> policy;
+
+    /**
+     * @return policy of service account
+     * 
+     */
+    public Optional<Output<String>> policy() {
+        return Optional.ofNullable(this.policy);
+    }
+
     @Import(name="targetUser", required=true)
     private Output<String> targetUser;
 
@@ -57,6 +72,7 @@ public final class IamServiceAccountArgs extends com.pulumi.resources.ResourceAr
 
     private IamServiceAccountArgs(IamServiceAccountArgs $) {
         this.disableUser = $.disableUser;
+        this.policy = $.policy;
         this.targetUser = $.targetUser;
         this.updateSecret = $.updateSecret;
     }
@@ -98,6 +114,27 @@ public final class IamServiceAccountArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder disableUser(Boolean disableUser) {
             return disableUser(Output.of(disableUser));
+        }
+
+        /**
+         * @param policy policy of service account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(@Nullable Output<String> policy) {
+            $.policy = policy;
+            return this;
+        }
+
+        /**
+         * @param policy policy of service account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policy(String policy) {
+            return policy(Output.of(policy));
         }
 
         public Builder targetUser(Output<String> targetUser) {

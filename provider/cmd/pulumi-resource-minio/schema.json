@@ -705,6 +705,10 @@
                     "type": "boolean",
                     "description": "Disable service account\n"
                 },
+                "policy": {
+                    "type": "string",
+                    "description": "policy of service account\n"
+                },
                 "secretKey": {
                     "type": "string",
                     "secret": true
@@ -731,6 +735,10 @@
                     "type": "boolean",
                     "description": "Disable service account\n"
                 },
+                "policy": {
+                    "type": "string",
+                    "description": "policy of service account\n"
+                },
                 "targetUser": {
                     "type": "string",
                     "willReplaceOnChanges": true
@@ -752,6 +760,10 @@
                     "disableUser": {
                         "type": "boolean",
                         "description": "Disable service account\n"
+                    },
+                    "policy": {
+                        "type": "string",
+                        "description": "policy of service account\n"
                     },
                     "secretKey": {
                         "type": "string",
