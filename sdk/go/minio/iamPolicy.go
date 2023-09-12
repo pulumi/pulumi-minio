@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -145,6 +146,12 @@ func (i *IamPolicy) ToIamPolicyOutputWithContext(ctx context.Context) IamPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyOutput)
 }
 
+func (i *IamPolicy) ToOutput(ctx context.Context) pulumix.Output[*IamPolicy] {
+	return pulumix.Output[*IamPolicy]{
+		OutputState: i.ToIamPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IamPolicyArrayInput is an input type that accepts IamPolicyArray and IamPolicyArrayOutput values.
 // You can construct a concrete instance of `IamPolicyArrayInput` via:
 //
@@ -168,6 +175,12 @@ func (i IamPolicyArray) ToIamPolicyArrayOutput() IamPolicyArrayOutput {
 
 func (i IamPolicyArray) ToIamPolicyArrayOutputWithContext(ctx context.Context) IamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyArrayOutput)
+}
+
+func (i IamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IamPolicy] {
+	return pulumix.Output[[]*IamPolicy]{
+		OutputState: i.ToIamPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IamPolicyMapInput is an input type that accepts IamPolicyMap and IamPolicyMapOutput values.
@@ -195,6 +208,12 @@ func (i IamPolicyMap) ToIamPolicyMapOutputWithContext(ctx context.Context) IamPo
 	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyMapOutput)
 }
 
+func (i IamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamPolicy] {
+	return pulumix.Output[map[string]*IamPolicy]{
+		OutputState: i.ToIamPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IamPolicyOutput struct{ *pulumi.OutputState }
 
 func (IamPolicyOutput) ElementType() reflect.Type {
@@ -207,6 +226,12 @@ func (o IamPolicyOutput) ToIamPolicyOutput() IamPolicyOutput {
 
 func (o IamPolicyOutput) ToIamPolicyOutputWithContext(ctx context.Context) IamPolicyOutput {
 	return o
+}
+
+func (o IamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*IamPolicy] {
+	return pulumix.Output[*IamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IamPolicyOutput) Name() pulumi.StringOutput {
@@ -235,6 +260,12 @@ func (o IamPolicyArrayOutput) ToIamPolicyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o IamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IamPolicy] {
+	return pulumix.Output[[]*IamPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IamPolicyArrayOutput) Index(i pulumi.IntInput) IamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamPolicy {
 		return vs[0].([]*IamPolicy)[vs[1].(int)]
@@ -253,6 +284,12 @@ func (o IamPolicyMapOutput) ToIamPolicyMapOutput() IamPolicyMapOutput {
 
 func (o IamPolicyMapOutput) ToIamPolicyMapOutputWithContext(ctx context.Context) IamPolicyMapOutput {
 	return o
+}
+
+func (o IamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamPolicy] {
+	return pulumix.Output[map[string]*IamPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IamPolicyMapOutput) MapIndex(k pulumi.StringInput) IamPolicyOutput {

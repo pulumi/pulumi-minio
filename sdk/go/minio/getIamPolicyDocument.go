@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -150,6 +151,12 @@ func (o GetIamPolicyDocumentResultOutput) ToGetIamPolicyDocumentResultOutput() G
 
 func (o GetIamPolicyDocumentResultOutput) ToGetIamPolicyDocumentResultOutputWithContext(ctx context.Context) GetIamPolicyDocumentResultOutput {
 	return o
+}
+
+func (o GetIamPolicyDocumentResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIamPolicyDocumentResult] {
+	return pulumix.Output[GetIamPolicyDocumentResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

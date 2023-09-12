@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type KmsKey struct {
@@ -94,6 +95,12 @@ func (i *KmsKey) ToKmsKeyOutputWithContext(ctx context.Context) KmsKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KmsKeyOutput)
 }
 
+func (i *KmsKey) ToOutput(ctx context.Context) pulumix.Output[*KmsKey] {
+	return pulumix.Output[*KmsKey]{
+		OutputState: i.ToKmsKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KmsKeyArrayInput is an input type that accepts KmsKeyArray and KmsKeyArrayOutput values.
 // You can construct a concrete instance of `KmsKeyArrayInput` via:
 //
@@ -117,6 +124,12 @@ func (i KmsKeyArray) ToKmsKeyArrayOutput() KmsKeyArrayOutput {
 
 func (i KmsKeyArray) ToKmsKeyArrayOutputWithContext(ctx context.Context) KmsKeyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KmsKeyArrayOutput)
+}
+
+func (i KmsKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]*KmsKey] {
+	return pulumix.Output[[]*KmsKey]{
+		OutputState: i.ToKmsKeyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KmsKeyMapInput is an input type that accepts KmsKeyMap and KmsKeyMapOutput values.
@@ -144,6 +157,12 @@ func (i KmsKeyMap) ToKmsKeyMapOutputWithContext(ctx context.Context) KmsKeyMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(KmsKeyMapOutput)
 }
 
+func (i KmsKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KmsKey] {
+	return pulumix.Output[map[string]*KmsKey]{
+		OutputState: i.ToKmsKeyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KmsKeyOutput struct{ *pulumi.OutputState }
 
 func (KmsKeyOutput) ElementType() reflect.Type {
@@ -156,6 +175,12 @@ func (o KmsKeyOutput) ToKmsKeyOutput() KmsKeyOutput {
 
 func (o KmsKeyOutput) ToKmsKeyOutputWithContext(ctx context.Context) KmsKeyOutput {
 	return o
+}
+
+func (o KmsKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*KmsKey] {
+	return pulumix.Output[*KmsKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KmsKeyOutput) KeyId() pulumi.StringOutput {
@@ -176,6 +201,12 @@ func (o KmsKeyArrayOutput) ToKmsKeyArrayOutputWithContext(ctx context.Context) K
 	return o
 }
 
+func (o KmsKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KmsKey] {
+	return pulumix.Output[[]*KmsKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KmsKeyArrayOutput) Index(i pulumi.IntInput) KmsKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KmsKey {
 		return vs[0].([]*KmsKey)[vs[1].(int)]
@@ -194,6 +225,12 @@ func (o KmsKeyMapOutput) ToKmsKeyMapOutput() KmsKeyMapOutput {
 
 func (o KmsKeyMapOutput) ToKmsKeyMapOutputWithContext(ctx context.Context) KmsKeyMapOutput {
 	return o
+}
+
+func (o KmsKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KmsKey] {
+	return pulumix.Output[map[string]*KmsKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KmsKeyMapOutput) MapIndex(k pulumi.StringInput) KmsKeyOutput {
