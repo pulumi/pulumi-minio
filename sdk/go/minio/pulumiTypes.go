@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -54,6 +55,12 @@ func (i IlmPolicyRuleArgs) ToIlmPolicyRuleOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IlmPolicyRuleOutput)
 }
 
+func (i IlmPolicyRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IlmPolicyRule] {
+	return pulumix.Output[IlmPolicyRule]{
+		OutputState: i.ToIlmPolicyRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IlmPolicyRuleArrayInput is an input type that accepts IlmPolicyRuleArray and IlmPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `IlmPolicyRuleArrayInput` via:
 //
@@ -79,6 +86,12 @@ func (i IlmPolicyRuleArray) ToIlmPolicyRuleArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(IlmPolicyRuleArrayOutput)
 }
 
+func (i IlmPolicyRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]IlmPolicyRule] {
+	return pulumix.Output[[]IlmPolicyRule]{
+		OutputState: i.ToIlmPolicyRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IlmPolicyRuleOutput struct{ *pulumi.OutputState }
 
 func (IlmPolicyRuleOutput) ElementType() reflect.Type {
@@ -91,6 +104,12 @@ func (o IlmPolicyRuleOutput) ToIlmPolicyRuleOutput() IlmPolicyRuleOutput {
 
 func (o IlmPolicyRuleOutput) ToIlmPolicyRuleOutputWithContext(ctx context.Context) IlmPolicyRuleOutput {
 	return o
+}
+
+func (o IlmPolicyRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IlmPolicyRule] {
+	return pulumix.Output[IlmPolicyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IlmPolicyRuleOutput) Expiration() pulumi.StringPtrOutput {
@@ -126,6 +145,12 @@ func (o IlmPolicyRuleArrayOutput) ToIlmPolicyRuleArrayOutput() IlmPolicyRuleArra
 
 func (o IlmPolicyRuleArrayOutput) ToIlmPolicyRuleArrayOutputWithContext(ctx context.Context) IlmPolicyRuleArrayOutput {
 	return o
+}
+
+func (o IlmPolicyRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IlmPolicyRule] {
+	return pulumix.Output[[]IlmPolicyRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IlmPolicyRuleArrayOutput) Index(i pulumi.IntInput) IlmPolicyRuleOutput {
@@ -175,6 +200,12 @@ func (i S3BucketNotificationQueueArgs) ToS3BucketNotificationQueueOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketNotificationQueueOutput)
 }
 
+func (i S3BucketNotificationQueueArgs) ToOutput(ctx context.Context) pulumix.Output[S3BucketNotificationQueue] {
+	return pulumix.Output[S3BucketNotificationQueue]{
+		OutputState: i.ToS3BucketNotificationQueueOutputWithContext(ctx).OutputState,
+	}
+}
+
 // S3BucketNotificationQueueArrayInput is an input type that accepts S3BucketNotificationQueueArray and S3BucketNotificationQueueArrayOutput values.
 // You can construct a concrete instance of `S3BucketNotificationQueueArrayInput` via:
 //
@@ -200,6 +231,12 @@ func (i S3BucketNotificationQueueArray) ToS3BucketNotificationQueueArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketNotificationQueueArrayOutput)
 }
 
+func (i S3BucketNotificationQueueArray) ToOutput(ctx context.Context) pulumix.Output[[]S3BucketNotificationQueue] {
+	return pulumix.Output[[]S3BucketNotificationQueue]{
+		OutputState: i.ToS3BucketNotificationQueueArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type S3BucketNotificationQueueOutput struct{ *pulumi.OutputState }
 
 func (S3BucketNotificationQueueOutput) ElementType() reflect.Type {
@@ -212,6 +249,12 @@ func (o S3BucketNotificationQueueOutput) ToS3BucketNotificationQueueOutput() S3B
 
 func (o S3BucketNotificationQueueOutput) ToS3BucketNotificationQueueOutputWithContext(ctx context.Context) S3BucketNotificationQueueOutput {
 	return o
+}
+
+func (o S3BucketNotificationQueueOutput) ToOutput(ctx context.Context) pulumix.Output[S3BucketNotificationQueue] {
+	return pulumix.Output[S3BucketNotificationQueue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3BucketNotificationQueueOutput) Events() pulumi.StringArrayOutput {
@@ -247,6 +290,12 @@ func (o S3BucketNotificationQueueArrayOutput) ToS3BucketNotificationQueueArrayOu
 
 func (o S3BucketNotificationQueueArrayOutput) ToS3BucketNotificationQueueArrayOutputWithContext(ctx context.Context) S3BucketNotificationQueueArrayOutput {
 	return o
+}
+
+func (o S3BucketNotificationQueueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]S3BucketNotificationQueue] {
+	return pulumix.Output[[]S3BucketNotificationQueue]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3BucketNotificationQueueArrayOutput) Index(i pulumi.IntInput) S3BucketNotificationQueueOutput {
@@ -290,6 +339,12 @@ func (i S3BucketVersioningVersioningConfigurationArgs) ToS3BucketVersioningVersi
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketVersioningVersioningConfigurationOutput)
 }
 
+func (i S3BucketVersioningVersioningConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[S3BucketVersioningVersioningConfiguration] {
+	return pulumix.Output[S3BucketVersioningVersioningConfiguration]{
+		OutputState: i.ToS3BucketVersioningVersioningConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i S3BucketVersioningVersioningConfigurationArgs) ToS3BucketVersioningVersioningConfigurationPtrOutput() S3BucketVersioningVersioningConfigurationPtrOutput {
 	return i.ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(context.Background())
 }
@@ -331,6 +386,12 @@ func (i *s3bucketVersioningVersioningConfigurationPtrType) ToS3BucketVersioningV
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketVersioningVersioningConfigurationPtrOutput)
 }
 
+func (i *s3bucketVersioningVersioningConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*S3BucketVersioningVersioningConfiguration] {
+	return pulumix.Output[*S3BucketVersioningVersioningConfiguration]{
+		OutputState: i.ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type S3BucketVersioningVersioningConfigurationOutput struct{ *pulumi.OutputState }
 
 func (S3BucketVersioningVersioningConfigurationOutput) ElementType() reflect.Type {
@@ -353,6 +414,12 @@ func (o S3BucketVersioningVersioningConfigurationOutput) ToS3BucketVersioningVer
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v S3BucketVersioningVersioningConfiguration) *S3BucketVersioningVersioningConfiguration {
 		return &v
 	}).(S3BucketVersioningVersioningConfigurationPtrOutput)
+}
+
+func (o S3BucketVersioningVersioningConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[S3BucketVersioningVersioningConfiguration] {
+	return pulumix.Output[S3BucketVersioningVersioningConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3BucketVersioningVersioningConfigurationOutput) ExcludeFolders() pulumi.BoolPtrOutput {
@@ -379,6 +446,12 @@ func (o S3BucketVersioningVersioningConfigurationPtrOutput) ToS3BucketVersioning
 
 func (o S3BucketVersioningVersioningConfigurationPtrOutput) ToS3BucketVersioningVersioningConfigurationPtrOutputWithContext(ctx context.Context) S3BucketVersioningVersioningConfigurationPtrOutput {
 	return o
+}
+
+func (o S3BucketVersioningVersioningConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*S3BucketVersioningVersioningConfiguration] {
+	return pulumix.Output[*S3BucketVersioningVersioningConfiguration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3BucketVersioningVersioningConfigurationPtrOutput) Elem() S3BucketVersioningVersioningConfigurationOutput {
@@ -459,6 +532,12 @@ func (i GetIamPolicyDocumentStatementArgs) ToGetIamPolicyDocumentStatementOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyDocumentStatementOutput)
 }
 
+func (i GetIamPolicyDocumentStatementArgs) ToOutput(ctx context.Context) pulumix.Output[GetIamPolicyDocumentStatement] {
+	return pulumix.Output[GetIamPolicyDocumentStatement]{
+		OutputState: i.ToGetIamPolicyDocumentStatementOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetIamPolicyDocumentStatementArrayInput is an input type that accepts GetIamPolicyDocumentStatementArray and GetIamPolicyDocumentStatementArrayOutput values.
 // You can construct a concrete instance of `GetIamPolicyDocumentStatementArrayInput` via:
 //
@@ -484,6 +563,12 @@ func (i GetIamPolicyDocumentStatementArray) ToGetIamPolicyDocumentStatementArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyDocumentStatementArrayOutput)
 }
 
+func (i GetIamPolicyDocumentStatementArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIamPolicyDocumentStatement] {
+	return pulumix.Output[[]GetIamPolicyDocumentStatement]{
+		OutputState: i.ToGetIamPolicyDocumentStatementArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetIamPolicyDocumentStatementOutput struct{ *pulumi.OutputState }
 
 func (GetIamPolicyDocumentStatementOutput) ElementType() reflect.Type {
@@ -496,6 +581,12 @@ func (o GetIamPolicyDocumentStatementOutput) ToGetIamPolicyDocumentStatementOutp
 
 func (o GetIamPolicyDocumentStatementOutput) ToGetIamPolicyDocumentStatementOutputWithContext(ctx context.Context) GetIamPolicyDocumentStatementOutput {
 	return o
+}
+
+func (o GetIamPolicyDocumentStatementOutput) ToOutput(ctx context.Context) pulumix.Output[GetIamPolicyDocumentStatement] {
+	return pulumix.Output[GetIamPolicyDocumentStatement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIamPolicyDocumentStatementOutput) Actions() pulumi.StringArrayOutput {
@@ -534,6 +625,12 @@ func (o GetIamPolicyDocumentStatementArrayOutput) ToGetIamPolicyDocumentStatemen
 
 func (o GetIamPolicyDocumentStatementArrayOutput) ToGetIamPolicyDocumentStatementArrayOutputWithContext(ctx context.Context) GetIamPolicyDocumentStatementArrayOutput {
 	return o
+}
+
+func (o GetIamPolicyDocumentStatementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIamPolicyDocumentStatement] {
+	return pulumix.Output[[]GetIamPolicyDocumentStatement]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIamPolicyDocumentStatementArrayOutput) Index(i pulumi.IntInput) GetIamPolicyDocumentStatementOutput {
@@ -577,6 +674,12 @@ func (i GetIamPolicyDocumentStatementConditionArgs) ToGetIamPolicyDocumentStatem
 	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyDocumentStatementConditionOutput)
 }
 
+func (i GetIamPolicyDocumentStatementConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GetIamPolicyDocumentStatementCondition] {
+	return pulumix.Output[GetIamPolicyDocumentStatementCondition]{
+		OutputState: i.ToGetIamPolicyDocumentStatementConditionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetIamPolicyDocumentStatementConditionArrayInput is an input type that accepts GetIamPolicyDocumentStatementConditionArray and GetIamPolicyDocumentStatementConditionArrayOutput values.
 // You can construct a concrete instance of `GetIamPolicyDocumentStatementConditionArrayInput` via:
 //
@@ -602,6 +705,12 @@ func (i GetIamPolicyDocumentStatementConditionArray) ToGetIamPolicyDocumentState
 	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyDocumentStatementConditionArrayOutput)
 }
 
+func (i GetIamPolicyDocumentStatementConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetIamPolicyDocumentStatementCondition] {
+	return pulumix.Output[[]GetIamPolicyDocumentStatementCondition]{
+		OutputState: i.ToGetIamPolicyDocumentStatementConditionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetIamPolicyDocumentStatementConditionOutput struct{ *pulumi.OutputState }
 
 func (GetIamPolicyDocumentStatementConditionOutput) ElementType() reflect.Type {
@@ -614,6 +723,12 @@ func (o GetIamPolicyDocumentStatementConditionOutput) ToGetIamPolicyDocumentStat
 
 func (o GetIamPolicyDocumentStatementConditionOutput) ToGetIamPolicyDocumentStatementConditionOutputWithContext(ctx context.Context) GetIamPolicyDocumentStatementConditionOutput {
 	return o
+}
+
+func (o GetIamPolicyDocumentStatementConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GetIamPolicyDocumentStatementCondition] {
+	return pulumix.Output[GetIamPolicyDocumentStatementCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIamPolicyDocumentStatementConditionOutput) Test() pulumi.StringOutput {
@@ -640,6 +755,12 @@ func (o GetIamPolicyDocumentStatementConditionArrayOutput) ToGetIamPolicyDocumen
 
 func (o GetIamPolicyDocumentStatementConditionArrayOutput) ToGetIamPolicyDocumentStatementConditionArrayOutputWithContext(ctx context.Context) GetIamPolicyDocumentStatementConditionArrayOutput {
 	return o
+}
+
+func (o GetIamPolicyDocumentStatementConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetIamPolicyDocumentStatementCondition] {
+	return pulumix.Output[[]GetIamPolicyDocumentStatementCondition]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetIamPolicyDocumentStatementConditionArrayOutput) Index(i pulumi.IntInput) GetIamPolicyDocumentStatementConditionOutput {

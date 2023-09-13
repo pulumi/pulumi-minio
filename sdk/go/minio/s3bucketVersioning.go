@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type S3BucketVersioning struct {
@@ -102,6 +103,12 @@ func (i *S3BucketVersioning) ToS3BucketVersioningOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketVersioningOutput)
 }
 
+func (i *S3BucketVersioning) ToOutput(ctx context.Context) pulumix.Output[*S3BucketVersioning] {
+	return pulumix.Output[*S3BucketVersioning]{
+		OutputState: i.ToS3BucketVersioningOutputWithContext(ctx).OutputState,
+	}
+}
+
 // S3BucketVersioningArrayInput is an input type that accepts S3BucketVersioningArray and S3BucketVersioningArrayOutput values.
 // You can construct a concrete instance of `S3BucketVersioningArrayInput` via:
 //
@@ -125,6 +132,12 @@ func (i S3BucketVersioningArray) ToS3BucketVersioningArrayOutput() S3BucketVersi
 
 func (i S3BucketVersioningArray) ToS3BucketVersioningArrayOutputWithContext(ctx context.Context) S3BucketVersioningArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketVersioningArrayOutput)
+}
+
+func (i S3BucketVersioningArray) ToOutput(ctx context.Context) pulumix.Output[[]*S3BucketVersioning] {
+	return pulumix.Output[[]*S3BucketVersioning]{
+		OutputState: i.ToS3BucketVersioningArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // S3BucketVersioningMapInput is an input type that accepts S3BucketVersioningMap and S3BucketVersioningMapOutput values.
@@ -152,6 +165,12 @@ func (i S3BucketVersioningMap) ToS3BucketVersioningMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketVersioningMapOutput)
 }
 
+func (i S3BucketVersioningMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3BucketVersioning] {
+	return pulumix.Output[map[string]*S3BucketVersioning]{
+		OutputState: i.ToS3BucketVersioningMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type S3BucketVersioningOutput struct{ *pulumi.OutputState }
 
 func (S3BucketVersioningOutput) ElementType() reflect.Type {
@@ -164,6 +183,12 @@ func (o S3BucketVersioningOutput) ToS3BucketVersioningOutput() S3BucketVersionin
 
 func (o S3BucketVersioningOutput) ToS3BucketVersioningOutputWithContext(ctx context.Context) S3BucketVersioningOutput {
 	return o
+}
+
+func (o S3BucketVersioningOutput) ToOutput(ctx context.Context) pulumix.Output[*S3BucketVersioning] {
+	return pulumix.Output[*S3BucketVersioning]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3BucketVersioningOutput) Bucket() pulumi.StringOutput {
@@ -190,6 +215,12 @@ func (o S3BucketVersioningArrayOutput) ToS3BucketVersioningArrayOutputWithContex
 	return o
 }
 
+func (o S3BucketVersioningArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*S3BucketVersioning] {
+	return pulumix.Output[[]*S3BucketVersioning]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o S3BucketVersioningArrayOutput) Index(i pulumi.IntInput) S3BucketVersioningOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3BucketVersioning {
 		return vs[0].([]*S3BucketVersioning)[vs[1].(int)]
@@ -208,6 +239,12 @@ func (o S3BucketVersioningMapOutput) ToS3BucketVersioningMapOutput() S3BucketVer
 
 func (o S3BucketVersioningMapOutput) ToS3BucketVersioningMapOutputWithContext(ctx context.Context) S3BucketVersioningMapOutput {
 	return o
+}
+
+func (o S3BucketVersioningMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3BucketVersioning] {
+	return pulumix.Output[map[string]*S3BucketVersioning]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3BucketVersioningMapOutput) MapIndex(k pulumi.StringInput) S3BucketVersioningOutput {

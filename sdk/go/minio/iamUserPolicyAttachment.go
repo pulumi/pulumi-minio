@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -162,6 +163,12 @@ func (i *IamUserPolicyAttachment) ToIamUserPolicyAttachmentOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IamUserPolicyAttachmentOutput)
 }
 
+func (i *IamUserPolicyAttachment) ToOutput(ctx context.Context) pulumix.Output[*IamUserPolicyAttachment] {
+	return pulumix.Output[*IamUserPolicyAttachment]{
+		OutputState: i.ToIamUserPolicyAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IamUserPolicyAttachmentArrayInput is an input type that accepts IamUserPolicyAttachmentArray and IamUserPolicyAttachmentArrayOutput values.
 // You can construct a concrete instance of `IamUserPolicyAttachmentArrayInput` via:
 //
@@ -185,6 +192,12 @@ func (i IamUserPolicyAttachmentArray) ToIamUserPolicyAttachmentArrayOutput() Iam
 
 func (i IamUserPolicyAttachmentArray) ToIamUserPolicyAttachmentArrayOutputWithContext(ctx context.Context) IamUserPolicyAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamUserPolicyAttachmentArrayOutput)
+}
+
+func (i IamUserPolicyAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*IamUserPolicyAttachment] {
+	return pulumix.Output[[]*IamUserPolicyAttachment]{
+		OutputState: i.ToIamUserPolicyAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IamUserPolicyAttachmentMapInput is an input type that accepts IamUserPolicyAttachmentMap and IamUserPolicyAttachmentMapOutput values.
@@ -212,6 +225,12 @@ func (i IamUserPolicyAttachmentMap) ToIamUserPolicyAttachmentMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(IamUserPolicyAttachmentMapOutput)
 }
 
+func (i IamUserPolicyAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamUserPolicyAttachment] {
+	return pulumix.Output[map[string]*IamUserPolicyAttachment]{
+		OutputState: i.ToIamUserPolicyAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IamUserPolicyAttachmentOutput struct{ *pulumi.OutputState }
 
 func (IamUserPolicyAttachmentOutput) ElementType() reflect.Type {
@@ -224,6 +243,12 @@ func (o IamUserPolicyAttachmentOutput) ToIamUserPolicyAttachmentOutput() IamUser
 
 func (o IamUserPolicyAttachmentOutput) ToIamUserPolicyAttachmentOutputWithContext(ctx context.Context) IamUserPolicyAttachmentOutput {
 	return o
+}
+
+func (o IamUserPolicyAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*IamUserPolicyAttachment] {
+	return pulumix.Output[*IamUserPolicyAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IamUserPolicyAttachmentOutput) PolicyName() pulumi.StringOutput {
@@ -248,6 +273,12 @@ func (o IamUserPolicyAttachmentArrayOutput) ToIamUserPolicyAttachmentArrayOutput
 	return o
 }
 
+func (o IamUserPolicyAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IamUserPolicyAttachment] {
+	return pulumix.Output[[]*IamUserPolicyAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IamUserPolicyAttachmentArrayOutput) Index(i pulumi.IntInput) IamUserPolicyAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamUserPolicyAttachment {
 		return vs[0].([]*IamUserPolicyAttachment)[vs[1].(int)]
@@ -266,6 +297,12 @@ func (o IamUserPolicyAttachmentMapOutput) ToIamUserPolicyAttachmentMapOutput() I
 
 func (o IamUserPolicyAttachmentMapOutput) ToIamUserPolicyAttachmentMapOutputWithContext(ctx context.Context) IamUserPolicyAttachmentMapOutput {
 	return o
+}
+
+func (o IamUserPolicyAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamUserPolicyAttachment] {
+	return pulumix.Output[map[string]*IamUserPolicyAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IamUserPolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) IamUserPolicyAttachmentOutput {

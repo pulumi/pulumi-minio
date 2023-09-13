@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // `IlmPolicy` handles lifecycle settings for a given `S3Bucket`.
@@ -141,6 +142,12 @@ func (i *IlmPolicy) ToIlmPolicyOutputWithContext(ctx context.Context) IlmPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(IlmPolicyOutput)
 }
 
+func (i *IlmPolicy) ToOutput(ctx context.Context) pulumix.Output[*IlmPolicy] {
+	return pulumix.Output[*IlmPolicy]{
+		OutputState: i.ToIlmPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IlmPolicyArrayInput is an input type that accepts IlmPolicyArray and IlmPolicyArrayOutput values.
 // You can construct a concrete instance of `IlmPolicyArrayInput` via:
 //
@@ -164,6 +171,12 @@ func (i IlmPolicyArray) ToIlmPolicyArrayOutput() IlmPolicyArrayOutput {
 
 func (i IlmPolicyArray) ToIlmPolicyArrayOutputWithContext(ctx context.Context) IlmPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IlmPolicyArrayOutput)
+}
+
+func (i IlmPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IlmPolicy] {
+	return pulumix.Output[[]*IlmPolicy]{
+		OutputState: i.ToIlmPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IlmPolicyMapInput is an input type that accepts IlmPolicyMap and IlmPolicyMapOutput values.
@@ -191,6 +204,12 @@ func (i IlmPolicyMap) ToIlmPolicyMapOutputWithContext(ctx context.Context) IlmPo
 	return pulumi.ToOutputWithContext(ctx, i).(IlmPolicyMapOutput)
 }
 
+func (i IlmPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IlmPolicy] {
+	return pulumix.Output[map[string]*IlmPolicy]{
+		OutputState: i.ToIlmPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IlmPolicyOutput struct{ *pulumi.OutputState }
 
 func (IlmPolicyOutput) ElementType() reflect.Type {
@@ -203,6 +222,12 @@ func (o IlmPolicyOutput) ToIlmPolicyOutput() IlmPolicyOutput {
 
 func (o IlmPolicyOutput) ToIlmPolicyOutputWithContext(ctx context.Context) IlmPolicyOutput {
 	return o
+}
+
+func (o IlmPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*IlmPolicy] {
+	return pulumix.Output[*IlmPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IlmPolicyOutput) Bucket() pulumi.StringOutput {
@@ -227,6 +252,12 @@ func (o IlmPolicyArrayOutput) ToIlmPolicyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o IlmPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IlmPolicy] {
+	return pulumix.Output[[]*IlmPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IlmPolicyArrayOutput) Index(i pulumi.IntInput) IlmPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IlmPolicy {
 		return vs[0].([]*IlmPolicy)[vs[1].(int)]
@@ -245,6 +276,12 @@ func (o IlmPolicyMapOutput) ToIlmPolicyMapOutput() IlmPolicyMapOutput {
 
 func (o IlmPolicyMapOutput) ToIlmPolicyMapOutputWithContext(ctx context.Context) IlmPolicyMapOutput {
 	return o
+}
+
+func (o IlmPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IlmPolicy] {
+	return pulumix.Output[map[string]*IlmPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IlmPolicyMapOutput) MapIndex(k pulumi.StringInput) IlmPolicyOutput {

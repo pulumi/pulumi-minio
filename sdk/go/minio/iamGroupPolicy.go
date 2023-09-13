@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -159,6 +160,12 @@ func (i *IamGroupPolicy) ToIamGroupPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupPolicyOutput)
 }
 
+func (i *IamGroupPolicy) ToOutput(ctx context.Context) pulumix.Output[*IamGroupPolicy] {
+	return pulumix.Output[*IamGroupPolicy]{
+		OutputState: i.ToIamGroupPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IamGroupPolicyArrayInput is an input type that accepts IamGroupPolicyArray and IamGroupPolicyArrayOutput values.
 // You can construct a concrete instance of `IamGroupPolicyArrayInput` via:
 //
@@ -182,6 +189,12 @@ func (i IamGroupPolicyArray) ToIamGroupPolicyArrayOutput() IamGroupPolicyArrayOu
 
 func (i IamGroupPolicyArray) ToIamGroupPolicyArrayOutputWithContext(ctx context.Context) IamGroupPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupPolicyArrayOutput)
+}
+
+func (i IamGroupPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IamGroupPolicy] {
+	return pulumix.Output[[]*IamGroupPolicy]{
+		OutputState: i.ToIamGroupPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IamGroupPolicyMapInput is an input type that accepts IamGroupPolicyMap and IamGroupPolicyMapOutput values.
@@ -209,6 +222,12 @@ func (i IamGroupPolicyMap) ToIamGroupPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupPolicyMapOutput)
 }
 
+func (i IamGroupPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamGroupPolicy] {
+	return pulumix.Output[map[string]*IamGroupPolicy]{
+		OutputState: i.ToIamGroupPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IamGroupPolicyOutput struct{ *pulumi.OutputState }
 
 func (IamGroupPolicyOutput) ElementType() reflect.Type {
@@ -221,6 +240,12 @@ func (o IamGroupPolicyOutput) ToIamGroupPolicyOutput() IamGroupPolicyOutput {
 
 func (o IamGroupPolicyOutput) ToIamGroupPolicyOutputWithContext(ctx context.Context) IamGroupPolicyOutput {
 	return o
+}
+
+func (o IamGroupPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*IamGroupPolicy] {
+	return pulumix.Output[*IamGroupPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IamGroupPolicyOutput) Group() pulumi.StringOutput {
@@ -253,6 +278,12 @@ func (o IamGroupPolicyArrayOutput) ToIamGroupPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o IamGroupPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IamGroupPolicy] {
+	return pulumix.Output[[]*IamGroupPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IamGroupPolicyArrayOutput) Index(i pulumi.IntInput) IamGroupPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamGroupPolicy {
 		return vs[0].([]*IamGroupPolicy)[vs[1].(int)]
@@ -271,6 +302,12 @@ func (o IamGroupPolicyMapOutput) ToIamGroupPolicyMapOutput() IamGroupPolicyMapOu
 
 func (o IamGroupPolicyMapOutput) ToIamGroupPolicyMapOutputWithContext(ctx context.Context) IamGroupPolicyMapOutput {
 	return o
+}
+
+func (o IamGroupPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamGroupPolicy] {
+	return pulumix.Output[map[string]*IamGroupPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IamGroupPolicyMapOutput) MapIndex(k pulumi.StringInput) IamGroupPolicyOutput {

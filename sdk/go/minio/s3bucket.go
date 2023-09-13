@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -149,6 +150,12 @@ func (i *S3Bucket) ToS3BucketOutputWithContext(ctx context.Context) S3BucketOutp
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketOutput)
 }
 
+func (i *S3Bucket) ToOutput(ctx context.Context) pulumix.Output[*S3Bucket] {
+	return pulumix.Output[*S3Bucket]{
+		OutputState: i.ToS3BucketOutputWithContext(ctx).OutputState,
+	}
+}
+
 // S3BucketArrayInput is an input type that accepts S3BucketArray and S3BucketArrayOutput values.
 // You can construct a concrete instance of `S3BucketArrayInput` via:
 //
@@ -172,6 +179,12 @@ func (i S3BucketArray) ToS3BucketArrayOutput() S3BucketArrayOutput {
 
 func (i S3BucketArray) ToS3BucketArrayOutputWithContext(ctx context.Context) S3BucketArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketArrayOutput)
+}
+
+func (i S3BucketArray) ToOutput(ctx context.Context) pulumix.Output[[]*S3Bucket] {
+	return pulumix.Output[[]*S3Bucket]{
+		OutputState: i.ToS3BucketArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // S3BucketMapInput is an input type that accepts S3BucketMap and S3BucketMapOutput values.
@@ -199,6 +212,12 @@ func (i S3BucketMap) ToS3BucketMapOutputWithContext(ctx context.Context) S3Bucke
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketMapOutput)
 }
 
+func (i S3BucketMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3Bucket] {
+	return pulumix.Output[map[string]*S3Bucket]{
+		OutputState: i.ToS3BucketMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type S3BucketOutput struct{ *pulumi.OutputState }
 
 func (S3BucketOutput) ElementType() reflect.Type {
@@ -211,6 +230,12 @@ func (o S3BucketOutput) ToS3BucketOutput() S3BucketOutput {
 
 func (o S3BucketOutput) ToS3BucketOutputWithContext(ctx context.Context) S3BucketOutput {
 	return o
+}
+
+func (o S3BucketOutput) ToOutput(ctx context.Context) pulumix.Output[*S3Bucket] {
+	return pulumix.Output[*S3Bucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3BucketOutput) Acl() pulumi.StringPtrOutput {
@@ -259,6 +284,12 @@ func (o S3BucketArrayOutput) ToS3BucketArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o S3BucketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*S3Bucket] {
+	return pulumix.Output[[]*S3Bucket]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o S3BucketArrayOutput) Index(i pulumi.IntInput) S3BucketOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3Bucket {
 		return vs[0].([]*S3Bucket)[vs[1].(int)]
@@ -277,6 +308,12 @@ func (o S3BucketMapOutput) ToS3BucketMapOutput() S3BucketMapOutput {
 
 func (o S3BucketMapOutput) ToS3BucketMapOutputWithContext(ctx context.Context) S3BucketMapOutput {
 	return o
+}
+
+func (o S3BucketMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3Bucket] {
+	return pulumix.Output[map[string]*S3Bucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o S3BucketMapOutput) MapIndex(k pulumi.StringInput) S3BucketOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -139,6 +140,12 @@ func (i *IamGroupUserAttachment) ToIamGroupUserAttachmentOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupUserAttachmentOutput)
 }
 
+func (i *IamGroupUserAttachment) ToOutput(ctx context.Context) pulumix.Output[*IamGroupUserAttachment] {
+	return pulumix.Output[*IamGroupUserAttachment]{
+		OutputState: i.ToIamGroupUserAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IamGroupUserAttachmentArrayInput is an input type that accepts IamGroupUserAttachmentArray and IamGroupUserAttachmentArrayOutput values.
 // You can construct a concrete instance of `IamGroupUserAttachmentArrayInput` via:
 //
@@ -162,6 +169,12 @@ func (i IamGroupUserAttachmentArray) ToIamGroupUserAttachmentArrayOutput() IamGr
 
 func (i IamGroupUserAttachmentArray) ToIamGroupUserAttachmentArrayOutputWithContext(ctx context.Context) IamGroupUserAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupUserAttachmentArrayOutput)
+}
+
+func (i IamGroupUserAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*IamGroupUserAttachment] {
+	return pulumix.Output[[]*IamGroupUserAttachment]{
+		OutputState: i.ToIamGroupUserAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IamGroupUserAttachmentMapInput is an input type that accepts IamGroupUserAttachmentMap and IamGroupUserAttachmentMapOutput values.
@@ -189,6 +202,12 @@ func (i IamGroupUserAttachmentMap) ToIamGroupUserAttachmentMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupUserAttachmentMapOutput)
 }
 
+func (i IamGroupUserAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamGroupUserAttachment] {
+	return pulumix.Output[map[string]*IamGroupUserAttachment]{
+		OutputState: i.ToIamGroupUserAttachmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IamGroupUserAttachmentOutput struct{ *pulumi.OutputState }
 
 func (IamGroupUserAttachmentOutput) ElementType() reflect.Type {
@@ -201,6 +220,12 @@ func (o IamGroupUserAttachmentOutput) ToIamGroupUserAttachmentOutput() IamGroupU
 
 func (o IamGroupUserAttachmentOutput) ToIamGroupUserAttachmentOutputWithContext(ctx context.Context) IamGroupUserAttachmentOutput {
 	return o
+}
+
+func (o IamGroupUserAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*IamGroupUserAttachment] {
+	return pulumix.Output[*IamGroupUserAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IamGroupUserAttachmentOutput) GroupName() pulumi.StringOutput {
@@ -225,6 +250,12 @@ func (o IamGroupUserAttachmentArrayOutput) ToIamGroupUserAttachmentArrayOutputWi
 	return o
 }
 
+func (o IamGroupUserAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IamGroupUserAttachment] {
+	return pulumix.Output[[]*IamGroupUserAttachment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IamGroupUserAttachmentArrayOutput) Index(i pulumi.IntInput) IamGroupUserAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamGroupUserAttachment {
 		return vs[0].([]*IamGroupUserAttachment)[vs[1].(int)]
@@ -243,6 +274,12 @@ func (o IamGroupUserAttachmentMapOutput) ToIamGroupUserAttachmentMapOutput() Iam
 
 func (o IamGroupUserAttachmentMapOutput) ToIamGroupUserAttachmentMapOutputWithContext(ctx context.Context) IamGroupUserAttachmentMapOutput {
 	return o
+}
+
+func (o IamGroupUserAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamGroupUserAttachment] {
+	return pulumix.Output[map[string]*IamGroupUserAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IamGroupUserAttachmentMapOutput) MapIndex(k pulumi.StringInput) IamGroupUserAttachmentOutput {
