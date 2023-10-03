@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IamGroupArgs', 'IamGroup']
@@ -22,12 +22,25 @@ class IamGroupArgs:
         :param pulumi.Input[bool] disable_group: Disable group
         :param pulumi.Input[bool] force_destroy: Delete group even if it has non-Terraform-managed members
         """
+        IamGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disable_group=disable_group,
+            force_destroy=force_destroy,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disable_group: Optional[pulumi.Input[bool]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disable_group is not None:
-            pulumi.set(__self__, "disable_group", disable_group)
+            _setter("disable_group", disable_group)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="disableGroup")
@@ -75,14 +88,29 @@ class _IamGroupState:
         :param pulumi.Input[bool] disable_group: Disable group
         :param pulumi.Input[bool] force_destroy: Delete group even if it has non-Terraform-managed members
         """
+        _IamGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disable_group=disable_group,
+            force_destroy=force_destroy,
+            group_name=group_name,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disable_group: Optional[pulumi.Input[bool]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disable_group is not None:
-            pulumi.set(__self__, "disable_group", disable_group)
+            _setter("disable_group", disable_group)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="disableGroup")
@@ -179,6 +207,10 @@ class IamGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IamGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IamGroupMembershipArgs', 'IamGroupMembership']
@@ -23,10 +23,23 @@ class IamGroupMembershipArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Add user or list of users such as a group membership
         :param pulumi.Input[str] name: Name of group membership
         """
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "users", users)
+        IamGroupMembershipArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            users=users,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: pulumi.Input[str],
+             users: pulumi.Input[Sequence[pulumi.Input[str]]],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group", group)
+        _setter("users", users)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -77,12 +90,25 @@ class _IamGroupMembershipState:
         :param pulumi.Input[str] name: Name of group membership
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Add user or list of users such as a group membership
         """
+        _IamGroupMembershipState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            name=name,
+            users=users,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if users is not None:
-            pulumi.set(__self__, "users", users)
+            _setter("users", users)
 
     @property
     @pulumi.getter
@@ -156,6 +182,10 @@ class IamGroupMembership(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IamGroupMembershipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
