@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IamUserArgs', 'IamUser']
@@ -26,18 +26,37 @@ class IamUserArgs:
         :param pulumi.Input[bool] force_destroy: Delete user even if it has non-Terraform-managed IAM access keys
         :param pulumi.Input[bool] update_secret: Rotate Minio User Secret Key
         """
+        IamUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disable_user=disable_user,
+            force_destroy=force_destroy,
+            name=name,
+            secret=secret,
+            tags=tags,
+            update_secret=update_secret,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disable_user: Optional[pulumi.Input[bool]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             update_secret: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disable_user is not None:
-            pulumi.set(__self__, "disable_user", disable_user)
+            _setter("disable_user", disable_user)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if update_secret is not None:
-            pulumi.set(__self__, "update_secret", update_secret)
+            _setter("update_secret", update_secret)
 
     @property
     @pulumi.getter(name="disableUser")
@@ -119,20 +138,41 @@ class _IamUserState:
         :param pulumi.Input[bool] force_destroy: Delete user even if it has non-Terraform-managed IAM access keys
         :param pulumi.Input[bool] update_secret: Rotate Minio User Secret Key
         """
+        _IamUserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disable_user=disable_user,
+            force_destroy=force_destroy,
+            name=name,
+            secret=secret,
+            status=status,
+            tags=tags,
+            update_secret=update_secret,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disable_user: Optional[pulumi.Input[bool]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             update_secret: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if disable_user is not None:
-            pulumi.set(__self__, "disable_user", disable_user)
+            _setter("disable_user", disable_user)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if update_secret is not None:
-            pulumi.set(__self__, "update_secret", update_secret)
+            _setter("update_secret", update_secret)
 
     @property
     @pulumi.getter(name="disableUser")
@@ -275,6 +315,10 @@ class IamUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IamUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

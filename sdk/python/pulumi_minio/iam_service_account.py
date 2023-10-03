@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IamServiceAccountArgs', 'IamServiceAccount']
@@ -24,13 +24,28 @@ class IamServiceAccountArgs:
         :param pulumi.Input[str] policy: policy of service account
         :param pulumi.Input[bool] update_secret: rotate secret key
         """
-        pulumi.set(__self__, "target_user", target_user)
+        IamServiceAccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            target_user=target_user,
+            disable_user=disable_user,
+            policy=policy,
+            update_secret=update_secret,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             target_user: pulumi.Input[str],
+             disable_user: Optional[pulumi.Input[bool]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             update_secret: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("target_user", target_user)
         if disable_user is not None:
-            pulumi.set(__self__, "disable_user", disable_user)
+            _setter("disable_user", disable_user)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if update_secret is not None:
-            pulumi.set(__self__, "update_secret", update_secret)
+            _setter("update_secret", update_secret)
 
     @property
     @pulumi.getter(name="targetUser")
@@ -94,20 +109,41 @@ class _IamServiceAccountState:
         :param pulumi.Input[str] policy: policy of service account
         :param pulumi.Input[bool] update_secret: rotate secret key
         """
+        _IamServiceAccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_key=access_key,
+            disable_user=disable_user,
+            policy=policy,
+            secret_key=secret_key,
+            status=status,
+            target_user=target_user,
+            update_secret=update_secret,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_key: Optional[pulumi.Input[str]] = None,
+             disable_user: Optional[pulumi.Input[bool]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             target_user: Optional[pulumi.Input[str]] = None,
+             update_secret: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if disable_user is not None:
-            pulumi.set(__self__, "disable_user", disable_user)
+            _setter("disable_user", disable_user)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if target_user is not None:
-            pulumi.set(__self__, "target_user", target_user)
+            _setter("target_user", target_user)
         if update_secret is not None:
-            pulumi.set(__self__, "update_secret", update_secret)
+            _setter("update_secret", update_secret)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -248,6 +284,10 @@ class IamServiceAccount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IamServiceAccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
