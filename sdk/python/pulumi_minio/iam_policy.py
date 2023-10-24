@@ -32,7 +32,11 @@ class IamPolicyArgs:
              policy: pulumi.Input[str],
              name: Optional[pulumi.Input[str]] = None,
              name_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+
         _setter("policy", policy)
         if name is not None:
             _setter("name", name)
@@ -88,7 +92,11 @@ class _IamPolicyState:
              name: Optional[pulumi.Input[str]] = None,
              name_prefix: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+
         if name is not None:
             _setter("name", name)
         if name_prefix is not None:

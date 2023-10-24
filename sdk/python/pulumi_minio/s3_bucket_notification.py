@@ -31,7 +31,9 @@ class S3BucketNotificationArgs:
              _setter: Callable[[Any, Any], None],
              bucket: pulumi.Input[str],
              queues: Optional[pulumi.Input[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("bucket", bucket)
         if queues is not None:
             _setter("queues", queues)
@@ -73,7 +75,9 @@ class _S3BucketNotificationState:
              _setter: Callable[[Any, Any], None],
              bucket: Optional[pulumi.Input[str]] = None,
              queues: Optional[pulumi.Input[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if bucket is not None:
             _setter("bucket", bucket)
         if queues is not None:

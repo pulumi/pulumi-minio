@@ -35,7 +35,9 @@ class IamGroupMembershipArgs:
              group: pulumi.Input[str],
              users: pulumi.Input[Sequence[pulumi.Input[str]]],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("group", group)
         _setter("users", users)
         if name is not None:
@@ -102,7 +104,9 @@ class _IamGroupMembershipState:
              group: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if group is not None:
             _setter("group", group)
         if name is not None:
