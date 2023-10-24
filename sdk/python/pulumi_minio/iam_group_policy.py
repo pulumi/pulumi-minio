@@ -35,7 +35,11 @@ class IamGroupPolicyArgs:
              policy: pulumi.Input[str],
              name: Optional[pulumi.Input[str]] = None,
              name_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+
         _setter("group", group)
         _setter("policy", policy)
         if name is not None:
@@ -104,7 +108,11 @@ class _IamGroupPolicyState:
              name: Optional[pulumi.Input[str]] = None,
              name_prefix: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+
         if group is not None:
             _setter("group", group)
         if name is not None:

@@ -29,7 +29,13 @@ class IamGroupPolicyAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              group_name: pulumi.Input[str],
              policy_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+
         _setter("group_name", group_name)
         _setter("policy_name", policy_name)
 
@@ -70,7 +76,13 @@ class _IamGroupPolicyAttachmentState:
              _setter: Callable[[Any, Any], None],
              group_name: Optional[pulumi.Input[str]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+
         if group_name is not None:
             _setter("group_name", group_name)
         if policy_name is not None:

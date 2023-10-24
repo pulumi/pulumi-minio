@@ -32,7 +32,13 @@ class S3BucketServerSideEncryptionArgs:
              bucket: pulumi.Input[str],
              encryption_type: pulumi.Input[str],
              kms_key_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+
         _setter("bucket", bucket)
         _setter("encryption_type", encryption_type)
         _setter("kms_key_id", kms_key_id)
@@ -86,7 +92,13 @@ class _S3BucketServerSideEncryptionState:
              bucket: Optional[pulumi.Input[str]] = None,
              encryption_type: Optional[pulumi.Input[str]] = None,
              kms_key_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if encryption_type is not None:

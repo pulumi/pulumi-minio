@@ -38,7 +38,15 @@ class IamServiceAccountArgs:
              disable_user: Optional[pulumi.Input[bool]] = None,
              policy: Optional[pulumi.Input[str]] = None,
              update_secret: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'targetUser' in kwargs:
+            target_user = kwargs['targetUser']
+        if 'disableUser' in kwargs:
+            disable_user = kwargs['disableUser']
+        if 'updateSecret' in kwargs:
+            update_secret = kwargs['updateSecret']
+
         _setter("target_user", target_user)
         if disable_user is not None:
             _setter("disable_user", disable_user)
@@ -129,7 +137,19 @@ class _IamServiceAccountState:
              status: Optional[pulumi.Input[str]] = None,
              target_user: Optional[pulumi.Input[str]] = None,
              update_secret: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'disableUser' in kwargs:
+            disable_user = kwargs['disableUser']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'targetUser' in kwargs:
+            target_user = kwargs['targetUser']
+        if 'updateSecret' in kwargs:
+            update_secret = kwargs['updateSecret']
+
         if access_key is not None:
             _setter("access_key", access_key)
         if disable_user is not None:

@@ -45,7 +45,9 @@ class IlmPolicyRule(dict):
              filter: Optional[str] = None,
              status: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
         if expiration is not None:
             _setter("expiration", expiration)
@@ -133,7 +135,15 @@ class S3BucketNotificationQueue(dict):
              filter_prefix: Optional[str] = None,
              filter_suffix: Optional[str] = None,
              id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'queueArn' in kwargs:
+            queue_arn = kwargs['queueArn']
+        if 'filterPrefix' in kwargs:
+            filter_prefix = kwargs['filterPrefix']
+        if 'filterSuffix' in kwargs:
+            filter_suffix = kwargs['filterSuffix']
+
         _setter("events", events)
         _setter("queue_arn", queue_arn)
         if filter_prefix is not None:
@@ -209,7 +219,13 @@ class S3BucketVersioningVersioningConfiguration(dict):
              status: str,
              exclude_folders: Optional[bool] = None,
              excluded_prefixes: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'excludeFolders' in kwargs:
+            exclude_folders = kwargs['excludeFolders']
+        if 'excludedPrefixes' in kwargs:
+            excluded_prefixes = kwargs['excludedPrefixes']
+
         _setter("status", status)
         if exclude_folders is not None:
             _setter("exclude_folders", exclude_folders)
@@ -259,7 +275,9 @@ class GetIamPolicyDocumentStatementResult(dict):
              principal: Optional[str] = None,
              resources: Optional[Sequence[str]] = None,
              sid: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if actions is not None:
             _setter("actions", actions)
         if conditions is not None:
@@ -322,7 +340,9 @@ class GetIamPolicyDocumentStatementConditionResult(dict):
              test: str,
              values: Sequence[str],
              variable: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("test", test)
         _setter("values", values)
         _setter("variable", variable)

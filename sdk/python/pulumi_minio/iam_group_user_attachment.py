@@ -29,7 +29,13 @@ class IamGroupUserAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              group_name: pulumi.Input[str],
              user_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("group_name", group_name)
         _setter("user_name", user_name)
 
@@ -70,7 +76,13 @@ class _IamGroupUserAttachmentState:
              _setter: Callable[[Any, Any], None],
              group_name: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if group_name is not None:
             _setter("group_name", group_name)
         if user_name is not None:

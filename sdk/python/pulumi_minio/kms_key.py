@@ -26,7 +26,11 @@ class KmsKeyArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              key_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+
         _setter("key_id", key_id)
 
     @property
@@ -54,7 +58,11 @@ class _KmsKeyState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              key_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+
         if key_id is not None:
             _setter("key_id", key_id)
 

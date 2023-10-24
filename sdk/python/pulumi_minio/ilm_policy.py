@@ -31,7 +31,9 @@ class IlmPolicyArgs:
              _setter: Callable[[Any, Any], None],
              bucket: pulumi.Input[str],
              rules: pulumi.Input[Sequence[pulumi.Input['IlmPolicyRuleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("bucket", bucket)
         _setter("rules", rules)
 
@@ -72,7 +74,9 @@ class _IlmPolicyState:
              _setter: Callable[[Any, Any], None],
              bucket: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['IlmPolicyRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if bucket is not None:
             _setter("bucket", bucket)
         if rules is not None:

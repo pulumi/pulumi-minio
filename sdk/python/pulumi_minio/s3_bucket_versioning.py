@@ -31,7 +31,11 @@ class S3BucketVersioningArgs:
              _setter: Callable[[Any, Any], None],
              bucket: pulumi.Input[str],
              versioning_configuration: pulumi.Input['S3BucketVersioningVersioningConfigurationArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'versioningConfiguration' in kwargs:
+            versioning_configuration = kwargs['versioningConfiguration']
+
         _setter("bucket", bucket)
         _setter("versioning_configuration", versioning_configuration)
 
@@ -72,7 +76,11 @@ class _S3BucketVersioningState:
              _setter: Callable[[Any, Any], None],
              bucket: Optional[pulumi.Input[str]] = None,
              versioning_configuration: Optional[pulumi.Input['S3BucketVersioningVersioningConfigurationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'versioningConfiguration' in kwargs:
+            versioning_configuration = kwargs['versioningConfiguration']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if versioning_configuration is not None:

@@ -47,7 +47,19 @@ class S3ObjectArgs:
              etag: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'objectName' in kwargs:
+            object_name = kwargs['objectName']
+        if 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         _setter("bucket_name", bucket_name)
         _setter("object_name", object_name)
         if content is not None:
@@ -172,7 +184,19 @@ class _S3ObjectState:
              object_name: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if 'objectName' in kwargs:
+            object_name = kwargs['objectName']
+        if 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
         if content is not None:

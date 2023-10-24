@@ -29,7 +29,9 @@ class S3BucketPolicyArgs:
              _setter: Callable[[Any, Any], None],
              bucket: pulumi.Input[str],
              policy: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("bucket", bucket)
         _setter("policy", policy)
 
@@ -70,7 +72,9 @@ class _S3BucketPolicyState:
              _setter: Callable[[Any, Any], None],
              bucket: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if bucket is not None:
             _setter("bucket", bucket)
         if policy is not None:
