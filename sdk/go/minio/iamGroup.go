@@ -12,30 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			developer, err := minio.NewIamGroup(ctx, "developer", nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("minioUserGroup", developer.GroupName)
-//			return nil
-//		})
-//	}
-//
-// ```
 type IamGroup struct {
 	pulumi.CustomResourceState
 

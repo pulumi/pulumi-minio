@@ -9,57 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Minio = Pulumi.Minio;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var testUser = new Minio.IamUser("testUser");
-    /// 
-    ///     var testPolicy = new Minio.IamPolicy("testPolicy", new()
-    ///     {
-    ///         Policy = @"{
-    ///   ""Version"":""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Sid"":""ListAllBucket"",
-    ///       ""Effect"": ""Allow"",
-    ///       ""Action"": [""s3:PutObject""],
-    ///       ""Principal"":""*"",
-    ///       ""Resource"": ""arn:aws:s3:::state-terraform-s3/*""
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///     });
-    /// 
-    ///     var developerIamUserPolicyAttachment = new Minio.IamUserPolicyAttachment("developerIamUserPolicyAttachment", new()
-    ///     {
-    ///         UserName = testUser.Id,
-    ///         PolicyName = testPolicy.Id,
-    ///     });
-    /// 
-    ///     var developerIndex_iamUserPolicyAttachmentIamUserPolicyAttachment = new Minio.IamUserPolicyAttachment("developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment", new()
-    ///     {
-    ///         UserName = "CN=My User,OU=Unit,DC=example,DC=com",
-    ///         PolicyName = testPolicy.Id,
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["minioName"] = developerIamUserPolicyAttachment.Id,
-    ///         ["minioUsers"] = developerIamUserPolicyAttachment.UserName,
-    ///         ["minioGroup"] = developerIamUserPolicyAttachment.PolicyName,
-    ///     };
-    /// });
-    /// ```
-    /// </summary>
     [MinioResourceType("minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment")]
     public partial class IamUserPolicyAttachment : global::Pulumi.CustomResource
     {

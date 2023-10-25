@@ -30,7 +30,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* use minio_user instead */
-    @Export(name="minioAccessKey", type=String.class, parameters={})
+    @Export(name="minioAccessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioAccessKey;
 
     /**
@@ -44,7 +44,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Minio API Version (type: string, options: v2 or v4, default: v4)
      * 
      */
-    @Export(name="minioApiVersion", type=String.class, parameters={})
+    @Export(name="minioApiVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioApiVersion;
 
     /**
@@ -54,19 +54,19 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> minioApiVersion() {
         return Codegen.optional(this.minioApiVersion);
     }
-    @Export(name="minioCacertFile", type=String.class, parameters={})
+    @Export(name="minioCacertFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioCacertFile;
 
     public Output<Optional<String>> minioCacertFile() {
         return Codegen.optional(this.minioCacertFile);
     }
-    @Export(name="minioCertFile", type=String.class, parameters={})
+    @Export(name="minioCertFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioCertFile;
 
     public Output<Optional<String>> minioCertFile() {
         return Codegen.optional(this.minioCertFile);
     }
-    @Export(name="minioKeyFile", type=String.class, parameters={})
+    @Export(name="minioKeyFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioKeyFile;
 
     public Output<Optional<String>> minioKeyFile() {
@@ -76,7 +76,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Minio Password
      * 
      */
-    @Export(name="minioPassword", type=String.class, parameters={})
+    @Export(name="minioPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioPassword;
 
     /**
@@ -90,7 +90,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Minio Region (default: us-east-1)
      * 
      */
-    @Export(name="minioRegion", type=String.class, parameters={})
+    @Export(name="minioRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioRegion;
 
     /**
@@ -108,7 +108,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* use minio_password instead */
-    @Export(name="minioSecretKey", type=String.class, parameters={})
+    @Export(name="minioSecretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioSecretKey;
 
     /**
@@ -122,7 +122,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Minio Host and Port
      * 
      */
-    @Export(name="minioServer", type=String.class, parameters={})
+    @Export(name="minioServer", refs={String.class}, tree="[0]")
     private Output<String> minioServer;
 
     /**
@@ -136,7 +136,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Minio Session Token
      * 
      */
-    @Export(name="minioSessionToken", type=String.class, parameters={})
+    @Export(name="minioSessionToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioSessionToken;
 
     /**
@@ -150,7 +150,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Minio User
      * 
      */
-    @Export(name="minioUser", type=String.class, parameters={})
+    @Export(name="minioUser", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioUser;
 
     /**

@@ -107,43 +107,7 @@ def get_iam_policy_document(override_json: Optional[str] = None,
                             version: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIamPolicyDocumentResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_minio as minio
-
-    example = minio.get_iam_policy_document(statements=[
-        minio.GetIamPolicyDocumentStatementArgs(
-            sid="1",
-            actions=[
-                "s3:ListAllMyBuckets",
-                "s3:GetBucketLocation",
-            ],
-            resources=["arn:aws:s3:::*"],
-        ),
-        minio.GetIamPolicyDocumentStatementArgs(
-            actions=["s3:ListBucket"],
-            resources=["arn:aws:s3:::state-terraform-s3"],
-            conditions=[minio.GetIamPolicyDocumentStatementConditionArgs(
-                test="StringLike",
-                variable="s3:prefix",
-                values=[
-                    "",
-                    "home/",
-                ],
-            )],
-        ),
-        minio.GetIamPolicyDocumentStatementArgs(
-            actions=["s3:PutObject"],
-            resources=[
-                "arn:aws:s3:::state-terraform-s3",
-                "arn:aws:s3:::state-terraform-s3/*",
-            ],
-        ),
-    ])
-    test_policy = minio.IamPolicy("testPolicy", policy=example.json)
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['overrideJson'] = override_json
@@ -172,42 +136,6 @@ def get_iam_policy_document_output(override_json: Optional[pulumi.Input[Optional
                                    version: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamPolicyDocumentResult]:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_minio as minio
-
-    example = minio.get_iam_policy_document(statements=[
-        minio.GetIamPolicyDocumentStatementArgs(
-            sid="1",
-            actions=[
-                "s3:ListAllMyBuckets",
-                "s3:GetBucketLocation",
-            ],
-            resources=["arn:aws:s3:::*"],
-        ),
-        minio.GetIamPolicyDocumentStatementArgs(
-            actions=["s3:ListBucket"],
-            resources=["arn:aws:s3:::state-terraform-s3"],
-            conditions=[minio.GetIamPolicyDocumentStatementConditionArgs(
-                test="StringLike",
-                variable="s3:prefix",
-                values=[
-                    "",
-                    "home/",
-                ],
-            )],
-        ),
-        minio.GetIamPolicyDocumentStatementArgs(
-            actions=["s3:PutObject"],
-            resources=[
-                "arn:aws:s3:::state-terraform-s3",
-                "arn:aws:s3:::state-terraform-s3/*",
-            ],
-        ),
-    ])
-    test_policy = minio.IamPolicy("testPolicy", policy=example.json)
-    ```
+    Use this data source to access information about an existing resource.
     """
     ...

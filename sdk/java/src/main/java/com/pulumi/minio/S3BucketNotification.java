@@ -18,13 +18,13 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="minio:index/s3BucketNotification:S3BucketNotification")
 public class S3BucketNotification extends com.pulumi.resources.CustomResource {
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     public Output<String> bucket() {
         return this.bucket;
     }
-    @Export(name="queues", type=List.class, parameters={S3BucketNotificationQueue.class})
+    @Export(name="queues", refs={List.class,S3BucketNotificationQueue.class}, tree="[0,1]")
     private Output</* @Nullable */ List<S3BucketNotificationQueue>> queues;
 
     public Output<Optional<List<S3BucketNotificationQueue>>> queues() {

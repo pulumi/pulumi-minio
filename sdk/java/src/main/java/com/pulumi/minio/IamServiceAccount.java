@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="minio:index/iamServiceAccount:IamServiceAccount")
 public class IamServiceAccount extends com.pulumi.resources.CustomResource {
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     public Output<String> accessKey() {
@@ -69,7 +69,7 @@ public class IamServiceAccount extends com.pulumi.resources.CustomResource {
      * Disable service account
      * 
      */
-    @Export(name="disableUser", type=Boolean.class, parameters={})
+    @Export(name="disableUser", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableUser;
 
     /**
@@ -83,7 +83,7 @@ public class IamServiceAccount extends com.pulumi.resources.CustomResource {
      * policy of service account
      * 
      */
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policy;
 
     /**
@@ -93,19 +93,19 @@ public class IamServiceAccount extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> policy() {
         return Codegen.optional(this.policy);
     }
-    @Export(name="secretKey", type=String.class, parameters={})
+    @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output<String> secretKey;
 
     public Output<String> secretKey() {
         return this.secretKey;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {
         return this.status;
     }
-    @Export(name="targetUser", type=String.class, parameters={})
+    @Export(name="targetUser", refs={String.class}, tree="[0]")
     private Output<String> targetUser;
 
     public Output<String> targetUser() {
@@ -115,7 +115,7 @@ public class IamServiceAccount extends com.pulumi.resources.CustomResource {
      * rotate secret key
      * 
      */
-    @Export(name="updateSecret", type=Boolean.class, parameters={})
+    @Export(name="updateSecret", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> updateSecret;
 
     /**

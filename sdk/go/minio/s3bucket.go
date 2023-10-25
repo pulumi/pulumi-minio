@@ -12,34 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			stateTerraformS3, err := minio.NewS3Bucket(ctx, "stateTerraformS3", &minio.S3BucketArgs{
-//				Acl:    pulumi.String("public"),
-//				Bucket: pulumi.String("state-terraform-s3"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("minioId", stateTerraformS3.ID())
-//			ctx.Export("minioUrl", stateTerraformS3.BucketDomainName)
-//			return nil
-//		})
-//	}
-//
-// ```
 type S3Bucket struct {
 	pulumi.CustomResourceState
 

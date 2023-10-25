@@ -15,13 +15,13 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="minio:index/s3BucketPolicy:S3BucketPolicy")
 public class S3BucketPolicy extends com.pulumi.resources.CustomResource {
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     public Output<String> bucket() {
         return this.bucket;
     }
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output<String> policy;
 
     public Output<String> policy() {

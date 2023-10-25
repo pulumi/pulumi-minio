@@ -51,7 +51,7 @@ public class IamGroup extends com.pulumi.resources.CustomResource {
      * Disable group
      * 
      */
-    @Export(name="disableGroup", type=Boolean.class, parameters={})
+    @Export(name="disableGroup", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableGroup;
 
     /**
@@ -65,7 +65,7 @@ public class IamGroup extends com.pulumi.resources.CustomResource {
      * Delete group even if it has non-Terraform-managed members
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -75,13 +75,13 @@ public class IamGroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     public Output<String> groupName() {
         return this.groupName;
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {

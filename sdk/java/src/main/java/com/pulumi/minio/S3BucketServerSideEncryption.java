@@ -15,19 +15,19 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption")
 public class S3BucketServerSideEncryption extends com.pulumi.resources.CustomResource {
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     public Output<String> bucket() {
         return this.bucket;
     }
-    @Export(name="encryptionType", type=String.class, parameters={})
+    @Export(name="encryptionType", refs={String.class}, tree="[0]")
     private Output<String> encryptionType;
 
     public Output<String> encryptionType() {
         return this.encryptionType;
     }
-    @Export(name="kmsKeyId", type=String.class, parameters={})
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output<String> kmsKeyId;
 
     public Output<String> kmsKeyId() {

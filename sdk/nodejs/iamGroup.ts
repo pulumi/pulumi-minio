@@ -4,17 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as minio from "@pulumi/minio";
- *
- * const developer = new minio.IamGroup("developer", {});
- * export const minioUserGroup = developer.groupName;
- * ```
- */
 export class IamGroup extends pulumi.CustomResource {
     /**
      * Get an existing IamGroup resource's state with the given name, ID, and optional extra

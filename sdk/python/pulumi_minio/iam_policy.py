@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IamPolicyArgs', 'IamPolicy']
@@ -20,11 +20,30 @@ class IamPolicyArgs:
         """
         The set of arguments for constructing a IamPolicy resource.
         """
-        pulumi.set(__self__, "policy", policy)
+        IamPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy=policy,
+            name=name,
+            name_prefix=name_prefix,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+
+        _setter("policy", policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
 
     @property
     @pulumi.getter
@@ -63,12 +82,29 @@ class _IamPolicyState:
         """
         Input properties used for looking up and filtering IamPolicy resources.
         """
+        _IamPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            name_prefix=name_prefix,
+            policy=policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
 
     @property
     @pulumi.getter
@@ -108,29 +144,7 @@ class IamPolicy(pulumi.CustomResource):
                  policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        test_policy = minio.IamPolicy("testPolicy", policy=\"\"\"{
-          "Version":"2012-10-17",
-          "Statement": [
-            {
-              "Sid":"ListAllBucket",
-              "Effect": "Allow",
-              "Action": ["s3:PutObject"],
-              "Principal":"*",
-              "Resource": "arn:aws:s3:::state-terraform-s3/*"
-            }
-          ]
-        }
-        \"\"\")
-        pulumi.export("minioId", test_policy.id)
-        pulumi.export("minioPolicy", test_policy.policy)
-        ```
-
+        Create a IamPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -141,29 +155,7 @@ class IamPolicy(pulumi.CustomResource):
                  args: IamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        test_policy = minio.IamPolicy("testPolicy", policy=\"\"\"{
-          "Version":"2012-10-17",
-          "Statement": [
-            {
-              "Sid":"ListAllBucket",
-              "Effect": "Allow",
-              "Action": ["s3:PutObject"],
-              "Principal":"*",
-              "Resource": "arn:aws:s3:::state-terraform-s3/*"
-            }
-          ]
-        }
-        \"\"\")
-        pulumi.export("minioId", test_policy.id)
-        pulumi.export("minioPolicy", test_policy.policy)
-        ```
-
+        Create a IamPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IamPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -174,6 +166,10 @@ class IamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -20,7 +20,7 @@ public class IamGroupMembership extends com.pulumi.resources.CustomResource {
      * Group name to add users
      * 
      */
-    @Export(name="group", type=String.class, parameters={})
+    @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
@@ -34,7 +34,7 @@ public class IamGroupMembership extends com.pulumi.resources.CustomResource {
      * Name of group membership
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -48,7 +48,7 @@ public class IamGroupMembership extends com.pulumi.resources.CustomResource {
      * Add user or list of users such as a group membership
      * 
      */
-    @Export(name="users", type=List.class, parameters={String.class})
+    @Export(name="users", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> users;
 
     /**

@@ -78,13 +78,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment")
 public class IamUserPolicyAttachment extends com.pulumi.resources.CustomResource {
-    @Export(name="policyName", type=String.class, parameters={})
+    @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     public Output<String> policyName() {
         return this.policyName;
     }
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     public Output<String> userName() {

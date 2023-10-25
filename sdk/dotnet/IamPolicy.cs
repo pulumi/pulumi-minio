@@ -9,42 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Minio = Pulumi.Minio;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var testPolicy = new Minio.IamPolicy("testPolicy", new()
-    ///     {
-    ///         Policy = @"{
-    ///   ""Version"":""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Sid"":""ListAllBucket"",
-    ///       ""Effect"": ""Allow"",
-    ///       ""Action"": [""s3:PutObject""],
-    ///       ""Principal"":""*"",
-    ///       ""Resource"": ""arn:aws:s3:::state-terraform-s3/*""
-    ///     }
-    ///   ]
-    /// }
-    /// ",
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["minioId"] = testPolicy.Id,
-    ///         ["minioPolicy"] = testPolicy.Policy,
-    ///     };
-    /// });
-    /// ```
-    /// </summary>
     [MinioResourceType("minio:index/iamPolicy:IamPolicy")]
     public partial class IamPolicy : global::Pulumi.CustomResource
     {

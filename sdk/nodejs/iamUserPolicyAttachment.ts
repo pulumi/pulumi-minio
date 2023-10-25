@@ -4,40 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as minio from "@pulumi/minio";
- *
- * const testUser = new minio.IamUser("testUser", {});
- * const testPolicy = new minio.IamPolicy("testPolicy", {policy: `{
- *   "Version":"2012-10-17",
- *   "Statement": [
- *     {
- *       "Sid":"ListAllBucket",
- *       "Effect": "Allow",
- *       "Action": ["s3:PutObject"],
- *       "Principal":"*",
- *       "Resource": "arn:aws:s3:::state-terraform-s3/*"
- *     }
- *   ]
- * }
- * `});
- * const developerIamUserPolicyAttachment = new minio.IamUserPolicyAttachment("developerIamUserPolicyAttachment", {
- *     userName: testUser.id,
- *     policyName: testPolicy.id,
- * });
- * export const minioName = developerIamUserPolicyAttachment.id;
- * export const minioUsers = developerIamUserPolicyAttachment.userName;
- * export const minioGroup = developerIamUserPolicyAttachment.policyName;
- * const developerIndex_iamUserPolicyAttachmentIamUserPolicyAttachment = new minio.IamUserPolicyAttachment("developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment", {
- *     userName: "CN=My User,OU=Unit,DC=example,DC=com",
- *     policyName: testPolicy.id,
- * });
- * ```
- */
 export class IamUserPolicyAttachment extends pulumi.CustomResource {
     /**
      * Get an existing IamUserPolicyAttachment resource's state with the given name, ID, and optional extra

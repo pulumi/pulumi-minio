@@ -8,22 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * `minio.IlmPolicy` handles lifecycle settings for a given `minio.S3Bucket`.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as minio from "@pulumi/minio";
- *
- * const bucket = new minio.S3Bucket("bucket", {bucket: "bucket"});
- * const bucket_lifecycle_rules = new minio.IlmPolicy("bucket-lifecycle-rules", {
- *     bucket: bucket.bucket,
- *     rules: [{
- *         id: "expire-7d",
- *         expiration: "7d",
- *     }],
- * });
- * ```
  */
 export class IlmPolicy extends pulumi.CustomResource {
     /**

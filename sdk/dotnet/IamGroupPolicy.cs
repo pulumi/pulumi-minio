@@ -9,47 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Minio = Pulumi.Minio;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var developer = new Minio.IamGroup("developer");
-    /// 
-    ///     var testPolicy = new Minio.IamGroupPolicy("testPolicy", new()
-    ///     {
-    ///         Group = developer.Id,
-    ///         Policy = @"{
-    ///   ""Version"":""2012-10-17"",
-    ///   ""Statement"": [
-    ///     {
-    ///       ""Sid"":""ListAllBucket"",
-    ///       ""Effect"": ""Allow"",
-    ///       ""Action"": [""s3:PutObject""],
-    ///       ""Principal"":""*"",
-    ///       ""Resource"": ""arn:aws:s3:::state-terraform-s3/*""
-    ///     }
-    ///   ]
-    /// }
-    /// 
-    /// ",
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["minioName"] = minio_iam_group_membership.Developer.Id,
-    ///         ["minioPolicy"] = minio_iam_group_membership.Developer.Policy,
-    ///         ["minioGroup"] = minio_iam_group_membership.Developer.Group,
-    ///     };
-    /// });
-    /// ```
-    /// </summary>
     [MinioResourceType("minio:index/iamGroupPolicy:IamGroupPolicy")]
     public partial class IamGroupPolicy : global::Pulumi.CustomResource
     {

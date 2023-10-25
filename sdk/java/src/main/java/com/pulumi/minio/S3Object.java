@@ -62,49 +62,49 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="minio:index/s3Object:S3Object")
 public class S3Object extends com.pulumi.resources.CustomResource {
-    @Export(name="bucketName", type=String.class, parameters={})
+    @Export(name="bucketName", refs={String.class}, tree="[0]")
     private Output<String> bucketName;
 
     public Output<String> bucketName() {
         return this.bucketName;
     }
-    @Export(name="content", type=String.class, parameters={})
+    @Export(name="content", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> content;
 
     public Output<Optional<String>> content() {
         return Codegen.optional(this.content);
     }
-    @Export(name="contentBase64", type=String.class, parameters={})
+    @Export(name="contentBase64", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentBase64;
 
     public Output<Optional<String>> contentBase64() {
         return Codegen.optional(this.contentBase64);
     }
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     public Output<String> contentType() {
         return this.contentType;
     }
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="objectName", type=String.class, parameters={})
+    @Export(name="objectName", refs={String.class}, tree="[0]")
     private Output<String> objectName;
 
     public Output<String> objectName() {
         return this.objectName;
     }
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     public Output<Optional<String>> source() {
         return Codegen.optional(this.source);
     }
-    @Export(name="versionId", type=String.class, parameters={})
+    @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     public Output<String> versionId() {

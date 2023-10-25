@@ -42,6 +42,7 @@ export interface IlmPolicyRule {
      * The ID of this resource.
      */
     id: pulumi.Input<string>;
+    noncurrentVersionExpirationDays?: pulumi.Input<number>;
     status?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: any}>;
 }

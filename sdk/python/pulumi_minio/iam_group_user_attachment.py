@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IamGroupUserAttachmentArgs', 'IamGroupUserAttachment']
@@ -19,8 +19,29 @@ class IamGroupUserAttachmentArgs:
         """
         The set of arguments for constructing a IamGroupUserAttachment resource.
         """
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "user_name", user_name)
+        IamGroupUserAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_name=group_name,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_name: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if user_name is None:
+            raise TypeError("Missing 'user_name' argument")
+
+        _setter("group_name", group_name)
+        _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="groupName")
@@ -49,10 +70,27 @@ class _IamGroupUserAttachmentState:
         """
         Input properties used for looking up and filtering IamGroupUserAttachment resources.
         """
+        _IamGroupUserAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_name=group_name,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_name: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if group_name is None and 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="groupName")
@@ -82,22 +120,7 @@ class IamGroupUserAttachment(pulumi.CustomResource):
                  user_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        developer_iam_group = minio.IamGroup("developerIamGroup")
-        user_one = minio.IamUser("userOne")
-        developer_iam_group_user_attachment = minio.IamGroupUserAttachment("developerIamGroupUserAttachment",
-            group_name=minio_iam_group["group"]["name"],
-            user_name=user_one.name)
-        pulumi.export("minioName", developer_iam_group_user_attachment.id)
-        pulumi.export("minioUsers", developer_iam_group_user_attachment.group_name)
-        pulumi.export("minioGroup", developer_iam_group_user_attachment.user_name)
-        ```
-
+        Create a IamGroupUserAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -108,22 +131,7 @@ class IamGroupUserAttachment(pulumi.CustomResource):
                  args: IamGroupUserAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        developer_iam_group = minio.IamGroup("developerIamGroup")
-        user_one = minio.IamUser("userOne")
-        developer_iam_group_user_attachment = minio.IamGroupUserAttachment("developerIamGroupUserAttachment",
-            group_name=minio_iam_group["group"]["name"],
-            user_name=user_one.name)
-        pulumi.export("minioName", developer_iam_group_user_attachment.id)
-        pulumi.export("minioUsers", developer_iam_group_user_attachment.group_name)
-        pulumi.export("minioGroup", developer_iam_group_user_attachment.user_name)
-        ```
-
+        Create a IamGroupUserAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IamGroupUserAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -134,6 +142,10 @@ class IamGroupUserAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IamGroupUserAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

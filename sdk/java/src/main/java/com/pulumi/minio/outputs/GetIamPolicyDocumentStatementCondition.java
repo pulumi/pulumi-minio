@@ -64,11 +64,11 @@ public final class GetIamPolicyDocumentStatementCondition {
             return this;
         }
         public GetIamPolicyDocumentStatementCondition build() {
-            final var o = new GetIamPolicyDocumentStatementCondition();
-            o.test = test;
-            o.values = values;
-            o.variable = variable;
-            return o;
+            final var _resultValue = new GetIamPolicyDocumentStatementCondition();
+            _resultValue.test = test;
+            _resultValue.values = values;
+            _resultValue.variable = variable;
+            return _resultValue;
         }
     }
 }

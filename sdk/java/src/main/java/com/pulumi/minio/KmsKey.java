@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="minio:index/kmsKey:KmsKey")
 public class KmsKey extends com.pulumi.resources.CustomResource {
-    @Export(name="keyId", type=String.class, parameters={})
+    @Export(name="keyId", refs={String.class}, tree="[0]")
     private Output<String> keyId;
 
     public Output<String> keyId() {

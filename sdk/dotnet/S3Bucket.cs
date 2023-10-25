@@ -9,31 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Minio = Pulumi.Minio;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var stateTerraformS3 = new Minio.S3Bucket("stateTerraformS3", new()
-    ///     {
-    ///         Acl = "public",
-    ///         Bucket = "state-terraform-s3",
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["minioId"] = stateTerraformS3.Id,
-    ///         ["minioUrl"] = stateTerraformS3.BucketDomainName,
-    ///     };
-    /// });
-    /// ```
-    /// </summary>
     [MinioResourceType("minio:index/s3Bucket:S3Bucket")]
     public partial class S3Bucket : global::Pulumi.CustomResource
     {

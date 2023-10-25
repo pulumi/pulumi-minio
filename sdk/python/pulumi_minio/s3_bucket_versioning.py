@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -21,8 +21,27 @@ class S3BucketVersioningArgs:
         """
         The set of arguments for constructing a S3BucketVersioning resource.
         """
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "versioning_configuration", versioning_configuration)
+        S3BucketVersioningArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket=bucket,
+            versioning_configuration=versioning_configuration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket: Optional[pulumi.Input[str]] = None,
+             versioning_configuration: Optional[pulumi.Input['S3BucketVersioningVersioningConfigurationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if versioning_configuration is None and 'versioningConfiguration' in kwargs:
+            versioning_configuration = kwargs['versioningConfiguration']
+        if versioning_configuration is None:
+            raise TypeError("Missing 'versioning_configuration' argument")
+
+        _setter("bucket", bucket)
+        _setter("versioning_configuration", versioning_configuration)
 
     @property
     @pulumi.getter
@@ -51,10 +70,25 @@ class _S3BucketVersioningState:
         """
         Input properties used for looking up and filtering S3BucketVersioning resources.
         """
+        _S3BucketVersioningState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket=bucket,
+            versioning_configuration=versioning_configuration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket: Optional[pulumi.Input[str]] = None,
+             versioning_configuration: Optional[pulumi.Input['S3BucketVersioningVersioningConfigurationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if versioning_configuration is None and 'versioningConfiguration' in kwargs:
+            versioning_configuration = kwargs['versioningConfiguration']
+
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if versioning_configuration is not None:
-            pulumi.set(__self__, "versioning_configuration", versioning_configuration)
+            _setter("versioning_configuration", versioning_configuration)
 
     @property
     @pulumi.getter
@@ -106,6 +140,10 @@ class S3BucketVersioning(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            S3BucketVersioningArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -125,6 +163,7 @@ class S3BucketVersioning(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
+            versioning_configuration = _utilities.configure(versioning_configuration, S3BucketVersioningVersioningConfigurationArgs, True)
             if versioning_configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'versioning_configuration'")
             __props__.__dict__["versioning_configuration"] = versioning_configuration

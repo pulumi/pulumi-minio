@@ -9,39 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Minio = Pulumi.Minio;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new Minio.IamUser("test", new()
-    ///     {
-    ///         ForceDestroy = true,
-    ///         Tags = 
-    ///         {
-    ///             { "tag-key", "tag-value" },
-    ///         },
-    ///     });
-    /// 
-    ///     var testServiceAccount = new Minio.IamServiceAccount("testServiceAccount", new()
-    ///     {
-    ///         TargetUser = test.Name,
-    ///     });
-    /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["minioUser"] = testServiceAccount.AccessKey,
-    ///         ["minioPassword"] = testServiceAccount.SecretKey,
-    ///     };
-    /// });
-    /// ```
-    /// </summary>
     [MinioResourceType("minio:index/iamServiceAccount:IamServiceAccount")]
     public partial class IamServiceAccount : global::Pulumi.CustomResource
     {

@@ -11,37 +11,6 @@ namespace Pulumi.Minio
 {
     /// <summary>
     /// `minio.IlmPolicy` handles lifecycle settings for a given `minio.S3Bucket`.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Minio = Pulumi.Minio;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var bucket = new Minio.S3Bucket("bucket", new()
-    ///     {
-    ///         Bucket = "bucket",
-    ///     });
-    /// 
-    ///     var bucket_lifecycle_rules = new Minio.IlmPolicy("bucket-lifecycle-rules", new()
-    ///     {
-    ///         Bucket = bucket.Bucket,
-    ///         Rules = new[]
-    ///         {
-    ///             new Minio.Inputs.IlmPolicyRuleArgs
-    ///             {
-    ///                 Id = "expire-7d",
-    ///                 Expiration = "7d",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [MinioResourceType("minio:index/ilmPolicy:IlmPolicy")]
     public partial class IlmPolicy : global::Pulumi.CustomResource
