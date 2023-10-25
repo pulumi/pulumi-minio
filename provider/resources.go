@@ -21,12 +21,12 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/aminueza/terraform-provider-minio/minio"
 	"github.com/pulumi/pulumi-minio/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/terraform-provider-minio/terraform-provider-minio/minio"
 )
 
 // all of the token components used below.
@@ -77,7 +77,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-minio",
-		GitHubOrg:   "aminueza",
+		GitHubOrg:   "terraform-provider-minio",
 		Config:      map[string]*tfbridge.SchemaInfo{},
 		Version:     version.Version,
 		Resources: map[string]*tfbridge.ResourceInfo{
