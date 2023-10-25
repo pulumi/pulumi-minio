@@ -29,12 +29,16 @@ class S3BucketVersioningArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             versioning_configuration: pulumi.Input['S3BucketVersioningVersioningConfigurationArgs'],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             versioning_configuration: Optional[pulumi.Input['S3BucketVersioningVersioningConfigurationArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'versioningConfiguration' in kwargs:
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if versioning_configuration is None and 'versioningConfiguration' in kwargs:
             versioning_configuration = kwargs['versioningConfiguration']
+        if versioning_configuration is None:
+            raise TypeError("Missing 'versioning_configuration' argument")
 
         _setter("bucket", bucket)
         _setter("versioning_configuration", versioning_configuration)
@@ -76,9 +80,9 @@ class _S3BucketVersioningState:
              _setter: Callable[[Any, Any], None],
              bucket: Optional[pulumi.Input[str]] = None,
              versioning_configuration: Optional[pulumi.Input['S3BucketVersioningVersioningConfigurationArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'versioningConfiguration' in kwargs:
+        if versioning_configuration is None and 'versioningConfiguration' in kwargs:
             versioning_configuration = kwargs['versioningConfiguration']
 
         if bucket is not None:
@@ -159,11 +163,7 @@ class S3BucketVersioning(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
-            if versioning_configuration is not None and not isinstance(versioning_configuration, S3BucketVersioningVersioningConfigurationArgs):
-                versioning_configuration = versioning_configuration or {}
-                def _setter(key, value):
-                    versioning_configuration[key] = value
-                S3BucketVersioningVersioningConfigurationArgs._configure(_setter, **versioning_configuration)
+            versioning_configuration = _utilities.configure(versioning_configuration, S3BucketVersioningVersioningConfigurationArgs, True)
             if versioning_configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'versioning_configuration'")
             __props__.__dict__["versioning_configuration"] = versioning_configuration

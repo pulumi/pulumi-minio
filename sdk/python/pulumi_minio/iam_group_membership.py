@@ -32,11 +32,15 @@ class IamGroupMembershipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group: pulumi.Input[str],
-             users: pulumi.Input[Sequence[pulumi.Input[str]]],
+             group: Optional[pulumi.Input[str]] = None,
+             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if users is None:
+            raise TypeError("Missing 'users' argument")
 
         _setter("group", group)
         _setter("users", users)
@@ -104,7 +108,7 @@ class _IamGroupMembershipState:
              group: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if group is not None:

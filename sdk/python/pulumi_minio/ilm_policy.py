@@ -29,10 +29,14 @@ class IlmPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             rules: pulumi.Input[Sequence[pulumi.Input['IlmPolicyRuleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['IlmPolicyRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
 
         _setter("bucket", bucket)
         _setter("rules", rules)
@@ -74,7 +78,7 @@ class _IlmPolicyState:
              _setter: Callable[[Any, Any], None],
              bucket: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['IlmPolicyRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if bucket is not None:

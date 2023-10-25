@@ -39,25 +39,29 @@ class S3ObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: pulumi.Input[str],
-             object_name: pulumi.Input[str],
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             object_name: Optional[pulumi.Input[str]] = None,
              content: Optional[pulumi.Input[str]] = None,
              content_base64: Optional[pulumi.Input[str]] = None,
              content_type: Optional[pulumi.Input[str]] = None,
              etag: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'objectName' in kwargs:
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if object_name is None and 'objectName' in kwargs:
             object_name = kwargs['objectName']
-        if 'contentBase64' in kwargs:
+        if object_name is None:
+            raise TypeError("Missing 'object_name' argument")
+        if content_base64 is None and 'contentBase64' in kwargs:
             content_base64 = kwargs['contentBase64']
-        if 'contentType' in kwargs:
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'versionId' in kwargs:
+        if version_id is None and 'versionId' in kwargs:
             version_id = kwargs['versionId']
 
         _setter("bucket_name", bucket_name)
@@ -184,17 +188,17 @@ class _S3ObjectState:
              object_name: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
-        if 'contentBase64' in kwargs:
+        if content_base64 is None and 'contentBase64' in kwargs:
             content_base64 = kwargs['contentBase64']
-        if 'contentType' in kwargs:
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'objectName' in kwargs:
+        if object_name is None and 'objectName' in kwargs:
             object_name = kwargs['objectName']
-        if 'versionId' in kwargs:
+        if version_id is None and 'versionId' in kwargs:
             version_id = kwargs['versionId']
 
         if bucket_name is not None:

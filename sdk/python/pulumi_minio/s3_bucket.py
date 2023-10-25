@@ -41,13 +41,13 @@ class S3BucketArgs:
              force_destroy: Optional[pulumi.Input[bool]] = None,
              object_locking: Optional[pulumi.Input[bool]] = None,
              quota: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketPrefix' in kwargs:
+        if bucket_prefix is None and 'bucketPrefix' in kwargs:
             bucket_prefix = kwargs['bucketPrefix']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'objectLocking' in kwargs:
+        if object_locking is None and 'objectLocking' in kwargs:
             object_locking = kwargs['objectLocking']
 
         if acl is not None:
@@ -154,15 +154,15 @@ class _S3BucketState:
              force_destroy: Optional[pulumi.Input[bool]] = None,
              object_locking: Optional[pulumi.Input[bool]] = None,
              quota: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bucketDomainName' in kwargs:
+        if bucket_domain_name is None and 'bucketDomainName' in kwargs:
             bucket_domain_name = kwargs['bucketDomainName']
-        if 'bucketPrefix' in kwargs:
+        if bucket_prefix is None and 'bucketPrefix' in kwargs:
             bucket_prefix = kwargs['bucketPrefix']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'objectLocking' in kwargs:
+        if object_locking is None and 'objectLocking' in kwargs:
             object_locking = kwargs['objectLocking']
 
         if acl is not None:

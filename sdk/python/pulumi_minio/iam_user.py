@@ -44,13 +44,13 @@ class IamUserArgs:
              secret: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              update_secret: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'disableUser' in kwargs:
+        if disable_user is None and 'disableUser' in kwargs:
             disable_user = kwargs['disableUser']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'updateSecret' in kwargs:
+        if update_secret is None and 'updateSecret' in kwargs:
             update_secret = kwargs['updateSecret']
 
         if disable_user is not None:
@@ -166,13 +166,13 @@ class _IamUserState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              update_secret: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'disableUser' in kwargs:
+        if disable_user is None and 'disableUser' in kwargs:
             disable_user = kwargs['disableUser']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'updateSecret' in kwargs:
+        if update_secret is None and 'updateSecret' in kwargs:
             update_secret = kwargs['updateSecret']
 
         if disable_user is not None:

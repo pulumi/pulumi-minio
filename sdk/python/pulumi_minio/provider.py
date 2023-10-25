@@ -59,7 +59,7 @@ class ProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             minio_server: pulumi.Input[str],
+             minio_server: Optional[pulumi.Input[str]] = None,
              minio_access_key: Optional[pulumi.Input[str]] = None,
              minio_api_version: Optional[pulumi.Input[str]] = None,
              minio_cacert_file: Optional[pulumi.Input[str]] = None,
@@ -72,33 +72,35 @@ class ProviderArgs:
              minio_session_token: Optional[pulumi.Input[str]] = None,
              minio_ssl: Optional[pulumi.Input[bool]] = None,
              minio_user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'minioServer' in kwargs:
+        if minio_server is None and 'minioServer' in kwargs:
             minio_server = kwargs['minioServer']
-        if 'minioAccessKey' in kwargs:
+        if minio_server is None:
+            raise TypeError("Missing 'minio_server' argument")
+        if minio_access_key is None and 'minioAccessKey' in kwargs:
             minio_access_key = kwargs['minioAccessKey']
-        if 'minioApiVersion' in kwargs:
+        if minio_api_version is None and 'minioApiVersion' in kwargs:
             minio_api_version = kwargs['minioApiVersion']
-        if 'minioCacertFile' in kwargs:
+        if minio_cacert_file is None and 'minioCacertFile' in kwargs:
             minio_cacert_file = kwargs['minioCacertFile']
-        if 'minioCertFile' in kwargs:
+        if minio_cert_file is None and 'minioCertFile' in kwargs:
             minio_cert_file = kwargs['minioCertFile']
-        if 'minioInsecure' in kwargs:
+        if minio_insecure is None and 'minioInsecure' in kwargs:
             minio_insecure = kwargs['minioInsecure']
-        if 'minioKeyFile' in kwargs:
+        if minio_key_file is None and 'minioKeyFile' in kwargs:
             minio_key_file = kwargs['minioKeyFile']
-        if 'minioPassword' in kwargs:
+        if minio_password is None and 'minioPassword' in kwargs:
             minio_password = kwargs['minioPassword']
-        if 'minioRegion' in kwargs:
+        if minio_region is None and 'minioRegion' in kwargs:
             minio_region = kwargs['minioRegion']
-        if 'minioSecretKey' in kwargs:
+        if minio_secret_key is None and 'minioSecretKey' in kwargs:
             minio_secret_key = kwargs['minioSecretKey']
-        if 'minioSessionToken' in kwargs:
+        if minio_session_token is None and 'minioSessionToken' in kwargs:
             minio_session_token = kwargs['minioSessionToken']
-        if 'minioSsl' in kwargs:
+        if minio_ssl is None and 'minioSsl' in kwargs:
             minio_ssl = kwargs['minioSsl']
-        if 'minioUser' in kwargs:
+        if minio_user is None and 'minioUser' in kwargs:
             minio_user = kwargs['minioUser']
 
         _setter("minio_server", minio_server)
