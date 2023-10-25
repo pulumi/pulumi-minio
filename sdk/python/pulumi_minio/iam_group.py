@@ -34,11 +34,11 @@ class IamGroupArgs:
              disable_group: Optional[pulumi.Input[bool]] = None,
              force_destroy: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'disableGroup' in kwargs:
+        if disable_group is None and 'disableGroup' in kwargs:
             disable_group = kwargs['disableGroup']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
 
         if disable_group is not None:
@@ -108,13 +108,13 @@ class _IamGroupState:
              force_destroy: Optional[pulumi.Input[bool]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'disableGroup' in kwargs:
+        if disable_group is None and 'disableGroup' in kwargs:
             disable_group = kwargs['disableGroup']
-        if 'forceDestroy' in kwargs:
+        if force_destroy is None and 'forceDestroy' in kwargs:
             force_destroy = kwargs['forceDestroy']
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
 
         if disable_group is not None:

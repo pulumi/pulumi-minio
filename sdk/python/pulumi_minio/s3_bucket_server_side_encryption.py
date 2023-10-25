@@ -29,15 +29,21 @@ class S3BucketServerSideEncryptionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket: pulumi.Input[str],
-             encryption_type: pulumi.Input[str],
-             kms_key_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             encryption_type: Optional[pulumi.Input[str]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encryptionType' in kwargs:
+        if bucket is None:
+            raise TypeError("Missing 'bucket' argument")
+        if encryption_type is None and 'encryptionType' in kwargs:
             encryption_type = kwargs['encryptionType']
-        if 'kmsKeyId' in kwargs:
+        if encryption_type is None:
+            raise TypeError("Missing 'encryption_type' argument")
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
+        if kms_key_id is None:
+            raise TypeError("Missing 'kms_key_id' argument")
 
         _setter("bucket", bucket)
         _setter("encryption_type", encryption_type)
@@ -92,11 +98,11 @@ class _S3BucketServerSideEncryptionState:
              bucket: Optional[pulumi.Input[str]] = None,
              encryption_type: Optional[pulumi.Input[str]] = None,
              kms_key_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'encryptionType' in kwargs:
+        if encryption_type is None and 'encryptionType' in kwargs:
             encryption_type = kwargs['encryptionType']
-        if 'kmsKeyId' in kwargs:
+        if kms_key_id is None and 'kmsKeyId' in kwargs:
             kms_key_id = kwargs['kmsKeyId']
 
         if bucket is not None:

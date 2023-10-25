@@ -27,14 +27,18 @@ class IamGroupPolicyAttachmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             group_name: pulumi.Input[str],
-             policy_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'policyName' in kwargs:
+        if group_name is None:
+            raise TypeError("Missing 'group_name' argument")
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
+        if policy_name is None:
+            raise TypeError("Missing 'policy_name' argument")
 
         _setter("group_name", group_name)
         _setter("policy_name", policy_name)
@@ -76,11 +80,11 @@ class _IamGroupPolicyAttachmentState:
              _setter: Callable[[Any, Any], None],
              group_name: Optional[pulumi.Input[str]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'groupName' in kwargs:
+        if group_name is None and 'groupName' in kwargs:
             group_name = kwargs['groupName']
-        if 'policyName' in kwargs:
+        if policy_name is None and 'policyName' in kwargs:
             policy_name = kwargs['policyName']
 
         if group_name is not None:

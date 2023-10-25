@@ -34,17 +34,19 @@ class IamServiceAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target_user: pulumi.Input[str],
+             target_user: Optional[pulumi.Input[str]] = None,
              disable_user: Optional[pulumi.Input[bool]] = None,
              policy: Optional[pulumi.Input[str]] = None,
              update_secret: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'targetUser' in kwargs:
+        if target_user is None and 'targetUser' in kwargs:
             target_user = kwargs['targetUser']
-        if 'disableUser' in kwargs:
+        if target_user is None:
+            raise TypeError("Missing 'target_user' argument")
+        if disable_user is None and 'disableUser' in kwargs:
             disable_user = kwargs['disableUser']
-        if 'updateSecret' in kwargs:
+        if update_secret is None and 'updateSecret' in kwargs:
             update_secret = kwargs['updateSecret']
 
         _setter("target_user", target_user)
@@ -137,17 +139,17 @@ class _IamServiceAccountState:
              status: Optional[pulumi.Input[str]] = None,
              target_user: Optional[pulumi.Input[str]] = None,
              update_secret: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accessKey' in kwargs:
+        if access_key is None and 'accessKey' in kwargs:
             access_key = kwargs['accessKey']
-        if 'disableUser' in kwargs:
+        if disable_user is None and 'disableUser' in kwargs:
             disable_user = kwargs['disableUser']
-        if 'secretKey' in kwargs:
+        if secret_key is None and 'secretKey' in kwargs:
             secret_key = kwargs['secretKey']
-        if 'targetUser' in kwargs:
+        if target_user is None and 'targetUser' in kwargs:
             target_user = kwargs['targetUser']
-        if 'updateSecret' in kwargs:
+        if update_secret is None and 'updateSecret' in kwargs:
             update_secret = kwargs['updateSecret']
 
         if access_key is not None:

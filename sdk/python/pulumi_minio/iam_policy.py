@@ -29,12 +29,14 @@ class IamPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy: pulumi.Input[str],
+             policy: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              name_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namePrefix' in kwargs:
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
 
         _setter("policy", policy)
@@ -92,9 +94,9 @@ class _IamPolicyState:
              name: Optional[pulumi.Input[str]] = None,
              name_prefix: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'namePrefix' in kwargs:
+        if name_prefix is None and 'namePrefix' in kwargs:
             name_prefix = kwargs['namePrefix']
 
         if name is not None:

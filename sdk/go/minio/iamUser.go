@@ -28,7 +28,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testIamUser, err := minio.NewIamUser(ctx, "testIamUser", &minio.IamUserArgs{
 //				ForceDestroy: pulumi.Bool(true),
-//				Tags: pulumi.AnyMap{
+//				Tags: pulumi.Map{
 //					"tag-key": pulumi.Any("tag-value"),
 //				},
 //			})

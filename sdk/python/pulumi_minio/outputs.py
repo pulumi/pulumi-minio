@@ -40,13 +40,15 @@ class IlmPolicyRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
+             id: Optional[str] = None,
              expiration: Optional[str] = None,
              filter: Optional[str] = None,
              status: Optional[str] = None,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("id", id)
         if expiration is not None:
@@ -130,18 +132,22 @@ class S3BucketNotificationQueue(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             events: Sequence[str],
-             queue_arn: str,
+             events: Optional[Sequence[str]] = None,
+             queue_arn: Optional[str] = None,
              filter_prefix: Optional[str] = None,
              filter_suffix: Optional[str] = None,
              id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'queueArn' in kwargs:
+        if events is None:
+            raise TypeError("Missing 'events' argument")
+        if queue_arn is None and 'queueArn' in kwargs:
             queue_arn = kwargs['queueArn']
-        if 'filterPrefix' in kwargs:
+        if queue_arn is None:
+            raise TypeError("Missing 'queue_arn' argument")
+        if filter_prefix is None and 'filterPrefix' in kwargs:
             filter_prefix = kwargs['filterPrefix']
-        if 'filterSuffix' in kwargs:
+        if filter_suffix is None and 'filterSuffix' in kwargs:
             filter_suffix = kwargs['filterSuffix']
 
         _setter("events", events)
@@ -216,14 +222,16 @@ class S3BucketVersioningVersioningConfiguration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             status: str,
+             status: Optional[str] = None,
              exclude_folders: Optional[bool] = None,
              excluded_prefixes: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'excludeFolders' in kwargs:
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if exclude_folders is None and 'excludeFolders' in kwargs:
             exclude_folders = kwargs['excludeFolders']
-        if 'excludedPrefixes' in kwargs:
+        if excluded_prefixes is None and 'excludedPrefixes' in kwargs:
             excluded_prefixes = kwargs['excludedPrefixes']
 
         _setter("status", status)
@@ -275,7 +283,7 @@ class GetIamPolicyDocumentStatementResult(dict):
              principal: Optional[str] = None,
              resources: Optional[Sequence[str]] = None,
              sid: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
 
         if actions is not None:
@@ -337,11 +345,17 @@ class GetIamPolicyDocumentStatementConditionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             test: str,
-             values: Sequence[str],
-             variable: str,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             test: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             variable: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
+        if test is None:
+            raise TypeError("Missing 'test' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if variable is None:
+            raise TypeError("Missing 'variable' argument")
 
         _setter("test", test)
         _setter("values", values)
