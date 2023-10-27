@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -21,24 +21,9 @@ class S3BucketNotificationArgs:
         """
         The set of arguments for constructing a S3BucketNotification resource.
         """
-        S3BucketNotificationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            queues=queues,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             queues: Optional[pulumi.Input[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-
-        _setter("bucket", bucket)
+        pulumi.set(__self__, "bucket", bucket)
         if queues is not None:
-            _setter("queues", queues)
+            pulumi.set(__self__, "queues", queues)
 
     @property
     @pulumi.getter
@@ -67,23 +52,10 @@ class _S3BucketNotificationState:
         """
         Input properties used for looking up and filtering S3BucketNotification resources.
         """
-        _S3BucketNotificationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            queues=queues,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             queues: Optional[pulumi.Input[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if queues is not None:
-            _setter("queues", queues)
+            pulumi.set(__self__, "queues", queues)
 
     @property
     @pulumi.getter
@@ -135,10 +107,6 @@ class S3BucketNotification(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            S3BucketNotificationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
