@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IamPolicyArgs', 'IamPolicy']
@@ -20,30 +20,11 @@ class IamPolicyArgs:
         """
         The set of arguments for constructing a IamPolicy resource.
         """
-        IamPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy=policy,
-            name=name,
-            name_prefix=name_prefix,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy is None:
-            raise TypeError("Missing 'policy' argument")
-        if name_prefix is None and 'namePrefix' in kwargs:
-            name_prefix = kwargs['namePrefix']
-
-        _setter("policy", policy)
+        pulumi.set(__self__, "policy", policy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_prefix is not None:
-            _setter("name_prefix", name_prefix)
+            pulumi.set(__self__, "name_prefix", name_prefix)
 
     @property
     @pulumi.getter
@@ -82,29 +63,12 @@ class _IamPolicyState:
         """
         Input properties used for looking up and filtering IamPolicy resources.
         """
-        _IamPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            name_prefix=name_prefix,
-            policy=policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             name_prefix: Optional[pulumi.Input[str]] = None,
-             policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name_prefix is None and 'namePrefix' in kwargs:
-            name_prefix = kwargs['namePrefix']
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_prefix is not None:
-            _setter("name_prefix", name_prefix)
+            pulumi.set(__self__, "name_prefix", name_prefix)
         if policy is not None:
-            _setter("policy", policy)
+            pulumi.set(__self__, "policy", policy)
 
     @property
     @pulumi.getter
@@ -210,10 +174,6 @@ class IamPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IamPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
