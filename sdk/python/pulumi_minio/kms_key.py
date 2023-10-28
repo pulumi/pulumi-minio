@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['KmsKeyArgs', 'KmsKey']
@@ -18,22 +18,7 @@ class KmsKeyArgs:
         """
         The set of arguments for constructing a KmsKey resource.
         """
-        KmsKeyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_id=key_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_id is None and 'keyId' in kwargs:
-            key_id = kwargs['keyId']
-        if key_id is None:
-            raise TypeError("Missing 'key_id' argument")
-
-        _setter("key_id", key_id)
+        pulumi.set(__self__, "key_id", key_id)
 
     @property
     @pulumi.getter(name="keyId")
@@ -52,21 +37,8 @@ class _KmsKeyState:
         """
         Input properties used for looking up and filtering KmsKey resources.
         """
-        _KmsKeyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key_id=key_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key_id is None and 'keyId' in kwargs:
-            key_id = kwargs['keyId']
-
         if key_id is not None:
-            _setter("key_id", key_id)
+            pulumi.set(__self__, "key_id", key_id)
 
     @property
     @pulumi.getter(name="keyId")
@@ -108,10 +80,6 @@ class KmsKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            KmsKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

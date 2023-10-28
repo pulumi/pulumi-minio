@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -40,100 +40,37 @@ class ProviderArgs:
         :param pulumi.Input[bool] minio_ssl: Minio SSL enabled (default: false)
         :param pulumi.Input[str] minio_user: Minio User
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            minio_server=minio_server,
-            minio_access_key=minio_access_key,
-            minio_api_version=minio_api_version,
-            minio_cacert_file=minio_cacert_file,
-            minio_cert_file=minio_cert_file,
-            minio_insecure=minio_insecure,
-            minio_key_file=minio_key_file,
-            minio_password=minio_password,
-            minio_region=minio_region,
-            minio_secret_key=minio_secret_key,
-            minio_session_token=minio_session_token,
-            minio_ssl=minio_ssl,
-            minio_user=minio_user,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             minio_server: Optional[pulumi.Input[str]] = None,
-             minio_access_key: Optional[pulumi.Input[str]] = None,
-             minio_api_version: Optional[pulumi.Input[str]] = None,
-             minio_cacert_file: Optional[pulumi.Input[str]] = None,
-             minio_cert_file: Optional[pulumi.Input[str]] = None,
-             minio_insecure: Optional[pulumi.Input[bool]] = None,
-             minio_key_file: Optional[pulumi.Input[str]] = None,
-             minio_password: Optional[pulumi.Input[str]] = None,
-             minio_region: Optional[pulumi.Input[str]] = None,
-             minio_secret_key: Optional[pulumi.Input[str]] = None,
-             minio_session_token: Optional[pulumi.Input[str]] = None,
-             minio_ssl: Optional[pulumi.Input[bool]] = None,
-             minio_user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if minio_server is None and 'minioServer' in kwargs:
-            minio_server = kwargs['minioServer']
-        if minio_server is None:
-            raise TypeError("Missing 'minio_server' argument")
-        if minio_access_key is None and 'minioAccessKey' in kwargs:
-            minio_access_key = kwargs['minioAccessKey']
-        if minio_api_version is None and 'minioApiVersion' in kwargs:
-            minio_api_version = kwargs['minioApiVersion']
-        if minio_cacert_file is None and 'minioCacertFile' in kwargs:
-            minio_cacert_file = kwargs['minioCacertFile']
-        if minio_cert_file is None and 'minioCertFile' in kwargs:
-            minio_cert_file = kwargs['minioCertFile']
-        if minio_insecure is None and 'minioInsecure' in kwargs:
-            minio_insecure = kwargs['minioInsecure']
-        if minio_key_file is None and 'minioKeyFile' in kwargs:
-            minio_key_file = kwargs['minioKeyFile']
-        if minio_password is None and 'minioPassword' in kwargs:
-            minio_password = kwargs['minioPassword']
-        if minio_region is None and 'minioRegion' in kwargs:
-            minio_region = kwargs['minioRegion']
-        if minio_secret_key is None and 'minioSecretKey' in kwargs:
-            minio_secret_key = kwargs['minioSecretKey']
-        if minio_session_token is None and 'minioSessionToken' in kwargs:
-            minio_session_token = kwargs['minioSessionToken']
-        if minio_ssl is None and 'minioSsl' in kwargs:
-            minio_ssl = kwargs['minioSsl']
-        if minio_user is None and 'minioUser' in kwargs:
-            minio_user = kwargs['minioUser']
-
-        _setter("minio_server", minio_server)
+        pulumi.set(__self__, "minio_server", minio_server)
         if minio_access_key is not None:
             warnings.warn("""use minio_user instead""", DeprecationWarning)
             pulumi.log.warn("""minio_access_key is deprecated: use minio_user instead""")
         if minio_access_key is not None:
-            _setter("minio_access_key", minio_access_key)
+            pulumi.set(__self__, "minio_access_key", minio_access_key)
         if minio_api_version is not None:
-            _setter("minio_api_version", minio_api_version)
+            pulumi.set(__self__, "minio_api_version", minio_api_version)
         if minio_cacert_file is not None:
-            _setter("minio_cacert_file", minio_cacert_file)
+            pulumi.set(__self__, "minio_cacert_file", minio_cacert_file)
         if minio_cert_file is not None:
-            _setter("minio_cert_file", minio_cert_file)
+            pulumi.set(__self__, "minio_cert_file", minio_cert_file)
         if minio_insecure is not None:
-            _setter("minio_insecure", minio_insecure)
+            pulumi.set(__self__, "minio_insecure", minio_insecure)
         if minio_key_file is not None:
-            _setter("minio_key_file", minio_key_file)
+            pulumi.set(__self__, "minio_key_file", minio_key_file)
         if minio_password is not None:
-            _setter("minio_password", minio_password)
+            pulumi.set(__self__, "minio_password", minio_password)
         if minio_region is not None:
-            _setter("minio_region", minio_region)
+            pulumi.set(__self__, "minio_region", minio_region)
         if minio_secret_key is not None:
             warnings.warn("""use minio_password instead""", DeprecationWarning)
             pulumi.log.warn("""minio_secret_key is deprecated: use minio_password instead""")
         if minio_secret_key is not None:
-            _setter("minio_secret_key", minio_secret_key)
+            pulumi.set(__self__, "minio_secret_key", minio_secret_key)
         if minio_session_token is not None:
-            _setter("minio_session_token", minio_session_token)
+            pulumi.set(__self__, "minio_session_token", minio_session_token)
         if minio_ssl is not None:
-            _setter("minio_ssl", minio_ssl)
+            pulumi.set(__self__, "minio_ssl", minio_ssl)
         if minio_user is not None:
-            _setter("minio_user", minio_user)
+            pulumi.set(__self__, "minio_user", minio_user)
 
     @property
     @pulumi.getter(name="minioServer")
@@ -349,10 +286,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

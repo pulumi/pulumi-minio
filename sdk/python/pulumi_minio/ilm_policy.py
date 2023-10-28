@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -21,25 +21,8 @@ class IlmPolicyArgs:
         """
         The set of arguments for constructing a IlmPolicy resource.
         """
-        IlmPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            rules=rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['IlmPolicyRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bucket is None:
-            raise TypeError("Missing 'bucket' argument")
-        if rules is None:
-            raise TypeError("Missing 'rules' argument")
-
-        _setter("bucket", bucket)
-        _setter("rules", rules)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
@@ -68,23 +51,10 @@ class _IlmPolicyState:
         """
         Input properties used for looking up and filtering IlmPolicy resources.
         """
-        _IlmPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bucket=bucket,
-            rules=rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bucket: Optional[pulumi.Input[str]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['IlmPolicyRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if bucket is not None:
-            _setter("bucket", bucket)
+            pulumi.set(__self__, "bucket", bucket)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
@@ -168,10 +138,6 @@ class IlmPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IlmPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
