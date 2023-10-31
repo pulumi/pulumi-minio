@@ -60,7 +60,7 @@ public class IamUser extends com.pulumi.resources.CustomResource {
      * Disable user
      * 
      */
-    @Export(name="disableUser", type=Boolean.class, parameters={})
+    @Export(name="disableUser", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableUser;
 
     /**
@@ -74,7 +74,7 @@ public class IamUser extends com.pulumi.resources.CustomResource {
      * Delete user even if it has non-Terraform-managed IAM access keys
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -84,25 +84,25 @@ public class IamUser extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="secret", type=String.class, parameters={})
+    @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     public Output<String> secret() {
         return this.secret;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {
         return this.status;
     }
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     public Output<Optional<Map<String,Object>>> tags() {
@@ -112,7 +112,7 @@ public class IamUser extends com.pulumi.resources.CustomResource {
      * Rotate Minio User Secret Key
      * 
      */
-    @Export(name="updateSecret", type=Boolean.class, parameters={})
+    @Export(name="updateSecret", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> updateSecret;
 
     /**

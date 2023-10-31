@@ -5,6 +5,7 @@ package com.pulumi.minio.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -46,6 +47,13 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         return this.id;
     }
 
+    @Import(name="noncurrentVersionExpirationDays")
+    private @Nullable Output<Integer> noncurrentVersionExpirationDays;
+
+    public Optional<Output<Integer>> noncurrentVersionExpirationDays() {
+        return Optional.ofNullable(this.noncurrentVersionExpirationDays);
+    }
+
     @Import(name="status")
     private @Nullable Output<String> status;
 
@@ -66,6 +74,7 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.expiration = $.expiration;
         this.filter = $.filter;
         this.id = $.id;
+        this.noncurrentVersionExpirationDays = $.noncurrentVersionExpirationDays;
         this.status = $.status;
         this.tags = $.tags;
     }
@@ -125,6 +134,15 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        public Builder noncurrentVersionExpirationDays(@Nullable Output<Integer> noncurrentVersionExpirationDays) {
+            $.noncurrentVersionExpirationDays = noncurrentVersionExpirationDays;
+            return this;
+        }
+
+        public Builder noncurrentVersionExpirationDays(Integer noncurrentVersionExpirationDays) {
+            return noncurrentVersionExpirationDays(Output.of(noncurrentVersionExpirationDays));
         }
 
         public Builder status(@Nullable Output<String> status) {

@@ -23,6 +23,7 @@ class IlmPolicyRuleArgs:
                  id: pulumi.Input[str],
                  expiration: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
+                 noncurrent_version_expiration_days: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
@@ -33,6 +34,8 @@ class IlmPolicyRuleArgs:
             pulumi.set(__self__, "expiration", expiration)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
+        if noncurrent_version_expiration_days is not None:
+            pulumi.set(__self__, "noncurrent_version_expiration_days", noncurrent_version_expiration_days)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -67,6 +70,15 @@ class IlmPolicyRuleArgs:
     @filter.setter
     def filter(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="noncurrentVersionExpirationDays")
+    def noncurrent_version_expiration_days(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "noncurrent_version_expiration_days")
+
+    @noncurrent_version_expiration_days.setter
+    def noncurrent_version_expiration_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "noncurrent_version_expiration_days", value)
 
     @property
     @pulumi.getter

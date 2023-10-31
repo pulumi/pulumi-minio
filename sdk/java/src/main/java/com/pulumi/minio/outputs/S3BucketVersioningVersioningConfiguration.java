@@ -67,11 +67,11 @@ public final class S3BucketVersioningVersioningConfiguration {
             return this;
         }
         public S3BucketVersioningVersioningConfiguration build() {
-            final var o = new S3BucketVersioningVersioningConfiguration();
-            o.excludeFolders = excludeFolders;
-            o.excludedPrefixes = excludedPrefixes;
-            o.status = status;
-            return o;
+            final var _resultValue = new S3BucketVersioningVersioningConfiguration();
+            _resultValue.excludeFolders = excludeFolders;
+            _resultValue.excludedPrefixes = excludedPrefixes;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

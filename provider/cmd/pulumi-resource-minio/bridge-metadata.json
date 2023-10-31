@@ -142,6 +142,9 @@
             "minio:index/getIamPolicyDocument:getIamPolicyDocument": "minio_iam_policy_document"
         },
         "renamedProperties": {
+            "minio:index/IlmPolicyRule:IlmPolicyRule": {
+                "noncurrentVersionExpirationDays": "noncurrent_version_expiration_days"
+            },
             "minio:index/S3BucketNotificationQueue:S3BucketNotificationQueue": {
                 "filterPrefix": "filter_prefix",
                 "filterSuffix": "filter_suffix",

@@ -24,6 +24,9 @@ namespace Pulumi.Minio.Inputs
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        [Input("noncurrentVersionExpirationDays")]
+        public Input<int>? NoncurrentVersionExpirationDays { get; set; }
+
         [Input("status")]
         public Input<string>? Status { get; set; }
 

@@ -19,6 +19,7 @@ namespace Pulumi.Minio.Outputs
         /// The ID of this resource.
         /// </summary>
         public readonly string Id;
+        public readonly int? NoncurrentVersionExpirationDays;
         public readonly string? Status;
         public readonly ImmutableDictionary<string, object>? Tags;
 
@@ -30,6 +31,8 @@ namespace Pulumi.Minio.Outputs
 
             string id,
 
+            int? noncurrentVersionExpirationDays,
+
             string? status,
 
             ImmutableDictionary<string, object>? tags)
@@ -37,6 +40,7 @@ namespace Pulumi.Minio.Outputs
             Expiration = expiration;
             Filter = filter;
             Id = id;
+            NoncurrentVersionExpirationDays = noncurrentVersionExpirationDays;
             Status = status;
             Tags = tags;
         }

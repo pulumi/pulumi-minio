@@ -16,13 +16,13 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="minio:index/s3BucketVersioning:S3BucketVersioning")
 public class S3BucketVersioning extends com.pulumi.resources.CustomResource {
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     public Output<String> bucket() {
         return this.bucket;
     }
-    @Export(name="versioningConfiguration", type=S3BucketVersioningVersioningConfiguration.class, parameters={})
+    @Export(name="versioningConfiguration", refs={S3BucketVersioningVersioningConfiguration.class}, tree="[0]")
     private Output<S3BucketVersioningVersioningConfiguration> versioningConfiguration;
 
     public Output<S3BucketVersioningVersioningConfiguration> versioningConfiguration() {

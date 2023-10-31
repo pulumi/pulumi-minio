@@ -18,9 +18,10 @@ type IlmPolicyRule struct {
 	Expiration *string `pulumi:"expiration"`
 	Filter     *string `pulumi:"filter"`
 	// The ID of this resource.
-	Id     string                 `pulumi:"id"`
-	Status *string                `pulumi:"status"`
-	Tags   map[string]interface{} `pulumi:"tags"`
+	Id                              string                 `pulumi:"id"`
+	NoncurrentVersionExpirationDays *int                   `pulumi:"noncurrentVersionExpirationDays"`
+	Status                          *string                `pulumi:"status"`
+	Tags                            map[string]interface{} `pulumi:"tags"`
 }
 
 // IlmPolicyRuleInput is an input type that accepts IlmPolicyRuleArgs and IlmPolicyRuleOutput values.
@@ -38,9 +39,10 @@ type IlmPolicyRuleArgs struct {
 	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
 	Filter     pulumi.StringPtrInput `pulumi:"filter"`
 	// The ID of this resource.
-	Id     pulumi.StringInput    `pulumi:"id"`
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	Tags   pulumi.MapInput       `pulumi:"tags"`
+	Id                              pulumi.StringInput    `pulumi:"id"`
+	NoncurrentVersionExpirationDays pulumi.IntPtrInput    `pulumi:"noncurrentVersionExpirationDays"`
+	Status                          pulumi.StringPtrInput `pulumi:"status"`
+	Tags                            pulumi.MapInput       `pulumi:"tags"`
 }
 
 func (IlmPolicyRuleArgs) ElementType() reflect.Type {
@@ -123,6 +125,10 @@ func (o IlmPolicyRuleOutput) Filter() pulumi.StringPtrOutput {
 // The ID of this resource.
 func (o IlmPolicyRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v IlmPolicyRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o IlmPolicyRuleOutput) NoncurrentVersionExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IlmPolicyRule) *int { return v.NoncurrentVersionExpirationDays }).(pulumi.IntPtrOutput)
 }
 
 func (o IlmPolicyRuleOutput) Status() pulumi.StringPtrOutput {

@@ -96,13 +96,13 @@ public final class S3BucketNotificationQueue {
             return this;
         }
         public S3BucketNotificationQueue build() {
-            final var o = new S3BucketNotificationQueue();
-            o.events = events;
-            o.filterPrefix = filterPrefix;
-            o.filterSuffix = filterSuffix;
-            o.id = id;
-            o.queueArn = queueArn;
-            return o;
+            final var _resultValue = new S3BucketNotificationQueue();
+            _resultValue.events = events;
+            _resultValue.filterPrefix = filterPrefix;
+            _resultValue.filterSuffix = filterSuffix;
+            _resultValue.id = id;
+            _resultValue.queueArn = queueArn;
+            return _resultValue;
         }
     }
 }

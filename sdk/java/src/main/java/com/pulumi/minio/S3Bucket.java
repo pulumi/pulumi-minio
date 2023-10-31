@@ -53,49 +53,49 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="minio:index/s3Bucket:S3Bucket")
 public class S3Bucket extends com.pulumi.resources.CustomResource {
-    @Export(name="acl", type=String.class, parameters={})
+    @Export(name="acl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acl;
 
     public Output<Optional<String>> acl() {
         return Codegen.optional(this.acl);
     }
-    @Export(name="arn", type=String.class, parameters={})
+    @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     public Output<String> arn() {
         return this.arn;
     }
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     public Output<String> bucket() {
         return this.bucket;
     }
-    @Export(name="bucketDomainName", type=String.class, parameters={})
+    @Export(name="bucketDomainName", refs={String.class}, tree="[0]")
     private Output<String> bucketDomainName;
 
     public Output<String> bucketDomainName() {
         return this.bucketDomainName;
     }
-    @Export(name="bucketPrefix", type=String.class, parameters={})
+    @Export(name="bucketPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bucketPrefix;
 
     public Output<Optional<String>> bucketPrefix() {
         return Codegen.optional(this.bucketPrefix);
     }
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
-    @Export(name="objectLocking", type=Boolean.class, parameters={})
+    @Export(name="objectLocking", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> objectLocking;
 
     public Output<Optional<Boolean>> objectLocking() {
         return Codegen.optional(this.objectLocking);
     }
-    @Export(name="quota", type=Integer.class, parameters={})
+    @Export(name="quota", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> quota;
 
     public Output<Optional<Integer>> quota() {

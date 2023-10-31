@@ -62,13 +62,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="minio:index/ilmPolicy:IlmPolicy")
 public class IlmPolicy extends com.pulumi.resources.CustomResource {
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     public Output<String> bucket() {
         return this.bucket;
     }
-    @Export(name="rules", type=List.class, parameters={IlmPolicyRule.class})
+    @Export(name="rules", refs={List.class,IlmPolicyRule.class}, tree="[0,1]")
     private Output<List<IlmPolicyRule>> rules;
 
     public Output<List<IlmPolicyRule>> rules() {

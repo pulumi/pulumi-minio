@@ -4,6 +4,7 @@
 package com.pulumi.minio.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -20,6 +21,7 @@ public final class IlmPolicyRule {
      * 
      */
     private String id;
+    private @Nullable Integer noncurrentVersionExpirationDays;
     private @Nullable String status;
     private @Nullable Map<String,Object> tags;
 
@@ -36,6 +38,9 @@ public final class IlmPolicyRule {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<Integer> noncurrentVersionExpirationDays() {
+        return Optional.ofNullable(this.noncurrentVersionExpirationDays);
     }
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
@@ -56,6 +61,7 @@ public final class IlmPolicyRule {
         private @Nullable String expiration;
         private @Nullable String filter;
         private String id;
+        private @Nullable Integer noncurrentVersionExpirationDays;
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
         public Builder() {}
@@ -64,6 +70,7 @@ public final class IlmPolicyRule {
     	      this.expiration = defaults.expiration;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.noncurrentVersionExpirationDays = defaults.noncurrentVersionExpirationDays;
     	      this.status = defaults.status;
     	      this.tags = defaults.tags;
         }
@@ -84,6 +91,11 @@ public final class IlmPolicyRule {
             return this;
         }
         @CustomType.Setter
+        public Builder noncurrentVersionExpirationDays(@Nullable Integer noncurrentVersionExpirationDays) {
+            this.noncurrentVersionExpirationDays = noncurrentVersionExpirationDays;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
@@ -94,13 +106,14 @@ public final class IlmPolicyRule {
             return this;
         }
         public IlmPolicyRule build() {
-            final var o = new IlmPolicyRule();
-            o.expiration = expiration;
-            o.filter = filter;
-            o.id = id;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new IlmPolicyRule();
+            _resultValue.expiration = expiration;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.noncurrentVersionExpirationDays = noncurrentVersionExpirationDays;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

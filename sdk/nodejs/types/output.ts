@@ -27,6 +27,7 @@ export interface IlmPolicyRule {
      * The ID of this resource.
      */
     id: string;
+    noncurrentVersionExpirationDays?: number;
     status: string;
     tags?: {[key: string]: any};
 }

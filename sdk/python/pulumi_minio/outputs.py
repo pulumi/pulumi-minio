@@ -20,10 +20,28 @@ __all__ = [
 
 @pulumi.output_type
 class IlmPolicyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "noncurrentVersionExpirationDays":
+            suggest = "noncurrent_version_expiration_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IlmPolicyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IlmPolicyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IlmPolicyRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  id: str,
                  expiration: Optional[str] = None,
                  filter: Optional[str] = None,
+                 noncurrent_version_expiration_days: Optional[int] = None,
                  status: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None):
         """
@@ -34,6 +52,8 @@ class IlmPolicyRule(dict):
             pulumi.set(__self__, "expiration", expiration)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
+        if noncurrent_version_expiration_days is not None:
+            pulumi.set(__self__, "noncurrent_version_expiration_days", noncurrent_version_expiration_days)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -56,6 +76,11 @@ class IlmPolicyRule(dict):
     @pulumi.getter
     def filter(self) -> Optional[str]:
         return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="noncurrentVersionExpirationDays")
+    def noncurrent_version_expiration_days(self) -> Optional[int]:
+        return pulumi.get(self, "noncurrent_version_expiration_days")
 
     @property
     @pulumi.getter
