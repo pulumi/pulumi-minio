@@ -13,6 +13,66 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testUser, err := minio.NewIamUser(ctx, "testUser", nil)
+//			if err != nil {
+//				return err
+//			}
+//			testPolicy, err := minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
+//				Policy: pulumi.String(`{
+//	  "Version":"2012-10-17",
+//	  "Statement": [
+//	    {
+//	      "Sid":"ListAllBucket",
+//	      "Effect": "Allow",
+//	      "Action": ["s3:PutObject"],
+//	      "Principal":"*",
+//	      "Resource": "arn:aws:s3:::state-terraform-s3/*"
+//	    }
+//	  ]
+//	}
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			developerIamUserPolicyAttachment, err := minio.NewIamUserPolicyAttachment(ctx, "developerIamUserPolicyAttachment", &minio.IamUserPolicyAttachmentArgs{
+//				UserName:   testUser.ID(),
+//				PolicyName: testPolicy.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("minioName", developerIamUserPolicyAttachment.ID())
+//			ctx.Export("minioUsers", developerIamUserPolicyAttachment.UserName)
+//			ctx.Export("minioGroup", developerIamUserPolicyAttachment.PolicyName)
+//			_, err = minio.NewIamUserPolicyAttachment(ctx, "developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment", &minio.IamUserPolicyAttachmentArgs{
+//				UserName:   pulumi.String("CN=My User,OU=Unit,DC=example,DC=com"),
+//				PolicyName: testPolicy.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type IamUserPolicyAttachment struct {
 	pulumi.CustomResourceState
 

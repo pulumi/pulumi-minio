@@ -9,6 +9,26 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Minio = Pulumi.Minio;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var developer = new Minio.IamGroup("developer");
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["minioUserGroup"] = developer.GroupName,
+    ///     };
+    /// });
+    /// ```
+    /// </summary>
     [MinioResourceType("minio:index/iamGroup:IamGroup")]
     public partial class IamGroup : global::Pulumi.CustomResource
     {

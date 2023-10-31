@@ -13,6 +13,53 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			developer, err := minio.NewIamGroup(ctx, "developer", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = minio.NewIamGroupPolicy(ctx, "testPolicy", &minio.IamGroupPolicyArgs{
+//				Group: developer.ID(),
+//				Policy: pulumi.String(`{
+//	  "Version":"2012-10-17",
+//	  "Statement": [
+//	    {
+//	      "Sid":"ListAllBucket",
+//	      "Effect": "Allow",
+//	      "Action": ["s3:PutObject"],
+//	      "Principal":"*",
+//	      "Resource": "arn:aws:s3:::state-terraform-s3/*"
+//	    }
+//	  ]
+//	}
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("minioName", minio_iam_group_membership.Developer.Id)
+//			ctx.Export("minioPolicy", minio_iam_group_membership.Developer.Policy)
+//			ctx.Export("minioGroup", minio_iam_group_membership.Developer.Group)
+//			return nil
+//		})
+//	}
+//
+// ```
 type IamGroupPolicy struct {
 	pulumi.CustomResourceState
 

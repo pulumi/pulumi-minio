@@ -12,6 +12,75 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := minio.GetIamPolicyDocument(ctx, &minio.GetIamPolicyDocumentArgs{
+//				Statements: pulumi.Array{
+//					minio.GetIamPolicyDocumentStatement{
+//						Sid: pulumi.StringRef("1"),
+//						Actions: []string{
+//							"s3:ListAllMyBuckets",
+//							"s3:GetBucketLocation",
+//						},
+//						Resources: []string{
+//							"arn:aws:s3:::*",
+//						},
+//					},
+//					minio.GetIamPolicyDocumentStatement{
+//						Actions: []string{
+//							"s3:ListBucket",
+//						},
+//						Resources: []string{
+//							"arn:aws:s3:::state-terraform-s3",
+//						},
+//						Conditions: []minio.GetIamPolicyDocumentStatementCondition{
+//							{
+//								Test:     "StringLike",
+//								Variable: "s3:prefix",
+//								Values: []string{
+//									"",
+//									"home/",
+//								},
+//							},
+//						},
+//					},
+//					minio.GetIamPolicyDocumentStatement{
+//						Actions: []string{
+//							"s3:PutObject",
+//						},
+//						Resources: []string{
+//							"arn:aws:s3:::state-terraform-s3",
+//							"arn:aws:s3:::state-terraform-s3/*",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
+//				Policy: *pulumi.String(example.Json),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetIamPolicyDocument(ctx *pulumi.Context, args *GetIamPolicyDocumentArgs, opts ...pulumi.InvokeOption) (*GetIamPolicyDocumentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIamPolicyDocumentResult

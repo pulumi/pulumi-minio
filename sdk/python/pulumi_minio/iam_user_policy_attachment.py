@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IamUserPolicyAttachmentArgs', 'IamUserPolicyAttachment']
@@ -19,29 +19,8 @@ class IamUserPolicyAttachmentArgs:
         """
         The set of arguments for constructing a IamUserPolicyAttachment resource.
         """
-        IamUserPolicyAttachmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_name=policy_name,
-            user_name=user_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_name: Optional[pulumi.Input[str]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if policy_name is None:
-            raise TypeError("Missing 'policy_name' argument")
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-        if user_name is None:
-            raise TypeError("Missing 'user_name' argument")
-
-        _setter("policy_name", policy_name)
-        _setter("user_name", user_name)
+        pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter(name="policyName")
@@ -70,27 +49,10 @@ class _IamUserPolicyAttachmentState:
         """
         Input properties used for looking up and filtering IamUserPolicyAttachment resources.
         """
-        _IamUserPolicyAttachmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_name=policy_name,
-            user_name=user_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_name: Optional[pulumi.Input[str]] = None,
-             user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_name is None and 'policyName' in kwargs:
-            policy_name = kwargs['policyName']
-        if user_name is None and 'userName' in kwargs:
-            user_name = kwargs['userName']
-
         if policy_name is not None:
-            _setter("policy_name", policy_name)
+            pulumi.set(__self__, "policy_name", policy_name)
         if user_name is not None:
-            _setter("user_name", user_name)
+            pulumi.set(__self__, "user_name", user_name)
 
     @property
     @pulumi.getter(name="policyName")
@@ -120,7 +82,37 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
                  user_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a IamUserPolicyAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        test_user = minio.IamUser("testUser")
+        test_policy = minio.IamPolicy("testPolicy", policy=\"\"\"{
+          "Version":"2012-10-17",
+          "Statement": [
+            {
+              "Sid":"ListAllBucket",
+              "Effect": "Allow",
+              "Action": ["s3:PutObject"],
+              "Principal":"*",
+              "Resource": "arn:aws:s3:::state-terraform-s3/*"
+            }
+          ]
+        }
+        \"\"\")
+        developer_iam_user_policy_attachment = minio.IamUserPolicyAttachment("developerIamUserPolicyAttachment",
+            user_name=test_user.id,
+            policy_name=test_policy.id)
+        pulumi.export("minioName", developer_iam_user_policy_attachment.id)
+        pulumi.export("minioUsers", developer_iam_user_policy_attachment.user_name)
+        pulumi.export("minioGroup", developer_iam_user_policy_attachment.policy_name)
+        developer_index_iam_user_policy_attachment_iam_user_policy_attachment = minio.IamUserPolicyAttachment("developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment",
+            user_name="CN=My User,OU=Unit,DC=example,DC=com",
+            policy_name=test_policy.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -131,7 +123,37 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
                  args: IamUserPolicyAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IamUserPolicyAttachment resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        test_user = minio.IamUser("testUser")
+        test_policy = minio.IamPolicy("testPolicy", policy=\"\"\"{
+          "Version":"2012-10-17",
+          "Statement": [
+            {
+              "Sid":"ListAllBucket",
+              "Effect": "Allow",
+              "Action": ["s3:PutObject"],
+              "Principal":"*",
+              "Resource": "arn:aws:s3:::state-terraform-s3/*"
+            }
+          ]
+        }
+        \"\"\")
+        developer_iam_user_policy_attachment = minio.IamUserPolicyAttachment("developerIamUserPolicyAttachment",
+            user_name=test_user.id,
+            policy_name=test_policy.id)
+        pulumi.export("minioName", developer_iam_user_policy_attachment.id)
+        pulumi.export("minioUsers", developer_iam_user_policy_attachment.user_name)
+        pulumi.export("minioGroup", developer_iam_user_policy_attachment.policy_name)
+        developer_index_iam_user_policy_attachment_iam_user_policy_attachment = minio.IamUserPolicyAttachment("developerIndex/iamUserPolicyAttachmentIamUserPolicyAttachment",
+            user_name="CN=My User,OU=Unit,DC=example,DC=com",
+            policy_name=test_policy.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param IamUserPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -142,10 +164,6 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IamUserPolicyAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

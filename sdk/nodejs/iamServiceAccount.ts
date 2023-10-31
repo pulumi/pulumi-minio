@@ -4,6 +4,24 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as minio from "@pulumi/minio";
+ *
+ * const test = new minio.IamUser("test", {
+ *     forceDestroy: true,
+ *     tags: {
+ *         "tag-key": "tag-value",
+ *     },
+ * });
+ * const testServiceAccount = new minio.IamServiceAccount("testServiceAccount", {targetUser: test.name});
+ * export const minioUser = testServiceAccount.accessKey;
+ * export const minioPassword = testServiceAccount.secretKey;
+ * ```
+ */
 export class IamServiceAccount extends pulumi.CustomResource {
     /**
      * Get an existing IamServiceAccount resource's state with the given name, ID, and optional extra

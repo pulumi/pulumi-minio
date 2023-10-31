@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IamGroupArgs', 'IamGroup']
@@ -22,31 +22,12 @@ class IamGroupArgs:
         :param pulumi.Input[bool] disable_group: Disable group
         :param pulumi.Input[bool] force_destroy: Delete group even if it has non-Terraform-managed members
         """
-        IamGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disable_group=disable_group,
-            force_destroy=force_destroy,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disable_group: Optional[pulumi.Input[bool]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_group is None and 'disableGroup' in kwargs:
-            disable_group = kwargs['disableGroup']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-
         if disable_group is not None:
-            _setter("disable_group", disable_group)
+            pulumi.set(__self__, "disable_group", disable_group)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="disableGroup")
@@ -94,37 +75,14 @@ class _IamGroupState:
         :param pulumi.Input[bool] disable_group: Disable group
         :param pulumi.Input[bool] force_destroy: Delete group even if it has non-Terraform-managed members
         """
-        _IamGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disable_group=disable_group,
-            force_destroy=force_destroy,
-            group_name=group_name,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disable_group: Optional[pulumi.Input[bool]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             group_name: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_group is None and 'disableGroup' in kwargs:
-            disable_group = kwargs['disableGroup']
-        if force_destroy is None and 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if group_name is None and 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-
         if disable_group is not None:
-            _setter("disable_group", disable_group)
+            pulumi.set(__self__, "disable_group", disable_group)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if group_name is not None:
-            _setter("group_name", group_name)
+            pulumi.set(__self__, "group_name", group_name)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="disableGroup")
@@ -179,7 +137,16 @@ class IamGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a IamGroup resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        developer = minio.IamGroup("developer")
+        pulumi.export("minioUserGroup", developer.group_name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_group: Disable group
@@ -192,7 +159,16 @@ class IamGroup(pulumi.CustomResource):
                  args: Optional[IamGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IamGroup resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        developer = minio.IamGroup("developer")
+        pulumi.export("minioUserGroup", developer.group_name)
+        ```
+
         :param str resource_name: The name of the resource.
         :param IamGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -203,10 +179,6 @@ class IamGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IamGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
