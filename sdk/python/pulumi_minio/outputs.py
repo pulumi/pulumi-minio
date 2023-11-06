@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -47,17 +47,42 @@ class IlmPolicyRule(dict):
         """
         :param str id: The ID of this resource.
         """
-        pulumi.set(__self__, "id", id)
+        IlmPolicyRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            expiration=expiration,
+            filter=filter,
+            noncurrent_version_expiration_days=noncurrent_version_expiration_days,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             expiration: Optional[str] = None,
+             filter: Optional[str] = None,
+             noncurrent_version_expiration_days: Optional[int] = None,
+             status: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if noncurrent_version_expiration_days is None and 'noncurrentVersionExpirationDays' in kwargs:
+            noncurrent_version_expiration_days = kwargs['noncurrentVersionExpirationDays']
+
+        _setter("id", id)
         if expiration is not None:
-            pulumi.set(__self__, "expiration", expiration)
+            _setter("expiration", expiration)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if noncurrent_version_expiration_days is not None:
-            pulumi.set(__self__, "noncurrent_version_expiration_days", noncurrent_version_expiration_days)
+            _setter("noncurrent_version_expiration_days", noncurrent_version_expiration_days)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -125,14 +150,43 @@ class S3BucketNotificationQueue(dict):
         """
         :param str id: The ID of this resource.
         """
-        pulumi.set(__self__, "events", events)
-        pulumi.set(__self__, "queue_arn", queue_arn)
+        S3BucketNotificationQueue._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            events=events,
+            queue_arn=queue_arn,
+            filter_prefix=filter_prefix,
+            filter_suffix=filter_suffix,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             events: Optional[Sequence[str]] = None,
+             queue_arn: Optional[str] = None,
+             filter_prefix: Optional[str] = None,
+             filter_suffix: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if events is None:
+            raise TypeError("Missing 'events' argument")
+        if queue_arn is None and 'queueArn' in kwargs:
+            queue_arn = kwargs['queueArn']
+        if queue_arn is None:
+            raise TypeError("Missing 'queue_arn' argument")
+        if filter_prefix is None and 'filterPrefix' in kwargs:
+            filter_prefix = kwargs['filterPrefix']
+        if filter_suffix is None and 'filterSuffix' in kwargs:
+            filter_suffix = kwargs['filterSuffix']
+
+        _setter("events", events)
+        _setter("queue_arn", queue_arn)
         if filter_prefix is not None:
-            pulumi.set(__self__, "filter_prefix", filter_prefix)
+            _setter("filter_prefix", filter_prefix)
         if filter_suffix is not None:
-            pulumi.set(__self__, "filter_suffix", filter_suffix)
+            _setter("filter_suffix", filter_suffix)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -188,11 +242,32 @@ class S3BucketVersioningVersioningConfiguration(dict):
                  status: str,
                  exclude_folders: Optional[bool] = None,
                  excluded_prefixes: Optional[Sequence[str]] = None):
-        pulumi.set(__self__, "status", status)
+        S3BucketVersioningVersioningConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            status=status,
+            exclude_folders=exclude_folders,
+            excluded_prefixes=excluded_prefixes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             status: Optional[str] = None,
+             exclude_folders: Optional[bool] = None,
+             excluded_prefixes: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if exclude_folders is None and 'excludeFolders' in kwargs:
+            exclude_folders = kwargs['excludeFolders']
+        if excluded_prefixes is None and 'excludedPrefixes' in kwargs:
+            excluded_prefixes = kwargs['excludedPrefixes']
+
+        _setter("status", status)
         if exclude_folders is not None:
-            pulumi.set(__self__, "exclude_folders", exclude_folders)
+            _setter("exclude_folders", exclude_folders)
         if excluded_prefixes is not None:
-            pulumi.set(__self__, "excluded_prefixes", excluded_prefixes)
+            _setter("excluded_prefixes", excluded_prefixes)
 
     @property
     @pulumi.getter
@@ -219,18 +294,39 @@ class GetIamPolicyDocumentStatementResult(dict):
                  principal: Optional[str] = None,
                  resources: Optional[Sequence[str]] = None,
                  sid: Optional[str] = None):
+        GetIamPolicyDocumentStatementResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+            conditions=conditions,
+            effect=effect,
+            principal=principal,
+            resources=resources,
+            sid=sid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Optional[Sequence[str]] = None,
+             conditions: Optional[Sequence['outputs.GetIamPolicyDocumentStatementConditionResult']] = None,
+             effect: Optional[str] = None,
+             principal: Optional[str] = None,
+             resources: Optional[Sequence[str]] = None,
+             sid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
         if principal is not None:
-            pulumi.set(__self__, "principal", principal)
+            _setter("principal", principal)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
         if sid is not None:
-            pulumi.set(__self__, "sid", sid)
+            _setter("sid", sid)
 
     @property
     @pulumi.getter
@@ -269,9 +365,30 @@ class GetIamPolicyDocumentStatementConditionResult(dict):
                  test: str,
                  values: Sequence[str],
                  variable: str):
-        pulumi.set(__self__, "test", test)
-        pulumi.set(__self__, "values", values)
-        pulumi.set(__self__, "variable", variable)
+        GetIamPolicyDocumentStatementConditionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            test=test,
+            values=values,
+            variable=variable,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             test: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             variable: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if test is None:
+            raise TypeError("Missing 'test' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if variable is None:
+            raise TypeError("Missing 'variable' argument")
+
+        _setter("test", test)
+        _setter("values", values)
+        _setter("variable", variable)
 
     @property
     @pulumi.getter

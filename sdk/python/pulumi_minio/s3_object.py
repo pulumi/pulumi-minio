@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['S3ObjectArgs', 'S3Object']
@@ -25,20 +25,59 @@ class S3ObjectArgs:
         """
         The set of arguments for constructing a S3Object resource.
         """
-        pulumi.set(__self__, "bucket_name", bucket_name)
-        pulumi.set(__self__, "object_name", object_name)
+        S3ObjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            object_name=object_name,
+            content=content,
+            content_base64=content_base64,
+            content_type=content_type,
+            etag=etag,
+            source=source,
+            version_id=version_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             object_name: Optional[pulumi.Input[str]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             content_base64: Optional[pulumi.Input[str]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if object_name is None and 'objectName' in kwargs:
+            object_name = kwargs['objectName']
+        if object_name is None:
+            raise TypeError("Missing 'object_name' argument")
+        if content_base64 is None and 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
+        _setter("bucket_name", bucket_name)
+        _setter("object_name", object_name)
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if content_base64 is not None:
-            pulumi.set(__self__, "content_base64", content_base64)
+            _setter("content_base64", content_base64)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+            _setter("version_id", version_id)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -127,22 +166,57 @@ class _S3ObjectState:
         """
         Input properties used for looking up and filtering S3Object resources.
         """
+        _S3ObjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            content=content,
+            content_base64=content_base64,
+            content_type=content_type,
+            etag=etag,
+            object_name=object_name,
+            source=source,
+            version_id=version_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             content_base64: Optional[pulumi.Input[str]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             object_name: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             version_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if content_base64 is None and 'contentBase64' in kwargs:
+            content_base64 = kwargs['contentBase64']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if object_name is None and 'objectName' in kwargs:
+            object_name = kwargs['objectName']
+        if version_id is None and 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if content_base64 is not None:
-            pulumi.set(__self__, "content_base64", content_base64)
+            _setter("content_base64", content_base64)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if object_name is not None:
-            pulumi.set(__self__, "object_name", object_name)
+            _setter("object_name", object_name)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if version_id is not None:
-            pulumi.set(__self__, "version_id", version_id)
+            _setter("version_id", version_id)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -288,6 +362,10 @@ class S3Object(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            S3ObjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

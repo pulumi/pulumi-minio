@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['S3BucketArgs', 'S3Bucket']
@@ -23,18 +23,45 @@ class S3BucketArgs:
         """
         The set of arguments for constructing a S3Bucket resource.
         """
+        S3BucketArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl=acl,
+            bucket=bucket,
+            bucket_prefix=bucket_prefix,
+            force_destroy=force_destroy,
+            object_locking=object_locking,
+            quota=quota,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl: Optional[pulumi.Input[str]] = None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             bucket_prefix: Optional[pulumi.Input[str]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             object_locking: Optional[pulumi.Input[bool]] = None,
+             quota: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_prefix is None and 'bucketPrefix' in kwargs:
+            bucket_prefix = kwargs['bucketPrefix']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if object_locking is None and 'objectLocking' in kwargs:
+            object_locking = kwargs['objectLocking']
+
         if acl is not None:
-            pulumi.set(__self__, "acl", acl)
+            _setter("acl", acl)
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if bucket_prefix is not None:
-            pulumi.set(__self__, "bucket_prefix", bucket_prefix)
+            _setter("bucket_prefix", bucket_prefix)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if object_locking is not None:
-            pulumi.set(__self__, "object_locking", object_locking)
+            _setter("object_locking", object_locking)
         if quota is not None:
-            pulumi.set(__self__, "quota", quota)
+            _setter("quota", quota)
 
     @property
     @pulumi.getter
@@ -105,22 +132,55 @@ class _S3BucketState:
         """
         Input properties used for looking up and filtering S3Bucket resources.
         """
+        _S3BucketState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl=acl,
+            arn=arn,
+            bucket=bucket,
+            bucket_domain_name=bucket_domain_name,
+            bucket_prefix=bucket_prefix,
+            force_destroy=force_destroy,
+            object_locking=object_locking,
+            quota=quota,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl: Optional[pulumi.Input[str]] = None,
+             arn: Optional[pulumi.Input[str]] = None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             bucket_domain_name: Optional[pulumi.Input[str]] = None,
+             bucket_prefix: Optional[pulumi.Input[str]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             object_locking: Optional[pulumi.Input[bool]] = None,
+             quota: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bucket_domain_name is None and 'bucketDomainName' in kwargs:
+            bucket_domain_name = kwargs['bucketDomainName']
+        if bucket_prefix is None and 'bucketPrefix' in kwargs:
+            bucket_prefix = kwargs['bucketPrefix']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if object_locking is None and 'objectLocking' in kwargs:
+            object_locking = kwargs['objectLocking']
+
         if acl is not None:
-            pulumi.set(__self__, "acl", acl)
+            _setter("acl", acl)
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if bucket_domain_name is not None:
-            pulumi.set(__self__, "bucket_domain_name", bucket_domain_name)
+            _setter("bucket_domain_name", bucket_domain_name)
         if bucket_prefix is not None:
-            pulumi.set(__self__, "bucket_prefix", bucket_prefix)
+            _setter("bucket_prefix", bucket_prefix)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if object_locking is not None:
-            pulumi.set(__self__, "object_locking", object_locking)
+            _setter("object_locking", object_locking)
         if quota is not None:
-            pulumi.set(__self__, "quota", quota)
+            _setter("quota", quota)
 
     @property
     @pulumi.getter
@@ -254,6 +314,10 @@ class S3Bucket(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            S3BucketArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

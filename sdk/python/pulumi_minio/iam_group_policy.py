@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IamGroupPolicyArgs', 'IamGroupPolicy']
@@ -21,12 +21,35 @@ class IamGroupPolicyArgs:
         """
         The set of arguments for constructing a IamGroupPolicy resource.
         """
-        pulumi.set(__self__, "group", group)
-        pulumi.set(__self__, "policy", policy)
+        IamGroupPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            policy=policy,
+            name=name,
+            name_prefix=name_prefix,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if group is None:
+            raise TypeError("Missing 'group' argument")
+        if policy is None:
+            raise TypeError("Missing 'policy' argument")
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+
+        _setter("group", group)
+        _setter("policy", policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
 
     @property
     @pulumi.getter
@@ -75,14 +98,33 @@ class _IamGroupPolicyState:
         """
         Input properties used for looking up and filtering IamGroupPolicy resources.
         """
+        _IamGroupPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group=group,
+            name=name,
+            name_prefix=name_prefix,
+            policy=policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name_prefix is None and 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
 
     @property
     @pulumi.getter
@@ -208,6 +250,10 @@ class IamGroupPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IamGroupPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
