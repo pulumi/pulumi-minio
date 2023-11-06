@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type S3BucketNotification struct {
@@ -100,12 +99,6 @@ func (i *S3BucketNotification) ToS3BucketNotificationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketNotificationOutput)
 }
 
-func (i *S3BucketNotification) ToOutput(ctx context.Context) pulumix.Output[*S3BucketNotification] {
-	return pulumix.Output[*S3BucketNotification]{
-		OutputState: i.ToS3BucketNotificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // S3BucketNotificationArrayInput is an input type that accepts S3BucketNotificationArray and S3BucketNotificationArrayOutput values.
 // You can construct a concrete instance of `S3BucketNotificationArrayInput` via:
 //
@@ -129,12 +122,6 @@ func (i S3BucketNotificationArray) ToS3BucketNotificationArrayOutput() S3BucketN
 
 func (i S3BucketNotificationArray) ToS3BucketNotificationArrayOutputWithContext(ctx context.Context) S3BucketNotificationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketNotificationArrayOutput)
-}
-
-func (i S3BucketNotificationArray) ToOutput(ctx context.Context) pulumix.Output[[]*S3BucketNotification] {
-	return pulumix.Output[[]*S3BucketNotification]{
-		OutputState: i.ToS3BucketNotificationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // S3BucketNotificationMapInput is an input type that accepts S3BucketNotificationMap and S3BucketNotificationMapOutput values.
@@ -162,12 +149,6 @@ func (i S3BucketNotificationMap) ToS3BucketNotificationMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketNotificationMapOutput)
 }
 
-func (i S3BucketNotificationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3BucketNotification] {
-	return pulumix.Output[map[string]*S3BucketNotification]{
-		OutputState: i.ToS3BucketNotificationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type S3BucketNotificationOutput struct{ *pulumi.OutputState }
 
 func (S3BucketNotificationOutput) ElementType() reflect.Type {
@@ -180,12 +161,6 @@ func (o S3BucketNotificationOutput) ToS3BucketNotificationOutput() S3BucketNotif
 
 func (o S3BucketNotificationOutput) ToS3BucketNotificationOutputWithContext(ctx context.Context) S3BucketNotificationOutput {
 	return o
-}
-
-func (o S3BucketNotificationOutput) ToOutput(ctx context.Context) pulumix.Output[*S3BucketNotification] {
-	return pulumix.Output[*S3BucketNotification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o S3BucketNotificationOutput) Bucket() pulumi.StringOutput {
@@ -210,12 +185,6 @@ func (o S3BucketNotificationArrayOutput) ToS3BucketNotificationArrayOutputWithCo
 	return o
 }
 
-func (o S3BucketNotificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*S3BucketNotification] {
-	return pulumix.Output[[]*S3BucketNotification]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o S3BucketNotificationArrayOutput) Index(i pulumi.IntInput) S3BucketNotificationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3BucketNotification {
 		return vs[0].([]*S3BucketNotification)[vs[1].(int)]
@@ -234,12 +203,6 @@ func (o S3BucketNotificationMapOutput) ToS3BucketNotificationMapOutput() S3Bucke
 
 func (o S3BucketNotificationMapOutput) ToS3BucketNotificationMapOutputWithContext(ctx context.Context) S3BucketNotificationMapOutput {
 	return o
-}
-
-func (o S3BucketNotificationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3BucketNotification] {
-	return pulumix.Output[map[string]*S3BucketNotification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o S3BucketNotificationMapOutput) MapIndex(k pulumi.StringInput) S3BucketNotificationOutput {

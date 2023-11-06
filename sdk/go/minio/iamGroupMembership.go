@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type IamGroupMembership struct {
@@ -123,12 +122,6 @@ func (i *IamGroupMembership) ToIamGroupMembershipOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupMembershipOutput)
 }
 
-func (i *IamGroupMembership) ToOutput(ctx context.Context) pulumix.Output[*IamGroupMembership] {
-	return pulumix.Output[*IamGroupMembership]{
-		OutputState: i.ToIamGroupMembershipOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IamGroupMembershipArrayInput is an input type that accepts IamGroupMembershipArray and IamGroupMembershipArrayOutput values.
 // You can construct a concrete instance of `IamGroupMembershipArrayInput` via:
 //
@@ -152,12 +145,6 @@ func (i IamGroupMembershipArray) ToIamGroupMembershipArrayOutput() IamGroupMembe
 
 func (i IamGroupMembershipArray) ToIamGroupMembershipArrayOutputWithContext(ctx context.Context) IamGroupMembershipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupMembershipArrayOutput)
-}
-
-func (i IamGroupMembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]*IamGroupMembership] {
-	return pulumix.Output[[]*IamGroupMembership]{
-		OutputState: i.ToIamGroupMembershipArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IamGroupMembershipMapInput is an input type that accepts IamGroupMembershipMap and IamGroupMembershipMapOutput values.
@@ -185,12 +172,6 @@ func (i IamGroupMembershipMap) ToIamGroupMembershipMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(IamGroupMembershipMapOutput)
 }
 
-func (i IamGroupMembershipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamGroupMembership] {
-	return pulumix.Output[map[string]*IamGroupMembership]{
-		OutputState: i.ToIamGroupMembershipMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IamGroupMembershipOutput struct{ *pulumi.OutputState }
 
 func (IamGroupMembershipOutput) ElementType() reflect.Type {
@@ -203,12 +184,6 @@ func (o IamGroupMembershipOutput) ToIamGroupMembershipOutput() IamGroupMembershi
 
 func (o IamGroupMembershipOutput) ToIamGroupMembershipOutputWithContext(ctx context.Context) IamGroupMembershipOutput {
 	return o
-}
-
-func (o IamGroupMembershipOutput) ToOutput(ctx context.Context) pulumix.Output[*IamGroupMembership] {
-	return pulumix.Output[*IamGroupMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Group name to add users
@@ -240,12 +215,6 @@ func (o IamGroupMembershipArrayOutput) ToIamGroupMembershipArrayOutputWithContex
 	return o
 }
 
-func (o IamGroupMembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IamGroupMembership] {
-	return pulumix.Output[[]*IamGroupMembership]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IamGroupMembershipArrayOutput) Index(i pulumi.IntInput) IamGroupMembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamGroupMembership {
 		return vs[0].([]*IamGroupMembership)[vs[1].(int)]
@@ -264,12 +233,6 @@ func (o IamGroupMembershipMapOutput) ToIamGroupMembershipMapOutput() IamGroupMem
 
 func (o IamGroupMembershipMapOutput) ToIamGroupMembershipMapOutputWithContext(ctx context.Context) IamGroupMembershipMapOutput {
 	return o
-}
-
-func (o IamGroupMembershipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IamGroupMembership] {
-	return pulumix.Output[map[string]*IamGroupMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IamGroupMembershipMapOutput) MapIndex(k pulumi.StringInput) IamGroupMembershipOutput {
