@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type S3BucketServerSideEncryption struct {
@@ -111,12 +110,6 @@ func (i *S3BucketServerSideEncryption) ToS3BucketServerSideEncryptionOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketServerSideEncryptionOutput)
 }
 
-func (i *S3BucketServerSideEncryption) ToOutput(ctx context.Context) pulumix.Output[*S3BucketServerSideEncryption] {
-	return pulumix.Output[*S3BucketServerSideEncryption]{
-		OutputState: i.ToS3BucketServerSideEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // S3BucketServerSideEncryptionArrayInput is an input type that accepts S3BucketServerSideEncryptionArray and S3BucketServerSideEncryptionArrayOutput values.
 // You can construct a concrete instance of `S3BucketServerSideEncryptionArrayInput` via:
 //
@@ -140,12 +133,6 @@ func (i S3BucketServerSideEncryptionArray) ToS3BucketServerSideEncryptionArrayOu
 
 func (i S3BucketServerSideEncryptionArray) ToS3BucketServerSideEncryptionArrayOutputWithContext(ctx context.Context) S3BucketServerSideEncryptionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketServerSideEncryptionArrayOutput)
-}
-
-func (i S3BucketServerSideEncryptionArray) ToOutput(ctx context.Context) pulumix.Output[[]*S3BucketServerSideEncryption] {
-	return pulumix.Output[[]*S3BucketServerSideEncryption]{
-		OutputState: i.ToS3BucketServerSideEncryptionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // S3BucketServerSideEncryptionMapInput is an input type that accepts S3BucketServerSideEncryptionMap and S3BucketServerSideEncryptionMapOutput values.
@@ -173,12 +160,6 @@ func (i S3BucketServerSideEncryptionMap) ToS3BucketServerSideEncryptionMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketServerSideEncryptionMapOutput)
 }
 
-func (i S3BucketServerSideEncryptionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3BucketServerSideEncryption] {
-	return pulumix.Output[map[string]*S3BucketServerSideEncryption]{
-		OutputState: i.ToS3BucketServerSideEncryptionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type S3BucketServerSideEncryptionOutput struct{ *pulumi.OutputState }
 
 func (S3BucketServerSideEncryptionOutput) ElementType() reflect.Type {
@@ -191,12 +172,6 @@ func (o S3BucketServerSideEncryptionOutput) ToS3BucketServerSideEncryptionOutput
 
 func (o S3BucketServerSideEncryptionOutput) ToS3BucketServerSideEncryptionOutputWithContext(ctx context.Context) S3BucketServerSideEncryptionOutput {
 	return o
-}
-
-func (o S3BucketServerSideEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[*S3BucketServerSideEncryption] {
-	return pulumix.Output[*S3BucketServerSideEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o S3BucketServerSideEncryptionOutput) Bucket() pulumi.StringOutput {
@@ -225,12 +200,6 @@ func (o S3BucketServerSideEncryptionArrayOutput) ToS3BucketServerSideEncryptionA
 	return o
 }
 
-func (o S3BucketServerSideEncryptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*S3BucketServerSideEncryption] {
-	return pulumix.Output[[]*S3BucketServerSideEncryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o S3BucketServerSideEncryptionArrayOutput) Index(i pulumi.IntInput) S3BucketServerSideEncryptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3BucketServerSideEncryption {
 		return vs[0].([]*S3BucketServerSideEncryption)[vs[1].(int)]
@@ -249,12 +218,6 @@ func (o S3BucketServerSideEncryptionMapOutput) ToS3BucketServerSideEncryptionMap
 
 func (o S3BucketServerSideEncryptionMapOutput) ToS3BucketServerSideEncryptionMapOutputWithContext(ctx context.Context) S3BucketServerSideEncryptionMapOutput {
 	return o
-}
-
-func (o S3BucketServerSideEncryptionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3BucketServerSideEncryption] {
-	return pulumix.Output[map[string]*S3BucketServerSideEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o S3BucketServerSideEncryptionMapOutput) MapIndex(k pulumi.StringInput) S3BucketServerSideEncryptionOutput {
