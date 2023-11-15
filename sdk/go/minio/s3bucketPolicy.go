@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type S3BucketPolicy struct {
@@ -103,12 +102,6 @@ func (i *S3BucketPolicy) ToS3BucketPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketPolicyOutput)
 }
 
-func (i *S3BucketPolicy) ToOutput(ctx context.Context) pulumix.Output[*S3BucketPolicy] {
-	return pulumix.Output[*S3BucketPolicy]{
-		OutputState: i.ToS3BucketPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // S3BucketPolicyArrayInput is an input type that accepts S3BucketPolicyArray and S3BucketPolicyArrayOutput values.
 // You can construct a concrete instance of `S3BucketPolicyArrayInput` via:
 //
@@ -132,12 +125,6 @@ func (i S3BucketPolicyArray) ToS3BucketPolicyArrayOutput() S3BucketPolicyArrayOu
 
 func (i S3BucketPolicyArray) ToS3BucketPolicyArrayOutputWithContext(ctx context.Context) S3BucketPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketPolicyArrayOutput)
-}
-
-func (i S3BucketPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*S3BucketPolicy] {
-	return pulumix.Output[[]*S3BucketPolicy]{
-		OutputState: i.ToS3BucketPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // S3BucketPolicyMapInput is an input type that accepts S3BucketPolicyMap and S3BucketPolicyMapOutput values.
@@ -165,12 +152,6 @@ func (i S3BucketPolicyMap) ToS3BucketPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(S3BucketPolicyMapOutput)
 }
 
-func (i S3BucketPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3BucketPolicy] {
-	return pulumix.Output[map[string]*S3BucketPolicy]{
-		OutputState: i.ToS3BucketPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type S3BucketPolicyOutput struct{ *pulumi.OutputState }
 
 func (S3BucketPolicyOutput) ElementType() reflect.Type {
@@ -183,12 +164,6 @@ func (o S3BucketPolicyOutput) ToS3BucketPolicyOutput() S3BucketPolicyOutput {
 
 func (o S3BucketPolicyOutput) ToS3BucketPolicyOutputWithContext(ctx context.Context) S3BucketPolicyOutput {
 	return o
-}
-
-func (o S3BucketPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*S3BucketPolicy] {
-	return pulumix.Output[*S3BucketPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o S3BucketPolicyOutput) Bucket() pulumi.StringOutput {
@@ -213,12 +188,6 @@ func (o S3BucketPolicyArrayOutput) ToS3BucketPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o S3BucketPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*S3BucketPolicy] {
-	return pulumix.Output[[]*S3BucketPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o S3BucketPolicyArrayOutput) Index(i pulumi.IntInput) S3BucketPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *S3BucketPolicy {
 		return vs[0].([]*S3BucketPolicy)[vs[1].(int)]
@@ -237,12 +206,6 @@ func (o S3BucketPolicyMapOutput) ToS3BucketPolicyMapOutput() S3BucketPolicyMapOu
 
 func (o S3BucketPolicyMapOutput) ToS3BucketPolicyMapOutputWithContext(ctx context.Context) S3BucketPolicyMapOutput {
 	return o
-}
-
-func (o S3BucketPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*S3BucketPolicy] {
-	return pulumix.Output[map[string]*S3BucketPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o S3BucketPolicyMapOutput) MapIndex(k pulumi.StringInput) S3BucketPolicyOutput {
