@@ -12,4 +12,3 @@ plugins:
   - name: aws 
     version: "4.10.0"
 team: ecosystem
-javaGenVersion: "v0.9.8"
