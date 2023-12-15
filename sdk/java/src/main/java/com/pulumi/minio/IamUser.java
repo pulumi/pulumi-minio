@@ -18,6 +18,42 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.minio.IamUser;
+ * import com.pulumi.minio.IamUserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testIamUser = new IamUser(&#34;testIamUser&#34;, IamUserArgs.builder()        
+ *             .forceDestroy(true)
+ *             .tags(Map.of(&#34;tag-key&#34;, &#34;tag-value&#34;))
+ *             .build());
+ * 
+ *         ctx.export(&#34;test&#34;, testIamUser.id());
+ *         ctx.export(&#34;status&#34;, testIamUser.status());
+ *         ctx.export(&#34;secret&#34;, testIamUser.secret());
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="minio:index/iamUser:IamUser")
 public class IamUser extends com.pulumi.resources.CustomResource {
     /**

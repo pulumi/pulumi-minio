@@ -14,6 +14,59 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.minio.IamGroup;
+ * import com.pulumi.minio.IamGroupPolicy;
+ * import com.pulumi.minio.IamGroupPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var developer = new IamGroup(&#34;developer&#34;);
+ * 
+ *         var testPolicy = new IamGroupPolicy(&#34;testPolicy&#34;, IamGroupPolicyArgs.builder()        
+ *             .group(developer.id())
+ *             .policy(&#34;&#34;&#34;
+ * {
+ *   &#34;Version&#34;:&#34;2012-10-17&#34;,
+ *   &#34;Statement&#34;: [
+ *     {
+ *       &#34;Sid&#34;:&#34;ListAllBucket&#34;,
+ *       &#34;Effect&#34;: &#34;Allow&#34;,
+ *       &#34;Action&#34;: [&#34;s3:PutObject&#34;],
+ *       &#34;Principal&#34;:&#34;*&#34;,
+ *       &#34;Resource&#34;: &#34;arn:aws:s3:::state-terraform-s3/*&#34;
+ *     }
+ *   ]
+ * }
+ * 
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         ctx.export(&#34;minioName&#34;, minio_iam_group_membership.developer().id());
+ *         ctx.export(&#34;minioPolicy&#34;, minio_iam_group_membership.developer().policy());
+ *         ctx.export(&#34;minioGroup&#34;, minio_iam_group_membership.developer().group());
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="minio:index/iamGroupPolicy:IamGroupPolicy")
 public class IamGroupPolicy extends com.pulumi.resources.CustomResource {
     @Export(name="group", refs={String.class}, tree="[0]")

@@ -18,6 +18,9 @@ namespace Pulumi.Minio.Inputs
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
+        /// <summary>
+        /// The ID of this resource.
+        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 

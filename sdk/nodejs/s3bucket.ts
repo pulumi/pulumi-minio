@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as minio from "@pulumi/minio";
+ *
+ * const stateTerraformS3 = new minio.S3Bucket("stateTerraformS3", {
+ *     acl: "public",
+ *     bucket: "state-terraform-s3",
+ * });
+ * export const minioId = stateTerraformS3.id;
+ * export const minioUrl = stateTerraformS3.bucketDomainName;
+ * ```
+ */
 export class S3Bucket extends pulumi.CustomResource {
     /**
      * Get an existing S3Bucket resource's state with the given name, ID, and optional extra

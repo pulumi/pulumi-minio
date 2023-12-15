@@ -15,6 +15,10 @@ public final class S3BucketNotificationQueue {
     private List<String> events;
     private @Nullable String filterPrefix;
     private @Nullable String filterSuffix;
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     private @Nullable String id;
     private String queueArn;
 
@@ -28,6 +32,10 @@ public final class S3BucketNotificationQueue {
     public Optional<String> filterSuffix() {
         return Optional.ofNullable(this.filterSuffix);
     }
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }

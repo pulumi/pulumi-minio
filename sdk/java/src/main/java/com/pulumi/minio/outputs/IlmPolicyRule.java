@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 public final class IlmPolicyRule {
     private @Nullable String expiration;
     private @Nullable String filter;
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     private String id;
     private @Nullable Integer noncurrentVersionExpirationDays;
     private @Nullable String status;
@@ -28,6 +32,10 @@ public final class IlmPolicyRule {
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
     }
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public String id() {
         return this.id;
     }

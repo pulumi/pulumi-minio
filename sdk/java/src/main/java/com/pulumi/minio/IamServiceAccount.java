@@ -16,6 +16,47 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.minio.IamUser;
+ * import com.pulumi.minio.IamUserArgs;
+ * import com.pulumi.minio.IamServiceAccount;
+ * import com.pulumi.minio.IamServiceAccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new IamUser(&#34;test&#34;, IamUserArgs.builder()        
+ *             .forceDestroy(true)
+ *             .tags(Map.of(&#34;tag-key&#34;, &#34;tag-value&#34;))
+ *             .build());
+ * 
+ *         var testServiceAccount = new IamServiceAccount(&#34;testServiceAccount&#34;, IamServiceAccountArgs.builder()        
+ *             .targetUser(test.name())
+ *             .build());
+ * 
+ *         ctx.export(&#34;minioUser&#34;, testServiceAccount.accessKey());
+ *         ctx.export(&#34;minioPassword&#34;, testServiceAccount.secretKey());
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="minio:index/iamServiceAccount:IamServiceAccount")
 public class IamServiceAccount extends com.pulumi.resources.CustomResource {
     @Export(name="accessKey", refs={String.class}, tree="[0]")

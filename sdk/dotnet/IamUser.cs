@@ -9,6 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Minio = Pulumi.Minio;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testIamUser = new Minio.IamUser("testIamUser", new()
+    ///     {
+    ///         ForceDestroy = true,
+    ///         Tags = 
+    ///         {
+    ///             { "tag-key", "tag-value" },
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["test"] = testIamUser.Id,
+    ///         ["status"] = testIamUser.Status,
+    ///         ["secret"] = testIamUser.Secret,
+    ///     };
+    /// });
+    /// ```
+    /// </summary>
     [MinioResourceType("minio:index/iamUser:IamUser")]
     public partial class IamUser : global::Pulumi.CustomResource
     {

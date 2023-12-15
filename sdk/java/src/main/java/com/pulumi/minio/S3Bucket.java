@@ -16,6 +16,41 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.minio.S3Bucket;
+ * import com.pulumi.minio.S3BucketArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var stateTerraformS3 = new S3Bucket(&#34;stateTerraformS3&#34;, S3BucketArgs.builder()        
+ *             .acl(&#34;public&#34;)
+ *             .bucket(&#34;state-terraform-s3&#34;)
+ *             .build());
+ * 
+ *         ctx.export(&#34;minioId&#34;, stateTerraformS3.id());
+ *         ctx.export(&#34;minioUrl&#34;, stateTerraformS3.bucketDomainName());
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="minio:index/s3Bucket:S3Bucket")
 public class S3Bucket extends com.pulumi.resources.CustomResource {
     @Export(name="acl", refs={String.class}, tree="[0]")

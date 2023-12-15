@@ -15,6 +15,51 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * `minio.IlmPolicy` handles lifecycle settings for a given `minio.S3Bucket`.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.minio.S3Bucket;
+ * import com.pulumi.minio.S3BucketArgs;
+ * import com.pulumi.minio.IlmPolicy;
+ * import com.pulumi.minio.IlmPolicyArgs;
+ * import com.pulumi.minio.inputs.IlmPolicyRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucket = new S3Bucket(&#34;bucket&#34;, S3BucketArgs.builder()        
+ *             .bucket(&#34;bucket&#34;)
+ *             .build());
+ * 
+ *         var bucket_lifecycle_rules = new IlmPolicy(&#34;bucket-lifecycle-rules&#34;, IlmPolicyArgs.builder()        
+ *             .bucket(bucket.bucket())
+ *             .rules(IlmPolicyRuleArgs.builder()
+ *                 .id(&#34;expire-7d&#34;)
+ *                 .expiration(&#34;7d&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="minio:index/ilmPolicy:IlmPolicy")
 public class IlmPolicy extends com.pulumi.resources.CustomResource {
     @Export(name="bucket", refs={String.class}, tree="[0]")

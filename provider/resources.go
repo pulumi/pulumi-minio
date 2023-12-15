@@ -53,7 +53,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-minio",
-		GitHubOrg:   "terraform-provider-minio",
+		GitHubOrg:   "aminueza",
 		Config:      map[string]*tfbridge.SchemaInfo{},
 		Version:     version.Version,
 		JavaScript: &tfbridge.JavaScriptInfo{

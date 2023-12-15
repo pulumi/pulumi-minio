@@ -32,9 +32,17 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * The ID of this resource.
+     * 
+     */
     @Import(name="id", required=true)
     private Output<String> id;
 
+    /**
+     * @return The ID of this resource.
+     * 
+     */
     public Output<String> id() {
         return this.id;
     }
@@ -107,11 +115,23 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
             return filter(Output.of(filter));
         }
 
+        /**
+         * @param id The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id The ID of this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }

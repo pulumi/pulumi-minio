@@ -232,7 +232,24 @@ class S3Object(pulumi.CustomResource):
                  version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a S3Object resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        state_terraform_s3 = minio.S3Bucket("stateTerraformS3",
+            bucket="state-terraform-s3",
+            acl="public")
+        txt_file = minio.S3Object("txtFile",
+            bucket_name=state_terraform_s3.bucket,
+            object_name="text.txt",
+            content="Lorem ipsum dolor sit amet.",
+            content_type="text/plain",
+            opts=pulumi.ResourceOptions(depends_on=[state_terraform_s3]))
+        pulumi.export("minioId", txt_file.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -243,7 +260,24 @@ class S3Object(pulumi.CustomResource):
                  args: S3ObjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a S3Object resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        state_terraform_s3 = minio.S3Bucket("stateTerraformS3",
+            bucket="state-terraform-s3",
+            acl="public")
+        txt_file = minio.S3Object("txtFile",
+            bucket_name=state_terraform_s3.bucket,
+            object_name="text.txt",
+            content="Lorem ipsum dolor sit amet.",
+            content_type="text/plain",
+            opts=pulumi.ResourceOptions(depends_on=[state_terraform_s3]))
+        pulumi.export("minioId", txt_file.id)
+        ```
+
         :param str resource_name: The name of the resource.
         :param S3ObjectArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

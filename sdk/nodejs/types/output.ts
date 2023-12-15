@@ -23,6 +23,9 @@ export interface GetIamPolicyDocumentStatementCondition {
 export interface IlmPolicyRule {
     expiration?: string;
     filter?: string;
+    /**
+     * The ID of this resource.
+     */
     id: string;
     noncurrentVersionExpirationDays?: number;
     status: string;
@@ -33,6 +36,9 @@ export interface S3BucketNotificationQueue {
     events: string[];
     filterPrefix?: string;
     filterSuffix?: string;
+    /**
+     * The ID of this resource.
+     */
     id: string;
     queueArn: string;
 }

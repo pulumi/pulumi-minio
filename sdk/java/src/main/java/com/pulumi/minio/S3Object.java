@@ -14,6 +14,52 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.minio.S3Bucket;
+ * import com.pulumi.minio.S3BucketArgs;
+ * import com.pulumi.minio.S3Object;
+ * import com.pulumi.minio.S3ObjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var stateTerraformS3 = new S3Bucket(&#34;stateTerraformS3&#34;, S3BucketArgs.builder()        
+ *             .bucket(&#34;state-terraform-s3&#34;)
+ *             .acl(&#34;public&#34;)
+ *             .build());
+ * 
+ *         var txtFile = new S3Object(&#34;txtFile&#34;, S3ObjectArgs.builder()        
+ *             .bucketName(stateTerraformS3.bucket())
+ *             .objectName(&#34;text.txt&#34;)
+ *             .content(&#34;Lorem ipsum dolor sit amet.&#34;)
+ *             .contentType(&#34;text/plain&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(stateTerraformS3)
+ *                 .build());
+ * 
+ *         ctx.export(&#34;minioId&#34;, txtFile.id());
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="minio:index/s3Object:S3Object")
 public class S3Object extends com.pulumi.resources.CustomResource {
     @Export(name="bucketName", refs={String.class}, tree="[0]")

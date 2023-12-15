@@ -14,8 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type IlmPolicyRule struct {
-	Expiration                      *string                `pulumi:"expiration"`
-	Filter                          *string                `pulumi:"filter"`
+	Expiration *string `pulumi:"expiration"`
+	Filter     *string `pulumi:"filter"`
+	// The ID of this resource.
 	Id                              string                 `pulumi:"id"`
 	NoncurrentVersionExpirationDays *int                   `pulumi:"noncurrentVersionExpirationDays"`
 	Status                          *string                `pulumi:"status"`
@@ -34,8 +35,9 @@ type IlmPolicyRuleInput interface {
 }
 
 type IlmPolicyRuleArgs struct {
-	Expiration                      pulumi.StringPtrInput `pulumi:"expiration"`
-	Filter                          pulumi.StringPtrInput `pulumi:"filter"`
+	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
+	Filter     pulumi.StringPtrInput `pulumi:"filter"`
+	// The ID of this resource.
 	Id                              pulumi.StringInput    `pulumi:"id"`
 	NoncurrentVersionExpirationDays pulumi.IntPtrInput    `pulumi:"noncurrentVersionExpirationDays"`
 	Status                          pulumi.StringPtrInput `pulumi:"status"`
@@ -101,6 +103,7 @@ func (o IlmPolicyRuleOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IlmPolicyRule) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o IlmPolicyRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v IlmPolicyRule) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -141,8 +144,9 @@ type S3BucketNotificationQueue struct {
 	Events       []string `pulumi:"events"`
 	FilterPrefix *string  `pulumi:"filterPrefix"`
 	FilterSuffix *string  `pulumi:"filterSuffix"`
-	Id           *string  `pulumi:"id"`
-	QueueArn     string   `pulumi:"queueArn"`
+	// The ID of this resource.
+	Id       *string `pulumi:"id"`
+	QueueArn string  `pulumi:"queueArn"`
 }
 
 // S3BucketNotificationQueueInput is an input type that accepts S3BucketNotificationQueueArgs and S3BucketNotificationQueueOutput values.
@@ -160,8 +164,9 @@ type S3BucketNotificationQueueArgs struct {
 	Events       pulumi.StringArrayInput `pulumi:"events"`
 	FilterPrefix pulumi.StringPtrInput   `pulumi:"filterPrefix"`
 	FilterSuffix pulumi.StringPtrInput   `pulumi:"filterSuffix"`
-	Id           pulumi.StringPtrInput   `pulumi:"id"`
-	QueueArn     pulumi.StringInput      `pulumi:"queueArn"`
+	// The ID of this resource.
+	Id       pulumi.StringPtrInput `pulumi:"id"`
+	QueueArn pulumi.StringInput    `pulumi:"queueArn"`
 }
 
 func (S3BucketNotificationQueueArgs) ElementType() reflect.Type {
@@ -227,6 +232,7 @@ func (o S3BucketNotificationQueueOutput) FilterSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3BucketNotificationQueue) *string { return v.FilterSuffix }).(pulumi.StringPtrOutput)
 }
 
+// The ID of this resource.
 func (o S3BucketNotificationQueueOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3BucketNotificationQueue) *string { return v.Id }).(pulumi.StringPtrOutput)
 }

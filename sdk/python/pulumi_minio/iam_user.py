@@ -220,7 +220,22 @@ class IamUser(pulumi.CustomResource):
                  update_secret: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a IamUser resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        test_iam_user = minio.IamUser("testIamUser",
+            force_destroy=True,
+            tags={
+                "tag-key": "tag-value",
+            })
+        pulumi.export("test", test_iam_user.id)
+        pulumi.export("status", test_iam_user.status)
+        pulumi.export("secret", test_iam_user.secret)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_user: Disable user
@@ -234,7 +249,22 @@ class IamUser(pulumi.CustomResource):
                  args: Optional[IamUserArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a IamUser resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_minio as minio
+
+        test_iam_user = minio.IamUser("testIamUser",
+            force_destroy=True,
+            tags={
+                "tag-key": "tag-value",
+            })
+        pulumi.export("test", test_iam_user.id)
+        pulumi.export("status", test_iam_user.status)
+        pulumi.export("secret", test_iam_user.secret)
+        ```
+
         :param str resource_name: The name of the resource.
         :param IamUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

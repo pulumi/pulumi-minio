@@ -44,6 +44,9 @@ class IlmPolicyRule(dict):
                  noncurrent_version_expiration_days: Optional[int] = None,
                  status: Optional[str] = None,
                  tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param str id: The ID of this resource.
+        """
         pulumi.set(__self__, "id", id)
         if expiration is not None:
             pulumi.set(__self__, "expiration", expiration)
@@ -59,6 +62,9 @@ class IlmPolicyRule(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of this resource.
+        """
         return pulumi.get(self, "id")
 
     @property
@@ -116,6 +122,9 @@ class S3BucketNotificationQueue(dict):
                  filter_prefix: Optional[str] = None,
                  filter_suffix: Optional[str] = None,
                  id: Optional[str] = None):
+        """
+        :param str id: The ID of this resource.
+        """
         pulumi.set(__self__, "events", events)
         pulumi.set(__self__, "queue_arn", queue_arn)
         if filter_prefix is not None:
@@ -148,6 +157,9 @@ class S3BucketNotificationQueue(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The ID of this resource.
+        """
         return pulumi.get(self, "id")
 
 
