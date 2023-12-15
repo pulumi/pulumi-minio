@@ -16,9 +16,6 @@ namespace Pulumi.Minio.Outputs
         public readonly ImmutableArray<string> Events;
         public readonly string? FilterPrefix;
         public readonly string? FilterSuffix;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string? Id;
         public readonly string QueueArn;
 

@@ -12,45 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// `IlmPolicy` handles lifecycle settings for a given `S3Bucket`.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bucket, err := minio.NewS3Bucket(ctx, "bucket", &minio.S3BucketArgs{
-//				Bucket: pulumi.String("bucket"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = minio.NewIlmPolicy(ctx, "bucket-lifecycle-rules", &minio.IlmPolicyArgs{
-//				Bucket: bucket.Bucket,
-//				Rules: minio.IlmPolicyRuleArray{
-//					&minio.IlmPolicyRuleArgs{
-//						Id:         pulumi.String("expire-7d"),
-//						Expiration: pulumi.String("7d"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type IlmPolicy struct {
 	pulumi.CustomResourceState
 

@@ -15,9 +15,6 @@ namespace Pulumi.Minio.Outputs
     {
         public readonly string? Expiration;
         public readonly string? Filter;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string Id;
         public readonly int? NoncurrentVersionExpirationDays;
         public readonly string? Status;

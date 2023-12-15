@@ -38,9 +38,6 @@ export interface GetIamPolicyDocumentStatementConditionArgs {
 export interface IlmPolicyRule {
     expiration?: pulumi.Input<string>;
     filter?: pulumi.Input<string>;
-    /**
-     * The ID of this resource.
-     */
     id: pulumi.Input<string>;
     noncurrentVersionExpirationDays?: pulumi.Input<number>;
     status?: pulumi.Input<string>;
@@ -51,9 +48,6 @@ export interface S3BucketNotificationQueue {
     events: pulumi.Input<pulumi.Input<string>[]>;
     filterPrefix?: pulumi.Input<string>;
     filterSuffix?: pulumi.Input<string>;
-    /**
-     * The ID of this resource.
-     */
     id?: pulumi.Input<string>;
     queueArn: pulumi.Input<string>;
 }

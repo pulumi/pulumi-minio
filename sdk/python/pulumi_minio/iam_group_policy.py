@@ -132,34 +132,7 @@ class IamGroupPolicy(pulumi.CustomResource):
                  policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        developer = minio.IamGroup("developer")
-        test_policy = minio.IamGroupPolicy("testPolicy",
-            group=developer.id,
-            policy=\"\"\"{
-          "Version":"2012-10-17",
-          "Statement": [
-            {
-              "Sid":"ListAllBucket",
-              "Effect": "Allow",
-              "Action": ["s3:PutObject"],
-              "Principal":"*",
-              "Resource": "arn:aws:s3:::state-terraform-s3/*"
-            }
-          ]
-        }
-
-        \"\"\")
-        pulumi.export("minioName", minio_iam_group_membership["developer"]["id"])
-        pulumi.export("minioPolicy", minio_iam_group_membership["developer"]["policy"])
-        pulumi.export("minioGroup", minio_iam_group_membership["developer"]["group"])
-        ```
-
+        Create a IamGroupPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -170,34 +143,7 @@ class IamGroupPolicy(pulumi.CustomResource):
                  args: IamGroupPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        developer = minio.IamGroup("developer")
-        test_policy = minio.IamGroupPolicy("testPolicy",
-            group=developer.id,
-            policy=\"\"\"{
-          "Version":"2012-10-17",
-          "Statement": [
-            {
-              "Sid":"ListAllBucket",
-              "Effect": "Allow",
-              "Action": ["s3:PutObject"],
-              "Principal":"*",
-              "Resource": "arn:aws:s3:::state-terraform-s3/*"
-            }
-          ]
-        }
-
-        \"\"\")
-        pulumi.export("minioName", minio_iam_group_membership["developer"]["id"])
-        pulumi.export("minioPolicy", minio_iam_group_membership["developer"]["policy"])
-        pulumi.export("minioGroup", minio_iam_group_membership["developer"]["group"])
-        ```
-
+        Create a IamGroupPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IamGroupPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

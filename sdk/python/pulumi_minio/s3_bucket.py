@@ -208,19 +208,7 @@ class S3Bucket(pulumi.CustomResource):
                  quota: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        state_terraform_s3 = minio.S3Bucket("stateTerraformS3",
-            acl="public",
-            bucket="state-terraform-s3")
-        pulumi.export("minioId", state_terraform_s3.id)
-        pulumi.export("minioUrl", state_terraform_s3.bucket_domain_name)
-        ```
-
+        Create a S3Bucket resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -231,19 +219,7 @@ class S3Bucket(pulumi.CustomResource):
                  args: Optional[S3BucketArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        state_terraform_s3 = minio.S3Bucket("stateTerraformS3",
-            acl="public",
-            bucket="state-terraform-s3")
-        pulumi.export("minioId", state_terraform_s3.id)
-        pulumi.export("minioUrl", state_terraform_s3.bucket_domain_name)
-        ```
-
+        Create a S3Bucket resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param S3BucketArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

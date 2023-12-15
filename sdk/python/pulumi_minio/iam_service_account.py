@@ -193,22 +193,7 @@ class IamServiceAccount(pulumi.CustomResource):
                  update_secret: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        test = minio.IamUser("test",
-            force_destroy=True,
-            tags={
-                "tag-key": "tag-value",
-            })
-        test_service_account = minio.IamServiceAccount("testServiceAccount", target_user=test.name)
-        pulumi.export("minioUser", test_service_account.access_key)
-        pulumi.export("minioPassword", test_service_account.secret_key)
-        ```
-
+        Create a IamServiceAccount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_user: Disable service account
@@ -222,22 +207,7 @@ class IamServiceAccount(pulumi.CustomResource):
                  args: IamServiceAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        test = minio.IamUser("test",
-            force_destroy=True,
-            tags={
-                "tag-key": "tag-value",
-            })
-        test_service_account = minio.IamServiceAccount("testServiceAccount", target_user=test.name)
-        pulumi.export("minioUser", test_service_account.access_key)
-        pulumi.export("minioPassword", test_service_account.secret_key)
-        ```
-
+        Create a IamServiceAccount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IamServiceAccountArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

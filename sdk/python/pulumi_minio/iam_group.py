@@ -137,16 +137,7 @@ class IamGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        developer = minio.IamGroup("developer")
-        pulumi.export("minioUserGroup", developer.group_name)
-        ```
-
+        Create a IamGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_group: Disable group
@@ -159,16 +150,7 @@ class IamGroup(pulumi.CustomResource):
                  args: Optional[IamGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        developer = minio.IamGroup("developer")
-        pulumi.export("minioUserGroup", developer.group_name)
-        ```
-
+        Create a IamGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IamGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

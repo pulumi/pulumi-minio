@@ -108,29 +108,7 @@ class IamPolicy(pulumi.CustomResource):
                  policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        test_policy = minio.IamPolicy("testPolicy", policy=\"\"\"{
-          "Version":"2012-10-17",
-          "Statement": [
-            {
-              "Sid":"ListAllBucket",
-              "Effect": "Allow",
-              "Action": ["s3:PutObject"],
-              "Principal":"*",
-              "Resource": "arn:aws:s3:::state-terraform-s3/*"
-            }
-          ]
-        }
-        \"\"\")
-        pulumi.export("minioId", test_policy.id)
-        pulumi.export("minioPolicy", test_policy.policy)
-        ```
-
+        Create a IamPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -141,29 +119,7 @@ class IamPolicy(pulumi.CustomResource):
                  args: IamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        test_policy = minio.IamPolicy("testPolicy", policy=\"\"\"{
-          "Version":"2012-10-17",
-          "Statement": [
-            {
-              "Sid":"ListAllBucket",
-              "Effect": "Allow",
-              "Action": ["s3:PutObject"],
-              "Principal":"*",
-              "Resource": "arn:aws:s3:::state-terraform-s3/*"
-            }
-          ]
-        }
-        \"\"\")
-        pulumi.export("minioId", test_policy.id)
-        pulumi.export("minioPolicy", test_policy.policy)
-        ```
-
+        Create a IamPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IamPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -13,48 +13,6 @@ import com.pulumi.minio.inputs.IamGroupUserAttachmentState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
-/**
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.minio.IamGroup;
- * import com.pulumi.minio.IamUser;
- * import com.pulumi.minio.IamGroupUserAttachment;
- * import com.pulumi.minio.IamGroupUserAttachmentArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var developerIamGroup = new IamGroup(&#34;developerIamGroup&#34;);
- * 
- *         var userOne = new IamUser(&#34;userOne&#34;);
- * 
- *         var developerIamGroupUserAttachment = new IamGroupUserAttachment(&#34;developerIamGroupUserAttachment&#34;, IamGroupUserAttachmentArgs.builder()        
- *             .groupName(minio_iam_group.group().name())
- *             .userName(userOne.name())
- *             .build());
- * 
- *         ctx.export(&#34;minioName&#34;, developerIamGroupUserAttachment.id());
- *         ctx.export(&#34;minioUsers&#34;, developerIamGroupUserAttachment.groupName());
- *         ctx.export(&#34;minioGroup&#34;, developerIamGroupUserAttachment.userName());
- *     }
- * }
- * ```
- * 
- */
 @ResourceType(type="minio:index/iamGroupUserAttachment:IamGroupUserAttachment")
 public class IamGroupUserAttachment extends com.pulumi.resources.CustomResource {
     @Export(name="groupName", refs={String.class}, tree="[0]")

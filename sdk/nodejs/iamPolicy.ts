@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as minio from "@pulumi/minio";
- *
- * const testPolicy = new minio.IamPolicy("testPolicy", {policy: `{
- *   "Version":"2012-10-17",
- *   "Statement": [
- *     {
- *       "Sid":"ListAllBucket",
- *       "Effect": "Allow",
- *       "Action": ["s3:PutObject"],
- *       "Principal":"*",
- *       "Resource": "arn:aws:s3:::state-terraform-s3/*"
- *     }
- *   ]
- * }
- * `});
- * export const minioId = testPolicy.id;
- * export const minioPolicy = testPolicy.policy;
- * ```
- */
 export class IamPolicy extends pulumi.CustomResource {
     /**
      * Get an existing IamPolicy resource's state with the given name, ID, and optional extra

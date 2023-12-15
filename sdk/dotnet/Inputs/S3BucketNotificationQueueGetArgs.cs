@@ -26,9 +26,6 @@ namespace Pulumi.Minio.Inputs
         [Input("filterSuffix")]
         public Input<string>? FilterSuffix { get; set; }
 
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 

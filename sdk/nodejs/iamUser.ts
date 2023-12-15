@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as minio from "@pulumi/minio";
- *
- * const testIamUser = new minio.IamUser("testIamUser", {
- *     forceDestroy: true,
- *     tags: {
- *         "tag-key": "tag-value",
- *     },
- * });
- * export const test = testIamUser.id;
- * export const status = testIamUser.status;
- * export const secret = testIamUser.secret;
- * ```
- */
 export class IamUser extends pulumi.CustomResource {
     /**
      * Get an existing IamUser resource's state with the given name, ID, and optional extra

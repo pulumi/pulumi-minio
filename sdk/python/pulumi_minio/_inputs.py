@@ -26,9 +26,6 @@ class IlmPolicyRuleArgs:
                  noncurrent_version_expiration_days: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
-        """
-        :param pulumi.Input[str] id: The ID of this resource.
-        """
         pulumi.set(__self__, "id", id)
         if expiration is not None:
             pulumi.set(__self__, "expiration", expiration)
@@ -44,9 +41,6 @@ class IlmPolicyRuleArgs:
     @property
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -107,9 +101,6 @@ class S3BucketNotificationQueueArgs:
                  filter_prefix: Optional[pulumi.Input[str]] = None,
                  filter_suffix: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] id: The ID of this resource.
-        """
         pulumi.set(__self__, "events", events)
         pulumi.set(__self__, "queue_arn", queue_arn)
         if filter_prefix is not None:
@@ -158,9 +149,6 @@ class S3BucketNotificationQueueArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @id.setter

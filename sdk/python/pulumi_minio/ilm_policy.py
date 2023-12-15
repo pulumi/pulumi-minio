@@ -84,23 +84,7 @@ class IlmPolicy(pulumi.CustomResource):
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IlmPolicyRuleArgs']]]]] = None,
                  __props__=None):
         """
-        `IlmPolicy` handles lifecycle settings for a given `S3Bucket`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        bucket = minio.S3Bucket("bucket", bucket="bucket")
-        bucket_lifecycle_rules = minio.IlmPolicy("bucket-lifecycle-rules",
-            bucket=bucket.bucket,
-            rules=[minio.IlmPolicyRuleArgs(
-                id="expire-7d",
-                expiration="7d",
-            )])
-        ```
-
+        Create a IlmPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -111,23 +95,7 @@ class IlmPolicy(pulumi.CustomResource):
                  args: IlmPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        `IlmPolicy` handles lifecycle settings for a given `S3Bucket`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_minio as minio
-
-        bucket = minio.S3Bucket("bucket", bucket="bucket")
-        bucket_lifecycle_rules = minio.IlmPolicy("bucket-lifecycle-rules",
-            bucket=bucket.bucket,
-            rules=[minio.IlmPolicyRuleArgs(
-                id="expire-7d",
-                expiration="7d",
-            )])
-        ```
-
+        Create a IlmPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IlmPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as minio from "@pulumi/minio";
- *
- * const developerIamGroup = new minio.IamGroup("developerIamGroup", {});
- * const userOne = new minio.IamUser("userOne", {});
- * const developerIamGroupUserAttachment = new minio.IamGroupUserAttachment("developerIamGroupUserAttachment", {
- *     groupName: minio_iam_group.group.name,
- *     userName: userOne.name,
- * });
- * export const minioName = developerIamGroupUserAttachment.id;
- * export const minioUsers = developerIamGroupUserAttachment.groupName;
- * export const minioGroup = developerIamGroupUserAttachment.userName;
- * ```
- */
 export class IamGroupUserAttachment extends pulumi.CustomResource {
     /**
      * Get an existing IamGroupUserAttachment resource's state with the given name, ID, and optional extra

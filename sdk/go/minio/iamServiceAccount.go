@@ -12,42 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-minio/sdk/go/minio"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			test, err := minio.NewIamUser(ctx, "test", &minio.IamUserArgs{
-//				ForceDestroy: pulumi.Bool(true),
-//				Tags: pulumi.Map{
-//					"tag-key": pulumi.Any("tag-value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			testServiceAccount, err := minio.NewIamServiceAccount(ctx, "testServiceAccount", &minio.IamServiceAccountArgs{
-//				TargetUser: test.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("minioUser", testServiceAccount.AccessKey)
-//			ctx.Export("minioPassword", testServiceAccount.SecretKey)
-//			return nil
-//		})
-//	}
-//
-// ```
 type IamServiceAccount struct {
 	pulumi.CustomResourceState
 
