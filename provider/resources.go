@@ -16,15 +16,16 @@ package minio
 
 import (
 	"fmt"
+	"path"
+
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
-	"path/filepath"
 
+	"github.com/aminueza/terraform-provider-minio/minio"
 	"github.com/pulumi/pulumi-minio/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/terraform-provider-minio/terraform-provider-minio/minio"
 )
 
 // all of the token components used below.
@@ -34,6 +35,9 @@ const (
 	// modules:
 	mainMod = "index" // the y module
 )
+
+//go:embed cmd/pulumi-resource-minio/bridge-metadata.json
+var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
@@ -49,7 +53,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-minio",
-		GitHubOrg:   "terraform-provider-minio",
+		GitHubOrg:   "aminueza",
 		Config:      map[string]*tfbridge.SchemaInfo{},
 		Version:     version.Version,
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -61,17 +65,15 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/mime": "^2.0.0",
 			},
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				}}
-			i.PyProject.Enabled = true
-			return i
-		})(),
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -94,6 +96,3 @@ func Provider() tfbridge.ProviderInfo {
 
 	return prov
 }
-
-//go:embed cmd/pulumi-resource-minio/bridge-metadata.json
-var metadata []byte
