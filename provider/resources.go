@@ -20,11 +20,11 @@ import (
 	_ "embed"
 	"path/filepath"
 
+	"github.com/aminueza/terraform-provider-minio/minio"
 	"github.com/pulumi/pulumi-minio/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/terraform-provider-minio/terraform-provider-minio/minio"
 )
 
 // all of the token components used below.
