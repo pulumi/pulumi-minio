@@ -118,6 +118,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "minio:index/iamGroup:IamGroup": "minio_iam_group",
