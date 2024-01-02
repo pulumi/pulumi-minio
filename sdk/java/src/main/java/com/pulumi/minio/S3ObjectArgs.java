@@ -5,6 +5,7 @@ package com.pulumi.minio;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -175,8 +176,12 @@ public final class S3ObjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public S3ObjectArgs build() {
-            $.bucketName = Objects.requireNonNull($.bucketName, "expected parameter 'bucketName' to be non-null");
-            $.objectName = Objects.requireNonNull($.objectName, "expected parameter 'objectName' to be non-null");
+            if ($.bucketName == null) {
+                throw new MissingRequiredPropertyException("S3ObjectArgs", "bucketName");
+            }
+            if ($.objectName == null) {
+                throw new MissingRequiredPropertyException("S3ObjectArgs", "objectName");
+            }
             return $;
         }
     }

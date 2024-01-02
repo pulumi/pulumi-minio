@@ -5,6 +5,7 @@ package com.pulumi.minio.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -93,9 +94,15 @@ public final class GetIamPolicyDocumentStatementConditionArgs extends com.pulumi
         }
 
         public GetIamPolicyDocumentStatementConditionArgs build() {
-            $.test = Objects.requireNonNull($.test, "expected parameter 'test' to be non-null");
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
-            $.variable = Objects.requireNonNull($.variable, "expected parameter 'variable' to be non-null");
+            if ($.test == null) {
+                throw new MissingRequiredPropertyException("GetIamPolicyDocumentStatementConditionArgs", "test");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("GetIamPolicyDocumentStatementConditionArgs", "values");
+            }
+            if ($.variable == null) {
+                throw new MissingRequiredPropertyException("GetIamPolicyDocumentStatementConditionArgs", "variable");
+            }
             return $;
         }
     }

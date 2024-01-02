@@ -4,6 +4,7 @@
 package com.pulumi.minio.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.minio.outputs.GetIamPolicyDocumentStatement;
 import java.lang.String;
 import java.util.List;
@@ -82,31 +83,41 @@ public final class GetIamPolicyDocumentResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIamPolicyDocumentResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder json(String json) {
-            this.json = Objects.requireNonNull(json);
+            if (json == null) {
+              throw new MissingRequiredPropertyException("GetIamPolicyDocumentResult", "json");
+            }
+            this.json = json;
             return this;
         }
         @CustomType.Setter
         public Builder overrideJson(@Nullable String overrideJson) {
+
             this.overrideJson = overrideJson;
             return this;
         }
         @CustomType.Setter
         public Builder policyId(@Nullable String policyId) {
+
             this.policyId = policyId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceJson(@Nullable String sourceJson) {
+
             this.sourceJson = sourceJson;
             return this;
         }
         @CustomType.Setter
         public Builder statements(@Nullable List<GetIamPolicyDocumentStatement> statements) {
+
             this.statements = statements;
             return this;
         }
@@ -115,6 +126,7 @@ public final class GetIamPolicyDocumentResult {
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.minio;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -107,8 +108,12 @@ public final class IamGroupPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public IamGroupPolicyArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
-            $.policy = Objects.requireNonNull($.policy, "expected parameter 'policy' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("IamGroupPolicyArgs", "group");
+            }
+            if ($.policy == null) {
+                throw new MissingRequiredPropertyException("IamGroupPolicyArgs", "policy");
+            }
             return $;
         }
     }

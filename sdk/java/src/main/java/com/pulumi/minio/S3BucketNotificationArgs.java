@@ -5,6 +5,7 @@ package com.pulumi.minio;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.minio.inputs.S3BucketNotificationQueueArgs;
 import java.lang.String;
 import java.util.List;
@@ -79,7 +80,9 @@ public final class S3BucketNotificationArgs extends com.pulumi.resources.Resourc
         }
 
         public S3BucketNotificationArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("S3BucketNotificationArgs", "bucket");
+            }
             return $;
         }
     }
