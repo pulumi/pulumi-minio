@@ -68,6 +68,7 @@ public final class GetIamPolicyDocumentStatement {
 
         @CustomType.Setter
         public Builder actions(@Nullable List<String> actions) {
+
             this.actions = actions;
             return this;
         }
@@ -76,6 +77,7 @@ public final class GetIamPolicyDocumentStatement {
         }
         @CustomType.Setter
         public Builder conditions(@Nullable List<GetIamPolicyDocumentStatementCondition> conditions) {
+
             this.conditions = conditions;
             return this;
         }
@@ -84,16 +86,19 @@ public final class GetIamPolicyDocumentStatement {
         }
         @CustomType.Setter
         public Builder effect(@Nullable String effect) {
+
             this.effect = effect;
             return this;
         }
         @CustomType.Setter
         public Builder principal(@Nullable String principal) {
+
             this.principal = principal;
             return this;
         }
         @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
+
             this.resources = resources;
             return this;
         }
@@ -102,6 +107,7 @@ public final class GetIamPolicyDocumentStatement {
         }
         @CustomType.Setter
         public Builder sid(@Nullable String sid) {
+
             this.sid = sid;
             return this;
         }

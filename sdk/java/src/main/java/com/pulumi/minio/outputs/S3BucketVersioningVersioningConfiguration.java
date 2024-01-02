@@ -4,6 +4,7 @@
 package com.pulumi.minio.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -50,11 +51,13 @@ public final class S3BucketVersioningVersioningConfiguration {
 
         @CustomType.Setter
         public Builder excludeFolders(@Nullable Boolean excludeFolders) {
+
             this.excludeFolders = excludeFolders;
             return this;
         }
         @CustomType.Setter
         public Builder excludedPrefixes(@Nullable List<String> excludedPrefixes) {
+
             this.excludedPrefixes = excludedPrefixes;
             return this;
         }
@@ -63,7 +66,10 @@ public final class S3BucketVersioningVersioningConfiguration {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("S3BucketVersioningVersioningConfiguration", "status");
+            }
+            this.status = status;
             return this;
         }
         public S3BucketVersioningVersioningConfiguration build() {

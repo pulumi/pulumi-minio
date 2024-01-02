@@ -5,6 +5,7 @@ package com.pulumi.minio;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class IamUserPolicyAttachmentArgs extends com.pulumi.resources.Reso
         }
 
         public IamUserPolicyAttachmentArgs build() {
-            $.policyName = Objects.requireNonNull($.policyName, "expected parameter 'policyName' to be non-null");
-            $.userName = Objects.requireNonNull($.userName, "expected parameter 'userName' to be non-null");
+            if ($.policyName == null) {
+                throw new MissingRequiredPropertyException("IamUserPolicyAttachmentArgs", "policyName");
+            }
+            if ($.userName == null) {
+                throw new MissingRequiredPropertyException("IamUserPolicyAttachmentArgs", "userName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.minio.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -69,7 +70,10 @@ public final class S3BucketNotificationQueue {
 
         @CustomType.Setter
         public Builder events(List<String> events) {
-            this.events = Objects.requireNonNull(events);
+            if (events == null) {
+              throw new MissingRequiredPropertyException("S3BucketNotificationQueue", "events");
+            }
+            this.events = events;
             return this;
         }
         public Builder events(String... events) {
@@ -77,22 +81,28 @@ public final class S3BucketNotificationQueue {
         }
         @CustomType.Setter
         public Builder filterPrefix(@Nullable String filterPrefix) {
+
             this.filterPrefix = filterPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder filterSuffix(@Nullable String filterSuffix) {
+
             this.filterSuffix = filterSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder queueArn(String queueArn) {
-            this.queueArn = Objects.requireNonNull(queueArn);
+            if (queueArn == null) {
+              throw new MissingRequiredPropertyException("S3BucketNotificationQueue", "queueArn");
+            }
+            this.queueArn = queueArn;
             return this;
         }
         public S3BucketNotificationQueue build() {

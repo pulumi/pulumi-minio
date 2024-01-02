@@ -5,6 +5,7 @@ package com.pulumi.minio;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -88,9 +89,15 @@ public final class S3BucketServerSideEncryptionArgs extends com.pulumi.resources
         }
 
         public S3BucketServerSideEncryptionArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.encryptionType = Objects.requireNonNull($.encryptionType, "expected parameter 'encryptionType' to be non-null");
-            $.kmsKeyId = Objects.requireNonNull($.kmsKeyId, "expected parameter 'kmsKeyId' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("S3BucketServerSideEncryptionArgs", "bucket");
+            }
+            if ($.encryptionType == null) {
+                throw new MissingRequiredPropertyException("S3BucketServerSideEncryptionArgs", "encryptionType");
+            }
+            if ($.kmsKeyId == null) {
+                throw new MissingRequiredPropertyException("S3BucketServerSideEncryptionArgs", "kmsKeyId");
+            }
             return $;
         }
     }

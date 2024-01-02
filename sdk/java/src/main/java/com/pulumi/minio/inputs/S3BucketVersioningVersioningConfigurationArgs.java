@@ -5,6 +5,7 @@ package com.pulumi.minio.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -96,7 +97,9 @@ public final class S3BucketVersioningVersioningConfigurationArgs extends com.pul
         }
 
         public S3BucketVersioningVersioningConfigurationArgs build() {
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("S3BucketVersioningVersioningConfigurationArgs", "status");
+            }
             return $;
         }
     }
