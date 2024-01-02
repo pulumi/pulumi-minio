@@ -32,6 +32,7 @@
         "s3bucket.ts",
         "s3bucketNotification.ts",
         "s3bucketPolicy.ts",
+        "s3bucketReplication.ts",
         "s3bucketServerSideEncryption.ts",
         "s3bucketVersioning.ts",
         "s3object.ts",

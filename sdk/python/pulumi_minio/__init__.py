@@ -21,6 +21,7 @@ from .provider import *
 from .s3_bucket import *
 from .s3_bucket_notification import *
 from .s3_bucket_policy import *
+from .s3_bucket_replication import *
 from .s3_bucket_server_side_encryption import *
 from .s3_bucket_versioning import *
 from .s3_object import *
@@ -147,6 +148,14 @@ _utilities.register(
   "fqn": "pulumi_minio",
   "classes": {
    "minio:index/s3BucketPolicy:S3BucketPolicy": "S3BucketPolicy"
+  }
+ },
+ {
+  "pkg": "minio",
+  "mod": "index/s3BucketReplication",
+  "fqn": "pulumi_minio",
+  "classes": {
+   "minio:index/s3BucketReplication:S3BucketReplication": "S3BucketReplication"
   }
  },
  {

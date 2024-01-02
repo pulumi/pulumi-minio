@@ -85,6 +85,11 @@ export type S3BucketPolicy = import("./s3bucketPolicy").S3BucketPolicy;
 export const S3BucketPolicy: typeof import("./s3bucketPolicy").S3BucketPolicy = null as any;
 utilities.lazyLoad(exports, ["S3BucketPolicy"], () => require("./s3bucketPolicy"));
 
+export { S3BucketReplicationArgs, S3BucketReplicationState } from "./s3bucketReplication";
+export type S3BucketReplication = import("./s3bucketReplication").S3BucketReplication;
+export const S3BucketReplication: typeof import("./s3bucketReplication").S3BucketReplication = null as any;
+utilities.lazyLoad(exports, ["S3BucketReplication"], () => require("./s3bucketReplication"));
+
 export { S3BucketServerSideEncryptionArgs, S3BucketServerSideEncryptionState } from "./s3bucketServerSideEncryption";
 export type S3BucketServerSideEncryption = import("./s3bucketServerSideEncryption").S3BucketServerSideEncryption;
 export const S3BucketServerSideEncryption: typeof import("./s3bucketServerSideEncryption").S3BucketServerSideEncryption = null as any;
@@ -142,6 +147,8 @@ const _module = {
                 return new S3BucketNotification(name, <any>undefined, { urn })
             case "minio:index/s3BucketPolicy:S3BucketPolicy":
                 return new S3BucketPolicy(name, <any>undefined, { urn })
+            case "minio:index/s3BucketReplication:S3BucketReplication":
+                return new S3BucketReplication(name, <any>undefined, { urn })
             case "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption":
                 return new S3BucketServerSideEncryption(name, <any>undefined, { urn })
             case "minio:index/s3BucketVersioning:S3BucketVersioning":
@@ -167,6 +174,7 @@ pulumi.runtime.registerResourceModule("minio", "index/kmsKey", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3Bucket", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3BucketNotification", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3BucketPolicy", _module)
+pulumi.runtime.registerResourceModule("minio", "index/s3BucketReplication", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3BucketServerSideEncryption", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3BucketVersioning", _module)
 pulumi.runtime.registerResourceModule("minio", "index/s3Object", _module)
