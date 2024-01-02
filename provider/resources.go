@@ -21,8 +21,8 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/aminueza/terraform-provider-minio/minio"
-	"github.com/pulumi/pulumi-minio/provider/pkg/version"
+	"github.com/aminueza/terraform-provider-minio/v2/minio"
+	"github.com/pulumi/pulumi-minio/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -46,16 +46,17 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "minio",
-		Description: "A Pulumi package for creating and managing minio cloud resources.",
-		Keywords:    []string{"pulumi", "minio"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-minio",
-		GitHubOrg:   "aminueza",
-		Config:      map[string]*tfbridge.SchemaInfo{},
-		Version:     version.Version,
+		P:                       p,
+		Name:                    "minio",
+		Description:             "A Pulumi package for creating and managing minio cloud resources.",
+		Keywords:                []string{"pulumi", "minio"},
+		License:                 "Apache-2.0",
+		Homepage:                "https://pulumi.io",
+		Repository:              "https://github.com/pulumi/pulumi-minio",
+		GitHubOrg:               "aminueza",
+		Config:                  map[string]*tfbridge.SchemaInfo{},
+		Version:                 version.Version,
+		TFProviderModuleVersion: "v2",
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",

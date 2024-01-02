@@ -2,10 +2,12 @@
     "auto-aliasing": {
         "resources": {
             "minio_iam_group": {
-                "current": "minio:index/iamGroup:IamGroup"
+                "current": "minio:index/iamGroup:IamGroup",
+                "majorVersion": 2
             },
             "minio_iam_group_membership": {
                 "current": "minio:index/iamGroupMembership:IamGroupMembership",
+                "majorVersion": 2,
                 "fields": {
                     "users": {
                         "maxItemsOne": false
@@ -13,28 +15,36 @@
                 }
             },
             "minio_iam_group_policy": {
-                "current": "minio:index/iamGroupPolicy:IamGroupPolicy"
+                "current": "minio:index/iamGroupPolicy:IamGroupPolicy",
+                "majorVersion": 2
             },
             "minio_iam_group_policy_attachment": {
-                "current": "minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment"
+                "current": "minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment",
+                "majorVersion": 2
             },
             "minio_iam_group_user_attachment": {
-                "current": "minio:index/iamGroupUserAttachment:IamGroupUserAttachment"
+                "current": "minio:index/iamGroupUserAttachment:IamGroupUserAttachment",
+                "majorVersion": 2
             },
             "minio_iam_policy": {
-                "current": "minio:index/iamPolicy:IamPolicy"
+                "current": "minio:index/iamPolicy:IamPolicy",
+                "majorVersion": 2
             },
             "minio_iam_service_account": {
-                "current": "minio:index/iamServiceAccount:IamServiceAccount"
+                "current": "minio:index/iamServiceAccount:IamServiceAccount",
+                "majorVersion": 2
             },
             "minio_iam_user": {
-                "current": "minio:index/iamUser:IamUser"
+                "current": "minio:index/iamUser:IamUser",
+                "majorVersion": 2
             },
             "minio_iam_user_policy_attachment": {
-                "current": "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment"
+                "current": "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment",
+                "majorVersion": 2
             },
             "minio_ilm_policy": {
                 "current": "minio:index/ilmPolicy:IlmPolicy",
+                "majorVersion": 2,
                 "fields": {
                     "rule": {
                         "maxItemsOne": false
@@ -42,13 +52,16 @@
                 }
             },
             "minio_kms_key": {
-                "current": "minio:index/kmsKey:KmsKey"
+                "current": "minio:index/kmsKey:KmsKey",
+                "majorVersion": 2
             },
             "minio_s3_bucket": {
-                "current": "minio:index/s3Bucket:S3Bucket"
+                "current": "minio:index/s3Bucket:S3Bucket",
+                "majorVersion": 2
             },
             "minio_s3_bucket_notification": {
                 "current": "minio:index/s3BucketNotification:S3BucketNotification",
+                "majorVersion": 2,
                 "fields": {
                     "queue": {
                         "maxItemsOne": false,
@@ -63,13 +76,32 @@
                 }
             },
             "minio_s3_bucket_policy": {
-                "current": "minio:index/s3BucketPolicy:S3BucketPolicy"
+                "current": "minio:index/s3BucketPolicy:S3BucketPolicy",
+                "majorVersion": 2
+            },
+            "minio_s3_bucket_replication": {
+                "current": "minio:index/s3BucketReplication:S3BucketReplication",
+                "majorVersion": 2,
+                "fields": {
+                    "rule": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "target": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "minio_s3_bucket_server_side_encryption": {
-                "current": "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption"
+                "current": "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption",
+                "majorVersion": 2
             },
             "minio_s3_bucket_versioning": {
                 "current": "minio:index/s3BucketVersioning:S3BucketVersioning",
+                "majorVersion": 2,
                 "fields": {
                     "versioning_configuration": {
                         "maxItemsOne": true,
@@ -84,12 +116,14 @@
                 }
             },
             "minio_s3_object": {
-                "current": "minio:index/s3Object:S3Object"
+                "current": "minio:index/s3Object:S3Object",
+                "majorVersion": 2
             }
         },
         "datasources": {
             "minio_iam_policy_document": {
                 "current": "minio:index/getIamPolicyDocument:getIamPolicyDocument",
+                "majorVersion": 2,
                 "fields": {
                     "statement": {
                         "maxItemsOne": false,
@@ -135,6 +169,7 @@
             "minio:index/s3Bucket:S3Bucket": "minio_s3_bucket",
             "minio:index/s3BucketNotification:S3BucketNotification": "minio_s3_bucket_notification",
             "minio:index/s3BucketPolicy:S3BucketPolicy": "minio_s3_bucket_policy",
+            "minio:index/s3BucketReplication:S3BucketReplication": "minio_s3_bucket_replication",
             "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption": "minio_s3_bucket_server_side_encryption",
             "minio:index/s3BucketVersioning:S3BucketVersioning": "minio_s3_bucket_versioning",
             "minio:index/s3Object:S3Object": "minio_s3_object"
@@ -150,6 +185,21 @@
                 "filterPrefix": "filter_prefix",
                 "filterSuffix": "filter_suffix",
                 "queueArn": "queue_arn"
+            },
+            "minio:index/S3BucketReplicationRule:S3BucketReplicationRule": {
+                "deleteMarkerReplication": "delete_marker_replication",
+                "deleteReplication": "delete_replication",
+                "existingObjectReplication": "existing_object_replication",
+                "metadataSync": "metadata_sync"
+            },
+            "minio:index/S3BucketReplicationRuleTarget:S3BucketReplicationRuleTarget": {
+                "accessKey": "access_key",
+                "bandwidthLimt": "bandwidth_limt",
+                "disableProxy": "disable_proxy",
+                "healthCheckPeriod": "health_check_period",
+                "pathStyle": "path_style",
+                "secretKey": "secret_key",
+                "storageClass": "storage_class"
             },
             "minio:index/S3BucketVersioningVersioningConfiguration:S3BucketVersioningVersioningConfiguration": {
                 "excludeFolders": "exclude_folders",
@@ -213,6 +263,9 @@
             },
             "minio:index/s3BucketNotification:S3BucketNotification": {
                 "queues": "queue"
+            },
+            "minio:index/s3BucketReplication:S3BucketReplication": {
+                "rules": "rule"
             },
             "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption": {
                 "encryptionType": "encryption_type",

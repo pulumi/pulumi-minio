@@ -1,5 +1,5 @@
 provider: minio
-major-version: 1
+major-version: 2
 docker: true
 env:
   MINIO_ENDPOINT: localhost:9000

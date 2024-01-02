@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-splunk/examples
+module github.com/pulumi/pulumi-minio/examples
 
 go 1.21
 

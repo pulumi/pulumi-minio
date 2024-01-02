@@ -19,8 +19,8 @@ package main
 import (
 	_ "embed"
 
-	minio "github.com/pulumi/pulumi-minio/provider"
-	"github.com/pulumi/pulumi-minio/provider/pkg/version"
+	minio "github.com/pulumi/pulumi-minio/provider/v2"
+	"github.com/pulumi/pulumi-minio/provider/v2/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 
