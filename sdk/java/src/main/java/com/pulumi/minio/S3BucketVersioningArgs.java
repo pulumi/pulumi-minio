@@ -5,6 +5,7 @@ package com.pulumi.minio;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.minio.inputs.S3BucketVersioningVersioningConfigurationArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -72,8 +73,12 @@ public final class S3BucketVersioningArgs extends com.pulumi.resources.ResourceA
         }
 
         public S3BucketVersioningArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.versioningConfiguration = Objects.requireNonNull($.versioningConfiguration, "expected parameter 'versioningConfiguration' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("S3BucketVersioningArgs", "bucket");
+            }
+            if ($.versioningConfiguration == null) {
+                throw new MissingRequiredPropertyException("S3BucketVersioningArgs", "versioningConfiguration");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.minio;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -168,7 +169,9 @@ public final class IamServiceAccountArgs extends com.pulumi.resources.ResourceAr
         }
 
         public IamServiceAccountArgs build() {
-            $.targetUser = Objects.requireNonNull($.targetUser, "expected parameter 'targetUser' to be non-null");
+            if ($.targetUser == null) {
+                throw new MissingRequiredPropertyException("IamServiceAccountArgs", "targetUser");
+            }
             return $;
         }
     }

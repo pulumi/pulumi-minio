@@ -5,6 +5,7 @@ package com.pulumi.minio;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -493,7 +494,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.minioServer = Objects.requireNonNull($.minioServer, "expected parameter 'minioServer' to be non-null");
+            if ($.minioServer == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "minioServer");
+            }
             return $;
         }
     }

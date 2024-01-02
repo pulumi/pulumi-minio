@@ -4,6 +4,7 @@
 package com.pulumi.minio.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,12 +48,18 @@ public final class GetIamPolicyDocumentStatementCondition {
 
         @CustomType.Setter
         public Builder test(String test) {
-            this.test = Objects.requireNonNull(test);
+            if (test == null) {
+              throw new MissingRequiredPropertyException("GetIamPolicyDocumentStatementCondition", "test");
+            }
+            this.test = test;
             return this;
         }
         @CustomType.Setter
         public Builder values(List<String> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetIamPolicyDocumentStatementCondition", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(String... values) {
@@ -60,7 +67,10 @@ public final class GetIamPolicyDocumentStatementCondition {
         }
         @CustomType.Setter
         public Builder variable(String variable) {
-            this.variable = Objects.requireNonNull(variable);
+            if (variable == null) {
+              throw new MissingRequiredPropertyException("GetIamPolicyDocumentStatementCondition", "variable");
+            }
+            this.variable = variable;
             return this;
         }
         public GetIamPolicyDocumentStatementCondition build() {

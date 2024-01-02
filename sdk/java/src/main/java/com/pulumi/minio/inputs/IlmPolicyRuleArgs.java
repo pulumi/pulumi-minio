@@ -5,6 +5,7 @@ package com.pulumi.minio.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -164,7 +165,9 @@ public final class IlmPolicyRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IlmPolicyRuleArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("IlmPolicyRuleArgs", "id");
+            }
             return $;
         }
     }
