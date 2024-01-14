@@ -15,9 +15,10 @@
 package main
 
 import (
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+
 	minio "github.com/pulumi/pulumi-minio/provider"
 	"github.com/pulumi/pulumi-minio/provider/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 
 func main() {
