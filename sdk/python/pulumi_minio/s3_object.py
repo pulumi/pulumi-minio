@@ -234,6 +234,7 @@ class S3Object(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -249,6 +250,7 @@ class S3Object(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(depends_on=[state_terraform_s3]))
         pulumi.export("minioId", txt_file.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -262,6 +264,7 @@ class S3Object(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -277,6 +280,7 @@ class S3Object(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(depends_on=[state_terraform_s3]))
         pulumi.export("minioId", txt_file.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param S3ObjectArgs args: The arguments to use to populate this resource's properties.

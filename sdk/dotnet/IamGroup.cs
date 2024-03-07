@@ -12,6 +12,7 @@ namespace Pulumi.Minio
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,6 +29,7 @@ namespace Pulumi.Minio
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [MinioResourceType("minio:index/iamGroup:IamGroup")]
     public partial class IamGroup : global::Pulumi.CustomResource

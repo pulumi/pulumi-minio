@@ -84,6 +84,7 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -112,6 +113,7 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
             user_name="CN=My User,OU=Unit,DC=example,DC=com",
             policy_name=test_policy.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -125,6 +127,7 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -153,6 +156,7 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
             user_name="CN=My User,OU=Unit,DC=example,DC=com",
             policy_name=test_policy.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param IamUserPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

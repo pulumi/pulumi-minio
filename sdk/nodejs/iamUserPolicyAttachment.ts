@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
@@ -37,6 +38,7 @@ import * as utilities from "./utilities";
  *     policyName: testPolicy.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class IamUserPolicyAttachment extends pulumi.CustomResource {
     /**
