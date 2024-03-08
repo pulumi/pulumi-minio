@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * `minio.IlmPolicy` handles lifecycle settings for a given `minio.S3Bucket`.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,6 +60,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="minio:index/ilmPolicy:IlmPolicy")

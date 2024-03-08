@@ -12,6 +12,7 @@ namespace Pulumi.Minio
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.Minio
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [MinioResourceType("minio:index/s3Bucket:S3Bucket")]
     public partial class S3Bucket : global::Pulumi.CustomResource

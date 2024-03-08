@@ -12,6 +12,7 @@ namespace Pulumi.Minio
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,6 +50,7 @@ namespace Pulumi.Minio
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [MinioResourceType("minio:index/iamGroupPolicy:IamGroupPolicy")]
     public partial class IamGroupPolicy : global::Pulumi.CustomResource

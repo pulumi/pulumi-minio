@@ -12,10 +12,9 @@ namespace Pulumi.Minio
     public static class GetIamPolicyDocument
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,17 +86,15 @@ namespace Pulumi.Minio
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIamPolicyDocumentResult> InvokeAsync(GetIamPolicyDocumentArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIamPolicyDocumentResult>("minio:index/getIamPolicyDocument:getIamPolicyDocument", args ?? new GetIamPolicyDocumentArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -169,8 +166,7 @@ namespace Pulumi.Minio
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIamPolicyDocumentResult> Invoke(GetIamPolicyDocumentInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyDocumentResult>("minio:index/getIamPolicyDocument:getIamPolicyDocument", args ?? new GetIamPolicyDocumentInvokeArgs(), options.WithDefaults());

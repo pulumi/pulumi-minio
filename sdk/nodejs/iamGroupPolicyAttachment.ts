@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ */
 export class IamGroupPolicyAttachment extends pulumi.CustomResource {
     /**
      * Get an existing IamGroupPolicyAttachment resource's state with the given name, ID, and optional extra
