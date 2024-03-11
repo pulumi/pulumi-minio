@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
@@ -14,6 +15,7 @@ import * as utilities from "./utilities";
  * const developer = new minio.IamGroup("developer", {});
  * export const minioUserGroup = developer.groupName;
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class IamGroup extends pulumi.CustomResource {
     /**

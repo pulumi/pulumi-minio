@@ -110,6 +110,7 @@ class IamPolicy(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -130,6 +131,7 @@ class IamPolicy(pulumi.CustomResource):
         pulumi.export("minioId", test_policy.id)
         pulumi.export("minioPolicy", test_policy.policy)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -143,6 +145,7 @@ class IamPolicy(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -163,6 +166,7 @@ class IamPolicy(pulumi.CustomResource):
         pulumi.export("minioId", test_policy.id)
         pulumi.export("minioPolicy", test_policy.policy)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param IamPolicyArgs args: The arguments to use to populate this resource's properties.

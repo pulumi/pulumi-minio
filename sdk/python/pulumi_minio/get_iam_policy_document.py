@@ -109,6 +109,7 @@ def get_iam_policy_document(override_json: Optional[str] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_minio as minio
@@ -144,6 +145,7 @@ def get_iam_policy_document(override_json: Optional[str] = None,
     ])
     test_policy = minio.IamPolicy("testPolicy", policy=example.json)
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['overrideJson'] = override_json
@@ -174,6 +176,7 @@ def get_iam_policy_document_output(override_json: Optional[pulumi.Input[Optional
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_minio as minio
@@ -209,5 +212,6 @@ def get_iam_policy_document_output(override_json: Optional[pulumi.Input[Optional
     ])
     test_policy = minio.IamPolicy("testPolicy", policy=example.json)
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...
