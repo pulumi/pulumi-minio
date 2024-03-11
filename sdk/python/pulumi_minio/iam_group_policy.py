@@ -134,6 +134,7 @@ class IamGroupPolicy(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -159,6 +160,7 @@ class IamGroupPolicy(pulumi.CustomResource):
         pulumi.export("minioPolicy", minio_iam_group_membership["developer"]["policy"])
         pulumi.export("minioGroup", minio_iam_group_membership["developer"]["group"])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -172,6 +174,7 @@ class IamGroupPolicy(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -197,6 +200,7 @@ class IamGroupPolicy(pulumi.CustomResource):
         pulumi.export("minioPolicy", minio_iam_group_membership["developer"]["policy"])
         pulumi.export("minioGroup", minio_iam_group_membership["developer"]["group"])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param IamGroupPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -195,6 +195,7 @@ class IamServiceAccount(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -208,6 +209,7 @@ class IamServiceAccount(pulumi.CustomResource):
         pulumi.export("minioUser", test_service_account.access_key)
         pulumi.export("minioPassword", test_service_account.secret_key)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -224,6 +226,7 @@ class IamServiceAccount(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -237,6 +240,7 @@ class IamServiceAccount(pulumi.CustomResource):
         pulumi.export("minioUser", test_service_account.access_key)
         pulumi.export("minioPassword", test_service_account.secret_key)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param IamServiceAccountArgs args: The arguments to use to populate this resource's properties.

@@ -16,6 +16,8 @@ import java.util.concurrent.CompletableFuture;
 public final class MinioFunctions {
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -74,6 +76,7 @@ public final class MinioFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIamPolicyDocumentResult> getIamPolicyDocument() {
@@ -81,6 +84,8 @@ public final class MinioFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -139,6 +144,7 @@ public final class MinioFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIamPolicyDocumentResult> getIamPolicyDocumentPlain() {
@@ -146,6 +152,8 @@ public final class MinioFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -204,6 +212,7 @@ public final class MinioFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIamPolicyDocumentResult> getIamPolicyDocument(GetIamPolicyDocumentArgs args) {
@@ -211,6 +220,8 @@ public final class MinioFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -269,6 +280,7 @@ public final class MinioFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIamPolicyDocumentResult> getIamPolicyDocumentPlain(GetIamPolicyDocumentPlainArgs args) {
@@ -276,6 +288,8 @@ public final class MinioFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -334,6 +348,7 @@ public final class MinioFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIamPolicyDocumentResult> getIamPolicyDocument(GetIamPolicyDocumentArgs args, InvokeOptions options) {
@@ -341,6 +356,8 @@ public final class MinioFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -399,6 +416,7 @@ public final class MinioFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIamPolicyDocumentResult> getIamPolicyDocumentPlain(GetIamPolicyDocumentPlainArgs args, InvokeOptions options) {

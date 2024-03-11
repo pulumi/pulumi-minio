@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Minio
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [MinioResourceType("minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment")]
     public partial class IamGroupPolicyAttachment : global::Pulumi.CustomResource
     {
