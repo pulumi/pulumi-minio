@@ -28,7 +28,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Minio Access Key
      *
-     * @deprecated use minio_user instead
+     * @deprecated use minioUser instead
      */
     public readonly minioAccessKey!: pulumi.Output<string | undefined>;
     /**
@@ -49,7 +49,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Minio Secret Key
      *
-     * @deprecated use minio_password instead
+     * @deprecated use minioPassword instead
      */
     public readonly minioSecretKey!: pulumi.Output<string | undefined>;
     /**
@@ -105,7 +105,7 @@ export interface ProviderArgs {
     /**
      * Minio Access Key
      *
-     * @deprecated use minio_user instead
+     * @deprecated use minioUser instead
      */
     minioAccessKey?: pulumi.Input<string>;
     /**
@@ -130,7 +130,7 @@ export interface ProviderArgs {
     /**
      * Minio Secret Key
      *
-     * @deprecated use minio_password instead
+     * @deprecated use minioPassword instead
      */
     minioSecretKey?: pulumi.Input<string>;
     /**
