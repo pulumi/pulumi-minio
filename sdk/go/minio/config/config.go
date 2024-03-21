@@ -13,7 +13,7 @@ var _ = internal.GetEnvOrDefault
 
 // Minio Access Key
 //
-// Deprecated: use minio_user instead
+// Deprecated: use minioUser instead
 func GetMinioAccessKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "minio:minioAccessKey")
 }
@@ -49,7 +49,7 @@ func GetMinioRegion(ctx *pulumi.Context) string {
 
 // Minio Secret Key
 //
-// Deprecated: use minio_password instead
+// Deprecated: use minioPassword instead
 func GetMinioSecretKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "minio:minioSecretKey")
 }

@@ -71,7 +71,7 @@ import (
 //				return err
 //			}
 //			_, err = minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
-//				Policy: *pulumi.String(example.Json),
+//				Policy: pulumi.String(example.Json),
 //			})
 //			if err != nil {
 //				return err
