@@ -21,7 +21,7 @@ type Provider struct {
 
 	// Minio Access Key
 	//
-	// Deprecated: use minioUser instead
+	// Deprecated: use minio_user instead
 	MinioAccessKey pulumi.StringPtrOutput `pulumi:"minioAccessKey"`
 	// Minio API Version (type: string, options: v2 or v4, default: v4)
 	MinioApiVersion pulumi.StringPtrOutput `pulumi:"minioApiVersion"`
@@ -34,7 +34,7 @@ type Provider struct {
 	MinioRegion pulumi.StringPtrOutput `pulumi:"minioRegion"`
 	// Minio Secret Key
 	//
-	// Deprecated: use minioPassword instead
+	// Deprecated: use minio_password instead
 	MinioSecretKey pulumi.StringPtrOutput `pulumi:"minioSecretKey"`
 	// Minio Host and Port
 	MinioServer pulumi.StringOutput `pulumi:"minioServer"`
@@ -66,7 +66,7 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// Minio Access Key
 	//
-	// Deprecated: use minioUser instead
+	// Deprecated: use minio_user instead
 	MinioAccessKey *string `pulumi:"minioAccessKey"`
 	// Minio API Version (type: string, options: v2 or v4, default: v4)
 	MinioApiVersion *string `pulumi:"minioApiVersion"`
@@ -81,7 +81,7 @@ type providerArgs struct {
 	MinioRegion *string `pulumi:"minioRegion"`
 	// Minio Secret Key
 	//
-	// Deprecated: use minioPassword instead
+	// Deprecated: use minio_password instead
 	MinioSecretKey *string `pulumi:"minioSecretKey"`
 	// Minio Host and Port
 	MinioServer string `pulumi:"minioServer"`
@@ -97,7 +97,7 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// Minio Access Key
 	//
-	// Deprecated: use minioUser instead
+	// Deprecated: use minio_user instead
 	MinioAccessKey pulumi.StringPtrInput
 	// Minio API Version (type: string, options: v2 or v4, default: v4)
 	MinioApiVersion pulumi.StringPtrInput
@@ -112,7 +112,7 @@ type ProviderArgs struct {
 	MinioRegion pulumi.StringPtrInput
 	// Minio Secret Key
 	//
-	// Deprecated: use minioPassword instead
+	// Deprecated: use minio_password instead
 	MinioSecretKey pulumi.StringPtrInput
 	// Minio Host and Port
 	MinioServer pulumi.StringInput
@@ -163,7 +163,7 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 
 // Minio Access Key
 //
-// Deprecated: use minioUser instead
+// Deprecated: use minio_user instead
 func (o ProviderOutput) MinioAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioAccessKey }).(pulumi.StringPtrOutput)
 }
@@ -197,7 +197,7 @@ func (o ProviderOutput) MinioRegion() pulumi.StringPtrOutput {
 
 // Minio Secret Key
 //
-// Deprecated: use minioPassword instead
+// Deprecated: use minio_password instead
 func (o ProviderOutput) MinioSecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioSecretKey }).(pulumi.StringPtrOutput)
 }
