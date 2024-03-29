@@ -35,9 +35,9 @@ namespace Pulumi.Minio
     ///         ContentType = "text/plain",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             stateTerraformS3,
+    ///             stateTerraformS3, 
     ///         },
     ///     });
     /// 
