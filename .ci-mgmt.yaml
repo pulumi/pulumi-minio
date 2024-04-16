@@ -9,6 +9,11 @@ env:
 skipWindowsArmBuild: true
 makeTemplate: bridged
 plugins:
+  - name: terraform
+    version: "1.0.16"
+    kind: converter
+
   - name: aws 
     version: "4.10.0"
 team: ecosystem
+pulumiConvert: 1
