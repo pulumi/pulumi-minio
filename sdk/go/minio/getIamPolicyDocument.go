@@ -70,7 +70,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
+//			_, err = minio.NewIamPolicy(ctx, "test_policy", &minio.IamPolicyArgs{
+//				Name:   pulumi.String("state-terraform-s3"),
 //				Policy: pulumi.String(example.Json),
 //			})
 //			if err != nil {

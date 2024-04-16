@@ -45,7 +45,10 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * const testPolicy = new minio.IamPolicy("testPolicy", {policy: example.then(example => example.json)});
+ * const testPolicy = new minio.IamPolicy("test_policy", {
+ *     name: "state-terraform-s3",
+ *     policy: example.then(example => example.json),
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -127,7 +130,10 @@ export interface GetIamPolicyDocumentResult {
  *         },
  *     ],
  * });
- * const testPolicy = new minio.IamPolicy("testPolicy", {policy: example.then(example => example.json)});
+ * const testPolicy = new minio.IamPolicy("test_policy", {
+ *     name: "state-terraform-s3",
+ *     policy: example.then(example => example.json),
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  */

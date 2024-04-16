@@ -12,15 +12,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
  *
- * const testIamUser = new minio.IamUser("testIamUser", {
- *     forceDestroy: true,
- *     tags: {
- *         "tag-key": "tag-value",
- *     },
- * });
- * export const test = testIamUser.id;
- * export const status = testIamUser.status;
- * export const secret = testIamUser.secret;
+ * export = async () => {
+ *     const test = new minio.IamUser("test", {
+ *         name: "test",
+ *         forceDestroy: true,
+ *         tags: {
+ *             "tag-key": "tag-value",
+ *         },
+ *     });
+ *     return {
+ *         test: test.id,
+ *         status: test.status,
+ *         secret: test.secret,
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */

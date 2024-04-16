@@ -26,9 +26,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			stateTerraformS3, err := minio.NewS3Bucket(ctx, "stateTerraformS3", &minio.S3BucketArgs{
-//				Acl:    pulumi.String("public"),
+//			stateTerraformS3, err := minio.NewS3Bucket(ctx, "state_terraform_s3", &minio.S3BucketArgs{
 //				Bucket: pulumi.String("state-terraform-s3"),
+//				Acl:    pulumi.String("public"),
 //			})
 //			if err != nil {
 //				return err

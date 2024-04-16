@@ -27,14 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			stateTerraformS3, err := minio.NewS3Bucket(ctx, "stateTerraformS3", &minio.S3BucketArgs{
+//			stateTerraformS3, err := minio.NewS3Bucket(ctx, "state_terraform_s3", &minio.S3BucketArgs{
 //				Bucket: pulumi.String("state-terraform-s3"),
 //				Acl:    pulumi.String("public"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			txtFile, err := minio.NewS3Object(ctx, "txtFile", &minio.S3ObjectArgs{
+//			txtFile, err := minio.NewS3Object(ctx, "txt_file", &minio.S3ObjectArgs{
 //				BucketName:  stateTerraformS3.Bucket,
 //				ObjectName:  pulumi.String("text.txt"),
 //				Content:     pulumi.String("Lorem ipsum dolor sit amet."),

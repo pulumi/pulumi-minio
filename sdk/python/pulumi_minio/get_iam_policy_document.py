@@ -143,7 +143,9 @@ def get_iam_policy_document(override_json: Optional[str] = None,
             ],
         ),
     ])
-    test_policy = minio.IamPolicy("testPolicy", policy=example.json)
+    test_policy = minio.IamPolicy("test_policy",
+        name="state-terraform-s3",
+        policy=example.json)
     ```
     <!--End PulumiCodeChooser -->
     """
@@ -210,7 +212,9 @@ def get_iam_policy_document_output(override_json: Optional[pulumi.Input[Optional
             ],
         ),
     ])
-    test_policy = minio.IamPolicy("testPolicy", policy=example.json)
+    test_policy = minio.IamPolicy("test_policy",
+        name="state-terraform-s3",
+        policy=example.json)
     ```
     <!--End PulumiCodeChooser -->
     """

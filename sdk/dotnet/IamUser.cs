@@ -21,8 +21,9 @@ namespace Pulumi.Minio
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testIamUser = new Minio.IamUser("testIamUser", new()
+    ///     var test = new Minio.IamUser("test", new()
     ///     {
+    ///         Name = "test",
     ///         ForceDestroy = true,
     ///         Tags = 
     ///         {
@@ -32,9 +33,9 @@ namespace Pulumi.Minio
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["test"] = testIamUser.Id,
-    ///         ["status"] = testIamUser.Status,
-    ///         ["secret"] = testIamUser.Secret,
+    ///         ["test"] = test.Id,
+    ///         ["status"] = test.Status,
+    ///         ["secret"] = test.Secret,
     ///     };
     /// });
     /// ```

@@ -24,7 +24,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.minio.IamGroup;
+ * import com.pulumi.minio.IamGroupArgs;
  * import com.pulumi.minio.IamUser;
+ * import com.pulumi.minio.IamUserArgs;
  * import com.pulumi.minio.IamGroupUserAttachment;
  * import com.pulumi.minio.IamGroupUserAttachmentArgs;
  * import java.util.List;
@@ -40,12 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developerIamGroup = new IamGroup(&#34;developerIamGroup&#34;);
+ *         var developer = new IamGroup(&#34;developer&#34;, IamGroupArgs.builder()        
+ *             .name(&#34;developer&#34;)
+ *             .build());
  * 
- *         var userOne = new IamUser(&#34;userOne&#34;);
+ *         var userOne = new IamUser(&#34;userOne&#34;, IamUserArgs.builder()        
+ *             .name(&#34;test-user&#34;)
+ *             .build());
  * 
  *         var developerIamGroupUserAttachment = new IamGroupUserAttachment(&#34;developerIamGroupUserAttachment&#34;, IamGroupUserAttachmentArgs.builder()        
- *             .groupName(minio_iam_group.group().name())
+ *             .groupName(group.name())
  *             .userName(userOne.name())
  *             .build());
  * 

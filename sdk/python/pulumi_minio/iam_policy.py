@@ -115,7 +115,9 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        test_policy = minio.IamPolicy("testPolicy", policy=\"\"\"{
+        test_policy = minio.IamPolicy("test_policy",
+            name="state-terraform-s3",
+            policy=\"\"\"{
           "Version":"2012-10-17",
           "Statement": [
             {
@@ -150,7 +152,9 @@ class IamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        test_policy = minio.IamPolicy("testPolicy", policy=\"\"\"{
+        test_policy = minio.IamPolicy("test_policy",
+            name="state-terraform-s3",
+            policy=\"\"\"{
           "Version":"2012-10-17",
           "Statement": [
             {

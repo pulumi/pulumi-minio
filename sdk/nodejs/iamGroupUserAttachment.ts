@@ -12,10 +12,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
  *
- * const developerIamGroup = new minio.IamGroup("developerIamGroup", {});
- * const userOne = new minio.IamUser("userOne", {});
- * const developerIamGroupUserAttachment = new minio.IamGroupUserAttachment("developerIamGroupUserAttachment", {
- *     groupName: minio_iam_group.group.name,
+ * const developer = new minio.IamGroup("developer", {name: "developer"});
+ * const userOne = new minio.IamUser("user_one", {name: "test-user"});
+ * const developerIamGroupUserAttachment = new minio.IamGroupUserAttachment("developer", {
+ *     groupName: group.name,
  *     userName: userOne.name,
  * });
  * export const minioName = developerIamGroupUserAttachment.id;

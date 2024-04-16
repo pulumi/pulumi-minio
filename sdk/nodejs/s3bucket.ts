@@ -12,9 +12,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
  *
- * const stateTerraformS3 = new minio.S3Bucket("stateTerraformS3", {
- *     acl: "public",
+ * const stateTerraformS3 = new minio.S3Bucket("state_terraform_s3", {
  *     bucket: "state-terraform-s3",
+ *     acl: "public",
  * });
  * export const minioId = stateTerraformS3.id;
  * export const minioUrl = stateTerraformS3.bucketDomainName;

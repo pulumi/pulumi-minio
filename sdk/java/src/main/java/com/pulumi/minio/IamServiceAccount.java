@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new IamUser(&#34;test&#34;, IamUserArgs.builder()        
+ *             .name(&#34;test&#34;)
  *             .forceDestroy(true)
  *             .tags(Map.of(&#34;tag-key&#34;, &#34;tag-value&#34;))
  *             .build());

@@ -201,11 +201,12 @@ class IamServiceAccount(pulumi.CustomResource):
         import pulumi_minio as minio
 
         test = minio.IamUser("test",
+            name="test",
             force_destroy=True,
             tags={
                 "tag-key": "tag-value",
             })
-        test_service_account = minio.IamServiceAccount("testServiceAccount", target_user=test.name)
+        test_service_account = minio.IamServiceAccount("test_service_account", target_user=test.name)
         pulumi.export("minioUser", test_service_account.access_key)
         pulumi.export("minioPassword", test_service_account.secret_key)
         ```
@@ -232,11 +233,12 @@ class IamServiceAccount(pulumi.CustomResource):
         import pulumi_minio as minio
 
         test = minio.IamUser("test",
+            name="test",
             force_destroy=True,
             tags={
                 "tag-key": "tag-value",
             })
-        test_service_account = minio.IamServiceAccount("testServiceAccount", target_user=test.name)
+        test_service_account = minio.IamServiceAccount("test_service_account", target_user=test.name)
         pulumi.export("minioUser", test_service_account.access_key)
         pulumi.export("minioPassword", test_service_account.secret_key)
         ```

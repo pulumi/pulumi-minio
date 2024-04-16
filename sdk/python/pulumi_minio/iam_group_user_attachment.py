@@ -89,10 +89,10 @@ class IamGroupUserAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        developer_iam_group = minio.IamGroup("developerIamGroup")
-        user_one = minio.IamUser("userOne")
-        developer_iam_group_user_attachment = minio.IamGroupUserAttachment("developerIamGroupUserAttachment",
-            group_name=minio_iam_group["group"]["name"],
+        developer = minio.IamGroup("developer", name="developer")
+        user_one = minio.IamUser("user_one", name="test-user")
+        developer_iam_group_user_attachment = minio.IamGroupUserAttachment("developer",
+            group_name=group["name"],
             user_name=user_one.name)
         pulumi.export("minioName", developer_iam_group_user_attachment.id)
         pulumi.export("minioUsers", developer_iam_group_user_attachment.group_name)
@@ -117,10 +117,10 @@ class IamGroupUserAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        developer_iam_group = minio.IamGroup("developerIamGroup")
-        user_one = minio.IamUser("userOne")
-        developer_iam_group_user_attachment = minio.IamGroupUserAttachment("developerIamGroupUserAttachment",
-            group_name=minio_iam_group["group"]["name"],
+        developer = minio.IamGroup("developer", name="developer")
+        user_one = minio.IamUser("user_one", name="test-user")
+        developer_iam_group_user_attachment = minio.IamGroupUserAttachment("developer",
+            group_name=group["name"],
             user_name=user_one.name)
         pulumi.export("minioName", developer_iam_group_user_attachment.id)
         pulumi.export("minioUsers", developer_iam_group_user_attachment.group_name)

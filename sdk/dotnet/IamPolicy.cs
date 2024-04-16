@@ -21,8 +21,9 @@ namespace Pulumi.Minio
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testPolicy = new Minio.IamPolicy("testPolicy", new()
+    ///     var testPolicy = new Minio.IamPolicy("test_policy", new()
     ///     {
+    ///         Name = "state-terraform-s3",
     ///         Policy = @"{
     ///   ""Version"":""2012-10-17"",
     ///   ""Statement"": [

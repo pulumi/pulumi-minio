@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
  *
- * const developer = new minio.IamGroup("developer", {});
+ * const developer = new minio.IamGroup("developer", {name: "developer"});
  * export const minioUserGroup = developer.groupName;
  * ```
  * <!--End PulumiCodeChooser -->

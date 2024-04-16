@@ -27,11 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			developer, err := minio.NewIamGroup(ctx, "developer", nil)
+//			developer, err := minio.NewIamGroup(ctx, "developer", &minio.IamGroupArgs{
+//				Name: pulumi.String("developer"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = minio.NewIamGroupPolicy(ctx, "testPolicy", &minio.IamGroupPolicyArgs{
+//			_, err = minio.NewIamGroupPolicy(ctx, "test_policy", &minio.IamGroupPolicyArgs{
+//				Name:  pulumi.String("state-terraform-s3"),
 //				Group: developer.ID(),
 //				Policy: pulumi.String(`{
 //	  "Version":"2012-10-17",
@@ -52,9 +55,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("minioName", minio_iam_group_membership.Developer.Id)
-//			ctx.Export("minioPolicy", minio_iam_group_membership.Developer.Policy)
-//			ctx.Export("minioGroup", minio_iam_group_membership.Developer.Group)
+//			ctx.Export("minioName", developerMinioIamGroupMembership.Id)
+//			ctx.Export("minioPolicy", developerMinioIamGroupMembership.Policy)
+//			ctx.Export("minioGroup", developerMinioIamGroupMembership.Group)
 //			return nil
 //		})
 //	}

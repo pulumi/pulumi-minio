@@ -21,10 +21,14 @@ namespace Pulumi.Minio
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var developer = new Minio.IamGroup("developer");
-    /// 
-    ///     var testPolicy = new Minio.IamGroupPolicy("testPolicy", new()
+    ///     var developer = new Minio.IamGroup("developer", new()
     ///     {
+    ///         Name = "developer",
+    ///     });
+    /// 
+    ///     var testPolicy = new Minio.IamGroupPolicy("test_policy", new()
+    ///     {
+    ///         Name = "state-terraform-s3",
     ///         Group = developer.Id,
     ///         Policy = @"{
     ///   ""Version"":""2012-10-17"",
@@ -38,15 +42,14 @@ namespace Pulumi.Minio
     ///     }
     ///   ]
     /// }
-    /// 
     /// ",
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["minioName"] = minio_iam_group_membership.Developer.Id,
-    ///         ["minioPolicy"] = minio_iam_group_membership.Developer.Policy,
-    ///         ["minioGroup"] = minio_iam_group_membership.Developer.Group,
+    ///         ["minioName"] = developerMinioIamGroupMembership.Id,
+    ///         ["minioPolicy"] = developerMinioIamGroupMembership.Policy,
+    ///         ["minioGroup"] = developerMinioIamGroupMembership.Group,
     ///     };
     /// });
     /// ```

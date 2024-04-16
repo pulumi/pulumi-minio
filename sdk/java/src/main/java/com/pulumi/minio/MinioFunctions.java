@@ -70,6 +70,7 @@ public final class MinioFunctions {
      *             .build());
      * 
      *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
+     *             .name(&#34;state-terraform-s3&#34;)
      *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
      *             .build());
      * 
@@ -138,6 +139,7 @@ public final class MinioFunctions {
      *             .build());
      * 
      *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
+     *             .name(&#34;state-terraform-s3&#34;)
      *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
      *             .build());
      * 
@@ -206,6 +208,7 @@ public final class MinioFunctions {
      *             .build());
      * 
      *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
+     *             .name(&#34;state-terraform-s3&#34;)
      *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
      *             .build());
      * 
@@ -274,6 +277,7 @@ public final class MinioFunctions {
      *             .build());
      * 
      *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
+     *             .name(&#34;state-terraform-s3&#34;)
      *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
      *             .build());
      * 
@@ -342,6 +346,7 @@ public final class MinioFunctions {
      *             .build());
      * 
      *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
+     *             .name(&#34;state-terraform-s3&#34;)
      *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
      *             .build());
      * 
@@ -410,6 +415,7 @@ public final class MinioFunctions {
      *             .build());
      * 
      *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
+     *             .name(&#34;state-terraform-s3&#34;)
      *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
      *             .build());
      * 

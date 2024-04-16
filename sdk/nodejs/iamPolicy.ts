@@ -12,7 +12,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
  *
- * const testPolicy = new minio.IamPolicy("testPolicy", {policy: `{
+ * const testPolicy = new minio.IamPolicy("test_policy", {
+ *     name: "state-terraform-s3",
+ *     policy: `{
  *   "Version":"2012-10-17",
  *   "Statement": [
  *     {
@@ -24,7 +26,8 @@ import * as utilities from "./utilities";
  *     }
  *   ]
  * }
- * `});
+ * `,
+ * });
  * export const minioId = testPolicy.id;
  * export const minioPolicy = testPolicy.policy;
  * ```

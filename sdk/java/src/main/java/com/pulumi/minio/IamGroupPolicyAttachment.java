@@ -16,68 +16,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.minio.IamGroup;
- * import com.pulumi.minio.IamGroupPolicy;
- * import com.pulumi.minio.IamGroupPolicyArgs;
- * import com.pulumi.minio.IamGroupPolicyAttachment;
- * import com.pulumi.minio.IamGroupPolicyAttachmentArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var developerIamGroup = new IamGroup(&#34;developerIamGroup&#34;);
- * 
- *         var testPolicy = new IamGroupPolicy(&#34;testPolicy&#34;, IamGroupPolicyArgs.builder()        
- *             .policy(&#34;&#34;&#34;
- * {
- *   &#34;Version&#34;:&#34;2012-10-17&#34;,
- *   &#34;Statement&#34;: [
- *     {
- *       &#34;Sid&#34;:&#34;ListAllBucket&#34;,
- *       &#34;Effect&#34;: &#34;Allow&#34;,
- *       &#34;Action&#34;: [&#34;s3:PutObject&#34;],
- *       &#34;Principal&#34;:&#34;*&#34;,
- *       &#34;Resource&#34;: &#34;arn:aws:s3:::state-terraform-s3/*&#34;
- *     }
- *   ]
- * }
- *             &#34;&#34;&#34;)
- *             .build());
- * 
- *         var developerIamGroupPolicyAttachment = new IamGroupPolicyAttachment(&#34;developerIamGroupPolicyAttachment&#34;, IamGroupPolicyAttachmentArgs.builder()        
- *             .groupName(minio_iam_group.group().name())
- *             .policyName(minio_iam_policy.test_policy().id())
- *             .build());
- * 
- *         ctx.export(&#34;minioName&#34;, developerIamGroupPolicyAttachment.id());
- *         ctx.export(&#34;minioUsers&#34;, developerIamGroupPolicyAttachment.groupName());
- *         ctx.export(&#34;minioGroup&#34;, developerIamGroupPolicyAttachment.policyName());
- *         var developerIndex_iamGroupPolicyAttachmentIamGroupPolicyAttachment = new IamGroupPolicyAttachment(&#34;developerIndex/iamGroupPolicyAttachmentIamGroupPolicyAttachment&#34;, IamGroupPolicyAttachmentArgs.builder()        
- *             .userName(&#34;OU=Unit,DC=example,DC=com&#34;)
- *             .policyName(minio_iam_policy.test_policy().id())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  */
 @ResourceType(type="minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment")
 public class IamGroupPolicyAttachment extends com.pulumi.resources.CustomResource {
