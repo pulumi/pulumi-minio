@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
@@ -50,7 +49,6 @@ import * as utilities from "./utilities";
  *     policy: example.then(example => example.json),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIamPolicyDocument(args?: GetIamPolicyDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPolicyDocumentResult> {
     args = args || {};
@@ -94,7 +92,6 @@ export interface GetIamPolicyDocumentResult {
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
@@ -135,7 +132,6 @@ export interface GetIamPolicyDocumentResult {
  *     policy: example.then(example => example.json),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIamPolicyDocumentOutput(args?: GetIamPolicyDocumentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamPolicyDocumentResult> {
     return pulumi.output(args).apply((a: any) => getIamPolicyDocument(a, opts))

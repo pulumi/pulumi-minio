@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  * export const minioUser = testServiceAccount.accessKey;
  * export const minioPassword = testServiceAccount.secretKey;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class IamServiceAccount extends pulumi.CustomResource {
     /**
