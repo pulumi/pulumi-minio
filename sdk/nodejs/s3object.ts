@@ -12,11 +12,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as minio from "@pulumi/minio";
  *
- * const stateTerraformS3 = new minio.S3Bucket("stateTerraformS3", {
+ * const stateTerraformS3 = new minio.S3Bucket("state_terraform_s3", {
  *     bucket: "state-terraform-s3",
  *     acl: "public",
  * });
- * const txtFile = new minio.S3Object("txtFile", {
+ * const txtFile = new minio.S3Object("txt_file", {
  *     bucketName: stateTerraformS3.bucket,
  *     objectName: "text.txt",
  *     content: "Lorem ipsum dolor sit amet.",

@@ -144,7 +144,7 @@ class IamGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        developer = minio.IamGroup("developer")
+        developer = minio.IamGroup("developer", name="developer")
         pulumi.export("minioUserGroup", developer.group_name)
         ```
         <!--End PulumiCodeChooser -->
@@ -168,7 +168,7 @@ class IamGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        developer = minio.IamGroup("developer")
+        developer = minio.IamGroup("developer", name="developer")
         pulumi.export("minioUserGroup", developer.group_name)
         ```
         <!--End PulumiCodeChooser -->

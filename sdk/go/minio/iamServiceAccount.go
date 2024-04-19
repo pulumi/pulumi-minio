@@ -28,6 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			test, err := minio.NewIamUser(ctx, "test", &minio.IamUserArgs{
+//				Name:         pulumi.String("test"),
 //				ForceDestroy: pulumi.Bool(true),
 //				Tags: pulumi.Map{
 //					"tag-key": pulumi.Any("tag-value"),
@@ -36,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			testServiceAccount, err := minio.NewIamServiceAccount(ctx, "testServiceAccount", &minio.IamServiceAccountArgs{
+//			testServiceAccount, err := minio.NewIamServiceAccount(ctx, "test_service_account", &minio.IamServiceAccountArgs{
 //				TargetUser: test.Name,
 //			})
 //			if err != nil {

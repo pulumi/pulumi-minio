@@ -26,6 +26,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.minio.IamGroup;
+ * import com.pulumi.minio.IamGroupArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -39,7 +40,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new IamGroup(&#34;developer&#34;);
+ *         var developer = new IamGroup(&#34;developer&#34;, IamGroupArgs.builder()        
+ *             .name(&#34;developer&#34;)
+ *             .build());
  * 
  *         ctx.export(&#34;minioUserGroup&#34;, developer.groupName());
  *     }

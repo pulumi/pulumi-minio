@@ -215,9 +215,9 @@ class S3Bucket(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        state_terraform_s3 = minio.S3Bucket("stateTerraformS3",
-            acl="public",
-            bucket="state-terraform-s3")
+        state_terraform_s3 = minio.S3Bucket("state_terraform_s3",
+            bucket="state-terraform-s3",
+            acl="public")
         pulumi.export("minioId", state_terraform_s3.id)
         pulumi.export("minioUrl", state_terraform_s3.bucket_domain_name)
         ```
@@ -240,9 +240,9 @@ class S3Bucket(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        state_terraform_s3 = minio.S3Bucket("stateTerraformS3",
-            acl="public",
-            bucket="state-terraform-s3")
+        state_terraform_s3 = minio.S3Bucket("state_terraform_s3",
+            bucket="state-terraform-s3",
+            acl="public")
         pulumi.export("minioId", state_terraform_s3.id)
         pulumi.export("minioUrl", state_terraform_s3.bucket_domain_name)
         ```

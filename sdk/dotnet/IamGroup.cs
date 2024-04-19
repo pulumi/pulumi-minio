@@ -21,7 +21,10 @@ namespace Pulumi.Minio
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var developer = new Minio.IamGroup("developer");
+    ///     var developer = new Minio.IamGroup("developer", new()
+    ///     {
+    ///         Name = "developer",
+    ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {

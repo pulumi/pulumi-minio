@@ -13,12 +13,13 @@ import * as utilities from "./utilities";
  * import * as minio from "@pulumi/minio";
  *
  * const test = new minio.IamUser("test", {
+ *     name: "test",
  *     forceDestroy: true,
  *     tags: {
  *         "tag-key": "tag-value",
  *     },
  * });
- * const testServiceAccount = new minio.IamServiceAccount("testServiceAccount", {targetUser: test.name});
+ * const testServiceAccount = new minio.IamServiceAccount("test_service_account", {targetUser: test.name});
  * export const minioUser = testServiceAccount.accessKey;
  * export const minioPassword = testServiceAccount.secretKey;
  * ```

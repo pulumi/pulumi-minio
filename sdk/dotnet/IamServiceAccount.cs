@@ -23,6 +23,7 @@ namespace Pulumi.Minio
     /// {
     ///     var test = new Minio.IamUser("test", new()
     ///     {
+    ///         Name = "test",
     ///         ForceDestroy = true,
     ///         Tags = 
     ///         {
@@ -30,7 +31,7 @@ namespace Pulumi.Minio
     ///         },
     ///     });
     /// 
-    ///     var testServiceAccount = new Minio.IamServiceAccount("testServiceAccount", new()
+    ///     var testServiceAccount = new Minio.IamServiceAccount("test_service_account", new()
     ///     {
     ///         TargetUser = test.Name,
     ///     });

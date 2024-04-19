@@ -27,7 +27,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testPolicy, err := minio.NewIamPolicy(ctx, "testPolicy", &minio.IamPolicyArgs{
+//			testPolicy, err := minio.NewIamPolicy(ctx, "test_policy", &minio.IamPolicyArgs{
+//				Name: pulumi.String("state-terraform-s3"),
 //				Policy: pulumi.String(`{
 //	  "Version":"2012-10-17",
 //	  "Statement": [

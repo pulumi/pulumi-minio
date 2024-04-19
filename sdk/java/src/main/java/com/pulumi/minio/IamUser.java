@@ -43,14 +43,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testIamUser = new IamUser(&#34;testIamUser&#34;, IamUserArgs.builder()        
+ *         var test = new IamUser(&#34;test&#34;, IamUserArgs.builder()        
+ *             .name(&#34;test&#34;)
  *             .forceDestroy(true)
  *             .tags(Map.of(&#34;tag-key&#34;, &#34;tag-value&#34;))
  *             .build());
  * 
- *         ctx.export(&#34;test&#34;, testIamUser.id());
- *         ctx.export(&#34;status&#34;, testIamUser.status());
- *         ctx.export(&#34;secret&#34;, testIamUser.secret());
+ *         ctx.export(&#34;test&#34;, test.id());
+ *         ctx.export(&#34;status&#34;, test.status());
+ *         ctx.export(&#34;secret&#34;, test.secret());
  *     }
  * }
  * ```

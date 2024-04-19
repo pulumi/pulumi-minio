@@ -239,10 +239,10 @@ class S3Object(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        state_terraform_s3 = minio.S3Bucket("stateTerraformS3",
+        state_terraform_s3 = minio.S3Bucket("state_terraform_s3",
             bucket="state-terraform-s3",
             acl="public")
-        txt_file = minio.S3Object("txtFile",
+        txt_file = minio.S3Object("txt_file",
             bucket_name=state_terraform_s3.bucket,
             object_name="text.txt",
             content="Lorem ipsum dolor sit amet.",
@@ -269,10 +269,10 @@ class S3Object(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        state_terraform_s3 = minio.S3Bucket("stateTerraformS3",
+        state_terraform_s3 = minio.S3Bucket("state_terraform_s3",
             bucket="state-terraform-s3",
             acl="public")
-        txt_file = minio.S3Object("txtFile",
+        txt_file = minio.S3Object("txt_file",
             bucket_name=state_terraform_s3.bucket,
             object_name="text.txt",
             content="Lorem ipsum dolor sit amet.",

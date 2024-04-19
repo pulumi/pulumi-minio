@@ -139,8 +139,9 @@ class IamGroupPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        developer = minio.IamGroup("developer")
-        test_policy = minio.IamGroupPolicy("testPolicy",
+        developer = minio.IamGroup("developer", name="developer")
+        test_policy = minio.IamGroupPolicy("test_policy",
+            name="state-terraform-s3",
             group=developer.id,
             policy=\"\"\"{
           "Version":"2012-10-17",
@@ -154,11 +155,10 @@ class IamGroupPolicy(pulumi.CustomResource):
             }
           ]
         }
-
         \"\"\")
-        pulumi.export("minioName", minio_iam_group_membership["developer"]["id"])
-        pulumi.export("minioPolicy", minio_iam_group_membership["developer"]["policy"])
-        pulumi.export("minioGroup", minio_iam_group_membership["developer"]["group"])
+        pulumi.export("minioName", developer_minio_iam_group_membership["id"])
+        pulumi.export("minioPolicy", developer_minio_iam_group_membership["policy"])
+        pulumi.export("minioGroup", developer_minio_iam_group_membership["group"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -179,8 +179,9 @@ class IamGroupPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        developer = minio.IamGroup("developer")
-        test_policy = minio.IamGroupPolicy("testPolicy",
+        developer = minio.IamGroup("developer", name="developer")
+        test_policy = minio.IamGroupPolicy("test_policy",
+            name="state-terraform-s3",
             group=developer.id,
             policy=\"\"\"{
           "Version":"2012-10-17",
@@ -194,11 +195,10 @@ class IamGroupPolicy(pulumi.CustomResource):
             }
           ]
         }
-
         \"\"\")
-        pulumi.export("minioName", minio_iam_group_membership["developer"]["id"])
-        pulumi.export("minioPolicy", minio_iam_group_membership["developer"]["policy"])
-        pulumi.export("minioGroup", minio_iam_group_membership["developer"]["group"])
+        pulumi.export("minioName", developer_minio_iam_group_membership["id"])
+        pulumi.export("minioPolicy", developer_minio_iam_group_membership["policy"])
+        pulumi.export("minioGroup", developer_minio_iam_group_membership["group"])
         ```
         <!--End PulumiCodeChooser -->
 

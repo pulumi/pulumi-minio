@@ -27,16 +27,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := minio.NewIamGroup(ctx, "developerIamGroup", nil)
+//			_, err := minio.NewIamGroup(ctx, "developer", &minio.IamGroupArgs{
+//				Name: pulumi.String("developer"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			userOne, err := minio.NewIamUser(ctx, "userOne", nil)
+//			userOne, err := minio.NewIamUser(ctx, "user_one", &minio.IamUserArgs{
+//				Name: pulumi.String("test-user"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			developerIamGroupUserAttachment, err := minio.NewIamGroupUserAttachment(ctx, "developerIamGroupUserAttachment", &minio.IamGroupUserAttachmentArgs{
-//				GroupName: pulumi.Any(minio_iam_group.Group.Name),
+//			developerIamGroupUserAttachment, err := minio.NewIamGroupUserAttachment(ctx, "developer", &minio.IamGroupUserAttachmentArgs{
+//				GroupName: pulumi.Any(group.Name),
 //				UserName:  userOne.Name,
 //			})
 //			if err != nil {

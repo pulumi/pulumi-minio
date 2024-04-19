@@ -25,6 +25,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.minio.IamGroup;
+ * import com.pulumi.minio.IamGroupArgs;
  * import com.pulumi.minio.IamGroupPolicy;
  * import com.pulumi.minio.IamGroupPolicyArgs;
  * import java.util.List;
@@ -40,9 +41,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new IamGroup(&#34;developer&#34;);
+ *         var developer = new IamGroup(&#34;developer&#34;, IamGroupArgs.builder()        
+ *             .name(&#34;developer&#34;)
+ *             .build());
  * 
  *         var testPolicy = new IamGroupPolicy(&#34;testPolicy&#34;, IamGroupPolicyArgs.builder()        
+ *             .name(&#34;state-terraform-s3&#34;)
  *             .group(developer.id())
  *             .policy(&#34;&#34;&#34;
  * {
@@ -57,13 +61,12 @@ import javax.annotation.Nullable;
  *     }
  *   ]
  * }
- * 
  *             &#34;&#34;&#34;)
  *             .build());
  * 
- *         ctx.export(&#34;minioName&#34;, minio_iam_group_membership.developer().id());
- *         ctx.export(&#34;minioPolicy&#34;, minio_iam_group_membership.developer().policy());
- *         ctx.export(&#34;minioGroup&#34;, minio_iam_group_membership.developer().group());
+ *         ctx.export(&#34;minioName&#34;, developerMinioIamGroupMembership.id());
+ *         ctx.export(&#34;minioPolicy&#34;, developerMinioIamGroupMembership.policy());
+ *         ctx.export(&#34;minioGroup&#34;, developerMinioIamGroupMembership.group());
  *     }
  * }
  * ```

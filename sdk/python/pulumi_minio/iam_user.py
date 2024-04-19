@@ -227,14 +227,15 @@ class IamUser(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        test_iam_user = minio.IamUser("testIamUser",
+        test = minio.IamUser("test",
+            name="test",
             force_destroy=True,
             tags={
                 "tag-key": "tag-value",
             })
-        pulumi.export("test", test_iam_user.id)
-        pulumi.export("status", test_iam_user.status)
-        pulumi.export("secret", test_iam_user.secret)
+        pulumi.export("test", test.id)
+        pulumi.export("status", test.status)
+        pulumi.export("secret", test.secret)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -258,14 +259,15 @@ class IamUser(pulumi.CustomResource):
         import pulumi
         import pulumi_minio as minio
 
-        test_iam_user = minio.IamUser("testIamUser",
+        test = minio.IamUser("test",
+            name="test",
             force_destroy=True,
             tags={
                 "tag-key": "tag-value",
             })
-        pulumi.export("test", test_iam_user.id)
-        pulumi.export("status", test_iam_user.status)
-        pulumi.export("secret", test_iam_user.secret)
+        pulumi.export("test", test.id)
+        pulumi.export("status", test.status)
+        pulumi.export("secret", test.secret)
         ```
         <!--End PulumiCodeChooser -->
 

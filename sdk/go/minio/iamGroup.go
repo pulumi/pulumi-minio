@@ -26,7 +26,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			developer, err := minio.NewIamGroup(ctx, "developer", nil)
+//			developer, err := minio.NewIamGroup(ctx, "developer", &minio.IamGroupArgs{
+//				Name: pulumi.String("developer"),
+//			})
 //			if err != nil {
 //				return err
 //			}

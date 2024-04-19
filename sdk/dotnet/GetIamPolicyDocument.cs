@@ -79,8 +79,9 @@ namespace Pulumi.Minio
         ///         },
         ///     });
         /// 
-        ///     var testPolicy = new Minio.IamPolicy("testPolicy", new()
+        ///     var testPolicy = new Minio.IamPolicy("test_policy", new()
         ///     {
+        ///         Name = "state-terraform-s3",
         ///         Policy = example.Apply(getIamPolicyDocumentResult =&gt; getIamPolicyDocumentResult.Json),
         ///     });
         /// 
@@ -159,8 +160,9 @@ namespace Pulumi.Minio
         ///         },
         ///     });
         /// 
-        ///     var testPolicy = new Minio.IamPolicy("testPolicy", new()
+        ///     var testPolicy = new Minio.IamPolicy("test_policy", new()
         ///     {
+        ///         Name = "state-terraform-s3",
         ///         Policy = example.Apply(getIamPolicyDocumentResult =&gt; getIamPolicyDocumentResult.Json),
         ///     });
         /// 

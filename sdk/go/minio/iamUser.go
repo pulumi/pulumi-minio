@@ -26,7 +26,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testIamUser, err := minio.NewIamUser(ctx, "testIamUser", &minio.IamUserArgs{
+//			test, err := minio.NewIamUser(ctx, "test", &minio.IamUserArgs{
+//				Name:         pulumi.String("test"),
 //				ForceDestroy: pulumi.Bool(true),
 //				Tags: pulumi.Map{
 //					"tag-key": pulumi.Any("tag-value"),
@@ -35,9 +36,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("test", testIamUser.ID())
-//			ctx.Export("status", testIamUser.Status)
-//			ctx.Export("secret", testIamUser.Secret)
+//			ctx.Export("test", test.ID())
+//			ctx.Export("status", test.Status)
+//			ctx.Export("secret", test.Secret)
 //			return nil
 //		})
 //	}

@@ -21,13 +21,19 @@ namespace Pulumi.Minio
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var developerIamGroup = new Minio.IamGroup("developerIamGroup");
-    /// 
-    ///     var userOne = new Minio.IamUser("userOne");
-    /// 
-    ///     var developerIamGroupUserAttachment = new Minio.IamGroupUserAttachment("developerIamGroupUserAttachment", new()
+    ///     var developer = new Minio.IamGroup("developer", new()
     ///     {
-    ///         GroupName = minio_iam_group.Group.Name,
+    ///         Name = "developer",
+    ///     });
+    /// 
+    ///     var userOne = new Minio.IamUser("user_one", new()
+    ///     {
+    ///         Name = "test-user",
+    ///     });
+    /// 
+    ///     var developerIamGroupUserAttachment = new Minio.IamGroupUserAttachment("developer", new()
+    ///     {
+    ///         GroupName = @group.Name,
     ///         UserName = userOne.Name,
     ///     });
     /// 

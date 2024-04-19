@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var stateTerraformS3 = new S3Bucket(&#34;stateTerraformS3&#34;, S3BucketArgs.builder()        
- *             .acl(&#34;public&#34;)
  *             .bucket(&#34;state-terraform-s3&#34;)
+ *             .acl(&#34;public&#34;)
  *             .build());
  * 
  *         ctx.export(&#34;minioId&#34;, stateTerraformS3.id());
