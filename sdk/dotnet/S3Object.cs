@@ -37,7 +37,7 @@ namespace Pulumi.Minio
     ///     {
     ///         DependsOn =
     ///         {
-    ///             stateTerraformS3, 
+    ///             stateTerraformS3,
     ///         },
     ///     });
     /// 
