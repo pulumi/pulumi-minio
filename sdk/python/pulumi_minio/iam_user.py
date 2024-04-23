@@ -222,7 +222,6 @@ class IamUser(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -237,7 +236,6 @@ class IamUser(pulumi.CustomResource):
         pulumi.export("status", test.status)
         pulumi.export("secret", test.secret)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -254,7 +252,6 @@ class IamUser(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_minio as minio
@@ -269,7 +266,6 @@ class IamUser(pulumi.CustomResource):
         pulumi.export("status", test.status)
         pulumi.export("secret", test.secret)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param IamUserArgs args: The arguments to use to populate this resource's properties.
