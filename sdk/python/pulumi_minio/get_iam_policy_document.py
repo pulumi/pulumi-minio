@@ -109,7 +109,6 @@ def get_iam_policy_document(override_json: Optional[str] = None,
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_minio as minio
@@ -147,7 +146,6 @@ def get_iam_policy_document(override_json: Optional[str] = None,
         name="state-terraform-s3",
         policy=example.json)
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['overrideJson'] = override_json
@@ -178,7 +176,6 @@ def get_iam_policy_document_output(override_json: Optional[pulumi.Input[Optional
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_minio as minio
@@ -216,6 +213,5 @@ def get_iam_policy_document_output(override_json: Optional[pulumi.Input[Optional
         name="state-terraform-s3",
         policy=example.json)
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...
