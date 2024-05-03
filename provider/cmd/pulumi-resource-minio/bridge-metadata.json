@@ -2,10 +2,12 @@
     "auto-aliasing": {
         "resources": {
             "minio_iam_group": {
-                "current": "minio:index/iamGroup:IamGroup"
+                "current": "minio:index/iamGroup:IamGroup",
+                "majorVersion": 1
             },
             "minio_iam_group_membership": {
                 "current": "minio:index/iamGroupMembership:IamGroupMembership",
+                "majorVersion": 1,
                 "fields": {
                     "users": {
                         "maxItemsOne": false
@@ -13,28 +15,36 @@
                 }
             },
             "minio_iam_group_policy": {
-                "current": "minio:index/iamGroupPolicy:IamGroupPolicy"
+                "current": "minio:index/iamGroupPolicy:IamGroupPolicy",
+                "majorVersion": 1
             },
             "minio_iam_group_policy_attachment": {
-                "current": "minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment"
+                "current": "minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment",
+                "majorVersion": 1
             },
             "minio_iam_group_user_attachment": {
-                "current": "minio:index/iamGroupUserAttachment:IamGroupUserAttachment"
+                "current": "minio:index/iamGroupUserAttachment:IamGroupUserAttachment",
+                "majorVersion": 1
             },
             "minio_iam_policy": {
-                "current": "minio:index/iamPolicy:IamPolicy"
+                "current": "minio:index/iamPolicy:IamPolicy",
+                "majorVersion": 1
             },
             "minio_iam_service_account": {
-                "current": "minio:index/iamServiceAccount:IamServiceAccount"
+                "current": "minio:index/iamServiceAccount:IamServiceAccount",
+                "majorVersion": 1
             },
             "minio_iam_user": {
-                "current": "minio:index/iamUser:IamUser"
+                "current": "minio:index/iamUser:IamUser",
+                "majorVersion": 1
             },
             "minio_iam_user_policy_attachment": {
-                "current": "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment"
+                "current": "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment",
+                "majorVersion": 1
             },
             "minio_ilm_policy": {
                 "current": "minio:index/ilmPolicy:IlmPolicy",
+                "majorVersion": 1,
                 "fields": {
                     "rule": {
                         "maxItemsOne": false
@@ -42,13 +52,16 @@
                 }
             },
             "minio_kms_key": {
-                "current": "minio:index/kmsKey:KmsKey"
+                "current": "minio:index/kmsKey:KmsKey",
+                "majorVersion": 1
             },
             "minio_s3_bucket": {
-                "current": "minio:index/s3Bucket:S3Bucket"
+                "current": "minio:index/s3Bucket:S3Bucket",
+                "majorVersion": 1
             },
             "minio_s3_bucket_notification": {
                 "current": "minio:index/s3BucketNotification:S3BucketNotification",
+                "majorVersion": 1,
                 "fields": {
                     "queue": {
                         "maxItemsOne": false,
@@ -63,13 +76,16 @@
                 }
             },
             "minio_s3_bucket_policy": {
-                "current": "minio:index/s3BucketPolicy:S3BucketPolicy"
+                "current": "minio:index/s3BucketPolicy:S3BucketPolicy",
+                "majorVersion": 1
             },
             "minio_s3_bucket_server_side_encryption": {
-                "current": "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption"
+                "current": "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption",
+                "majorVersion": 1
             },
             "minio_s3_bucket_versioning": {
                 "current": "minio:index/s3BucketVersioning:S3BucketVersioning",
+                "majorVersion": 1,
                 "fields": {
                     "versioning_configuration": {
                         "maxItemsOne": true,
@@ -84,12 +100,14 @@
                 }
             },
             "minio_s3_object": {
-                "current": "minio:index/s3Object:S3Object"
+                "current": "minio:index/s3Object:S3Object",
+                "majorVersion": 1
             }
         },
         "datasources": {
             "minio_iam_policy_document": {
                 "current": "minio:index/getIamPolicyDocument:getIamPolicyDocument",
+                "majorVersion": 1,
                 "fields": {
                     "statement": {
                         "maxItemsOne": false,
