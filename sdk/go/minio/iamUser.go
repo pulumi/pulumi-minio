@@ -47,8 +47,7 @@ type IamUser struct {
 	pulumi.CustomResourceState
 
 	// Disable user
-	DisableUser pulumi.BoolPtrOutput `pulumi:"disableUser"`
-	// Delete user even if it has non-Terraform-managed IAM access keys
+	DisableUser  pulumi.BoolPtrOutput `pulumi:"disableUser"`
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	Name         pulumi.StringOutput  `pulumi:"name"`
 	Secret       pulumi.StringOutput  `pulumi:"secret"`
@@ -96,8 +95,7 @@ func GetIamUser(ctx *pulumi.Context,
 // Input properties used for looking up and filtering IamUser resources.
 type iamUserState struct {
 	// Disable user
-	DisableUser *bool `pulumi:"disableUser"`
-	// Delete user even if it has non-Terraform-managed IAM access keys
+	DisableUser  *bool                  `pulumi:"disableUser"`
 	ForceDestroy *bool                  `pulumi:"forceDestroy"`
 	Name         *string                `pulumi:"name"`
 	Secret       *string                `pulumi:"secret"`
@@ -109,8 +107,7 @@ type iamUserState struct {
 
 type IamUserState struct {
 	// Disable user
-	DisableUser pulumi.BoolPtrInput
-	// Delete user even if it has non-Terraform-managed IAM access keys
+	DisableUser  pulumi.BoolPtrInput
 	ForceDestroy pulumi.BoolPtrInput
 	Name         pulumi.StringPtrInput
 	Secret       pulumi.StringPtrInput
@@ -126,8 +123,7 @@ func (IamUserState) ElementType() reflect.Type {
 
 type iamUserArgs struct {
 	// Disable user
-	DisableUser *bool `pulumi:"disableUser"`
-	// Delete user even if it has non-Terraform-managed IAM access keys
+	DisableUser  *bool                  `pulumi:"disableUser"`
 	ForceDestroy *bool                  `pulumi:"forceDestroy"`
 	Name         *string                `pulumi:"name"`
 	Secret       *string                `pulumi:"secret"`
@@ -139,8 +135,7 @@ type iamUserArgs struct {
 // The set of arguments for constructing a IamUser resource.
 type IamUserArgs struct {
 	// Disable user
-	DisableUser pulumi.BoolPtrInput
-	// Delete user even if it has non-Terraform-managed IAM access keys
+	DisableUser  pulumi.BoolPtrInput
 	ForceDestroy pulumi.BoolPtrInput
 	Name         pulumi.StringPtrInput
 	Secret       pulumi.StringPtrInput
@@ -241,7 +236,6 @@ func (o IamUserOutput) DisableUser() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IamUser) pulumi.BoolPtrOutput { return v.DisableUser }).(pulumi.BoolPtrOutput)
 }
 
-// Delete user even if it has non-Terraform-managed IAM access keys
 func (o IamUserOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IamUser) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }

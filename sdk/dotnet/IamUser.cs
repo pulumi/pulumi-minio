@@ -48,9 +48,6 @@ namespace Pulumi.Minio
         [Output("disableUser")]
         public Output<bool?> DisableUser { get; private set; } = null!;
 
-        /// <summary>
-        /// Delete user even if it has non-Terraform-managed IAM access keys
-        /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
@@ -128,9 +125,6 @@ namespace Pulumi.Minio
         [Input("disableUser")]
         public Input<bool>? DisableUser { get; set; }
 
-        /// <summary>
-        /// Delete user even if it has non-Terraform-managed IAM access keys
-        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
@@ -177,9 +171,6 @@ namespace Pulumi.Minio
         [Input("disableUser")]
         public Input<bool>? DisableUser { get; set; }
 
-        /// <summary>
-        /// Delete user even if it has non-Terraform-managed IAM access keys
-        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
