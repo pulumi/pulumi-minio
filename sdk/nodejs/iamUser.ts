@@ -59,9 +59,6 @@ export class IamUser extends pulumi.CustomResource {
      * Disable user
      */
     public readonly disableUser!: pulumi.Output<boolean | undefined>;
-    /**
-     * Delete user even if it has non-Terraform-managed IAM access keys
-     */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly secret!: pulumi.Output<string>;
@@ -117,9 +114,6 @@ export interface IamUserState {
      * Disable user
      */
     disableUser?: pulumi.Input<boolean>;
-    /**
-     * Delete user even if it has non-Terraform-managed IAM access keys
-     */
     forceDestroy?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     secret?: pulumi.Input<string>;
@@ -139,9 +133,6 @@ export interface IamUserArgs {
      * Disable user
      */
     disableUser?: pulumi.Input<boolean>;
-    /**
-     * Delete user even if it has non-Terraform-managed IAM access keys
-     */
     forceDestroy?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     secret?: pulumi.Input<string>;
