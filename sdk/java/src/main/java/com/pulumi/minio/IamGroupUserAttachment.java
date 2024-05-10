@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,25 +43,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new IamGroup(&#34;developer&#34;, IamGroupArgs.builder()        
- *             .name(&#34;developer&#34;)
+ *         var developer = new IamGroup("developer", IamGroupArgs.builder()        
+ *             .name("developer")
  *             .build());
  * 
- *         var userOne = new IamUser(&#34;userOne&#34;, IamUserArgs.builder()        
- *             .name(&#34;test-user&#34;)
+ *         var userOne = new IamUser("userOne", IamUserArgs.builder()        
+ *             .name("test-user")
  *             .build());
  * 
- *         var developerIamGroupUserAttachment = new IamGroupUserAttachment(&#34;developerIamGroupUserAttachment&#34;, IamGroupUserAttachmentArgs.builder()        
+ *         var developerIamGroupUserAttachment = new IamGroupUserAttachment("developerIamGroupUserAttachment", IamGroupUserAttachmentArgs.builder()        
  *             .groupName(group.name())
  *             .userName(userOne.name())
  *             .build());
  * 
- *         ctx.export(&#34;minioName&#34;, developerIamGroupUserAttachment.id());
- *         ctx.export(&#34;minioUsers&#34;, developerIamGroupUserAttachment.groupName());
- *         ctx.export(&#34;minioGroup&#34;, developerIamGroupUserAttachment.userName());
+ *         ctx.export("minioName", developerIamGroupUserAttachment.id());
+ *         ctx.export("minioUsers", developerIamGroupUserAttachment.groupName());
+ *         ctx.export("minioGroup", developerIamGroupUserAttachment.userName());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

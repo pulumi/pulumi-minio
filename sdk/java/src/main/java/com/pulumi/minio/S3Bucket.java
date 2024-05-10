@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,16 +42,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var stateTerraformS3 = new S3Bucket(&#34;stateTerraformS3&#34;, S3BucketArgs.builder()        
- *             .bucket(&#34;state-terraform-s3&#34;)
- *             .acl(&#34;public&#34;)
+ *         var stateTerraformS3 = new S3Bucket("stateTerraformS3", S3BucketArgs.builder()        
+ *             .bucket("state-terraform-s3")
+ *             .acl("public")
  *             .build());
  * 
- *         ctx.export(&#34;minioId&#34;, stateTerraformS3.id());
- *         ctx.export(&#34;minioUrl&#34;, stateTerraformS3.bucketDomainName());
+ *         ctx.export("minioId", stateTerraformS3.id());
+ *         ctx.export("minioUrl", stateTerraformS3.bucketDomainName());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

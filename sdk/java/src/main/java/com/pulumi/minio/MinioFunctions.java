@@ -18,7 +18,8 @@ public final class MinioFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -44,39 +45,40 @@ public final class MinioFunctions {
      *         final var example = MinioFunctions.getIamPolicyDocument(GetIamPolicyDocumentArgs.builder()
      *             .statements(            
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;1&#34;)
+     *                     .sid("1")
      *                     .actions(                    
-     *                         &#34;s3:ListAllMyBuckets&#34;,
-     *                         &#34;s3:GetBucketLocation&#34;)
-     *                     .resources(&#34;arn:aws:s3:::*&#34;)
+     *                         "s3:ListAllMyBuckets",
+     *                         "s3:GetBucketLocation")
+     *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:ListBucket&#34;)
-     *                     .resources(&#34;arn:aws:s3:::state-terraform-s3&#34;)
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringLike&#34;)
-     *                         .variable(&#34;s3:prefix&#34;)
+     *                         .test("StringLike")
+     *                         .variable("s3:prefix")
      *                         .values(                        
-     *                             &#34;&#34;,
-     *                             &#34;home/&#34;)
+     *                             "",
+     *                             "home/")
      *                         .build())
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:PutObject&#34;)
+     *                     .actions("s3:PutObject")
      *                     .resources(                    
-     *                         &#34;arn:aws:s3:::state-terraform-s3&#34;,
-     *                         &#34;arn:aws:s3:::state-terraform-s3/*&#34;)
+     *                         "arn:aws:s3:::state-terraform-s3",
+     *                         "arn:aws:s3:::state-terraform-s3/*")
      *                     .build())
      *             .build());
      * 
-     *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
-     *             .name(&#34;state-terraform-s3&#34;)
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
+     *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()        
+     *             .name("state-terraform-s3")
+     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -87,7 +89,8 @@ public final class MinioFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -113,39 +116,40 @@ public final class MinioFunctions {
      *         final var example = MinioFunctions.getIamPolicyDocument(GetIamPolicyDocumentArgs.builder()
      *             .statements(            
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;1&#34;)
+     *                     .sid("1")
      *                     .actions(                    
-     *                         &#34;s3:ListAllMyBuckets&#34;,
-     *                         &#34;s3:GetBucketLocation&#34;)
-     *                     .resources(&#34;arn:aws:s3:::*&#34;)
+     *                         "s3:ListAllMyBuckets",
+     *                         "s3:GetBucketLocation")
+     *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:ListBucket&#34;)
-     *                     .resources(&#34;arn:aws:s3:::state-terraform-s3&#34;)
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringLike&#34;)
-     *                         .variable(&#34;s3:prefix&#34;)
+     *                         .test("StringLike")
+     *                         .variable("s3:prefix")
      *                         .values(                        
-     *                             &#34;&#34;,
-     *                             &#34;home/&#34;)
+     *                             "",
+     *                             "home/")
      *                         .build())
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:PutObject&#34;)
+     *                     .actions("s3:PutObject")
      *                     .resources(                    
-     *                         &#34;arn:aws:s3:::state-terraform-s3&#34;,
-     *                         &#34;arn:aws:s3:::state-terraform-s3/*&#34;)
+     *                         "arn:aws:s3:::state-terraform-s3",
+     *                         "arn:aws:s3:::state-terraform-s3/*")
      *                     .build())
      *             .build());
      * 
-     *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
-     *             .name(&#34;state-terraform-s3&#34;)
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
+     *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()        
+     *             .name("state-terraform-s3")
+     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -156,7 +160,8 @@ public final class MinioFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -182,39 +187,40 @@ public final class MinioFunctions {
      *         final var example = MinioFunctions.getIamPolicyDocument(GetIamPolicyDocumentArgs.builder()
      *             .statements(            
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;1&#34;)
+     *                     .sid("1")
      *                     .actions(                    
-     *                         &#34;s3:ListAllMyBuckets&#34;,
-     *                         &#34;s3:GetBucketLocation&#34;)
-     *                     .resources(&#34;arn:aws:s3:::*&#34;)
+     *                         "s3:ListAllMyBuckets",
+     *                         "s3:GetBucketLocation")
+     *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:ListBucket&#34;)
-     *                     .resources(&#34;arn:aws:s3:::state-terraform-s3&#34;)
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringLike&#34;)
-     *                         .variable(&#34;s3:prefix&#34;)
+     *                         .test("StringLike")
+     *                         .variable("s3:prefix")
      *                         .values(                        
-     *                             &#34;&#34;,
-     *                             &#34;home/&#34;)
+     *                             "",
+     *                             "home/")
      *                         .build())
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:PutObject&#34;)
+     *                     .actions("s3:PutObject")
      *                     .resources(                    
-     *                         &#34;arn:aws:s3:::state-terraform-s3&#34;,
-     *                         &#34;arn:aws:s3:::state-terraform-s3/*&#34;)
+     *                         "arn:aws:s3:::state-terraform-s3",
+     *                         "arn:aws:s3:::state-terraform-s3/*")
      *                     .build())
      *             .build());
      * 
-     *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
-     *             .name(&#34;state-terraform-s3&#34;)
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
+     *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()        
+     *             .name("state-terraform-s3")
+     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -225,7 +231,8 @@ public final class MinioFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -251,39 +258,40 @@ public final class MinioFunctions {
      *         final var example = MinioFunctions.getIamPolicyDocument(GetIamPolicyDocumentArgs.builder()
      *             .statements(            
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;1&#34;)
+     *                     .sid("1")
      *                     .actions(                    
-     *                         &#34;s3:ListAllMyBuckets&#34;,
-     *                         &#34;s3:GetBucketLocation&#34;)
-     *                     .resources(&#34;arn:aws:s3:::*&#34;)
+     *                         "s3:ListAllMyBuckets",
+     *                         "s3:GetBucketLocation")
+     *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:ListBucket&#34;)
-     *                     .resources(&#34;arn:aws:s3:::state-terraform-s3&#34;)
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringLike&#34;)
-     *                         .variable(&#34;s3:prefix&#34;)
+     *                         .test("StringLike")
+     *                         .variable("s3:prefix")
      *                         .values(                        
-     *                             &#34;&#34;,
-     *                             &#34;home/&#34;)
+     *                             "",
+     *                             "home/")
      *                         .build())
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:PutObject&#34;)
+     *                     .actions("s3:PutObject")
      *                     .resources(                    
-     *                         &#34;arn:aws:s3:::state-terraform-s3&#34;,
-     *                         &#34;arn:aws:s3:::state-terraform-s3/*&#34;)
+     *                         "arn:aws:s3:::state-terraform-s3",
+     *                         "arn:aws:s3:::state-terraform-s3/*")
      *                     .build())
      *             .build());
      * 
-     *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
-     *             .name(&#34;state-terraform-s3&#34;)
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
+     *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()        
+     *             .name("state-terraform-s3")
+     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -294,7 +302,8 @@ public final class MinioFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -320,39 +329,40 @@ public final class MinioFunctions {
      *         final var example = MinioFunctions.getIamPolicyDocument(GetIamPolicyDocumentArgs.builder()
      *             .statements(            
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;1&#34;)
+     *                     .sid("1")
      *                     .actions(                    
-     *                         &#34;s3:ListAllMyBuckets&#34;,
-     *                         &#34;s3:GetBucketLocation&#34;)
-     *                     .resources(&#34;arn:aws:s3:::*&#34;)
+     *                         "s3:ListAllMyBuckets",
+     *                         "s3:GetBucketLocation")
+     *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:ListBucket&#34;)
-     *                     .resources(&#34;arn:aws:s3:::state-terraform-s3&#34;)
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringLike&#34;)
-     *                         .variable(&#34;s3:prefix&#34;)
+     *                         .test("StringLike")
+     *                         .variable("s3:prefix")
      *                         .values(                        
-     *                             &#34;&#34;,
-     *                             &#34;home/&#34;)
+     *                             "",
+     *                             "home/")
      *                         .build())
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:PutObject&#34;)
+     *                     .actions("s3:PutObject")
      *                     .resources(                    
-     *                         &#34;arn:aws:s3:::state-terraform-s3&#34;,
-     *                         &#34;arn:aws:s3:::state-terraform-s3/*&#34;)
+     *                         "arn:aws:s3:::state-terraform-s3",
+     *                         "arn:aws:s3:::state-terraform-s3/*")
      *                     .build())
      *             .build());
      * 
-     *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
-     *             .name(&#34;state-terraform-s3&#34;)
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
+     *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()        
+     *             .name("state-terraform-s3")
+     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -363,7 +373,8 @@ public final class MinioFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -389,39 +400,40 @@ public final class MinioFunctions {
      *         final var example = MinioFunctions.getIamPolicyDocument(GetIamPolicyDocumentArgs.builder()
      *             .statements(            
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .sid(&#34;1&#34;)
+     *                     .sid("1")
      *                     .actions(                    
-     *                         &#34;s3:ListAllMyBuckets&#34;,
-     *                         &#34;s3:GetBucketLocation&#34;)
-     *                     .resources(&#34;arn:aws:s3:::*&#34;)
+     *                         "s3:ListAllMyBuckets",
+     *                         "s3:GetBucketLocation")
+     *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:ListBucket&#34;)
-     *                     .resources(&#34;arn:aws:s3:::state-terraform-s3&#34;)
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
-     *                         .test(&#34;StringLike&#34;)
-     *                         .variable(&#34;s3:prefix&#34;)
+     *                         .test("StringLike")
+     *                         .variable("s3:prefix")
      *                         .values(                        
-     *                             &#34;&#34;,
-     *                             &#34;home/&#34;)
+     *                             "",
+     *                             "home/")
      *                         .build())
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions(&#34;s3:PutObject&#34;)
+     *                     .actions("s3:PutObject")
      *                     .resources(                    
-     *                         &#34;arn:aws:s3:::state-terraform-s3&#34;,
-     *                         &#34;arn:aws:s3:::state-terraform-s3/*&#34;)
+     *                         "arn:aws:s3:::state-terraform-s3",
+     *                         "arn:aws:s3:::state-terraform-s3/*")
      *                     .build())
      *             .build());
      * 
-     *         var testPolicy = new IamPolicy(&#34;testPolicy&#34;, IamPolicyArgs.builder()        
-     *             .name(&#34;state-terraform-s3&#34;)
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -&gt; getIamPolicyDocumentResult.json()))
+     *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()        
+     *             .name("state-terraform-s3")
+     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

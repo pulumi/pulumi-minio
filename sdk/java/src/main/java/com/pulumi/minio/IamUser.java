@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,18 +44,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new IamUser(&#34;test&#34;, IamUserArgs.builder()        
- *             .name(&#34;test&#34;)
+ *         var test = new IamUser("test", IamUserArgs.builder()        
+ *             .name("test")
  *             .forceDestroy(true)
- *             .tags(Map.of(&#34;tag-key&#34;, &#34;tag-value&#34;))
+ *             .tags(Map.of("tag-key", "tag-value"))
  *             .build());
  * 
- *         ctx.export(&#34;test&#34;, test.id());
- *         ctx.export(&#34;status&#34;, test.status());
- *         ctx.export(&#34;secret&#34;, test.secret());
+ *         ctx.export("test", test.id());
+ *         ctx.export("status", test.status());
+ *         ctx.export("secret", test.secret());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
@@ -74,17 +76,9 @@ public class IamUser extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> disableUser() {
         return Codegen.optional(this.disableUser);
     }
-    /**
-     * Delete user even if it has non-Terraform-managed IAM access keys
-     * 
-     */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
-    /**
-     * @return Delete user even if it has non-Terraform-managed IAM access keys
-     * 
-     */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }
