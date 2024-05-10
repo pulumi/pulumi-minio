@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,14 +41,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new IamGroup(&#34;developer&#34;, IamGroupArgs.builder()        
- *             .name(&#34;developer&#34;)
+ *         var developer = new IamGroup("developer", IamGroupArgs.builder()        
+ *             .name("developer")
  *             .build());
  * 
- *         ctx.export(&#34;minioUserGroup&#34;, developer.groupName());
+ *         ctx.export("minioUserGroup", developer.groupName());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
@@ -67,17 +69,9 @@ public class IamGroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> disableGroup() {
         return Codegen.optional(this.disableGroup);
     }
-    /**
-     * Delete group even if it has non-Terraform-managed members
-     * 
-     */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
-    /**
-     * @return Delete group even if it has non-Terraform-managed members
-     * 
-     */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }

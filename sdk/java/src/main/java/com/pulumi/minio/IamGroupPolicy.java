@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,35 +42,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new IamGroup(&#34;developer&#34;, IamGroupArgs.builder()        
- *             .name(&#34;developer&#34;)
+ *         var developer = new IamGroup("developer", IamGroupArgs.builder()        
+ *             .name("developer")
  *             .build());
  * 
- *         var testPolicy = new IamGroupPolicy(&#34;testPolicy&#34;, IamGroupPolicyArgs.builder()        
- *             .name(&#34;state-terraform-s3&#34;)
+ *         var testPolicy = new IamGroupPolicy("testPolicy", IamGroupPolicyArgs.builder()        
+ *             .name("state-terraform-s3")
  *             .group(developer.id())
- *             .policy(&#34;&#34;&#34;
+ *             .policy("""
  * {
- *   &#34;Version&#34;:&#34;2012-10-17&#34;,
- *   &#34;Statement&#34;: [
+ *   "Version":"2012-10-17",
+ *   "Statement": [
  *     {
- *       &#34;Sid&#34;:&#34;ListAllBucket&#34;,
- *       &#34;Effect&#34;: &#34;Allow&#34;,
- *       &#34;Action&#34;: [&#34;s3:PutObject&#34;],
- *       &#34;Principal&#34;:&#34;*&#34;,
- *       &#34;Resource&#34;: &#34;arn:aws:s3:::state-terraform-s3/*&#34;
+ *       "Sid":"ListAllBucket",
+ *       "Effect": "Allow",
+ *       "Action": ["s3:PutObject"],
+ *       "Principal":"*",
+ *       "Resource": "arn:aws:s3:::state-terraform-s3/*"
  *     }
  *   ]
  * }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         ctx.export(&#34;minioName&#34;, developerMinioIamGroupMembership.id());
- *         ctx.export(&#34;minioPolicy&#34;, developerMinioIamGroupMembership.policy());
- *         ctx.export(&#34;minioGroup&#34;, developerMinioIamGroupMembership.group());
+ *         ctx.export("minioName", developerMinioIamGroupMembership.id());
+ *         ctx.export("minioPolicy", developerMinioIamGroupMembership.policy());
+ *         ctx.export("minioGroup", developerMinioIamGroupMembership.group());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,21 +46,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new S3Bucket(&#34;bucket&#34;, S3BucketArgs.builder()        
- *             .bucket(&#34;bucket&#34;)
+ *         var bucket = new S3Bucket("bucket", S3BucketArgs.builder()        
+ *             .bucket("bucket")
  *             .build());
  * 
- *         var bucket_lifecycle_rules = new IlmPolicy(&#34;bucket-lifecycle-rules&#34;, IlmPolicyArgs.builder()        
+ *         var bucket_lifecycle_rules = new IlmPolicy("bucket-lifecycle-rules", IlmPolicyArgs.builder()        
  *             .bucket(bucket.bucket())
  *             .rules(IlmPolicyRuleArgs.builder()
- *                 .id(&#34;expire-7d&#34;)
- *                 .expiration(&#34;7d&#34;)
+ *                 .id("expire-7d")
+ *                 .expiration("7d")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

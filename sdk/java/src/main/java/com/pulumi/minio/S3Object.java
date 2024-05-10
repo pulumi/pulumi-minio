@@ -18,7 +18,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,24 +43,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var stateTerraformS3 = new S3Bucket(&#34;stateTerraformS3&#34;, S3BucketArgs.builder()        
- *             .bucket(&#34;state-terraform-s3&#34;)
- *             .acl(&#34;public&#34;)
+ *         var stateTerraformS3 = new S3Bucket("stateTerraformS3", S3BucketArgs.builder()        
+ *             .bucket("state-terraform-s3")
+ *             .acl("public")
  *             .build());
  * 
- *         var txtFile = new S3Object(&#34;txtFile&#34;, S3ObjectArgs.builder()        
+ *         var txtFile = new S3Object("txtFile", S3ObjectArgs.builder()        
  *             .bucketName(stateTerraformS3.bucket())
- *             .objectName(&#34;text.txt&#34;)
- *             .content(&#34;Lorem ipsum dolor sit amet.&#34;)
- *             .contentType(&#34;text/plain&#34;)
+ *             .objectName("text.txt")
+ *             .content("Lorem ipsum dolor sit amet.")
+ *             .contentType("text/plain")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(stateTerraformS3)
  *                 .build());
  * 
- *         ctx.export(&#34;minioId&#34;, txtFile.id());
+ *         ctx.export("minioId", txtFile.id());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

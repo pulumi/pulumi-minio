@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,21 +44,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new IamUser(&#34;test&#34;, IamUserArgs.builder()        
- *             .name(&#34;test&#34;)
+ *         var test = new IamUser("test", IamUserArgs.builder()        
+ *             .name("test")
  *             .forceDestroy(true)
- *             .tags(Map.of(&#34;tag-key&#34;, &#34;tag-value&#34;))
+ *             .tags(Map.of("tag-key", "tag-value"))
  *             .build());
  * 
- *         var testServiceAccount = new IamServiceAccount(&#34;testServiceAccount&#34;, IamServiceAccountArgs.builder()        
+ *         var testServiceAccount = new IamServiceAccount("testServiceAccount", IamServiceAccountArgs.builder()        
  *             .targetUser(test.name())
  *             .build());
  * 
- *         ctx.export(&#34;minioUser&#34;, testServiceAccount.accessKey());
- *         ctx.export(&#34;minioPassword&#34;, testServiceAccount.secretKey());
+ *         ctx.export("minioUser", testServiceAccount.accessKey());
+ *         ctx.export("minioPassword", testServiceAccount.secretKey());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
