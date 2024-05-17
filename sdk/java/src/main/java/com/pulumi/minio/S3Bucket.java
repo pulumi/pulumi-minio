@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var stateTerraformS3 = new S3Bucket("stateTerraformS3", S3BucketArgs.builder()        
+ *         var stateTerraformS3 = new S3Bucket("stateTerraformS3", S3BucketArgs.builder()
  *             .bucket("state-terraform-s3")
  *             .acl("public")
  *             .build());

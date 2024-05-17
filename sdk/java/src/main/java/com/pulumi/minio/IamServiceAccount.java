@@ -44,13 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new IamUser("test", IamUserArgs.builder()        
+ *         var test = new IamUser("test", IamUserArgs.builder()
  *             .name("test")
  *             .forceDestroy(true)
  *             .tags(Map.of("tag-key", "tag-value"))
  *             .build());
  * 
- *         var testServiceAccount = new IamServiceAccount("testServiceAccount", IamServiceAccountArgs.builder()        
+ *         var testServiceAccount = new IamServiceAccount("testServiceAccount", IamServiceAccountArgs.builder()
  *             .targetUser(test.name())
  *             .build());
  * 
