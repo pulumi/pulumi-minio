@@ -42,11 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new IamGroup("developer", IamGroupArgs.builder()        
+ *         var developer = new IamGroup("developer", IamGroupArgs.builder()
  *             .name("developer")
  *             .build());
  * 
- *         var testPolicy = new IamGroupPolicy("testPolicy", IamGroupPolicyArgs.builder()        
+ *         var testPolicy = new IamGroupPolicy("testPolicy", IamGroupPolicyArgs.builder()
  *             .name("state-terraform-s3")
  *             .group(developer.id())
  *             .policy("""

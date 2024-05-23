@@ -46,11 +46,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket = new S3Bucket("bucket", S3BucketArgs.builder()        
+ *         var bucket = new S3Bucket("bucket", S3BucketArgs.builder()
  *             .bucket("bucket")
  *             .build());
  * 
- *         var bucket_lifecycle_rules = new IlmPolicy("bucket-lifecycle-rules", IlmPolicyArgs.builder()        
+ *         var bucket_lifecycle_rules = new IlmPolicy("bucket-lifecycle-rules", IlmPolicyArgs.builder()
  *             .bucket(bucket.bucket())
  *             .rules(IlmPolicyRuleArgs.builder()
  *                 .id("expire-7d")
