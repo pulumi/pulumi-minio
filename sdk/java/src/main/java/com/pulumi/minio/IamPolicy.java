@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()        
+ *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()
  *             .name("state-terraform-s3")
  *             .policy("""
  * {
