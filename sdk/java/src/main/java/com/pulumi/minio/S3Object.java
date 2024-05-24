@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var stateTerraformS3 = new S3Bucket("stateTerraformS3", S3BucketArgs.builder()        
+ *         var stateTerraformS3 = new S3Bucket("stateTerraformS3", S3BucketArgs.builder()
  *             .bucket("state-terraform-s3")
  *             .acl("public")
  *             .build());
  * 
- *         var txtFile = new S3Object("txtFile", S3ObjectArgs.builder()        
+ *         var txtFile = new S3Object("txtFile", S3ObjectArgs.builder()
  *             .bucketName(stateTerraformS3.bucket())
  *             .objectName("text.txt")
  *             .content("Lorem ipsum dolor sit amet.")
