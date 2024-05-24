@@ -43,15 +43,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new IamGroup("developer", IamGroupArgs.builder()        
+ *         var developer = new IamGroup("developer", IamGroupArgs.builder()
  *             .name("developer")
  *             .build());
  * 
- *         var userOne = new IamUser("userOne", IamUserArgs.builder()        
+ *         var userOne = new IamUser("userOne", IamUserArgs.builder()
  *             .name("test-user")
  *             .build());
  * 
- *         var developerIamGroupUserAttachment = new IamGroupUserAttachment("developerIamGroupUserAttachment", IamGroupUserAttachmentArgs.builder()        
+ *         var developerIamGroupUserAttachment = new IamGroupUserAttachment("developerIamGroupUserAttachment", IamGroupUserAttachmentArgs.builder()
  *             .groupName(group.name())
  *             .userName(userOne.name())
  *             .build());
