@@ -86,13 +86,11 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="minioAccessKey")
+    @_utilities.deprecated("""use minio_user instead""")
     def minio_access_key(self) -> Optional[pulumi.Input[str]]:
         """
         Minio Access Key
         """
-        warnings.warn("""use minio_user instead""", DeprecationWarning)
-        pulumi.log.warn("""minio_access_key is deprecated: use minio_user instead""")
-
         return pulumi.get(self, "minio_access_key")
 
     @minio_access_key.setter
@@ -176,13 +174,11 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="minioSecretKey")
+    @_utilities.deprecated("""use minio_password instead""")
     def minio_secret_key(self) -> Optional[pulumi.Input[str]]:
         """
         Minio Secret Key
         """
-        warnings.warn("""use minio_password instead""", DeprecationWarning)
-        pulumi.log.warn("""minio_secret_key is deprecated: use minio_password instead""")
-
         return pulumi.get(self, "minio_secret_key")
 
     @minio_secret_key.setter
@@ -336,13 +332,11 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="minioAccessKey")
+    @_utilities.deprecated("""use minio_user instead""")
     def minio_access_key(self) -> pulumi.Output[Optional[str]]:
         """
         Minio Access Key
         """
-        warnings.warn("""use minio_user instead""", DeprecationWarning)
-        pulumi.log.warn("""minio_access_key is deprecated: use minio_user instead""")
-
         return pulumi.get(self, "minio_access_key")
 
     @property
@@ -386,13 +380,11 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="minioSecretKey")
+    @_utilities.deprecated("""use minio_password instead""")
     def minio_secret_key(self) -> pulumi.Output[Optional[str]]:
         """
         Minio Secret Key
         """
-        warnings.warn("""use minio_password instead""", DeprecationWarning)
-        pulumi.log.warn("""minio_secret_key is deprecated: use minio_password instead""")
-
         return pulumi.get(self, "minio_secret_key")
 
     @property
