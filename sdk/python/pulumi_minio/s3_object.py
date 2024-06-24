@@ -246,7 +246,7 @@ class S3Object(pulumi.CustomResource):
             object_name="text.txt",
             content="Lorem ipsum dolor sit amet.",
             content_type="text/plain",
-            opts=pulumi.ResourceOptions(depends_on=[state_terraform_s3]))
+            opts = pulumi.ResourceOptions(depends_on=[state_terraform_s3]))
         pulumi.export("minioId", txt_file.id)
         ```
 
@@ -274,7 +274,7 @@ class S3Object(pulumi.CustomResource):
             object_name="text.txt",
             content="Lorem ipsum dolor sit amet.",
             content_type="text/plain",
-            opts=pulumi.ResourceOptions(depends_on=[state_terraform_s3]))
+            opts = pulumi.ResourceOptions(depends_on=[state_terraform_s3]))
         pulumi.export("minioId", txt_file.id)
         ```
 
