@@ -26,8 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := minio.GetIamPolicyDocument(ctx, &minio.GetIamPolicyDocumentArgs{
-//				Statements: pulumi.Array{
-//					minio.GetIamPolicyDocumentStatement{
+//				Statements: []minio.GetIamPolicyDocumentStatement{
+//					{
 //						Sid: pulumi.StringRef("1"),
 //						Actions: []string{
 //							"s3:ListAllMyBuckets",
@@ -37,7 +37,7 @@ import (
 //							"arn:aws:s3:::*",
 //						},
 //					},
-//					minio.GetIamPolicyDocumentStatement{
+//					{
 //						Actions: []string{
 //							"s3:ListBucket",
 //						},
@@ -55,7 +55,7 @@ import (
 //							},
 //						},
 //					},
-//					minio.GetIamPolicyDocumentStatement{
+//					{
 //						Actions: []string{
 //							"s3:PutObject",
 //						},
