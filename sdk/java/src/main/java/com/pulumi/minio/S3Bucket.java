@@ -11,7 +11,7 @@ import com.pulumi.minio.S3BucketArgs;
 import com.pulumi.minio.Utilities;
 import com.pulumi.minio.inputs.S3BucketState;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -100,10 +100,10 @@ public class S3Bucket extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> objectLocking() {
         return Codegen.optional(this.objectLocking);
     }
-    @Export(name="quota", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> quota;
+    @Export(name="quota", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> quota;
 
-    public Output<Optional<Integer>> quota() {
+    public Output<Optional<Double>> quota() {
         return Codegen.optional(this.quota);
     }
 

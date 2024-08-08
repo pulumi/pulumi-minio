@@ -6,7 +6,7 @@ package com.pulumi.minio.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -67,9 +67,9 @@ public final class S3BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     @Import(name="quota")
-    private @Nullable Output<Integer> quota;
+    private @Nullable Output<Double> quota;
 
-    public Optional<Output<Integer>> quota() {
+    public Optional<Output<Double>> quota() {
         return Optional.ofNullable(this.quota);
     }
 
@@ -167,12 +167,12 @@ public final class S3BucketState extends com.pulumi.resources.ResourceArgs {
             return objectLocking(Output.of(objectLocking));
         }
 
-        public Builder quota(@Nullable Output<Integer> quota) {
+        public Builder quota(@Nullable Output<Double> quota) {
             $.quota = quota;
             return this;
         }
 
-        public Builder quota(Integer quota) {
+        public Builder quota(Double quota) {
             return quota(Output.of(quota));
         }
 
