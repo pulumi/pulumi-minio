@@ -19,7 +19,7 @@ class S3BucketArgs:
                  bucket_prefix: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  object_locking: Optional[pulumi.Input[bool]] = None,
-                 quota: Optional[pulumi.Input[int]] = None):
+                 quota: Optional[pulumi.Input[float]] = None):
         """
         The set of arguments for constructing a S3Bucket resource.
         """
@@ -83,11 +83,11 @@ class S3BucketArgs:
 
     @property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input[int]]:
+    def quota(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input[int]]):
+    def quota(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "quota", value)
 
 
@@ -101,7 +101,7 @@ class _S3BucketState:
                  bucket_prefix: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  object_locking: Optional[pulumi.Input[bool]] = None,
-                 quota: Optional[pulumi.Input[int]] = None):
+                 quota: Optional[pulumi.Input[float]] = None):
         """
         Input properties used for looking up and filtering S3Bucket resources.
         """
@@ -187,11 +187,11 @@ class _S3BucketState:
 
     @property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input[int]]:
+    def quota(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input[int]]):
+    def quota(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "quota", value)
 
 
@@ -205,7 +205,7 @@ class S3Bucket(pulumi.CustomResource):
                  bucket_prefix: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  object_locking: Optional[pulumi.Input[bool]] = None,
-                 quota: Optional[pulumi.Input[int]] = None,
+                 quota: Optional[pulumi.Input[float]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -264,7 +264,7 @@ class S3Bucket(pulumi.CustomResource):
                  bucket_prefix: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  object_locking: Optional[pulumi.Input[bool]] = None,
-                 quota: Optional[pulumi.Input[int]] = None,
+                 quota: Optional[pulumi.Input[float]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -299,7 +299,7 @@ class S3Bucket(pulumi.CustomResource):
             bucket_prefix: Optional[pulumi.Input[str]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             object_locking: Optional[pulumi.Input[bool]] = None,
-            quota: Optional[pulumi.Input[int]] = None) -> 'S3Bucket':
+            quota: Optional[pulumi.Input[float]] = None) -> 'S3Bucket':
         """
         Get an existing S3Bucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -359,6 +359,6 @@ class S3Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def quota(self) -> pulumi.Output[Optional[int]]:
+    def quota(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "quota")
 

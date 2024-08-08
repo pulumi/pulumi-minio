@@ -59,7 +59,7 @@ namespace Pulumi.Minio
         public Output<bool?> ObjectLocking { get; private set; } = null!;
 
         [Output("quota")]
-        public Output<int?> Quota { get; private set; } = null!;
+        public Output<double?> Quota { get; private set; } = null!;
 
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Pulumi.Minio
         public Input<bool>? ObjectLocking { get; set; }
 
         [Input("quota")]
-        public Input<int>? Quota { get; set; }
+        public Input<double>? Quota { get; set; }
 
         public S3BucketArgs()
         {
@@ -155,7 +155,7 @@ namespace Pulumi.Minio
         public Input<bool>? ObjectLocking { get; set; }
 
         [Input("quota")]
-        public Input<int>? Quota { get; set; }
+        public Input<double>? Quota { get; set; }
 
         public S3BucketState()
         {

@@ -42,14 +42,14 @@ import (
 type S3Bucket struct {
 	pulumi.CustomResourceState
 
-	Acl              pulumi.StringPtrOutput `pulumi:"acl"`
-	Arn              pulumi.StringOutput    `pulumi:"arn"`
-	Bucket           pulumi.StringOutput    `pulumi:"bucket"`
-	BucketDomainName pulumi.StringOutput    `pulumi:"bucketDomainName"`
-	BucketPrefix     pulumi.StringPtrOutput `pulumi:"bucketPrefix"`
-	ForceDestroy     pulumi.BoolPtrOutput   `pulumi:"forceDestroy"`
-	ObjectLocking    pulumi.BoolPtrOutput   `pulumi:"objectLocking"`
-	Quota            pulumi.IntPtrOutput    `pulumi:"quota"`
+	Acl              pulumi.StringPtrOutput  `pulumi:"acl"`
+	Arn              pulumi.StringOutput     `pulumi:"arn"`
+	Bucket           pulumi.StringOutput     `pulumi:"bucket"`
+	BucketDomainName pulumi.StringOutput     `pulumi:"bucketDomainName"`
+	BucketPrefix     pulumi.StringPtrOutput  `pulumi:"bucketPrefix"`
+	ForceDestroy     pulumi.BoolPtrOutput    `pulumi:"forceDestroy"`
+	ObjectLocking    pulumi.BoolPtrOutput    `pulumi:"objectLocking"`
+	Quota            pulumi.Float64PtrOutput `pulumi:"quota"`
 }
 
 // NewS3Bucket registers a new resource with the given unique name, arguments, and options.
@@ -82,14 +82,14 @@ func GetS3Bucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering S3Bucket resources.
 type s3bucketState struct {
-	Acl              *string `pulumi:"acl"`
-	Arn              *string `pulumi:"arn"`
-	Bucket           *string `pulumi:"bucket"`
-	BucketDomainName *string `pulumi:"bucketDomainName"`
-	BucketPrefix     *string `pulumi:"bucketPrefix"`
-	ForceDestroy     *bool   `pulumi:"forceDestroy"`
-	ObjectLocking    *bool   `pulumi:"objectLocking"`
-	Quota            *int    `pulumi:"quota"`
+	Acl              *string  `pulumi:"acl"`
+	Arn              *string  `pulumi:"arn"`
+	Bucket           *string  `pulumi:"bucket"`
+	BucketDomainName *string  `pulumi:"bucketDomainName"`
+	BucketPrefix     *string  `pulumi:"bucketPrefix"`
+	ForceDestroy     *bool    `pulumi:"forceDestroy"`
+	ObjectLocking    *bool    `pulumi:"objectLocking"`
+	Quota            *float64 `pulumi:"quota"`
 }
 
 type S3BucketState struct {
@@ -100,7 +100,7 @@ type S3BucketState struct {
 	BucketPrefix     pulumi.StringPtrInput
 	ForceDestroy     pulumi.BoolPtrInput
 	ObjectLocking    pulumi.BoolPtrInput
-	Quota            pulumi.IntPtrInput
+	Quota            pulumi.Float64PtrInput
 }
 
 func (S3BucketState) ElementType() reflect.Type {
@@ -108,12 +108,12 @@ func (S3BucketState) ElementType() reflect.Type {
 }
 
 type s3bucketArgs struct {
-	Acl           *string `pulumi:"acl"`
-	Bucket        *string `pulumi:"bucket"`
-	BucketPrefix  *string `pulumi:"bucketPrefix"`
-	ForceDestroy  *bool   `pulumi:"forceDestroy"`
-	ObjectLocking *bool   `pulumi:"objectLocking"`
-	Quota         *int    `pulumi:"quota"`
+	Acl           *string  `pulumi:"acl"`
+	Bucket        *string  `pulumi:"bucket"`
+	BucketPrefix  *string  `pulumi:"bucketPrefix"`
+	ForceDestroy  *bool    `pulumi:"forceDestroy"`
+	ObjectLocking *bool    `pulumi:"objectLocking"`
+	Quota         *float64 `pulumi:"quota"`
 }
 
 // The set of arguments for constructing a S3Bucket resource.
@@ -123,7 +123,7 @@ type S3BucketArgs struct {
 	BucketPrefix  pulumi.StringPtrInput
 	ForceDestroy  pulumi.BoolPtrInput
 	ObjectLocking pulumi.BoolPtrInput
-	Quota         pulumi.IntPtrInput
+	Quota         pulumi.Float64PtrInput
 }
 
 func (S3BucketArgs) ElementType() reflect.Type {
@@ -241,8 +241,8 @@ func (o S3BucketOutput) ObjectLocking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *S3Bucket) pulumi.BoolPtrOutput { return v.ObjectLocking }).(pulumi.BoolPtrOutput)
 }
 
-func (o S3BucketOutput) Quota() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *S3Bucket) pulumi.IntPtrOutput { return v.Quota }).(pulumi.IntPtrOutput)
+func (o S3BucketOutput) Quota() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *S3Bucket) pulumi.Float64PtrOutput { return v.Quota }).(pulumi.Float64PtrOutput)
 }
 
 type S3BucketArrayOutput struct{ *pulumi.OutputState }

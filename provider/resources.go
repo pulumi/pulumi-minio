@@ -48,16 +48,30 @@ func Provider() tfbridge.ProviderInfo {
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "minio",
-		Description: "A Pulumi package for creating and managing minio cloud resources.",
-		Keywords:    []string{"pulumi", "minio"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-minio",
-		GitHubOrg:   "aminueza",
-		Config:      map[string]*tfbridge.SchemaInfo{},
-		Version:     version.Version,
+		P:            p,
+		Name:         "minio",
+		Description:  "A Pulumi package for creating and managing minio cloud resources.",
+		Keywords:     []string{"pulumi", "minio"},
+		License:      "Apache-2.0",
+		Homepage:     "https://pulumi.io",
+		Repository:   "https://github.com/pulumi/pulumi-minio",
+		GitHubOrg:    "aminueza",
+		Config:       map[string]*tfbridge.SchemaInfo{},
+		Version:      version.Version,
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"minio_s3_bucket": {Fields: map[string]*tfbridge.SchemaInfo{
+				// quota should be a u64 since it describes bytes sizes.
+				//
+				// The Pulumi schema doesn't support u64 (or i64), so we
+				// are converting to a float64, which should get us at
+				// least 2^52 bits of precision while minimizing the
+				// breaking change (int -> float) for our users.
+				"quota": {Type: "number"},
+			}},
+		},
+
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -92,7 +106,6 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 		},
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	prov.MustComputeTokens(tokens.SingleModule("minio_", mainMod,
