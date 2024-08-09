@@ -63,7 +63,7 @@ public class IamGroupMembership extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IamGroupMembership(String name) {
+    public IamGroupMembership(java.lang.String name) {
         this(name, IamGroupMembershipArgs.Empty);
     }
     /**
@@ -71,7 +71,7 @@ public class IamGroupMembership extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IamGroupMembership(String name, IamGroupMembershipArgs args) {
+    public IamGroupMembership(java.lang.String name, IamGroupMembershipArgs args) {
         this(name, args, null);
     }
     /**
@@ -80,15 +80,22 @@ public class IamGroupMembership extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IamGroupMembership(String name, IamGroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/iamGroupMembership:IamGroupMembership", name, args == null ? IamGroupMembershipArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IamGroupMembership(java.lang.String name, IamGroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/iamGroupMembership:IamGroupMembership", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IamGroupMembership(String name, Output<String> id, @Nullable IamGroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/iamGroupMembership:IamGroupMembership", name, state, makeResourceOptions(options, id));
+    private IamGroupMembership(java.lang.String name, Output<java.lang.String> id, @Nullable IamGroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/iamGroupMembership:IamGroupMembership", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IamGroupMembershipArgs makeArgs(IamGroupMembershipArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IamGroupMembershipArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -104,7 +111,7 @@ public class IamGroupMembership extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IamGroupMembership get(String name, Output<String> id, @Nullable IamGroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IamGroupMembership get(java.lang.String name, Output<java.lang.String> id, @Nullable IamGroupMembershipState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IamGroupMembership(name, id, state, options);
     }
 }

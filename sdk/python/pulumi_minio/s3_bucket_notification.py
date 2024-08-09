@@ -82,7 +82,7 @@ class S3BucketNotification(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 queues: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['S3BucketNotificationQueueArgs']]]]] = None,
+                 queues: Optional[pulumi.Input[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None,
                  __props__=None):
         """
         Create a S3BucketNotification resource with the given unique name, props, and options.
@@ -113,7 +113,7 @@ class S3BucketNotification(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 queues: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['S3BucketNotificationQueueArgs']]]]] = None,
+                 queues: Optional[pulumi.Input[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -138,7 +138,7 @@ class S3BucketNotification(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: Optional[pulumi.Input[str]] = None,
-            queues: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['S3BucketNotificationQueueArgs']]]]] = None) -> 'S3BucketNotification':
+            queues: Optional[pulumi.Input[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None) -> 'S3BucketNotification':
         """
         Get an existing S3BucketNotification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

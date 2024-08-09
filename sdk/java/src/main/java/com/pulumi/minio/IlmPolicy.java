@@ -84,7 +84,7 @@ public class IlmPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IlmPolicy(String name) {
+    public IlmPolicy(java.lang.String name) {
         this(name, IlmPolicyArgs.Empty);
     }
     /**
@@ -92,7 +92,7 @@ public class IlmPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IlmPolicy(String name, IlmPolicyArgs args) {
+    public IlmPolicy(java.lang.String name, IlmPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -101,15 +101,22 @@ public class IlmPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IlmPolicy(String name, IlmPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/ilmPolicy:IlmPolicy", name, args == null ? IlmPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IlmPolicy(java.lang.String name, IlmPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/ilmPolicy:IlmPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IlmPolicy(String name, Output<String> id, @Nullable IlmPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/ilmPolicy:IlmPolicy", name, state, makeResourceOptions(options, id));
+    private IlmPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable IlmPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/ilmPolicy:IlmPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IlmPolicyArgs makeArgs(IlmPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IlmPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -125,7 +132,7 @@ public class IlmPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IlmPolicy get(String name, Output<String> id, @Nullable IlmPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IlmPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable IlmPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IlmPolicy(name, id, state, options);
     }
 }
