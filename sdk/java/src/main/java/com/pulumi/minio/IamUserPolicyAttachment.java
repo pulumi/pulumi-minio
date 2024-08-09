@@ -36,7 +36,7 @@ public class IamUserPolicyAttachment extends com.pulumi.resources.CustomResource
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IamUserPolicyAttachment(String name) {
+    public IamUserPolicyAttachment(java.lang.String name) {
         this(name, IamUserPolicyAttachmentArgs.Empty);
     }
     /**
@@ -44,7 +44,7 @@ public class IamUserPolicyAttachment extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IamUserPolicyAttachment(String name, IamUserPolicyAttachmentArgs args) {
+    public IamUserPolicyAttachment(java.lang.String name, IamUserPolicyAttachmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -53,15 +53,22 @@ public class IamUserPolicyAttachment extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IamUserPolicyAttachment(String name, IamUserPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment", name, args == null ? IamUserPolicyAttachmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IamUserPolicyAttachment(java.lang.String name, IamUserPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IamUserPolicyAttachment(String name, Output<String> id, @Nullable IamUserPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment", name, state, makeResourceOptions(options, id));
+    private IamUserPolicyAttachment(java.lang.String name, Output<java.lang.String> id, @Nullable IamUserPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IamUserPolicyAttachmentArgs makeArgs(IamUserPolicyAttachmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IamUserPolicyAttachmentArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -77,7 +84,7 @@ public class IamUserPolicyAttachment extends com.pulumi.resources.CustomResource
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IamUserPolicyAttachment get(String name, Output<String> id, @Nullable IamUserPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IamUserPolicyAttachment get(java.lang.String name, Output<java.lang.String> id, @Nullable IamUserPolicyAttachmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IamUserPolicyAttachment(name, id, state, options);
     }
 }

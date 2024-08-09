@@ -81,7 +81,7 @@ class IlmPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IlmPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IlmPolicyRuleArgs', 'IlmPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         `IlmPolicy` handles lifecycle settings for a given `S3Bucket`.
@@ -95,10 +95,10 @@ class IlmPolicy(pulumi.CustomResource):
         bucket = minio.S3Bucket("bucket", bucket="bucket")
         bucket_lifecycle_rules = minio.IlmPolicy("bucket-lifecycle-rules",
             bucket=bucket.bucket,
-            rules=[minio.IlmPolicyRuleArgs(
-                id="expire-7d",
-                expiration="7d",
-            )])
+            rules=[{
+                "id": "expire-7d",
+                "expiration": "7d",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -122,10 +122,10 @@ class IlmPolicy(pulumi.CustomResource):
         bucket = minio.S3Bucket("bucket", bucket="bucket")
         bucket_lifecycle_rules = minio.IlmPolicy("bucket-lifecycle-rules",
             bucket=bucket.bucket,
-            rules=[minio.IlmPolicyRuleArgs(
-                id="expire-7d",
-                expiration="7d",
-            )])
+            rules=[{
+                "id": "expire-7d",
+                "expiration": "7d",
+            }])
         ```
 
         :param str resource_name: The name of the resource.
@@ -144,7 +144,7 @@ class IlmPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IlmPolicyRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IlmPolicyRuleArgs', 'IlmPolicyRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -171,7 +171,7 @@ class IlmPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IlmPolicyRuleArgs']]]]] = None) -> 'IlmPolicy':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IlmPolicyRuleArgs', 'IlmPolicyRuleArgsDict']]]]] = None) -> 'IlmPolicy':
         """
         Get an existing IlmPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

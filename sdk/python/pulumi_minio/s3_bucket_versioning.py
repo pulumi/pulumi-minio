@@ -81,7 +81,7 @@ class S3BucketVersioning(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 versioning_configuration: Optional[pulumi.Input[pulumi.InputType['S3BucketVersioningVersioningConfigurationArgs']]] = None,
+                 versioning_configuration: Optional[pulumi.Input[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None,
                  __props__=None):
         """
         Create a S3BucketVersioning resource with the given unique name, props, and options.
@@ -112,7 +112,7 @@ class S3BucketVersioning(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 versioning_configuration: Optional[pulumi.Input[pulumi.InputType['S3BucketVersioningVersioningConfigurationArgs']]] = None,
+                 versioning_configuration: Optional[pulumi.Input[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -139,7 +139,7 @@ class S3BucketVersioning(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: Optional[pulumi.Input[str]] = None,
-            versioning_configuration: Optional[pulumi.Input[pulumi.InputType['S3BucketVersioningVersioningConfigurationArgs']]] = None) -> 'S3BucketVersioning':
+            versioning_configuration: Optional[pulumi.Input[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None) -> 'S3BucketVersioning':
         """
         Get an existing S3BucketVersioning resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

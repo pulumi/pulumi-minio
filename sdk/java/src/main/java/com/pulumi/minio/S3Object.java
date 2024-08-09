@@ -120,7 +120,7 @@ public class S3Object extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public S3Object(String name) {
+    public S3Object(java.lang.String name) {
         this(name, S3ObjectArgs.Empty);
     }
     /**
@@ -128,7 +128,7 @@ public class S3Object extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public S3Object(String name, S3ObjectArgs args) {
+    public S3Object(java.lang.String name, S3ObjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -137,15 +137,22 @@ public class S3Object extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public S3Object(String name, S3ObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/s3Object:S3Object", name, args == null ? S3ObjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public S3Object(java.lang.String name, S3ObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/s3Object:S3Object", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private S3Object(String name, Output<String> id, @Nullable S3ObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/s3Object:S3Object", name, state, makeResourceOptions(options, id));
+    private S3Object(java.lang.String name, Output<java.lang.String> id, @Nullable S3ObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/s3Object:S3Object", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static S3ObjectArgs makeArgs(S3ObjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? S3ObjectArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -161,7 +168,7 @@ public class S3Object extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static S3Object get(String name, Output<String> id, @Nullable S3ObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static S3Object get(java.lang.String name, Output<java.lang.String> id, @Nullable S3ObjectState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new S3Object(name, id, state, options);
     }
 }
