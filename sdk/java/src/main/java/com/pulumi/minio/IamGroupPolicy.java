@@ -106,7 +106,7 @@ public class IamGroupPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IamGroupPolicy(String name) {
+    public IamGroupPolicy(java.lang.String name) {
         this(name, IamGroupPolicyArgs.Empty);
     }
     /**
@@ -114,7 +114,7 @@ public class IamGroupPolicy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IamGroupPolicy(String name, IamGroupPolicyArgs args) {
+    public IamGroupPolicy(java.lang.String name, IamGroupPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -123,15 +123,22 @@ public class IamGroupPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IamGroupPolicy(String name, IamGroupPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/iamGroupPolicy:IamGroupPolicy", name, args == null ? IamGroupPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IamGroupPolicy(java.lang.String name, IamGroupPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/iamGroupPolicy:IamGroupPolicy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IamGroupPolicy(String name, Output<String> id, @Nullable IamGroupPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/iamGroupPolicy:IamGroupPolicy", name, state, makeResourceOptions(options, id));
+    private IamGroupPolicy(java.lang.String name, Output<java.lang.String> id, @Nullable IamGroupPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/iamGroupPolicy:IamGroupPolicy", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static IamGroupPolicyArgs makeArgs(IamGroupPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IamGroupPolicyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -147,7 +154,7 @@ public class IamGroupPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IamGroupPolicy get(String name, Output<String> id, @Nullable IamGroupPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IamGroupPolicy get(java.lang.String name, Output<java.lang.String> id, @Nullable IamGroupPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IamGroupPolicy(name, id, state, options);
     }
 }

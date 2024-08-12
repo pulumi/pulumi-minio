@@ -26,7 +26,7 @@ public class KmsKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KmsKey(String name) {
+    public KmsKey(java.lang.String name) {
         this(name, KmsKeyArgs.Empty);
     }
     /**
@@ -34,7 +34,7 @@ public class KmsKey extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KmsKey(String name, KmsKeyArgs args) {
+    public KmsKey(java.lang.String name, KmsKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -43,15 +43,22 @@ public class KmsKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KmsKey(String name, KmsKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/kmsKey:KmsKey", name, args == null ? KmsKeyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public KmsKey(java.lang.String name, KmsKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/kmsKey:KmsKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KmsKey(String name, Output<String> id, @Nullable KmsKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/kmsKey:KmsKey", name, state, makeResourceOptions(options, id));
+    private KmsKey(java.lang.String name, Output<java.lang.String> id, @Nullable KmsKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/kmsKey:KmsKey", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static KmsKeyArgs makeArgs(KmsKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? KmsKeyArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -67,7 +74,7 @@ public class KmsKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KmsKey get(String name, Output<String> id, @Nullable KmsKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KmsKey get(java.lang.String name, Output<java.lang.String> id, @Nullable KmsKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KmsKey(name, id, state, options);
     }
 }
