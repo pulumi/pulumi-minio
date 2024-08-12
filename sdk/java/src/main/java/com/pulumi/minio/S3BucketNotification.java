@@ -35,7 +35,7 @@ public class S3BucketNotification extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public S3BucketNotification(String name) {
+    public S3BucketNotification(java.lang.String name) {
         this(name, S3BucketNotificationArgs.Empty);
     }
     /**
@@ -43,7 +43,7 @@ public class S3BucketNotification extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public S3BucketNotification(String name, S3BucketNotificationArgs args) {
+    public S3BucketNotification(java.lang.String name, S3BucketNotificationArgs args) {
         this(name, args, null);
     }
     /**
@@ -52,15 +52,22 @@ public class S3BucketNotification extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public S3BucketNotification(String name, S3BucketNotificationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/s3BucketNotification:S3BucketNotification", name, args == null ? S3BucketNotificationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public S3BucketNotification(java.lang.String name, S3BucketNotificationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/s3BucketNotification:S3BucketNotification", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private S3BucketNotification(String name, Output<String> id, @Nullable S3BucketNotificationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("minio:index/s3BucketNotification:S3BucketNotification", name, state, makeResourceOptions(options, id));
+    private S3BucketNotification(java.lang.String name, Output<java.lang.String> id, @Nullable S3BucketNotificationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("minio:index/s3BucketNotification:S3BucketNotification", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static S3BucketNotificationArgs makeArgs(S3BucketNotificationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? S3BucketNotificationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -76,7 +83,7 @@ public class S3BucketNotification extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static S3BucketNotification get(String name, Output<String> id, @Nullable S3BucketNotificationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static S3BucketNotification get(java.lang.String name, Output<java.lang.String> id, @Nullable S3BucketNotificationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new S3BucketNotification(name, id, state, options);
     }
 }
