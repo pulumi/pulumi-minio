@@ -21,7 +21,7 @@ namespace Pulumi.Minio.Outputs
         public readonly string Id;
         public readonly int? NoncurrentVersionExpirationDays;
         public readonly string? Status;
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private IlmPolicyRule(
@@ -35,7 +35,7 @@ namespace Pulumi.Minio.Outputs
 
             string? status,
 
-            ImmutableDictionary<string, object>? tags)
+            ImmutableDictionary<string, string>? tags)
         {
             Expiration = expiration;
             Filter = filter;

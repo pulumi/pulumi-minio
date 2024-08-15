@@ -11,7 +11,6 @@ import com.pulumi.minio.IamUserArgs;
 import com.pulumi.minio.Utilities;
 import com.pulumi.minio.inputs.IamUserState;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -100,10 +99,10 @@ public class IamUser extends com.pulumi.resources.CustomResource {
     public Output<String> status() {
         return this.status;
     }
-    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> tags;
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
 
-    public Output<Optional<Map<String,Object>>> tags() {
+    public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
