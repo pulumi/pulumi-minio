@@ -29,7 +29,7 @@ export interface IlmPolicyRule {
     id: string;
     noncurrentVersionExpirationDays?: number;
     status: string;
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
 }
 
 export interface S3BucketNotificationQueue {

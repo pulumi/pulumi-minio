@@ -43,7 +43,7 @@ class IlmPolicyRule(dict):
                  filter: Optional[str] = None,
                  noncurrent_version_expiration_days: Optional[int] = None,
                  status: Optional[str] = None,
-                 tags: Optional[Mapping[str, Any]] = None):
+                 tags: Optional[Mapping[str, str]] = None):
         """
         :param str id: The ID of this resource.
         """
@@ -89,7 +89,7 @@ class IlmPolicyRule(dict):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         return pulumi.get(self, "tags")
 
 

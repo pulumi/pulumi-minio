@@ -44,7 +44,7 @@ export interface IlmPolicyRule {
     id: pulumi.Input<string>;
     noncurrentVersionExpirationDays?: pulumi.Input<number>;
     status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface S3BucketNotificationQueue {

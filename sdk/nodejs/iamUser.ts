@@ -63,7 +63,7 @@ export class IamUser extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly secret!: pulumi.Output<string>;
     public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Rotate Minio User Secret Key
      */
@@ -118,7 +118,7 @@ export interface IamUserState {
     name?: pulumi.Input<string>;
     secret?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Rotate Minio User Secret Key
      */
@@ -136,7 +136,7 @@ export interface IamUserArgs {
     forceDestroy?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
     secret?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Rotate Minio User Secret Key
      */
