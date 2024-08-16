@@ -29,8 +29,8 @@ import (
 //			test, err := minio.NewIamUser(ctx, "test", &minio.IamUserArgs{
 //				Name:         pulumi.String("test"),
 //				ForceDestroy: pulumi.Bool(true),
-//				Tags: pulumi.Map{
-//					"tag-key": pulumi.Any("tag-value"),
+//				Tags: pulumi.StringMap{
+//					"tag-key": pulumi.String("tag-value"),
 //				},
 //			})
 //			if err != nil {

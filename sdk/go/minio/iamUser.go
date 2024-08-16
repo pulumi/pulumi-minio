@@ -28,8 +28,8 @@ import (
 //			test, err := minio.NewIamUser(ctx, "test", &minio.IamUserArgs{
 //				Name:         pulumi.String("test"),
 //				ForceDestroy: pulumi.Bool(true),
-//				Tags: pulumi.Map{
-//					"tag-key": pulumi.Any("tag-value"),
+//				Tags: pulumi.StringMap{
+//					"tag-key": pulumi.String("tag-value"),
 //				},
 //			})
 //			if err != nil {
@@ -47,12 +47,12 @@ type IamUser struct {
 	pulumi.CustomResourceState
 
 	// Disable user
-	DisableUser  pulumi.BoolPtrOutput `pulumi:"disableUser"`
-	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	Name         pulumi.StringOutput  `pulumi:"name"`
-	Secret       pulumi.StringOutput  `pulumi:"secret"`
-	Status       pulumi.StringOutput  `pulumi:"status"`
-	Tags         pulumi.MapOutput     `pulumi:"tags"`
+	DisableUser  pulumi.BoolPtrOutput   `pulumi:"disableUser"`
+	ForceDestroy pulumi.BoolPtrOutput   `pulumi:"forceDestroy"`
+	Name         pulumi.StringOutput    `pulumi:"name"`
+	Secret       pulumi.StringOutput    `pulumi:"secret"`
+	Status       pulumi.StringOutput    `pulumi:"status"`
+	Tags         pulumi.StringMapOutput `pulumi:"tags"`
 	// Rotate Minio User Secret Key
 	UpdateSecret pulumi.BoolPtrOutput `pulumi:"updateSecret"`
 }
@@ -95,12 +95,12 @@ func GetIamUser(ctx *pulumi.Context,
 // Input properties used for looking up and filtering IamUser resources.
 type iamUserState struct {
 	// Disable user
-	DisableUser  *bool                  `pulumi:"disableUser"`
-	ForceDestroy *bool                  `pulumi:"forceDestroy"`
-	Name         *string                `pulumi:"name"`
-	Secret       *string                `pulumi:"secret"`
-	Status       *string                `pulumi:"status"`
-	Tags         map[string]interface{} `pulumi:"tags"`
+	DisableUser  *bool             `pulumi:"disableUser"`
+	ForceDestroy *bool             `pulumi:"forceDestroy"`
+	Name         *string           `pulumi:"name"`
+	Secret       *string           `pulumi:"secret"`
+	Status       *string           `pulumi:"status"`
+	Tags         map[string]string `pulumi:"tags"`
 	// Rotate Minio User Secret Key
 	UpdateSecret *bool `pulumi:"updateSecret"`
 }
@@ -112,7 +112,7 @@ type IamUserState struct {
 	Name         pulumi.StringPtrInput
 	Secret       pulumi.StringPtrInput
 	Status       pulumi.StringPtrInput
-	Tags         pulumi.MapInput
+	Tags         pulumi.StringMapInput
 	// Rotate Minio User Secret Key
 	UpdateSecret pulumi.BoolPtrInput
 }
@@ -123,11 +123,11 @@ func (IamUserState) ElementType() reflect.Type {
 
 type iamUserArgs struct {
 	// Disable user
-	DisableUser  *bool                  `pulumi:"disableUser"`
-	ForceDestroy *bool                  `pulumi:"forceDestroy"`
-	Name         *string                `pulumi:"name"`
-	Secret       *string                `pulumi:"secret"`
-	Tags         map[string]interface{} `pulumi:"tags"`
+	DisableUser  *bool             `pulumi:"disableUser"`
+	ForceDestroy *bool             `pulumi:"forceDestroy"`
+	Name         *string           `pulumi:"name"`
+	Secret       *string           `pulumi:"secret"`
+	Tags         map[string]string `pulumi:"tags"`
 	// Rotate Minio User Secret Key
 	UpdateSecret *bool `pulumi:"updateSecret"`
 }
@@ -139,7 +139,7 @@ type IamUserArgs struct {
 	ForceDestroy pulumi.BoolPtrInput
 	Name         pulumi.StringPtrInput
 	Secret       pulumi.StringPtrInput
-	Tags         pulumi.MapInput
+	Tags         pulumi.StringMapInput
 	// Rotate Minio User Secret Key
 	UpdateSecret pulumi.BoolPtrInput
 }
@@ -252,8 +252,8 @@ func (o IamUserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *IamUser) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-func (o IamUserOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v *IamUser) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+func (o IamUserOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *IamUser) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Rotate Minio User Secret Key
