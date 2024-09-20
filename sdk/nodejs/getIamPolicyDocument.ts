@@ -52,7 +52,6 @@ import * as utilities from "./utilities";
  */
 export function getIamPolicyDocument(args?: GetIamPolicyDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPolicyDocumentResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("minio:index/getIamPolicyDocument:getIamPolicyDocument", {
         "overrideJson": args.overrideJson,
@@ -134,7 +133,15 @@ export interface GetIamPolicyDocumentResult {
  * ```
  */
 export function getIamPolicyDocumentOutput(args?: GetIamPolicyDocumentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamPolicyDocumentResult> {
-    return pulumi.output(args).apply((a: any) => getIamPolicyDocument(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("minio:index/getIamPolicyDocument:getIamPolicyDocument", {
+        "overrideJson": args.overrideJson,
+        "policyId": args.policyId,
+        "sourceJson": args.sourceJson,
+        "statements": args.statements,
+        "version": args.version,
+    }, opts);
 }
 
 /**

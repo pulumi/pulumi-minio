@@ -114,14 +114,20 @@ type GetIamPolicyDocumentResult struct {
 
 func GetIamPolicyDocumentOutput(ctx *pulumi.Context, args GetIamPolicyDocumentOutputArgs, opts ...pulumi.InvokeOption) GetIamPolicyDocumentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIamPolicyDocumentResult, error) {
+		ApplyT(func(v interface{}) (GetIamPolicyDocumentResultOutput, error) {
 			args := v.(GetIamPolicyDocumentArgs)
-			r, err := GetIamPolicyDocument(ctx, &args, opts...)
-			var s GetIamPolicyDocumentResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIamPolicyDocumentResult
+			secret, err := ctx.InvokePackageRaw("minio:index/getIamPolicyDocument:getIamPolicyDocument", args, &rv, "", opts...)
+			if err != nil {
+				return GetIamPolicyDocumentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIamPolicyDocumentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIamPolicyDocumentResultOutput), nil
+			}
+			return output, nil
 		}).(GetIamPolicyDocumentResultOutput)
 }
 
