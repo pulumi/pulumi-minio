@@ -4,18 +4,44 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'IlmPolicyRuleArgs',
+    'IlmPolicyRuleArgsDict',
     'S3BucketNotificationQueueArgs',
+    'S3BucketNotificationQueueArgsDict',
     'S3BucketVersioningVersioningConfigurationArgs',
+    'S3BucketVersioningVersioningConfigurationArgsDict',
     'GetIamPolicyDocumentStatementArgs',
+    'GetIamPolicyDocumentStatementArgsDict',
     'GetIamPolicyDocumentStatementConditionArgs',
+    'GetIamPolicyDocumentStatementConditionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class IlmPolicyRuleArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        The ID of this resource.
+        """
+        expiration: NotRequired[pulumi.Input[str]]
+        filter: NotRequired[pulumi.Input[str]]
+        noncurrent_version_expiration_days: NotRequired[pulumi.Input[int]]
+        status: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+elif False:
+    IlmPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IlmPolicyRuleArgs:
@@ -99,6 +125,19 @@ class IlmPolicyRuleArgs:
         pulumi.set(self, "tags", value)
 
 
+if not MYPY:
+    class S3BucketNotificationQueueArgsDict(TypedDict):
+        events: pulumi.Input[Sequence[pulumi.Input[str]]]
+        queue_arn: pulumi.Input[str]
+        filter_prefix: NotRequired[pulumi.Input[str]]
+        filter_suffix: NotRequired[pulumi.Input[str]]
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of this resource.
+        """
+elif False:
+    S3BucketNotificationQueueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3BucketNotificationQueueArgs:
     def __init__(__self__, *,
@@ -168,6 +207,14 @@ class S3BucketNotificationQueueArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class S3BucketVersioningVersioningConfigurationArgsDict(TypedDict):
+        status: pulumi.Input[str]
+        exclude_folders: NotRequired[pulumi.Input[bool]]
+        excluded_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    S3BucketVersioningVersioningConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3BucketVersioningVersioningConfigurationArgs:
     def __init__(__self__, *,
@@ -207,6 +254,17 @@ class S3BucketVersioningVersioningConfigurationArgs:
     def excluded_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "excluded_prefixes", value)
 
+
+if not MYPY:
+    class GetIamPolicyDocumentStatementArgsDict(TypedDict):
+        actions: NotRequired[Sequence[str]]
+        conditions: NotRequired[Sequence['GetIamPolicyDocumentStatementConditionArgsDict']]
+        effect: NotRequired[str]
+        principal: NotRequired[str]
+        resources: NotRequired[Sequence[str]]
+        sid: NotRequired[str]
+elif False:
+    GetIamPolicyDocumentStatementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetIamPolicyDocumentStatementArgs:
@@ -284,6 +342,14 @@ class GetIamPolicyDocumentStatementArgs:
     def sid(self, value: Optional[str]):
         pulumi.set(self, "sid", value)
 
+
+if not MYPY:
+    class GetIamPolicyDocumentStatementConditionArgsDict(TypedDict):
+        test: str
+        values: Sequence[str]
+        variable: str
+elif False:
+    GetIamPolicyDocumentStatementConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetIamPolicyDocumentStatementConditionArgs:
