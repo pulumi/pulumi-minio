@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -164,9 +169,6 @@ def get_iam_policy_document(override_json: Optional[str] = None,
         source_json=pulumi.get(__ret__, 'source_json'),
         statements=pulumi.get(__ret__, 'statements'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_iam_policy_document)
 def get_iam_policy_document_output(override_json: Optional[pulumi.Input[Optional[str]]] = None,
                                    policy_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    source_json: Optional[pulumi.Input[Optional[str]]] = None,
@@ -214,4 +216,19 @@ def get_iam_policy_document_output(override_json: Optional[pulumi.Input[Optional
         policy=example.json)
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['overrideJson'] = override_json
+    __args__['policyId'] = policy_id
+    __args__['sourceJson'] = source_json
+    __args__['statements'] = statements
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('minio:index/getIamPolicyDocument:getIamPolicyDocument', __args__, opts=opts, typ=GetIamPolicyDocumentResult)
+    return __ret__.apply(lambda __response__: GetIamPolicyDocumentResult(
+        id=pulumi.get(__response__, 'id'),
+        json=pulumi.get(__response__, 'json'),
+        override_json=pulumi.get(__response__, 'override_json'),
+        policy_id=pulumi.get(__response__, 'policy_id'),
+        source_json=pulumi.get(__response__, 'source_json'),
+        statements=pulumi.get(__response__, 'statements'),
+        version=pulumi.get(__response__, 'version')))
