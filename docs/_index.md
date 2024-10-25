@@ -161,7 +161,7 @@ authentication, in this order, and explained below:
 ### Static API Key
 
 Static credentials can be provided by adding the `minio-server`, `minioUser` and `minioPassword` variables in-line in the
-Minio provider block:
+Minio provider configuration:
 
 Usage:
 
@@ -274,7 +274,7 @@ $ export MINIO_PASSWORD="xgwgwqqwv"
 ```
 
 When using this method, you may omit the
-minio `provider` block entirely:
+minio provider configuration entirely:
 
 {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
 {{% choosable language typescript %}}
@@ -366,7 +366,7 @@ public class App {
 {{< /chooser >}}
 ## Configuration Reference
 
-The following configuration inputs are supported in the `provider` block:
+The following configuration inputs are supported in the provider configuration:
 
 * `minioServer` - (Required) Minio Host and Port. It must be provided, but
   it can also be sourced from the `MINIO_ENDPOINT` environment variable
