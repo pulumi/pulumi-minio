@@ -17,3 +17,4 @@ plugins:
 team: ecosystem
 pulumiConvert: 1
 registryDocs: true
+checkUpstreamUpgrade: false
