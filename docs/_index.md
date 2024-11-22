@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The minio provider is available as a package in all Pulumi languages:
+The Minio provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/minio`](https://www.npmjs.com/package/@pulumi/minio)
 * Python: [`pulumi-minio`](https://pypi.org/project/pulumi-minio/)
