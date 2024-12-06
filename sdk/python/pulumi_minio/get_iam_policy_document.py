@@ -174,7 +174,7 @@ def get_iam_policy_document_output(override_json: Optional[pulumi.Input[Optional
                                    source_json: Optional[pulumi.Input[Optional[str]]] = None,
                                    statements: Optional[pulumi.Input[Optional[Sequence[Union['GetIamPolicyDocumentStatementArgs', 'GetIamPolicyDocumentStatementArgsDict']]]]] = None,
                                    version: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamPolicyDocumentResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamPolicyDocumentResult]:
     """
     ## Example Usage
 
@@ -222,7 +222,7 @@ def get_iam_policy_document_output(override_json: Optional[pulumi.Input[Optional
     __args__['sourceJson'] = source_json
     __args__['statements'] = statements
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('minio:index/getIamPolicyDocument:getIamPolicyDocument', __args__, opts=opts, typ=GetIamPolicyDocumentResult)
     return __ret__.apply(lambda __response__: GetIamPolicyDocumentResult(
         id=pulumi.get(__response__, 'id'),

@@ -132,7 +132,7 @@ export interface GetIamPolicyDocumentResult {
  * });
  * ```
  */
-export function getIamPolicyDocumentOutput(args?: GetIamPolicyDocumentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamPolicyDocumentResult> {
+export function getIamPolicyDocumentOutput(args?: GetIamPolicyDocumentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamPolicyDocumentResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("minio:index/getIamPolicyDocument:getIamPolicyDocument", {
