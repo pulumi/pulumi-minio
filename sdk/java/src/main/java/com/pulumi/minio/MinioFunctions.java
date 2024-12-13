@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.minio.Utilities;
 import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
 import com.pulumi.minio.inputs.GetIamPolicyDocumentPlainArgs;
@@ -367,6 +368,77 @@ public final class MinioFunctions {
      * 
      */
     public static Output<GetIamPolicyDocumentResult> getIamPolicyDocument(GetIamPolicyDocumentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("minio:index/getIamPolicyDocument:getIamPolicyDocument", TypeShape.of(GetIamPolicyDocumentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.minio.MinioFunctions;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
+     * import com.pulumi.minio.IamPolicy;
+     * import com.pulumi.minio.IamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MinioFunctions.getIamPolicyDocument(GetIamPolicyDocumentArgs.builder()
+     *             .statements(            
+     *                 GetIamPolicyDocumentStatementArgs.builder()
+     *                     .sid("1")
+     *                     .actions(                    
+     *                         "s3:ListAllMyBuckets",
+     *                         "s3:GetBucketLocation")
+     *                     .resources("arn:aws:s3:::*")
+     *                     .build(),
+     *                 GetIamPolicyDocumentStatementArgs.builder()
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
+     *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
+     *                         .test("StringLike")
+     *                         .variable("s3:prefix")
+     *                         .values(                        
+     *                             "",
+     *                             "home/")
+     *                         .build())
+     *                     .build(),
+     *                 GetIamPolicyDocumentStatementArgs.builder()
+     *                     .actions("s3:PutObject")
+     *                     .resources(                    
+     *                         "arn:aws:s3:::state-terraform-s3",
+     *                         "arn:aws:s3:::state-terraform-s3/*")
+     *                     .build())
+     *             .build());
+     * 
+     *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()
+     *             .name("state-terraform-s3")
+     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIamPolicyDocumentResult> getIamPolicyDocument(GetIamPolicyDocumentArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("minio:index/getIamPolicyDocument:getIamPolicyDocument", TypeShape.of(GetIamPolicyDocumentResult.class), args, Utilities.withVersion(options));
     }
     /**

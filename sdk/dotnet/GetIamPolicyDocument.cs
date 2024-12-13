@@ -168,6 +168,85 @@ namespace Pulumi.Minio
         /// </summary>
         public static Output<GetIamPolicyDocumentResult> Invoke(GetIamPolicyDocumentInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyDocumentResult>("minio:index/getIamPolicyDocument:getIamPolicyDocument", args ?? new GetIamPolicyDocumentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Minio = Pulumi.Minio;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Minio.GetIamPolicyDocument.Invoke(new()
+        ///     {
+        ///         Statements = new[]
+        ///         {
+        ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Sid = "1",
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "s3:ListAllMyBuckets",
+        ///                     "s3:GetBucketLocation",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "arn:aws:s3:::*",
+        ///                 },
+        ///             },
+        ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "s3:ListBucket",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "arn:aws:s3:::state-terraform-s3",
+        ///                 },
+        ///                 Conditions = new[]
+        ///                 {
+        ///                     new Minio.Inputs.GetIamPolicyDocumentStatementConditionInputArgs
+        ///                     {
+        ///                         Test = "StringLike",
+        ///                         Variable = "s3:prefix",
+        ///                         Values = new[]
+        ///                         {
+        ///                             "",
+        ///                             "home/",
+        ///                         },
+        ///                     },
+        ///                 },
+        ///             },
+        ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
+        ///             {
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "s3:PutObject",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "arn:aws:s3:::state-terraform-s3",
+        ///                     "arn:aws:s3:::state-terraform-s3/*",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var testPolicy = new Minio.IamPolicy("test_policy", new()
+        ///     {
+        ///         Name = "state-terraform-s3",
+        ///         Policy = example.Apply(getIamPolicyDocumentResult =&gt; getIamPolicyDocumentResult.Json),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIamPolicyDocumentResult> Invoke(GetIamPolicyDocumentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyDocumentResult>("minio:index/getIamPolicyDocument:getIamPolicyDocument", args ?? new GetIamPolicyDocumentInvokeArgs(), options.WithDefaults());
     }
 
 
