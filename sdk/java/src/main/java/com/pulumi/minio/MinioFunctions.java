@@ -73,7 +73,7 @@ public final class MinioFunctions {
      * 
      *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()
      *             .name("state-terraform-s3")
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
+     *             .policy(example.json())
      *             .build());
      * 
      *     }
@@ -144,7 +144,7 @@ public final class MinioFunctions {
      * 
      *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()
      *             .name("state-terraform-s3")
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
+     *             .policy(example.json())
      *             .build());
      * 
      *     }
@@ -215,7 +215,7 @@ public final class MinioFunctions {
      * 
      *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()
      *             .name("state-terraform-s3")
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
+     *             .policy(example.json())
      *             .build());
      * 
      *     }
@@ -286,7 +286,7 @@ public final class MinioFunctions {
      * 
      *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()
      *             .name("state-terraform-s3")
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
+     *             .policy(example.json())
      *             .build());
      * 
      *     }
@@ -357,7 +357,7 @@ public final class MinioFunctions {
      * 
      *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()
      *             .name("state-terraform-s3")
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
+     *             .policy(example.json())
      *             .build());
      * 
      *     }
@@ -428,7 +428,7 @@ public final class MinioFunctions {
      * 
      *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()
      *             .name("state-terraform-s3")
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
+     *             .policy(example.json())
      *             .build());
      * 
      *     }
@@ -499,7 +499,7 @@ public final class MinioFunctions {
      * 
      *         var testPolicy = new IamPolicy("testPolicy", IamPolicyArgs.builder()
      *             .name("state-terraform-s3")
-     *             .policy(example.applyValue(getIamPolicyDocumentResult -> getIamPolicyDocumentResult.json()))
+     *             .policy(example.json())
      *             .build());
      * 
      *     }
