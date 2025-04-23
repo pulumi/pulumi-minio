@@ -80,6 +80,9 @@ class _IamGroupUserAttachmentState:
 
 
 class IamGroupUserAttachment(pulumi.CustomResource):
+
+    pulumi_type = "minio:index/iamGroupUserAttachment:IamGroupUserAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

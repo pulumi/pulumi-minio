@@ -103,6 +103,9 @@ class _S3BucketServerSideEncryptionState:
 
 
 class S3BucketServerSideEncryption(pulumi.CustomResource):
+
+    pulumi_type = "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

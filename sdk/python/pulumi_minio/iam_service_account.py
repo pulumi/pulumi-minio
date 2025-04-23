@@ -189,6 +189,9 @@ class _IamServiceAccountState:
 
 
 class IamServiceAccount(pulumi.CustomResource):
+
+    pulumi_type = "minio:index/iamServiceAccount:IamServiceAccount"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
