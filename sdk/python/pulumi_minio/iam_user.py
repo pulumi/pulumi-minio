@@ -206,6 +206,9 @@ class _IamUserState:
 
 
 class IamUser(pulumi.CustomResource):
+
+    pulumi_type = "minio:index/iamUser:IamUser"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

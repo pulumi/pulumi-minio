@@ -82,6 +82,9 @@ class _S3BucketVersioningState:
 
 
 class S3BucketVersioning(pulumi.CustomResource):
+
+    pulumi_type = "minio:index/s3BucketVersioning:S3BucketVersioning"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
