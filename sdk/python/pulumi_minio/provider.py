@@ -229,6 +229,9 @@ class ProviderArgs:
 
 
 class Provider(pulumi.ProviderResource):
+
+    pulumi_type = "pulumi:providers:minio"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

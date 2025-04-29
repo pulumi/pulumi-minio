@@ -57,6 +57,9 @@ class _KmsKeyState:
 
 
 class KmsKey(pulumi.CustomResource):
+
+    pulumi_type = "minio:index/kmsKey:KmsKey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

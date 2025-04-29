@@ -224,6 +224,9 @@ class _S3ObjectState:
 
 
 class S3Object(pulumi.CustomResource):
+
+    pulumi_type = "minio:index/s3Object:S3Object"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

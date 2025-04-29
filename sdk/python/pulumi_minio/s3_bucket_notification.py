@@ -83,6 +83,9 @@ class _S3BucketNotificationState:
 
 
 class S3BucketNotification(pulumi.CustomResource):
+
+    pulumi_type = "minio:index/s3BucketNotification:S3BucketNotification"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
