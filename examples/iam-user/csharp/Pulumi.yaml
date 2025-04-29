@@ -1,3 +1,0 @@
-name: minio-iamuser-csharp
-runtime: dotnet
-description: A minimal C# Pulumi program
