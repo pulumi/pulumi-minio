@@ -126,6 +126,9 @@ class _IamGroupState:
 
 
 class IamGroup(pulumi.CustomResource):
+
+    pulumi_type = "minio:index/iamGroup:IamGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

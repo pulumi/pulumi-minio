@@ -80,6 +80,9 @@ class _IamGroupPolicyAttachmentState:
 
 
 class IamGroupPolicyAttachment(pulumi.CustomResource):
+
+    pulumi_type = "minio:index/iamGroupPolicyAttachment:IamGroupPolicyAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
