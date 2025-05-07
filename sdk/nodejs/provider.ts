@@ -55,7 +55,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Minio Host and Port
      */
-    public readonly minioServer!: pulumi.Output<string>;
+    public readonly minioServer!: pulumi.Output<string | undefined>;
     /**
      * Minio Session Token
      */
@@ -72,13 +72,10 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.minioServer === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'minioServer'");
-            }
             resourceInputs["minioAccessKey"] = args ? args.minioAccessKey : undefined;
             resourceInputs["minioApiVersion"] = args ? args.minioApiVersion : undefined;
             resourceInputs["minioCacertFile"] = args ? args.minioCacertFile : undefined;
@@ -95,6 +92,15 @@ export class Provider extends pulumi.ProviderResource {
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
+    }
+
+    /**
+     * This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+     */
+    terraformConfig(): pulumi.Output<Provider.TerraformConfigResult> {
+        return pulumi.runtime.call("pulumi:providers:minio/terraformConfig", {
+            "__self__": this,
+        }, this);
     }
 }
 
@@ -136,7 +142,7 @@ export interface ProviderArgs {
     /**
      * Minio Host and Port
      */
-    minioServer: pulumi.Input<string>;
+    minioServer?: pulumi.Input<string>;
     /**
      * Minio Session Token
      */
@@ -149,4 +155,14 @@ export interface ProviderArgs {
      * Minio User
      */
     minioUser?: pulumi.Input<string>;
+}
+
+export namespace Provider {
+    /**
+     * The results of the Provider.terraformConfig method.
+     */
+    export interface TerraformConfigResult {
+        readonly result: {[key: string]: any};
+    }
+
 }

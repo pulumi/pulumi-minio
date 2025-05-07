@@ -20,7 +20,6 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 minio_server: pulumi.Input[builtins.str],
                  minio_access_key: Optional[pulumi.Input[builtins.str]] = None,
                  minio_api_version: Optional[pulumi.Input[builtins.str]] = None,
                  minio_cacert_file: Optional[pulumi.Input[builtins.str]] = None,
@@ -30,23 +29,23 @@ class ProviderArgs:
                  minio_password: Optional[pulumi.Input[builtins.str]] = None,
                  minio_region: Optional[pulumi.Input[builtins.str]] = None,
                  minio_secret_key: Optional[pulumi.Input[builtins.str]] = None,
+                 minio_server: Optional[pulumi.Input[builtins.str]] = None,
                  minio_session_token: Optional[pulumi.Input[builtins.str]] = None,
                  minio_ssl: Optional[pulumi.Input[builtins.bool]] = None,
                  minio_user: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[builtins.str] minio_server: Minio Host and Port
         :param pulumi.Input[builtins.str] minio_access_key: Minio Access Key
         :param pulumi.Input[builtins.str] minio_api_version: Minio API Version (type: string, options: v2 or v4, default: v4)
         :param pulumi.Input[builtins.bool] minio_insecure: Disable SSL certificate verification (default: false)
         :param pulumi.Input[builtins.str] minio_password: Minio Password
         :param pulumi.Input[builtins.str] minio_region: Minio Region (default: us-east-1)
         :param pulumi.Input[builtins.str] minio_secret_key: Minio Secret Key
+        :param pulumi.Input[builtins.str] minio_server: Minio Host and Port
         :param pulumi.Input[builtins.str] minio_session_token: Minio Session Token
         :param pulumi.Input[builtins.bool] minio_ssl: Minio SSL enabled (default: false)
         :param pulumi.Input[builtins.str] minio_user: Minio User
         """
-        pulumi.set(__self__, "minio_server", minio_server)
         if minio_access_key is not None:
             warnings.warn("""use minio_user instead""", DeprecationWarning)
             pulumi.log.warn("""minio_access_key is deprecated: use minio_user instead""")
@@ -71,24 +70,14 @@ class ProviderArgs:
             pulumi.log.warn("""minio_secret_key is deprecated: use minio_password instead""")
         if minio_secret_key is not None:
             pulumi.set(__self__, "minio_secret_key", minio_secret_key)
+        if minio_server is not None:
+            pulumi.set(__self__, "minio_server", minio_server)
         if minio_session_token is not None:
             pulumi.set(__self__, "minio_session_token", minio_session_token)
         if minio_ssl is not None:
             pulumi.set(__self__, "minio_ssl", minio_ssl)
         if minio_user is not None:
             pulumi.set(__self__, "minio_user", minio_user)
-
-    @property
-    @pulumi.getter(name="minioServer")
-    def minio_server(self) -> pulumi.Input[builtins.str]:
-        """
-        Minio Host and Port
-        """
-        return pulumi.get(self, "minio_server")
-
-    @minio_server.setter
-    def minio_server(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "minio_server", value)
 
     @property
     @pulumi.getter(name="minioAccessKey")
@@ -192,6 +181,18 @@ class ProviderArgs:
         pulumi.set(self, "minio_secret_key", value)
 
     @property
+    @pulumi.getter(name="minioServer")
+    def minio_server(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Minio Host and Port
+        """
+        return pulumi.get(self, "minio_server")
+
+    @minio_server.setter
+    def minio_server(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "minio_server", value)
+
+    @property
     @pulumi.getter(name="minioSessionToken")
     def minio_session_token(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -228,10 +229,8 @@ class ProviderArgs:
         pulumi.set(self, "minio_user", value)
 
 
+@pulumi.type_token("pulumi:providers:minio")
 class Provider(pulumi.ProviderResource):
-
-    pulumi_type = "pulumi:providers:minio"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -273,7 +272,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the minio package. By default, resources use package-wide configuration
@@ -327,8 +326,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["minio_password"] = minio_password
             __props__.__dict__["minio_region"] = minio_region
             __props__.__dict__["minio_secret_key"] = minio_secret_key
-            if minio_server is None and not opts.urn:
-                raise TypeError("Missing required property 'minio_server'")
             __props__.__dict__["minio_server"] = minio_server
             __props__.__dict__["minio_session_token"] = minio_session_token
             __props__.__dict__["minio_ssl"] = pulumi.Output.from_input(minio_ssl).apply(pulumi.runtime.to_json) if minio_ssl is not None else None
@@ -398,7 +395,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="minioServer")
-    def minio_server(self) -> pulumi.Output[builtins.str]:
+    def minio_server(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Minio Host and Port
         """
@@ -419,4 +416,24 @@ class Provider(pulumi.ProviderResource):
         Minio User
         """
         return pulumi.get(self, "minio_user")
+
+    @pulumi.output_type
+    class TerraformConfigResult:
+        def __init__(__self__, result=None):
+            if result and not isinstance(result, dict):
+                raise TypeError("Expected argument 'result' to be a dict")
+            pulumi.set(__self__, "result", result)
+
+        @property
+        @pulumi.getter
+        def result(self) -> Mapping[str, Any]:
+            return pulumi.get(self, "result")
+
+    def terraform_config(__self__) -> pulumi.Output['Provider.TerraformConfigResult']:
+        """
+        This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+        """
+        __args__ = dict()
+        __args__['__self__'] = __self__
+        return pulumi.runtime.call('pulumi:providers:minio/terraformConfig', __args__, res=__self__, typ=Provider.TerraformConfigResult)
 

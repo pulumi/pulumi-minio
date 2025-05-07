@@ -201,10 +201,8 @@ class _S3BucketState:
         pulumi.set(self, "quota", value)
 
 
+@pulumi.type_token("minio:index/s3Bucket:S3Bucket")
 class S3Bucket(pulumi.CustomResource):
-
-    pulumi_type = "minio:index/s3Bucket:S3Bucket"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

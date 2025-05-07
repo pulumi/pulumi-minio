@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-minio/sdk/go/minio/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -37,7 +36,7 @@ type Provider struct {
 	// Deprecated: use minioPassword instead
 	MinioSecretKey pulumi.StringPtrOutput `pulumi:"minioSecretKey"`
 	// Minio Host and Port
-	MinioServer pulumi.StringOutput `pulumi:"minioServer"`
+	MinioServer pulumi.StringPtrOutput `pulumi:"minioServer"`
 	// Minio Session Token
 	MinioSessionToken pulumi.StringPtrOutput `pulumi:"minioSessionToken"`
 	// Minio User
@@ -48,12 +47,9 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.MinioServer == nil {
-		return nil, errors.New("invalid value for required argument 'MinioServer'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:minio", name, args, &resource, opts...)
@@ -84,7 +80,7 @@ type providerArgs struct {
 	// Deprecated: use minioPassword instead
 	MinioSecretKey *string `pulumi:"minioSecretKey"`
 	// Minio Host and Port
-	MinioServer string `pulumi:"minioServer"`
+	MinioServer *string `pulumi:"minioServer"`
 	// Minio Session Token
 	MinioSessionToken *string `pulumi:"minioSessionToken"`
 	// Minio SSL enabled (default: false)
@@ -115,7 +111,7 @@ type ProviderArgs struct {
 	// Deprecated: use minioPassword instead
 	MinioSecretKey pulumi.StringPtrInput
 	// Minio Host and Port
-	MinioServer pulumi.StringInput
+	MinioServer pulumi.StringPtrInput
 	// Minio Session Token
 	MinioSessionToken pulumi.StringPtrInput
 	// Minio SSL enabled (default: false)
@@ -126,6 +122,29 @@ type ProviderArgs struct {
 
 func (ProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*providerArgs)(nil)).Elem()
+}
+
+// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+func (r *Provider) TerraformConfig(ctx *pulumi.Context) (ProviderTerraformConfigResultOutput, error) {
+	out, err := ctx.Call("pulumi:providers:minio/terraformConfig", nil, ProviderTerraformConfigResultOutput{}, r)
+	if err != nil {
+		return ProviderTerraformConfigResultOutput{}, err
+	}
+	return out.(ProviderTerraformConfigResultOutput), nil
+}
+
+type ProviderTerraformConfigResult struct {
+	Result map[string]interface{} `pulumi:"result"`
+}
+
+type ProviderTerraformConfigResultOutput struct{ *pulumi.OutputState }
+
+func (ProviderTerraformConfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderTerraformConfigResult)(nil)).Elem()
+}
+
+func (o ProviderTerraformConfigResultOutput) Result() pulumi.MapOutput {
+	return o.ApplyT(func(v ProviderTerraformConfigResult) map[string]interface{} { return v.Result }).(pulumi.MapOutput)
 }
 
 type ProviderInput interface {
@@ -203,8 +222,8 @@ func (o ProviderOutput) MinioSecretKey() pulumi.StringPtrOutput {
 }
 
 // Minio Host and Port
-func (o ProviderOutput) MinioServer() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.MinioServer }).(pulumi.StringOutput)
+func (o ProviderOutput) MinioServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MinioServer }).(pulumi.StringPtrOutput)
 }
 
 // Minio Session Token
@@ -220,4 +239,5 @@ func (o ProviderOutput) MinioUser() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})
+	pulumi.RegisterOutputType(ProviderTerraformConfigResultOutput{})
 }

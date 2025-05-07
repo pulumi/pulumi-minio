@@ -102,10 +102,8 @@ class _S3BucketServerSideEncryptionState:
         pulumi.set(self, "kms_key_id", value)
 
 
+@pulumi.type_token("minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption")
 class S3BucketServerSideEncryption(pulumi.CustomResource):
-
-    pulumi_type = "minio:index/s3BucketServerSideEncryption:S3BucketServerSideEncryption"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

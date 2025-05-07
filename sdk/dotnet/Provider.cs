@@ -61,7 +61,7 @@ namespace Pulumi.Minio
         /// Minio Host and Port
         /// </summary>
         [Output("minioServer")]
-        public Output<string> MinioServer { get; private set; } = null!;
+        public Output<string?> MinioServer { get; private set; } = null!;
 
         /// <summary>
         /// Minio Session Token
@@ -83,7 +83,7 @@ namespace Pulumi.Minio
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("minio", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -99,6 +99,12 @@ namespace Pulumi.Minio
             merged.Id = id ?? merged.Id;
             return merged;
         }
+
+        /// <summary>
+        /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+        /// </summary>
+        public global::Pulumi.Output<ProviderTerraformConfigResult> TerraformConfig()
+            => global::Pulumi.Deployment.Instance.Call<ProviderTerraformConfigResult>("pulumi:providers:minio/terraformConfig", CallArgs.Empty, this);
     }
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
@@ -151,8 +157,8 @@ namespace Pulumi.Minio
         /// <summary>
         /// Minio Host and Port
         /// </summary>
-        [Input("minioServer", required: true)]
-        public Input<string> MinioServer { get; set; } = null!;
+        [Input("minioServer")]
+        public Input<string>? MinioServer { get; set; }
 
         /// <summary>
         /// Minio Session Token
@@ -176,5 +182,20 @@ namespace Pulumi.Minio
         {
         }
         public static new ProviderArgs Empty => new ProviderArgs();
+    }
+
+    /// <summary>
+    /// The results of the <see cref="Provider.TerraformConfig"/> method.
+    /// </summary>
+    [OutputType]
+    public sealed class ProviderTerraformConfigResult
+    {
+        public readonly ImmutableDictionary<string, object> Result;
+
+        [OutputConstructor]
+        private ProviderTerraformConfigResult(ImmutableDictionary<string, object> result)
+        {
+            Result = result;
+        }
     }
 }
