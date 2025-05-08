@@ -127,10 +127,8 @@ class _IamGroupPolicyState:
         pulumi.set(self, "policy", value)
 
 
+@pulumi.type_token("minio:index/iamGroupPolicy:IamGroupPolicy")
 class IamGroupPolicy(pulumi.CustomResource):
-
-    pulumi_type = "minio:index/iamGroupPolicy:IamGroupPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

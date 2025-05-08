@@ -79,10 +79,8 @@ class _IamGroupUserAttachmentState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("minio:index/iamGroupUserAttachment:IamGroupUserAttachment")
 class IamGroupUserAttachment(pulumi.CustomResource):
-
-    pulumi_type = "minio:index/iamGroupUserAttachment:IamGroupUserAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

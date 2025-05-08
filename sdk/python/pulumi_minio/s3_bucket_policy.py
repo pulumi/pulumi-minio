@@ -79,10 +79,8 @@ class _S3BucketPolicyState:
         pulumi.set(self, "policy", value)
 
 
+@pulumi.type_token("minio:index/s3BucketPolicy:S3BucketPolicy")
 class S3BucketPolicy(pulumi.CustomResource):
-
-    pulumi_type = "minio:index/s3BucketPolicy:S3BucketPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

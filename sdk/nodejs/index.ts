@@ -65,10 +65,8 @@ export type KmsKey = import("./kmsKey").KmsKey;
 export const KmsKey: typeof import("./kmsKey").KmsKey = null as any;
 utilities.lazyLoad(exports, ["KmsKey"], () => require("./kmsKey"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { S3BucketArgs, S3BucketState } from "./s3bucket";
 export type S3Bucket = import("./s3bucket").S3Bucket;
