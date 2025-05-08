@@ -205,10 +205,8 @@ class _IamUserState:
         pulumi.set(self, "update_secret", value)
 
 
+@pulumi.type_token("minio:index/iamUser:IamUser")
 class IamUser(pulumi.CustomResource):
-
-    pulumi_type = "minio:index/iamUser:IamUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

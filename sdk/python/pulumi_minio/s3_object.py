@@ -223,10 +223,8 @@ class _S3ObjectState:
         pulumi.set(self, "version_id", value)
 
 
+@pulumi.type_token("minio:index/s3Object:S3Object")
 class S3Object(pulumi.CustomResource):
-
-    pulumi_type = "minio:index/s3Object:S3Object"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

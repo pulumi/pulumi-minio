@@ -79,10 +79,8 @@ class _IamUserPolicyAttachmentState:
         pulumi.set(self, "user_name", value)
 
 
+@pulumi.type_token("minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment")
 class IamUserPolicyAttachment(pulumi.CustomResource):
-
-    pulumi_type = "minio:index/iamUserPolicyAttachment:IamUserPolicyAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

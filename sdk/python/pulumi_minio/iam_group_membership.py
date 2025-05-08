@@ -127,10 +127,8 @@ class _IamGroupMembershipState:
         pulumi.set(self, "users", value)
 
 
+@pulumi.type_token("minio:index/iamGroupMembership:IamGroupMembership")
 class IamGroupMembership(pulumi.CustomResource):
-
-    pulumi_type = "minio:index/iamGroupMembership:IamGroupMembership"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
