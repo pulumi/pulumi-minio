@@ -368,7 +368,10 @@
         },
         "requiredInputs": [
             "minioServer"
-        ]
+        ],
+        "methods": {
+            "terraformConfig": "pulumi:providers:minio/terraformConfig"
+        }
     },
     "resources": {
         "minio:index/iamGroup:IamGroup": {
@@ -1430,6 +1433,35 @@
                 "required": [
                     "json",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:minio/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:minio"
+                    }
+                },
+                "type": "pulumi:providers:minio/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }
