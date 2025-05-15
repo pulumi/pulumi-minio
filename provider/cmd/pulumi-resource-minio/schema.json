@@ -310,9 +310,6 @@
                 "description": "Minio User\n"
             }
         },
-        "required": [
-            "minioServer"
-        ],
         "inputProperties": {
             "minioAccessKey": {
                 "type": "string",
@@ -366,9 +363,6 @@
                 "description": "Minio User\n"
             }
         },
-        "requiredInputs": [
-            "minioServer"
-        ],
         "methods": {
             "terraformConfig": "pulumi:providers:minio/terraformConfig"
         }
