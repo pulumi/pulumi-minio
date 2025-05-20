@@ -5,7 +5,6 @@ package com.pulumi.minio;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -148,15 +147,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * Minio Host and Port
      * 
      */
-    @Import(name="minioServer", required=true)
-    private Output<String> minioServer;
+    @Import(name="minioServer")
+    private @Nullable Output<String> minioServer;
 
     /**
      * @return Minio Host and Port
      * 
      */
-    public Output<String> minioServer() {
-        return this.minioServer;
+    public Optional<Output<String>> minioServer() {
+        return Optional.ofNullable(this.minioServer);
     }
 
     /**
@@ -415,7 +414,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder minioServer(Output<String> minioServer) {
+        public Builder minioServer(@Nullable Output<String> minioServer) {
             $.minioServer = minioServer;
             return this;
         }
@@ -494,9 +493,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            if ($.minioServer == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "minioServer");
-            }
             return $;
         }
     }
