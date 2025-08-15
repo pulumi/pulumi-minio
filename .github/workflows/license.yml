@@ -7,7 +7,6 @@ on:
     inputs: {}
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   MINIO_ACCESS_KEY: minio
   MINIO_ENABLE_HTTPS: "false"
   MINIO_ENDPOINT: localhost:9000
@@ -33,6 +32,8 @@ jobs:
           cache-go: false
       - run: make prepare_local_workspace
         continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: pulumi/license-check-action@main
         with:
           module-path: provider

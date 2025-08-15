@@ -10,7 +10,6 @@ on:
         required: true
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   MINIO_ACCESS_KEY: minio
   MINIO_ENABLE_HTTPS: "false"
   MINIO_ENDPOINT: localhost:9000
