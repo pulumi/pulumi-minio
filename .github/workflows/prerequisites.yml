@@ -20,7 +20,6 @@ on:
         value: ${{ jobs.prerequisites.outputs.version }}
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   MINIO_ACCESS_KEY: minio
   MINIO_ENABLE_HTTPS: "false"
   MINIO_ENDPOINT: localhost:9000
@@ -34,6 +33,9 @@ jobs:
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     outputs:
       version: ${{ steps.provider-version.outputs.version }}
     steps:
