@@ -46,10 +46,10 @@ export class IamGroup extends pulumi.CustomResource {
     /**
      * Disable group
      */
-    public readonly disableGroup!: pulumi.Output<boolean | undefined>;
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly groupName!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly disableGroup: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly groupName: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a IamGroup resource with the given unique name, arguments, and options.
@@ -64,15 +64,15 @@ export class IamGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamGroupState | undefined;
-            resourceInputs["disableGroup"] = state ? state.disableGroup : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["disableGroup"] = state?.disableGroup;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as IamGroupArgs | undefined;
-            resourceInputs["disableGroup"] = args ? args.disableGroup : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["disableGroup"] = args?.disableGroup;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["name"] = args?.name;
             resourceInputs["groupName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

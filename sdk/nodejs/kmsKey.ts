@@ -32,7 +32,7 @@ export class KmsKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === KmsKey.__pulumiType;
     }
 
-    public readonly keyId!: pulumi.Output<string>;
+    declare public readonly keyId: pulumi.Output<string>;
 
     /**
      * Create a KmsKey resource with the given unique name, arguments, and options.
@@ -47,13 +47,13 @@ export class KmsKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KmsKeyState | undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
+            resourceInputs["keyId"] = state?.keyId;
         } else {
             const args = argsOrState as KmsKeyArgs | undefined;
-            if ((!args || args.keyId === undefined) && !opts.urn) {
+            if (args?.keyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'keyId'");
             }
-            resourceInputs["keyId"] = args ? args.keyId : undefined;
+            resourceInputs["keyId"] = args?.keyId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KmsKey.__pulumiType, name, resourceInputs, opts);

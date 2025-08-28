@@ -51,22 +51,22 @@ export class IamServiceAccount extends pulumi.CustomResource {
         return obj['__pulumiType'] === IamServiceAccount.__pulumiType;
     }
 
-    public /*out*/ readonly accessKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
      * Disable service account
      */
-    public readonly disableUser!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableUser: pulumi.Output<boolean | undefined>;
     /**
      * policy of service account
      */
-    public readonly policy!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly secretKey!: pulumi.Output<string>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly targetUser!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly secretKey: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly targetUser: pulumi.Output<string>;
     /**
      * rotate secret key
      */
-    public readonly updateSecret!: pulumi.Output<boolean | undefined>;
+    declare public readonly updateSecret: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a IamServiceAccount resource with the given unique name, arguments, and options.
@@ -81,22 +81,22 @@ export class IamServiceAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamServiceAccountState | undefined;
-            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
-            resourceInputs["disableUser"] = state ? state.disableUser : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["targetUser"] = state ? state.targetUser : undefined;
-            resourceInputs["updateSecret"] = state ? state.updateSecret : undefined;
+            resourceInputs["accessKey"] = state?.accessKey;
+            resourceInputs["disableUser"] = state?.disableUser;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["secretKey"] = state?.secretKey;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["targetUser"] = state?.targetUser;
+            resourceInputs["updateSecret"] = state?.updateSecret;
         } else {
             const args = argsOrState as IamServiceAccountArgs | undefined;
-            if ((!args || args.targetUser === undefined) && !opts.urn) {
+            if (args?.targetUser === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetUser'");
             }
-            resourceInputs["disableUser"] = args ? args.disableUser : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["targetUser"] = args ? args.targetUser : undefined;
-            resourceInputs["updateSecret"] = args ? args.updateSecret : undefined;
+            resourceInputs["disableUser"] = args?.disableUser;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["targetUser"] = args?.targetUser;
+            resourceInputs["updateSecret"] = args?.updateSecret;
             resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["secretKey"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

@@ -32,8 +32,8 @@ export class S3BucketPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === S3BucketPolicy.__pulumiType;
     }
 
-    public readonly bucket!: pulumi.Output<string>;
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
 
     /**
      * Create a S3BucketPolicy resource with the given unique name, arguments, and options.
@@ -48,18 +48,18 @@ export class S3BucketPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as S3BucketPolicyState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["policy"] = state?.policy;
         } else {
             const args = argsOrState as S3BucketPolicyArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.policy === undefined) && !opts.urn) {
+            if (args?.policy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["policy"] = args?.policy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(S3BucketPolicy.__pulumiType, name, resourceInputs, opts);

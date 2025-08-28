@@ -30,40 +30,40 @@ export class Provider extends pulumi.ProviderResource {
      *
      * @deprecated use minioUser instead
      */
-    public readonly minioAccessKey!: pulumi.Output<string | undefined>;
+    declare public readonly minioAccessKey: pulumi.Output<string | undefined>;
     /**
      * Minio API Version (type: string, options: v2 or v4, default: v4)
      */
-    public readonly minioApiVersion!: pulumi.Output<string | undefined>;
-    public readonly minioCacertFile!: pulumi.Output<string | undefined>;
-    public readonly minioCertFile!: pulumi.Output<string | undefined>;
-    public readonly minioKeyFile!: pulumi.Output<string | undefined>;
+    declare public readonly minioApiVersion: pulumi.Output<string | undefined>;
+    declare public readonly minioCacertFile: pulumi.Output<string | undefined>;
+    declare public readonly minioCertFile: pulumi.Output<string | undefined>;
+    declare public readonly minioKeyFile: pulumi.Output<string | undefined>;
     /**
      * Minio Password
      */
-    public readonly minioPassword!: pulumi.Output<string | undefined>;
+    declare public readonly minioPassword: pulumi.Output<string | undefined>;
     /**
      * Minio Region (default: us-east-1)
      */
-    public readonly minioRegion!: pulumi.Output<string | undefined>;
+    declare public readonly minioRegion: pulumi.Output<string | undefined>;
     /**
      * Minio Secret Key
      *
      * @deprecated use minioPassword instead
      */
-    public readonly minioSecretKey!: pulumi.Output<string | undefined>;
+    declare public readonly minioSecretKey: pulumi.Output<string | undefined>;
     /**
      * Minio Host and Port
      */
-    public readonly minioServer!: pulumi.Output<string | undefined>;
+    declare public readonly minioServer: pulumi.Output<string | undefined>;
     /**
      * Minio Session Token
      */
-    public readonly minioSessionToken!: pulumi.Output<string | undefined>;
+    declare public readonly minioSessionToken: pulumi.Output<string | undefined>;
     /**
      * Minio User
      */
-    public readonly minioUser!: pulumi.Output<string | undefined>;
+    declare public readonly minioUser: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -76,19 +76,19 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["minioAccessKey"] = args ? args.minioAccessKey : undefined;
-            resourceInputs["minioApiVersion"] = args ? args.minioApiVersion : undefined;
-            resourceInputs["minioCacertFile"] = args ? args.minioCacertFile : undefined;
-            resourceInputs["minioCertFile"] = args ? args.minioCertFile : undefined;
-            resourceInputs["minioInsecure"] = pulumi.output(args ? args.minioInsecure : undefined).apply(JSON.stringify);
-            resourceInputs["minioKeyFile"] = args ? args.minioKeyFile : undefined;
-            resourceInputs["minioPassword"] = args ? args.minioPassword : undefined;
-            resourceInputs["minioRegion"] = args ? args.minioRegion : undefined;
-            resourceInputs["minioSecretKey"] = args ? args.minioSecretKey : undefined;
-            resourceInputs["minioServer"] = args ? args.minioServer : undefined;
-            resourceInputs["minioSessionToken"] = args ? args.minioSessionToken : undefined;
-            resourceInputs["minioSsl"] = pulumi.output(args ? args.minioSsl : undefined).apply(JSON.stringify);
-            resourceInputs["minioUser"] = args ? args.minioUser : undefined;
+            resourceInputs["minioAccessKey"] = args?.minioAccessKey;
+            resourceInputs["minioApiVersion"] = args?.minioApiVersion;
+            resourceInputs["minioCacertFile"] = args?.minioCacertFile;
+            resourceInputs["minioCertFile"] = args?.minioCertFile;
+            resourceInputs["minioInsecure"] = pulumi.output(args?.minioInsecure).apply(JSON.stringify);
+            resourceInputs["minioKeyFile"] = args?.minioKeyFile;
+            resourceInputs["minioPassword"] = args?.minioPassword;
+            resourceInputs["minioRegion"] = args?.minioRegion;
+            resourceInputs["minioSecretKey"] = args?.minioSecretKey;
+            resourceInputs["minioServer"] = args?.minioServer;
+            resourceInputs["minioSessionToken"] = args?.minioSessionToken;
+            resourceInputs["minioSsl"] = pulumi.output(args?.minioSsl).apply(JSON.stringify);
+            resourceInputs["minioUser"] = args?.minioUser;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);

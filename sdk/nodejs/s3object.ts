@@ -54,14 +54,14 @@ export class S3Object extends pulumi.CustomResource {
         return obj['__pulumiType'] === S3Object.__pulumiType;
     }
 
-    public readonly bucketName!: pulumi.Output<string>;
-    public readonly content!: pulumi.Output<string | undefined>;
-    public readonly contentBase64!: pulumi.Output<string | undefined>;
-    public readonly contentType!: pulumi.Output<string>;
-    public readonly etag!: pulumi.Output<string>;
-    public readonly objectName!: pulumi.Output<string>;
-    public readonly source!: pulumi.Output<string | undefined>;
-    public readonly versionId!: pulumi.Output<string>;
+    declare public readonly bucketName: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string | undefined>;
+    declare public readonly contentBase64: pulumi.Output<string | undefined>;
+    declare public readonly contentType: pulumi.Output<string>;
+    declare public readonly etag: pulumi.Output<string>;
+    declare public readonly objectName: pulumi.Output<string>;
+    declare public readonly source: pulumi.Output<string | undefined>;
+    declare public readonly versionId: pulumi.Output<string>;
 
     /**
      * Create a S3Object resource with the given unique name, arguments, and options.
@@ -76,30 +76,30 @@ export class S3Object extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as S3ObjectState | undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["contentBase64"] = state ? state.contentBase64 : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["objectName"] = state ? state.objectName : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["contentBase64"] = state?.contentBase64;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["objectName"] = state?.objectName;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as S3ObjectArgs | undefined;
-            if ((!args || args.bucketName === undefined) && !opts.urn) {
+            if (args?.bucketName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
-            if ((!args || args.objectName === undefined) && !opts.urn) {
+            if (args?.objectName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectName'");
             }
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["contentBase64"] = args ? args.contentBase64 : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["objectName"] = args ? args.objectName : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["versionId"] = args ? args.versionId : undefined;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["contentBase64"] = args?.contentBase64;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["objectName"] = args?.objectName;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["versionId"] = args?.versionId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(S3Object.__pulumiType, name, resourceInputs, opts);
