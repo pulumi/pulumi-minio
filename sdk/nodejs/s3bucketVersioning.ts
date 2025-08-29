@@ -34,8 +34,8 @@ export class S3BucketVersioning extends pulumi.CustomResource {
         return obj['__pulumiType'] === S3BucketVersioning.__pulumiType;
     }
 
-    public readonly bucket!: pulumi.Output<string>;
-    public readonly versioningConfiguration!: pulumi.Output<outputs.S3BucketVersioningVersioningConfiguration>;
+    declare public readonly bucket: pulumi.Output<string>;
+    declare public readonly versioningConfiguration: pulumi.Output<outputs.S3BucketVersioningVersioningConfiguration>;
 
     /**
      * Create a S3BucketVersioning resource with the given unique name, arguments, and options.
@@ -50,18 +50,18 @@ export class S3BucketVersioning extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as S3BucketVersioningState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["versioningConfiguration"] = state ? state.versioningConfiguration : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["versioningConfiguration"] = state?.versioningConfiguration;
         } else {
             const args = argsOrState as S3BucketVersioningArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.versioningConfiguration === undefined) && !opts.urn) {
+            if (args?.versioningConfiguration === undefined && !opts.urn) {
                 throw new Error("Missing required property 'versioningConfiguration'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["versioningConfiguration"] = args ? args.versioningConfiguration : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["versioningConfiguration"] = args?.versioningConfiguration;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(S3BucketVersioning.__pulumiType, name, resourceInputs, opts);

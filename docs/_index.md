@@ -4,6 +4,7 @@ title: Minio Provider
 meta_desc: Provides an overview on how to configure the Pulumi Minio provider.
 layout: package
 ---
+
 ## Installation
 
 The Minio provider is available as a package in all Pulumi languages:
@@ -13,17 +14,16 @@ The Minio provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-minio/sdk/go/minio`](https://github.com/pulumi/pulumi-minio)
 * .NET: [`Pulumi.Minio`](https://www.nuget.org/packages/Pulumi.Minio)
 * Java: [`com.pulumi/minio`](https://central.sonatype.com/artifact/com.pulumi/minio)
+
 ## Overview
 
 This is a pulumi provider plugin for managing [Minio](https://min.io/) S3 buckets and IAM users.
 ## Example Provider Configuration
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     minio:minioApiVersion:
         value: '...'
@@ -39,119 +39,6 @@ config:
         value: '...'
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    minio:minioApiVersion:
-        value: '...'
-    minio:minioPassword:
-        value: '...'
-    minio:minioRegion:
-        value: '...'
-    minio:minioServer:
-        value: '...'
-    minio:minioSsl:
-        value: '...'
-    minio:minioUser:
-        value: '...'
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    minio:minioApiVersion:
-        value: '...'
-    minio:minioPassword:
-        value: '...'
-    minio:minioRegion:
-        value: '...'
-    minio:minioServer:
-        value: '...'
-    minio:minioSsl:
-        value: '...'
-    minio:minioUser:
-        value: '...'
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    minio:minioApiVersion:
-        value: '...'
-    minio:minioPassword:
-        value: '...'
-    minio:minioRegion:
-        value: '...'
-    minio:minioServer:
-        value: '...'
-    minio:minioSsl:
-        value: '...'
-    minio:minioUser:
-        value: '...'
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    minio:minioApiVersion:
-        value: '...'
-    minio:minioPassword:
-        value: '...'
-    minio:minioRegion:
-        value: '...'
-    minio:minioServer:
-        value: '...'
-    minio:minioSsl:
-        value: '...'
-    minio:minioUser:
-        value: '...'
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    minio:minioApiVersion:
-        value: '...'
-    minio:minioPassword:
-        value: '...'
-    minio:minioRegion:
-        value: '...'
-    minio:minioServer:
-        value: '...'
-    minio:minioSsl:
-        value: '...'
-    minio:minioUser:
-        value: '...'
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 ## Authentication
 
 The Minio provider offers the following methods of providing credentials for
@@ -166,12 +53,10 @@ Minio provider configuration:
 
 Usage:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-{{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
 name: configuration-example
-runtime: nodejs
+runtime:
 config:
     minio:minioPassword:
         value: '...'
@@ -181,89 +66,6 @@ config:
         value: '...'
 
 ```
-
-{{% /choosable %}}
-{{% choosable language python %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: python
-config:
-    minio:minioPassword:
-        value: '...'
-    minio:minioServer:
-        value: '...'
-    minio:minioUser:
-        value: '...'
-
-```
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: dotnet
-config:
-    minio:minioPassword:
-        value: '...'
-    minio:minioServer:
-        value: '...'
-    minio:minioUser:
-        value: '...'
-
-```
-
-{{% /choosable %}}
-{{% choosable language go %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: go
-config:
-    minio:minioPassword:
-        value: '...'
-    minio:minioServer:
-        value: '...'
-    minio:minioUser:
-        value: '...'
-
-```
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: yaml
-config:
-    minio:minioPassword:
-        value: '...'
-    minio:minioServer:
-        value: '...'
-    minio:minioUser:
-        value: '...'
-
-```
-
-{{% /choosable %}}
-{{% choosable language java %}}
-```yaml
-# Pulumi.yaml provider configuration file
-name: configuration-example
-runtime: java
-config:
-    minio:minioPassword:
-        value: '...'
-    minio:minioServer:
-        value: '...'
-    minio:minioUser:
-        value: '...'
-
-```
-
-{{% /choosable %}}
-{{< /chooser >}}
 ### Environment variables
 
 You can provide your configuration via the environment variables representing your minio credentials:

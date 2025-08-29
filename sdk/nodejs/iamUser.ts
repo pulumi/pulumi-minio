@@ -58,16 +58,16 @@ export class IamUser extends pulumi.CustomResource {
     /**
      * Disable user
      */
-    public readonly disableUser!: pulumi.Output<boolean | undefined>;
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly secret!: pulumi.Output<string>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly disableUser: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly secret: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Rotate Minio User Secret Key
      */
-    public readonly updateSecret!: pulumi.Output<boolean | undefined>;
+    declare public readonly updateSecret: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a IamUser resource with the given unique name, arguments, and options.
@@ -82,21 +82,21 @@ export class IamUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamUserState | undefined;
-            resourceInputs["disableUser"] = state ? state.disableUser : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updateSecret"] = state ? state.updateSecret : undefined;
+            resourceInputs["disableUser"] = state?.disableUser;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updateSecret"] = state?.updateSecret;
         } else {
             const args = argsOrState as IamUserArgs | undefined;
-            resourceInputs["disableUser"] = args ? args.disableUser : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["disableUser"] = args?.disableUser;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["name"] = args?.name;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["updateSecret"] = args ? args.updateSecret : undefined;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["updateSecret"] = args?.updateSecret;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -32,9 +32,9 @@ export class S3BucketServerSideEncryption extends pulumi.CustomResource {
         return obj['__pulumiType'] === S3BucketServerSideEncryption.__pulumiType;
     }
 
-    public readonly bucket!: pulumi.Output<string>;
-    public readonly encryptionType!: pulumi.Output<string>;
-    public readonly kmsKeyId!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
+    declare public readonly encryptionType: pulumi.Output<string>;
+    declare public readonly kmsKeyId: pulumi.Output<string>;
 
     /**
      * Create a S3BucketServerSideEncryption resource with the given unique name, arguments, and options.
@@ -49,23 +49,23 @@ export class S3BucketServerSideEncryption extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as S3BucketServerSideEncryptionState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["encryptionType"] = state?.encryptionType;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
         } else {
             const args = argsOrState as S3BucketServerSideEncryptionArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.encryptionType === undefined) && !opts.urn) {
+            if (args?.encryptionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'encryptionType'");
             }
-            if ((!args || args.kmsKeyId === undefined) && !opts.urn) {
+            if (args?.kmsKeyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kmsKeyId'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["encryptionType"] = args ? args.encryptionType : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["encryptionType"] = args?.encryptionType;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(S3BucketServerSideEncryption.__pulumiType, name, resourceInputs, opts);

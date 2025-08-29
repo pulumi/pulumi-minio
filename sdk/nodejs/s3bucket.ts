@@ -47,14 +47,14 @@ export class S3Bucket extends pulumi.CustomResource {
         return obj['__pulumiType'] === S3Bucket.__pulumiType;
     }
 
-    public readonly acl!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly arn!: pulumi.Output<string>;
-    public readonly bucket!: pulumi.Output<string>;
-    public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
-    public readonly bucketPrefix!: pulumi.Output<string | undefined>;
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
-    public readonly objectLocking!: pulumi.Output<boolean | undefined>;
-    public readonly quota!: pulumi.Output<number | undefined>;
+    declare public readonly acl: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly arn: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
+    declare public /*out*/ readonly bucketDomainName: pulumi.Output<string>;
+    declare public readonly bucketPrefix: pulumi.Output<string | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
+    declare public readonly objectLocking: pulumi.Output<boolean | undefined>;
+    declare public readonly quota: pulumi.Output<number | undefined>;
 
     /**
      * Create a S3Bucket resource with the given unique name, arguments, and options.
@@ -69,22 +69,22 @@ export class S3Bucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as S3BucketState | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["arn"] = state ? state.arn : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
-            resourceInputs["bucketPrefix"] = state ? state.bucketPrefix : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["objectLocking"] = state ? state.objectLocking : undefined;
-            resourceInputs["quota"] = state ? state.quota : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["arn"] = state?.arn;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["bucketDomainName"] = state?.bucketDomainName;
+            resourceInputs["bucketPrefix"] = state?.bucketPrefix;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["objectLocking"] = state?.objectLocking;
+            resourceInputs["quota"] = state?.quota;
         } else {
             const args = argsOrState as S3BucketArgs | undefined;
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["bucketPrefix"] = args ? args.bucketPrefix : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["objectLocking"] = args ? args.objectLocking : undefined;
-            resourceInputs["quota"] = args ? args.quota : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["bucketPrefix"] = args?.bucketPrefix;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["objectLocking"] = args?.objectLocking;
+            resourceInputs["quota"] = args?.quota;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["bucketDomainName"] = undefined /*out*/;
         }
