@@ -35,8 +35,8 @@ export class IamGroupPolicyAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === IamGroupPolicyAttachment.__pulumiType;
     }
 
-    public readonly groupName!: pulumi.Output<string>;
-    public readonly policyName!: pulumi.Output<string>;
+    declare public readonly groupName: pulumi.Output<string>;
+    declare public readonly policyName: pulumi.Output<string>;
 
     /**
      * Create a IamGroupPolicyAttachment resource with the given unique name, arguments, and options.
@@ -51,18 +51,18 @@ export class IamGroupPolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamGroupPolicyAttachmentState | undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["policyName"] = state ? state.policyName : undefined;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["policyName"] = state?.policyName;
         } else {
             const args = argsOrState as IamGroupPolicyAttachmentArgs | undefined;
-            if ((!args || args.groupName === undefined) && !opts.urn) {
+            if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
-            if ((!args || args.policyName === undefined) && !opts.urn) {
+            if (args?.policyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyName'");
             }
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["policyName"] = args ? args.policyName : undefined;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["policyName"] = args?.policyName;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IamGroupPolicyAttachment.__pulumiType, name, resourceInputs, opts);

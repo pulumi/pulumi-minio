@@ -34,8 +34,8 @@ export class S3BucketNotification extends pulumi.CustomResource {
         return obj['__pulumiType'] === S3BucketNotification.__pulumiType;
     }
 
-    public readonly bucket!: pulumi.Output<string>;
-    public readonly queues!: pulumi.Output<outputs.S3BucketNotificationQueue[] | undefined>;
+    declare public readonly bucket: pulumi.Output<string>;
+    declare public readonly queues: pulumi.Output<outputs.S3BucketNotificationQueue[] | undefined>;
 
     /**
      * Create a S3BucketNotification resource with the given unique name, arguments, and options.
@@ -50,15 +50,15 @@ export class S3BucketNotification extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as S3BucketNotificationState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["queues"] = state ? state.queues : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["queues"] = state?.queues;
         } else {
             const args = argsOrState as S3BucketNotificationArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["queues"] = args ? args.queues : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["queues"] = args?.queues;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(S3BucketNotification.__pulumiType, name, resourceInputs, opts);

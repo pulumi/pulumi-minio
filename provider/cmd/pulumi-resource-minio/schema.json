@@ -50,12 +50,12 @@
         "variables": {
             "minioAccessKey": {
                 "type": "string",
-                "description": "Minio Access Key\n",
+                "description": "Minio Access Key",
                 "deprecationMessage": "use minio_user instead"
             },
             "minioApiVersion": {
                 "type": "string",
-                "description": "Minio API Version (type: string, options: v2 or v4, default: v4)\n"
+                "description": "Minio API Version (type: string, options: v2 or v4, default: v4)"
             },
             "minioCacertFile": {
                 "type": "string"
@@ -65,39 +65,39 @@
             },
             "minioInsecure": {
                 "type": "boolean",
-                "description": "Disable SSL certificate verification (default: false)\n"
+                "description": "Disable SSL certificate verification (default: false)"
             },
             "minioKeyFile": {
                 "type": "string"
             },
             "minioPassword": {
                 "type": "string",
-                "description": "Minio Password\n"
+                "description": "Minio Password"
             },
             "minioRegion": {
                 "type": "string",
-                "description": "Minio Region (default: us-east-1)\n"
+                "description": "Minio Region (default: us-east-1)"
             },
             "minioSecretKey": {
                 "type": "string",
-                "description": "Minio Secret Key\n",
+                "description": "Minio Secret Key",
                 "deprecationMessage": "use minio_password instead"
             },
             "minioServer": {
                 "type": "string",
-                "description": "Minio Host and Port\n"
+                "description": "Minio Host and Port"
             },
             "minioSessionToken": {
                 "type": "string",
-                "description": "Minio Session Token\n"
+                "description": "Minio Session Token"
             },
             "minioSsl": {
                 "type": "boolean",
-                "description": "Minio SSL enabled (default: false)\n"
+                "description": "Minio SSL enabled (default: false)"
             },
             "minioUser": {
                 "type": "string",
-                "description": "Minio User\n"
+                "description": "Minio User"
             }
         },
         "defaults": [
@@ -260,12 +260,12 @@
         "properties": {
             "minioAccessKey": {
                 "type": "string",
-                "description": "Minio Access Key\n",
+                "description": "Minio Access Key",
                 "deprecationMessage": "use minio_user instead"
             },
             "minioApiVersion": {
                 "type": "string",
-                "description": "Minio API Version (type: string, options: v2 or v4, default: v4)\n"
+                "description": "Minio API Version (type: string, options: v2 or v4, default: v4)"
             },
             "minioCacertFile": {
                 "type": "string"
@@ -275,50 +275,50 @@
             },
             "minioInsecure": {
                 "type": "boolean",
-                "description": "Disable SSL certificate verification (default: false)\n"
+                "description": "Disable SSL certificate verification (default: false)"
             },
             "minioKeyFile": {
                 "type": "string"
             },
             "minioPassword": {
                 "type": "string",
-                "description": "Minio Password\n"
+                "description": "Minio Password"
             },
             "minioRegion": {
                 "type": "string",
-                "description": "Minio Region (default: us-east-1)\n"
+                "description": "Minio Region (default: us-east-1)"
             },
             "minioSecretKey": {
                 "type": "string",
-                "description": "Minio Secret Key\n",
+                "description": "Minio Secret Key",
                 "deprecationMessage": "use minio_password instead"
             },
             "minioServer": {
                 "type": "string",
-                "description": "Minio Host and Port\n"
+                "description": "Minio Host and Port"
             },
             "minioSessionToken": {
                 "type": "string",
-                "description": "Minio Session Token\n"
+                "description": "Minio Session Token"
             },
             "minioSsl": {
                 "type": "boolean",
-                "description": "Minio SSL enabled (default: false)\n"
+                "description": "Minio SSL enabled (default: false)"
             },
             "minioUser": {
                 "type": "string",
-                "description": "Minio User\n"
+                "description": "Minio User"
             }
         },
         "inputProperties": {
             "minioAccessKey": {
                 "type": "string",
-                "description": "Minio Access Key\n",
+                "description": "Minio Access Key",
                 "deprecationMessage": "use minio_user instead"
             },
             "minioApiVersion": {
                 "type": "string",
-                "description": "Minio API Version (type: string, options: v2 or v4, default: v4)\n"
+                "description": "Minio API Version (type: string, options: v2 or v4, default: v4)"
             },
             "minioCacertFile": {
                 "type": "string"
@@ -328,39 +328,39 @@
             },
             "minioInsecure": {
                 "type": "boolean",
-                "description": "Disable SSL certificate verification (default: false)\n"
+                "description": "Disable SSL certificate verification (default: false)"
             },
             "minioKeyFile": {
                 "type": "string"
             },
             "minioPassword": {
                 "type": "string",
-                "description": "Minio Password\n"
+                "description": "Minio Password"
             },
             "minioRegion": {
                 "type": "string",
-                "description": "Minio Region (default: us-east-1)\n"
+                "description": "Minio Region (default: us-east-1)"
             },
             "minioSecretKey": {
                 "type": "string",
-                "description": "Minio Secret Key\n",
+                "description": "Minio Secret Key",
                 "deprecationMessage": "use minio_password instead"
             },
             "minioServer": {
                 "type": "string",
-                "description": "Minio Host and Port\n"
+                "description": "Minio Host and Port"
             },
             "minioSessionToken": {
                 "type": "string",
-                "description": "Minio Session Token\n"
+                "description": "Minio Session Token"
             },
             "minioSsl": {
                 "type": "boolean",
-                "description": "Minio SSL enabled (default: false)\n"
+                "description": "Minio SSL enabled (default: false)"
             },
             "minioUser": {
                 "type": "string",
-                "description": "Minio User\n"
+                "description": "Minio User"
             }
         },
         "methods": {
@@ -1399,7 +1399,7 @@
                 "description": "A collection of values returned by getIamPolicyDocument.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "json": {

@@ -59,9 +59,9 @@ export class IamPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === IamPolicy.__pulumiType;
     }
 
-    public readonly name!: pulumi.Output<string>;
-    public readonly namePrefix!: pulumi.Output<string | undefined>;
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly namePrefix: pulumi.Output<string | undefined>;
+    declare public readonly policy: pulumi.Output<string>;
 
     /**
      * Create a IamPolicy resource with the given unique name, arguments, and options.
@@ -76,17 +76,17 @@ export class IamPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IamPolicyState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["policy"] = state?.policy;
         } else {
             const args = argsOrState as IamPolicyArgs | undefined;
-            if ((!args || args.policy === undefined) && !opts.urn) {
+            if (args?.policy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["policy"] = args?.policy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IamPolicy.__pulumiType, name, resourceInputs, opts);
