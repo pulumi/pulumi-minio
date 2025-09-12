@@ -1,6 +1,9 @@
 provider: minio
 major-version: 1
 docker: true
+esc:
+  enabled: true
+  environment: imports/github-secrets # No repo-specific secrets.
 env:
   MINIO_ENDPOINT: localhost:9000
   MINIO_ACCESS_KEY: minio
@@ -12,7 +15,7 @@ plugins:
     version: "1.0.16"
     kind: converter
 
-  - name: aws 
+  - name: aws
     version: "4.10.0"
 team: ecosystem
 pulumiConvert: 1
