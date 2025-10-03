@@ -12,6 +12,8 @@ on:
 
 env:
   PR_COMMIT_SHA: ${{ github.event.client_payload.pull_request.head.sha }}
+  MISE_ENV: test
+
   MINIO_ACCESS_KEY: minio
   MINIO_ENABLE_HTTPS: "false"
   MINIO_ENDPOINT: localhost:9000
