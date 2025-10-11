@@ -51,7 +51,7 @@
             "minioAccessKey": {
                 "type": "string",
                 "description": "Minio Access Key",
-                "deprecationMessage": "use minio_user instead"
+                "deprecationMessage": "use\u003cspan pulumi-lang-nodejs=\" minioUser \" pulumi-lang-dotnet=\" MinioUser \" pulumi-lang-go=\" minioUser \" pulumi-lang-python=\" minio_user \" pulumi-lang-yaml=\" minioUser \" pulumi-lang-java=\" minioUser \"\u003e minio_user \u003c/span\u003einstead"
             },
             "minioApiVersion": {
                 "type": "string",
@@ -81,7 +81,7 @@
             "minioSecretKey": {
                 "type": "string",
                 "description": "Minio Secret Key",
-                "deprecationMessage": "use minio_password instead"
+                "deprecationMessage": "use\u003cspan pulumi-lang-nodejs=\" minioPassword \" pulumi-lang-dotnet=\" MinioPassword \" pulumi-lang-go=\" minioPassword \" pulumi-lang-python=\" minio_password \" pulumi-lang-yaml=\" minioPassword \" pulumi-lang-java=\" minioPassword \"\u003e minio_password \u003c/span\u003einstead"
             },
             "minioServer": {
                 "type": "string",
@@ -261,7 +261,7 @@
             "minioAccessKey": {
                 "type": "string",
                 "description": "Minio Access Key",
-                "deprecationMessage": "use minio_user instead"
+                "deprecationMessage": "use\u003cspan pulumi-lang-nodejs=\" minioUser \" pulumi-lang-dotnet=\" MinioUser \" pulumi-lang-go=\" minioUser \" pulumi-lang-python=\" minio_user \" pulumi-lang-yaml=\" minioUser \" pulumi-lang-java=\" minioUser \"\u003e minio_user \u003c/span\u003einstead"
             },
             "minioApiVersion": {
                 "type": "string",
@@ -291,7 +291,7 @@
             "minioSecretKey": {
                 "type": "string",
                 "description": "Minio Secret Key",
-                "deprecationMessage": "use minio_password instead"
+                "deprecationMessage": "use\u003cspan pulumi-lang-nodejs=\" minioPassword \" pulumi-lang-dotnet=\" MinioPassword \" pulumi-lang-go=\" minioPassword \" pulumi-lang-python=\" minio_password \" pulumi-lang-yaml=\" minioPassword \" pulumi-lang-java=\" minioPassword \"\u003e minio_password \u003c/span\u003einstead"
             },
             "minioServer": {
                 "type": "string",
@@ -314,7 +314,7 @@
             "minioAccessKey": {
                 "type": "string",
                 "description": "Minio Access Key",
-                "deprecationMessage": "use minio_user instead"
+                "deprecationMessage": "use\u003cspan pulumi-lang-nodejs=\" minioUser \" pulumi-lang-dotnet=\" MinioUser \" pulumi-lang-go=\" minioUser \" pulumi-lang-python=\" minio_user \" pulumi-lang-yaml=\" minioUser \" pulumi-lang-java=\" minioUser \"\u003e minio_user \u003c/span\u003einstead"
             },
             "minioApiVersion": {
                 "type": "string",
@@ -344,7 +344,7 @@
             "minioSecretKey": {
                 "type": "string",
                 "description": "Minio Secret Key",
-                "deprecationMessage": "use minio_password instead"
+                "deprecationMessage": "use\u003cspan pulumi-lang-nodejs=\" minioPassword \" pulumi-lang-dotnet=\" MinioPassword \" pulumi-lang-go=\" minioPassword \" pulumi-lang-python=\" minio_password \" pulumi-lang-yaml=\" minioPassword \" pulumi-lang-java=\" minioPassword \"\u003e minio_password \u003c/span\u003einstead"
             },
             "minioServer": {
                 "type": "string",
@@ -923,7 +923,7 @@
             }
         },
         "minio:index/ilmPolicy:IlmPolicy": {
-            "description": "`minio.IlmPolicy` handles lifecycle settings for a given `minio.S3Bucket`.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as minio from \"@pulumi/minio\";\n\nconst bucket = new minio.S3Bucket(\"bucket\", {bucket: \"bucket\"});\nconst bucket_lifecycle_rules = new minio.IlmPolicy(\"bucket-lifecycle-rules\", {\n    bucket: bucket.bucket,\n    rules: [{\n        id: \"expire-7d\",\n        expiration: \"7d\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_minio as minio\n\nbucket = minio.S3Bucket(\"bucket\", bucket=\"bucket\")\nbucket_lifecycle_rules = minio.IlmPolicy(\"bucket-lifecycle-rules\",\n    bucket=bucket.bucket,\n    rules=[{\n        \"id\": \"expire-7d\",\n        \"expiration\": \"7d\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Minio = Pulumi.Minio;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bucket = new Minio.S3Bucket(\"bucket\", new()\n    {\n        Bucket = \"bucket\",\n    });\n\n    var bucket_lifecycle_rules = new Minio.IlmPolicy(\"bucket-lifecycle-rules\", new()\n    {\n        Bucket = bucket.Bucket,\n        Rules = new[]\n        {\n            new Minio.Inputs.IlmPolicyRuleArgs\n            {\n                Id = \"expire-7d\",\n                Expiration = \"7d\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-minio/sdk/go/minio\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbucket, err := minio.NewS3Bucket(ctx, \"bucket\", \u0026minio.S3BucketArgs{\n\t\t\tBucket: pulumi.String(\"bucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = minio.NewIlmPolicy(ctx, \"bucket-lifecycle-rules\", \u0026minio.IlmPolicyArgs{\n\t\t\tBucket: bucket.Bucket,\n\t\t\tRules: minio.IlmPolicyRuleArray{\n\t\t\t\t\u0026minio.IlmPolicyRuleArgs{\n\t\t\t\t\tId:         pulumi.String(\"expire-7d\"),\n\t\t\t\t\tExpiration: pulumi.String(\"7d\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.minio.S3Bucket;\nimport com.pulumi.minio.S3BucketArgs;\nimport com.pulumi.minio.IlmPolicy;\nimport com.pulumi.minio.IlmPolicyArgs;\nimport com.pulumi.minio.inputs.IlmPolicyRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bucket = new S3Bucket(\"bucket\", S3BucketArgs.builder()\n            .bucket(\"bucket\")\n            .build());\n\n        var bucket_lifecycle_rules = new IlmPolicy(\"bucket-lifecycle-rules\", IlmPolicyArgs.builder()\n            .bucket(bucket.bucket())\n            .rules(IlmPolicyRuleArgs.builder()\n                .id(\"expire-7d\")\n                .expiration(\"7d\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bucket:\n    type: minio:S3Bucket\n    properties:\n      bucket: bucket\n  bucket-lifecycle-rules:\n    type: minio:IlmPolicy\n    properties:\n      bucket: ${bucket.bucket}\n      rules:\n        - id: expire-7d\n          expiration: 7d\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "\u003cspan pulumi-lang-nodejs=\"`minio.IlmPolicy`\" pulumi-lang-dotnet=\"`minio.IlmPolicy`\" pulumi-lang-go=\"`IlmPolicy`\" pulumi-lang-python=\"`IlmPolicy`\" pulumi-lang-yaml=\"`minio.IlmPolicy`\" pulumi-lang-java=\"`minio.IlmPolicy`\"\u003e`minio.IlmPolicy`\u003c/span\u003e handles lifecycle settings for a given \u003cspan pulumi-lang-nodejs=\"`minio.S3Bucket`\" pulumi-lang-dotnet=\"`minio.S3Bucket`\" pulumi-lang-go=\"`S3Bucket`\" pulumi-lang-python=\"`S3Bucket`\" pulumi-lang-yaml=\"`minio.S3Bucket`\" pulumi-lang-java=\"`minio.S3Bucket`\"\u003e`minio.S3Bucket`\u003c/span\u003e.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as minio from \"@pulumi/minio\";\n\nconst bucket = new minio.S3Bucket(\"bucket\", {bucket: \"bucket\"});\nconst bucket_lifecycle_rules = new minio.IlmPolicy(\"bucket-lifecycle-rules\", {\n    bucket: bucket.bucket,\n    rules: [{\n        id: \"expire-7d\",\n        expiration: \"7d\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_minio as minio\n\nbucket = minio.S3Bucket(\"bucket\", bucket=\"bucket\")\nbucket_lifecycle_rules = minio.IlmPolicy(\"bucket-lifecycle-rules\",\n    bucket=bucket.bucket,\n    rules=[{\n        \"id\": \"expire-7d\",\n        \"expiration\": \"7d\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Minio = Pulumi.Minio;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bucket = new Minio.S3Bucket(\"bucket\", new()\n    {\n        Bucket = \"bucket\",\n    });\n\n    var bucket_lifecycle_rules = new Minio.IlmPolicy(\"bucket-lifecycle-rules\", new()\n    {\n        Bucket = bucket.Bucket,\n        Rules = new[]\n        {\n            new Minio.Inputs.IlmPolicyRuleArgs\n            {\n                Id = \"expire-7d\",\n                Expiration = \"7d\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-minio/sdk/go/minio\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbucket, err := minio.NewS3Bucket(ctx, \"bucket\", \u0026minio.S3BucketArgs{\n\t\t\tBucket: pulumi.String(\"bucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = minio.NewIlmPolicy(ctx, \"bucket-lifecycle-rules\", \u0026minio.IlmPolicyArgs{\n\t\t\tBucket: bucket.Bucket,\n\t\t\tRules: minio.IlmPolicyRuleArray{\n\t\t\t\t\u0026minio.IlmPolicyRuleArgs{\n\t\t\t\t\tId:         pulumi.String(\"expire-7d\"),\n\t\t\t\t\tExpiration: pulumi.String(\"7d\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.minio.S3Bucket;\nimport com.pulumi.minio.S3BucketArgs;\nimport com.pulumi.minio.IlmPolicy;\nimport com.pulumi.minio.IlmPolicyArgs;\nimport com.pulumi.minio.inputs.IlmPolicyRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bucket = new S3Bucket(\"bucket\", S3BucketArgs.builder()\n            .bucket(\"bucket\")\n            .build());\n\n        var bucket_lifecycle_rules = new IlmPolicy(\"bucket-lifecycle-rules\", IlmPolicyArgs.builder()\n            .bucket(bucket.bucket())\n            .rules(IlmPolicyRuleArgs.builder()\n                .id(\"expire-7d\")\n                .expiration(\"7d\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bucket:\n    type: minio:S3Bucket\n    properties:\n      bucket: bucket\n  bucket-lifecycle-rules:\n    type: minio:IlmPolicy\n    properties:\n      bucket: ${bucket.bucket}\n      rules:\n        - id: expire-7d\n          expiration: 7d\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "bucket": {
                     "type": "string"
