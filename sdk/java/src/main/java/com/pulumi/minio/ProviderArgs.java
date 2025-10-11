@@ -20,10 +20,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * Minio Access Key
      * 
      * @deprecated
-     * use minio_user instead
+     * use minioUser instead
      * 
      */
-    @Deprecated /* use minio_user instead */
+    @Deprecated /* use minioUser instead */
     @Import(name="minioAccessKey")
     private @Nullable Output<String> minioAccessKey;
 
@@ -31,10 +31,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * @return Minio Access Key
      * 
      * @deprecated
-     * use minio_user instead
+     * use minioUser instead
      * 
      */
-    @Deprecated /* use minio_user instead */
+    @Deprecated /* use minioUser instead */
     public Optional<Output<String>> minioAccessKey() {
         return Optional.ofNullable(this.minioAccessKey);
     }
@@ -124,10 +124,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * Minio Secret Key
      * 
      * @deprecated
-     * use minio_password instead
+     * use minioPassword instead
      * 
      */
-    @Deprecated /* use minio_password instead */
+    @Deprecated /* use minioPassword instead */
     @Import(name="minioSecretKey")
     private @Nullable Output<String> minioSecretKey;
 
@@ -135,10 +135,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * @return Minio Secret Key
      * 
      * @deprecated
-     * use minio_password instead
+     * use minioPassword instead
      * 
      */
-    @Deprecated /* use minio_password instead */
+    @Deprecated /* use minioPassword instead */
     public Optional<Output<String>> minioSecretKey() {
         return Optional.ofNullable(this.minioSecretKey);
     }
@@ -245,10 +245,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * use minio_user instead
+         * use minioUser instead
          * 
          */
-        @Deprecated /* use minio_user instead */
+        @Deprecated /* use minioUser instead */
         public Builder minioAccessKey(@Nullable Output<String> minioAccessKey) {
             $.minioAccessKey = minioAccessKey;
             return this;
@@ -260,10 +260,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * use minio_user instead
+         * use minioUser instead
          * 
          */
-        @Deprecated /* use minio_user instead */
+        @Deprecated /* use minioUser instead */
         public Builder minioAccessKey(String minioAccessKey) {
             return minioAccessKey(Output.of(minioAccessKey));
         }
@@ -385,10 +385,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * use minio_password instead
+         * use minioPassword instead
          * 
          */
-        @Deprecated /* use minio_password instead */
+        @Deprecated /* use minioPassword instead */
         public Builder minioSecretKey(@Nullable Output<String> minioSecretKey) {
             $.minioSecretKey = minioSecretKey;
             return this;
@@ -400,10 +400,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * use minio_password instead
+         * use minioPassword instead
          * 
          */
-        @Deprecated /* use minio_password instead */
+        @Deprecated /* use minioPassword instead */
         public Builder minioSecretKey(String minioSecretKey) {
             return minioSecretKey(Output.of(minioSecretKey));
         }

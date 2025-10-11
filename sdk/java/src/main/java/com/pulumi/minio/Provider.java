@@ -26,10 +26,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Minio Access Key
      * 
      * @deprecated
-     * use minio_user instead
+     * use minioUser instead
      * 
      */
-    @Deprecated /* use minio_user instead */
+    @Deprecated /* use minioUser instead */
     @Export(name="minioAccessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioAccessKey;
 
@@ -104,10 +104,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Minio Secret Key
      * 
      * @deprecated
-     * use minio_password instead
+     * use minioPassword instead
      * 
      */
-    @Deprecated /* use minio_password instead */
+    @Deprecated /* use minioPassword instead */
     @Export(name="minioSecretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> minioSecretKey;
 
