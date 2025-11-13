@@ -16,14 +16,14 @@ import * as utilities from "./utilities";
  *     name: "state-terraform-s3",
  *     group: developer.id,
  *     policy: `{
- *   "Version":"2012-10-17",
- *   "Statement": [
+ *   \\"Version\\":\\"2012-10-17\\",
+ *   \\"Statement\\": [
  *     {
- *       "Sid":"ListAllBucket",
- *       "Effect": "Allow",
- *       "Action": ["s3:PutObject"],
- *       "Principal":"*",
- *       "Resource": "arn:aws:s3:::state-terraform-s3/*"
+ *       \\"Sid\\":\\"ListAllBucket\\",
+ *       \\"Effect\\": \\"Allow\\",
+ *       \\"Action\\": [\\"s3:PutObject\\"],
+ *       \\"Principal\\":\\"*\\",
+ *       \\"Resource\\": \\"arn:aws:s3:::state-terraform-s3/*\\"
  *     }
  *   ]
  * }
