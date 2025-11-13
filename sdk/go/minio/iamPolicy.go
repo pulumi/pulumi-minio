@@ -29,14 +29,14 @@ import (
 //			testPolicy, err := minio.NewIamPolicy(ctx, "test_policy", &minio.IamPolicyArgs{
 //				Name: pulumi.String("state-terraform-s3"),
 //				Policy: pulumi.String(`{
-//	  "Version":"2012-10-17",
-//	  "Statement": [
+//	  \"Version\":\"2012-10-17\",
+//	  \"Statement\": [
 //	    {
-//	      "Sid":"ListAllBucket",
-//	      "Effect": "Allow",
-//	      "Action": ["s3:PutObject"],
-//	      "Principal":"*",
-//	      "Resource": "arn:aws:s3:::state-terraform-s3/*"
+//	      \"Sid\":\"ListAllBucket\",
+//	      \"Effect\": \"Allow\",
+//	      \"Action\": [\"s3:PutObject\"],
+//	      \"Principal\":\"*\",
+//	      \"Resource\": \"arn:aws:s3:::state-terraform-s3/*\"
 //	    }
 //	  ]
 //	}
