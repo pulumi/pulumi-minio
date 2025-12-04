@@ -87,6 +87,7 @@ import * as minio from "@pulumi/minio";
 
 const statePulumiS3 = new minio.S3Bucket("state_pulumi_s3", {});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```python
@@ -95,6 +96,7 @@ import pulumi_minio as minio
 
 state_pulumi_s3 = minio.S3Bucket("state_pulumi_s3")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```csharp
@@ -110,6 +112,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```go
@@ -130,6 +133,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -138,6 +142,7 @@ resources:
     type: minio:S3Bucket
     name: state_pulumi_s3
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```java
@@ -165,6 +170,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Configuration Reference
