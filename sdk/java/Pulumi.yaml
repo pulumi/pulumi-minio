@@ -1,3 +1,0 @@
-name: minio
-description: A Pulumi resource provider for minio.
-language: java
