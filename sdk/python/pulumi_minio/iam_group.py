@@ -25,6 +25,7 @@ class IamGroupArgs:
         """
         The set of arguments for constructing a IamGroup resource.
         :param pulumi.Input[_builtins.bool] disable_group: Disable group
+        :param pulumi.Input[_builtins.bool] force_destroy: Delete group even if it has non-Terraform-managed members
         """
         if disable_group is not None:
             pulumi.set(__self__, "disable_group", disable_group)
@@ -48,6 +49,9 @@ class IamGroupArgs:
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Delete group even if it has non-Terraform-managed members
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -74,6 +78,7 @@ class _IamGroupState:
         """
         Input properties used for looking up and filtering IamGroup resources.
         :param pulumi.Input[_builtins.bool] disable_group: Disable group
+        :param pulumi.Input[_builtins.bool] force_destroy: Delete group even if it has non-Terraform-managed members
         """
         if disable_group is not None:
             pulumi.set(__self__, "disable_group", disable_group)
@@ -99,6 +104,9 @@ class _IamGroupState:
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Delete group even if it has non-Terraform-managed members
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -148,6 +156,7 @@ class IamGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_group: Disable group
+        :param pulumi.Input[_builtins.bool] force_destroy: Delete group even if it has non-Terraform-managed members
         """
         ...
     @overload
@@ -219,6 +228,7 @@ class IamGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_group: Disable group
+        :param pulumi.Input[_builtins.bool] force_destroy: Delete group even if it has non-Terraform-managed members
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -241,6 +251,9 @@ class IamGroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Delete group even if it has non-Terraform-managed members
+        """
         return pulumi.get(self, "force_destroy")
 
     @_builtins.property

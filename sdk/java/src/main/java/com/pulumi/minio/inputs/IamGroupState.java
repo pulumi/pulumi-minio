@@ -31,9 +31,17 @@ public final class IamGroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disableGroup);
     }
 
+    /**
+     * Delete group even if it has non-Terraform-managed members
+     * 
+     */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
+    /**
+     * @return Delete group even if it has non-Terraform-managed members
+     * 
+     */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
@@ -100,11 +108,23 @@ public final class IamGroupState extends com.pulumi.resources.ResourceArgs {
             return disableGroup(Output.of(disableGroup));
         }
 
+        /**
+         * @param forceDestroy Delete group even if it has non-Terraform-managed members
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
             $.forceDestroy = forceDestroy;
             return this;
         }
 
+        /**
+         * @param forceDestroy Delete group even if it has non-Terraform-managed members
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
         }

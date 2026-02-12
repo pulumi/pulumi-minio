@@ -376,7 +376,8 @@
                     "description": "Disable group\n"
                 },
                 "forceDestroy": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Delete group even if it has non-Terraform-managed members\n"
                 },
                 "groupName": {
                     "type": "string"
@@ -395,7 +396,8 @@
                     "description": "Disable group\n"
                 },
                 "forceDestroy": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Delete group even if it has non-Terraform-managed members\n"
                 },
                 "name": {
                     "type": "string"
@@ -409,7 +411,8 @@
                         "description": "Disable group\n"
                     },
                     "forceDestroy": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Delete group even if it has non-Terraform-managed members\n"
                     },
                     "groupName": {
                         "type": "string"
@@ -789,7 +792,8 @@
                     "description": "Disable user\n"
                 },
                 "forceDestroy": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Delete user even if it has non-Terraform-managed IAM access keys\n"
                 },
                 "name": {
                     "type": "string"
@@ -823,7 +827,8 @@
                     "description": "Disable user\n"
                 },
                 "forceDestroy": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Delete user even if it has non-Terraform-managed IAM access keys\n"
                 },
                 "name": {
                     "type": "string",
@@ -852,7 +857,8 @@
                         "description": "Disable user\n"
                     },
                     "forceDestroy": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Delete user even if it has non-Terraform-managed IAM access keys\n"
                     },
                     "name": {
                         "type": "string",

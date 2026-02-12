@@ -28,6 +28,7 @@ class IamUserArgs:
         """
         The set of arguments for constructing a IamUser resource.
         :param pulumi.Input[_builtins.bool] disable_user: Disable user
+        :param pulumi.Input[_builtins.bool] force_destroy: Delete user even if it has non-Terraform-managed IAM access keys
         :param pulumi.Input[_builtins.bool] update_secret: Rotate Minio User Secret Key
         """
         if disable_user is not None:
@@ -58,6 +59,9 @@ class IamUserArgs:
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Delete user even if it has non-Terraform-managed IAM access keys
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -117,6 +121,7 @@ class _IamUserState:
         """
         Input properties used for looking up and filtering IamUser resources.
         :param pulumi.Input[_builtins.bool] disable_user: Disable user
+        :param pulumi.Input[_builtins.bool] force_destroy: Delete user even if it has non-Terraform-managed IAM access keys
         :param pulumi.Input[_builtins.bool] update_secret: Rotate Minio User Secret Key
         """
         if disable_user is not None:
@@ -149,6 +154,9 @@ class _IamUserState:
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Delete user even if it has non-Terraform-managed IAM access keys
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -238,6 +246,7 @@ class IamUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_user: Disable user
+        :param pulumi.Input[_builtins.bool] force_destroy: Delete user even if it has non-Terraform-managed IAM access keys
         :param pulumi.Input[_builtins.bool] update_secret: Rotate Minio User Secret Key
         """
         ...
@@ -328,6 +337,7 @@ class IamUser(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_user: Disable user
+        :param pulumi.Input[_builtins.bool] force_destroy: Delete user even if it has non-Terraform-managed IAM access keys
         :param pulumi.Input[_builtins.bool] update_secret: Rotate Minio User Secret Key
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -354,6 +364,9 @@ class IamUser(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Delete user even if it has non-Terraform-managed IAM access keys
+        """
         return pulumi.get(self, "force_destroy")
 
     @_builtins.property

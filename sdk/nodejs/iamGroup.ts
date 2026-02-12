@@ -47,6 +47,9 @@ export class IamGroup extends pulumi.CustomResource {
      * Disable group
      */
     declare public readonly disableGroup: pulumi.Output<boolean | undefined>;
+    /**
+     * Delete group even if it has non-Terraform-managed members
+     */
     declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     declare public /*out*/ readonly groupName: pulumi.Output<string>;
     declare public readonly name: pulumi.Output<string>;
@@ -88,6 +91,9 @@ export interface IamGroupState {
      * Disable group
      */
     disableGroup?: pulumi.Input<boolean>;
+    /**
+     * Delete group even if it has non-Terraform-managed members
+     */
     forceDestroy?: pulumi.Input<boolean>;
     groupName?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -101,6 +107,9 @@ export interface IamGroupArgs {
      * Disable group
      */
     disableGroup?: pulumi.Input<boolean>;
+    /**
+     * Delete group even if it has non-Terraform-managed members
+     */
     forceDestroy?: pulumi.Input<boolean>;
     name?: pulumi.Input<string>;
 }

@@ -73,9 +73,17 @@ public class IamUser extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> disableUser() {
         return Codegen.optional(this.disableUser);
     }
+    /**
+     * Delete user even if it has non-Terraform-managed IAM access keys
+     * 
+     */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
+    /**
+     * @return Delete user even if it has non-Terraform-managed IAM access keys
+     * 
+     */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }

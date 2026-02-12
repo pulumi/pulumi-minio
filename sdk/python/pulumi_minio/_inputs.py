@@ -27,21 +27,16 @@ __all__ = [
     'GetIamPolicyDocumentStatementConditionArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class IlmPolicyRuleArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        The ID of this resource.
-        """
-        expiration: NotRequired[pulumi.Input[_builtins.str]]
-        filter: NotRequired[pulumi.Input[_builtins.str]]
-        noncurrent_version_expiration_days: NotRequired[pulumi.Input[_builtins.int]]
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-elif False:
-    IlmPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+class IlmPolicyRuleArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The ID of this resource.
+    """
+    expiration: NotRequired[pulumi.Input[_builtins.str]]
+    filter: NotRequired[pulumi.Input[_builtins.str]]
+    noncurrent_version_expiration_days: NotRequired[pulumi.Input[_builtins.int]]
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
 
 @pulumi.input_type
 class IlmPolicyRuleArgs:
@@ -125,18 +120,15 @@ class IlmPolicyRuleArgs:
         pulumi.set(self, "tags", value)
 
 
-if not MYPY:
-    class S3BucketNotificationQueueArgsDict(TypedDict):
-        events: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        queue_arn: pulumi.Input[_builtins.str]
-        filter_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        filter_suffix: NotRequired[pulumi.Input[_builtins.str]]
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of this resource.
-        """
-elif False:
-    S3BucketNotificationQueueArgsDict: TypeAlias = Mapping[str, Any]
+class S3BucketNotificationQueueArgsDict(TypedDict):
+    events: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    queue_arn: pulumi.Input[_builtins.str]
+    filter_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    filter_suffix: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of this resource.
+    """
 
 @pulumi.input_type
 class S3BucketNotificationQueueArgs:
@@ -207,13 +199,10 @@ class S3BucketNotificationQueueArgs:
         pulumi.set(self, "id", value)
 
 
-if not MYPY:
-    class S3BucketVersioningVersioningConfigurationArgsDict(TypedDict):
-        status: pulumi.Input[_builtins.str]
-        exclude_folders: NotRequired[pulumi.Input[_builtins.bool]]
-        excluded_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-elif False:
-    S3BucketVersioningVersioningConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class S3BucketVersioningVersioningConfigurationArgsDict(TypedDict):
+    status: pulumi.Input[_builtins.str]
+    exclude_folders: NotRequired[pulumi.Input[_builtins.bool]]
+    excluded_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
 
 @pulumi.input_type
 class S3BucketVersioningVersioningConfigurationArgs:
@@ -255,16 +244,13 @@ class S3BucketVersioningVersioningConfigurationArgs:
         pulumi.set(self, "excluded_prefixes", value)
 
 
-if not MYPY:
-    class GetIamPolicyDocumentStatementArgsDict(TypedDict):
-        actions: NotRequired[Sequence[_builtins.str]]
-        conditions: NotRequired[Sequence['GetIamPolicyDocumentStatementConditionArgsDict']]
-        effect: NotRequired[_builtins.str]
-        principal: NotRequired[_builtins.str]
-        resources: NotRequired[Sequence[_builtins.str]]
-        sid: NotRequired[_builtins.str]
-elif False:
-    GetIamPolicyDocumentStatementArgsDict: TypeAlias = Mapping[str, Any]
+class GetIamPolicyDocumentStatementArgsDict(TypedDict):
+    actions: NotRequired[Sequence[_builtins.str]]
+    conditions: NotRequired[Sequence['GetIamPolicyDocumentStatementConditionArgsDict']]
+    effect: NotRequired[_builtins.str]
+    principal: NotRequired[_builtins.str]
+    resources: NotRequired[Sequence[_builtins.str]]
+    sid: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetIamPolicyDocumentStatementArgs:
@@ -343,13 +329,10 @@ class GetIamPolicyDocumentStatementArgs:
         pulumi.set(self, "sid", value)
 
 
-if not MYPY:
-    class GetIamPolicyDocumentStatementConditionArgsDict(TypedDict):
-        test: _builtins.str
-        values: Sequence[_builtins.str]
-        variable: _builtins.str
-elif False:
-    GetIamPolicyDocumentStatementConditionArgsDict: TypeAlias = Mapping[str, Any]
+class GetIamPolicyDocumentStatementConditionArgsDict(TypedDict):
+    test: _builtins.str
+    values: Sequence[_builtins.str]
+    variable: _builtins.str
 
 @pulumi.input_type
 class GetIamPolicyDocumentStatementConditionArgs:
