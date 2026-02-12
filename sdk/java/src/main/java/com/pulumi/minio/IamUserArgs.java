@@ -32,9 +32,17 @@ public final class IamUserArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disableUser);
     }
 
+    /**
+     * Delete user even if it has non-Terraform-managed IAM access keys
+     * 
+     */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
+    /**
+     * @return Delete user even if it has non-Terraform-managed IAM access keys
+     * 
+     */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
@@ -125,11 +133,23 @@ public final class IamUserArgs extends com.pulumi.resources.ResourceArgs {
             return disableUser(Output.of(disableUser));
         }
 
+        /**
+         * @param forceDestroy Delete user even if it has non-Terraform-managed IAM access keys
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
             $.forceDestroy = forceDestroy;
             return this;
         }
 
+        /**
+         * @param forceDestroy Delete user even if it has non-Terraform-managed IAM access keys
+         * 
+         * @return builder
+         * 
+         */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
         }

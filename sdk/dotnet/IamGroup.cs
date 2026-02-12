@@ -41,6 +41,9 @@ namespace Pulumi.Minio
         [Output("disableGroup")]
         public Output<bool?> DisableGroup { get; private set; } = null!;
 
+        /// <summary>
+        /// Delete group even if it has non-Terraform-managed members
+        /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
@@ -102,6 +105,9 @@ namespace Pulumi.Minio
         [Input("disableGroup")]
         public Input<bool>? DisableGroup { get; set; }
 
+        /// <summary>
+        /// Delete group even if it has non-Terraform-managed members
+        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
@@ -122,6 +128,9 @@ namespace Pulumi.Minio
         [Input("disableGroup")]
         public Input<bool>? DisableGroup { get; set; }
 
+        /// <summary>
+        /// Delete group even if it has non-Terraform-managed members
+        /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 

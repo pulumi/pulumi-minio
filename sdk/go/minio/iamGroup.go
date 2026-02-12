@@ -42,6 +42,7 @@ type IamGroup struct {
 
 	// Disable group
 	DisableGroup pulumi.BoolPtrOutput `pulumi:"disableGroup"`
+	// Delete group even if it has non-Terraform-managed members
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	GroupName    pulumi.StringOutput  `pulumi:"groupName"`
 	Name         pulumi.StringOutput  `pulumi:"name"`
@@ -78,7 +79,8 @@ func GetIamGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering IamGroup resources.
 type iamGroupState struct {
 	// Disable group
-	DisableGroup *bool   `pulumi:"disableGroup"`
+	DisableGroup *bool `pulumi:"disableGroup"`
+	// Delete group even if it has non-Terraform-managed members
 	ForceDestroy *bool   `pulumi:"forceDestroy"`
 	GroupName    *string `pulumi:"groupName"`
 	Name         *string `pulumi:"name"`
@@ -87,6 +89,7 @@ type iamGroupState struct {
 type IamGroupState struct {
 	// Disable group
 	DisableGroup pulumi.BoolPtrInput
+	// Delete group even if it has non-Terraform-managed members
 	ForceDestroy pulumi.BoolPtrInput
 	GroupName    pulumi.StringPtrInput
 	Name         pulumi.StringPtrInput
@@ -98,7 +101,8 @@ func (IamGroupState) ElementType() reflect.Type {
 
 type iamGroupArgs struct {
 	// Disable group
-	DisableGroup *bool   `pulumi:"disableGroup"`
+	DisableGroup *bool `pulumi:"disableGroup"`
+	// Delete group even if it has non-Terraform-managed members
 	ForceDestroy *bool   `pulumi:"forceDestroy"`
 	Name         *string `pulumi:"name"`
 }
@@ -107,6 +111,7 @@ type iamGroupArgs struct {
 type IamGroupArgs struct {
 	// Disable group
 	DisableGroup pulumi.BoolPtrInput
+	// Delete group even if it has non-Terraform-managed members
 	ForceDestroy pulumi.BoolPtrInput
 	Name         pulumi.StringPtrInput
 }
@@ -203,6 +208,7 @@ func (o IamGroupOutput) DisableGroup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IamGroup) pulumi.BoolPtrOutput { return v.DisableGroup }).(pulumi.BoolPtrOutput)
 }
 
+// Delete group even if it has non-Terraform-managed members
 func (o IamGroupOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IamGroup) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
