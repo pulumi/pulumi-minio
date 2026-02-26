@@ -25,6 +25,7 @@ class IamServiceAccountArgs:
                  update_secret: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IamServiceAccount resource.
+
         :param pulumi.Input[_builtins.bool] disable_user: Disable service account
         :param pulumi.Input[_builtins.str] policy: policy of service account
         :param pulumi.Input[_builtins.bool] update_secret: rotate secret key
@@ -95,6 +96,7 @@ class _IamServiceAccountState:
                  update_secret: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering IamServiceAccount resources.
+
         :param pulumi.Input[_builtins.bool] disable_user: Disable service account
         :param pulumi.Input[_builtins.str] policy: policy of service account
         :param pulumi.Input[_builtins.bool] update_secret: rotate secret key
@@ -216,6 +218,7 @@ class IamServiceAccount(pulumi.CustomResource):
         pulumi.export("minioPassword", test_service_account.secret_key)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_user: Disable service account
@@ -245,6 +248,7 @@ class IamServiceAccount(pulumi.CustomResource):
         pulumi.export("minioUser", test_service_account.access_key)
         pulumi.export("minioPassword", test_service_account.secret_key)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IamServiceAccountArgs args: The arguments to use to populate this resource's properties.

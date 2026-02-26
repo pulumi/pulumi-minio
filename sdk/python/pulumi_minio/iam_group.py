@@ -24,6 +24,7 @@ class IamGroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IamGroup resource.
+
         :param pulumi.Input[_builtins.bool] disable_group: Disable group
         :param pulumi.Input[_builtins.bool] force_destroy: Delete group even if it has non-Terraform-managed members
         """
@@ -77,6 +78,7 @@ class _IamGroupState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IamGroup resources.
+
         :param pulumi.Input[_builtins.bool] disable_group: Disable group
         :param pulumi.Input[_builtins.bool] force_destroy: Delete group even if it has non-Terraform-managed members
         """
@@ -153,6 +155,7 @@ class IamGroup(pulumi.CustomResource):
         pulumi.export("minioUserGroup", developer.group_name)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_group: Disable group
@@ -174,6 +177,7 @@ class IamGroup(pulumi.CustomResource):
         developer = minio.IamGroup("developer", name="developer")
         pulumi.export("minioUserGroup", developer.group_name)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IamGroupArgs args: The arguments to use to populate this resource's properties.

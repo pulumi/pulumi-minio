@@ -104,6 +104,7 @@ class IamGroupUserAttachment(pulumi.CustomResource):
         pulumi.export("minioGroup", developer_iam_group_user_attachment.user_name)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -129,6 +130,7 @@ class IamGroupUserAttachment(pulumi.CustomResource):
         pulumi.export("minioUsers", developer_iam_group_user_attachment.group_name)
         pulumi.export("minioGroup", developer_iam_group_user_attachment.user_name)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IamGroupUserAttachmentArgs args: The arguments to use to populate this resource's properties.

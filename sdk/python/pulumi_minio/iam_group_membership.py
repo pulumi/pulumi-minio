@@ -24,6 +24,7 @@ class IamGroupMembershipArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a IamGroupMembership resource.
+
         :param pulumi.Input[_builtins.str] group: Group name to add users
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: Add user or list of users such as a group membership
         :param pulumi.Input[_builtins.str] name: Name of group membership
@@ -78,6 +79,7 @@ class _IamGroupMembershipState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IamGroupMembership resources.
+
         :param pulumi.Input[_builtins.str] group: Group name to add users
         :param pulumi.Input[_builtins.str] name: Name of group membership
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: Add user or list of users such as a group membership
@@ -138,6 +140,7 @@ class IamGroupMembership(pulumi.CustomResource):
                  __props__=None):
         """
         Create a IamGroupMembership resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group: Group name to add users
@@ -152,6 +155,7 @@ class IamGroupMembership(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a IamGroupMembership resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param IamGroupMembershipArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

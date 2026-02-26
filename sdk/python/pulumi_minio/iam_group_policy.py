@@ -166,6 +166,7 @@ class IamGroupPolicy(pulumi.CustomResource):
         pulumi.export("minioGroup", developer_minio_iam_group_membership["group"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -203,6 +204,7 @@ class IamGroupPolicy(pulumi.CustomResource):
         pulumi.export("minioPolicy", developer_minio_iam_group_membership["policy"])
         pulumi.export("minioGroup", developer_minio_iam_group_membership["group"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IamGroupPolicyArgs args: The arguments to use to populate this resource's properties.

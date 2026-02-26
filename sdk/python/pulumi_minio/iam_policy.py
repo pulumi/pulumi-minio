@@ -139,6 +139,7 @@ class IamPolicy(pulumi.CustomResource):
         pulumi.export("minioPolicy", test_policy.policy)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -173,6 +174,7 @@ class IamPolicy(pulumi.CustomResource):
         pulumi.export("minioId", test_policy.id)
         pulumi.export("minioPolicy", test_policy.policy)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IamPolicyArgs args: The arguments to use to populate this resource's properties.
