@@ -256,6 +256,7 @@ class S3Object(pulumi.CustomResource):
         pulumi.export("minioId", txt_file.id)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -283,6 +284,7 @@ class S3Object(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[state_terraform_s3]))
         pulumi.export("minioId", txt_file.id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param S3ObjectArgs args: The arguments to use to populate this resource's properties.

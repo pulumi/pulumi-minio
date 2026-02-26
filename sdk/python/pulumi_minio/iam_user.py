@@ -27,6 +27,7 @@ class IamUserArgs:
                  update_secret: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IamUser resource.
+
         :param pulumi.Input[_builtins.bool] disable_user: Disable user
         :param pulumi.Input[_builtins.bool] force_destroy: Delete user even if it has non-Terraform-managed IAM access keys
         :param pulumi.Input[_builtins.bool] update_secret: Rotate Minio User Secret Key
@@ -120,6 +121,7 @@ class _IamUserState:
                  update_secret: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering IamUser resources.
+
         :param pulumi.Input[_builtins.bool] disable_user: Disable user
         :param pulumi.Input[_builtins.bool] force_destroy: Delete user even if it has non-Terraform-managed IAM access keys
         :param pulumi.Input[_builtins.bool] update_secret: Rotate Minio User Secret Key
@@ -243,6 +245,7 @@ class IamUser(pulumi.CustomResource):
         pulumi.export("secret", test.secret)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_user: Disable user
@@ -272,6 +275,7 @@ class IamUser(pulumi.CustomResource):
         pulumi.export("status", test.status)
         pulumi.export("secret", test.secret)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IamUserArgs args: The arguments to use to populate this resource's properties.

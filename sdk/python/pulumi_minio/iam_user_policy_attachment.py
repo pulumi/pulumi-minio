@@ -90,6 +90,7 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
         """
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -101,6 +102,7 @@ class IamUserPolicyAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param IamUserPolicyAttachmentArgs args: The arguments to use to populate this resource's properties.

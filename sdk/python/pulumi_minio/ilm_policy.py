@@ -107,6 +107,7 @@ class IlmPolicy(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -133,6 +134,7 @@ class IlmPolicy(pulumi.CustomResource):
                 "expiration": "7d",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param IlmPolicyArgs args: The arguments to use to populate this resource's properties.
