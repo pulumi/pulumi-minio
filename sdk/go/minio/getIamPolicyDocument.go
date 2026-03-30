@@ -71,7 +71,7 @@ import (
 //			}
 //			_, err = minio.NewIamPolicy(ctx, "test_policy", &minio.IamPolicyArgs{
 //				Name:   pulumi.String("state-terraform-s3"),
-//				Policy: pulumi.String(example.Json),
+//				Policy: pulumi.String(pulumi.String(example.Json)),
 //			})
 //			if err != nil {
 //				return err
