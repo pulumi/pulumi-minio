@@ -54,9 +54,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("minioName", developerMinioIamGroupMembership.Id)
-//			ctx.Export("minioPolicy", developerMinioIamGroupMembership.Policy)
-//			ctx.Export("minioGroup", developerMinioIamGroupMembership.Group)
+//			ctx.Export("minioName", pulumi.Any(developerMinioIamGroupMembership.Id))
+//			ctx.Export("minioPolicy", pulumi.Any(developerMinioIamGroupMembership.Policy))
+//			ctx.Export("minioGroup", pulumi.Any(developerMinioIamGroupMembership.Group))
 //			return nil
 //		})
 //	}
