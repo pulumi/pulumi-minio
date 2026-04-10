@@ -20,7 +20,7 @@ namespace Pulumi.Minio
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Minio.IamUser("test", new()
+    ///     var test = new Minio.Index.IamUser("test", new()
     ///     {
     ///         Name = "test",
     ///         ForceDestroy = true,

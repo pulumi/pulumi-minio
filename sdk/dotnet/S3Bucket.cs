@@ -20,7 +20,7 @@ namespace Pulumi.Minio
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var stateTerraformS3 = new Minio.S3Bucket("state_terraform_s3", new()
+    ///     var stateTerraformS3 = new Minio.Index.S3Bucket("state_terraform_s3", new()
     ///     {
     ///         Bucket = "state-terraform-s3",
     ///         Acl = "public",

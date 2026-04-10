@@ -22,7 +22,7 @@ namespace Pulumi.Minio
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Minio.GetIamPolicyDocument.Invoke(new()
+        ///     var example = Minio.Index.GetIamPolicyDocument.Invoke(new()
         ///     {
         ///         Statements = new[]
         ///         {
@@ -78,7 +78,7 @@ namespace Pulumi.Minio
         ///         },
         ///     });
         /// 
-        ///     var testPolicy = new Minio.IamPolicy("test_policy", new()
+        ///     var testPolicy = new Minio.Index.IamPolicy("test_policy", new()
         ///     {
         ///         Name = "state-terraform-s3",
         ///         Policy = example.Apply(getIamPolicyDocumentResult =&gt; getIamPolicyDocumentResult.Json),
@@ -101,7 +101,7 @@ namespace Pulumi.Minio
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Minio.GetIamPolicyDocument.Invoke(new()
+        ///     var example = Minio.Index.GetIamPolicyDocument.Invoke(new()
         ///     {
         ///         Statements = new[]
         ///         {
@@ -157,7 +157,7 @@ namespace Pulumi.Minio
         ///         },
         ///     });
         /// 
-        ///     var testPolicy = new Minio.IamPolicy("test_policy", new()
+        ///     var testPolicy = new Minio.Index.IamPolicy("test_policy", new()
         ///     {
         ///         Name = "state-terraform-s3",
         ///         Policy = example.Apply(getIamPolicyDocumentResult =&gt; getIamPolicyDocumentResult.Json),
@@ -180,7 +180,7 @@ namespace Pulumi.Minio
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Minio.GetIamPolicyDocument.Invoke(new()
+        ///     var example = Minio.Index.GetIamPolicyDocument.Invoke(new()
         ///     {
         ///         Statements = new[]
         ///         {
@@ -236,7 +236,7 @@ namespace Pulumi.Minio
         ///         },
         ///     });
         /// 
-        ///     var testPolicy = new Minio.IamPolicy("test_policy", new()
+        ///     var testPolicy = new Minio.Index.IamPolicy("test_policy", new()
         ///     {
         ///         Name = "state-terraform-s3",
         ///         Policy = example.Apply(getIamPolicyDocumentResult =&gt; getIamPolicyDocumentResult.Json),

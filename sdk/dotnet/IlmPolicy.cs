@@ -22,12 +22,12 @@ namespace Pulumi.Minio
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bucket = new Minio.S3Bucket("bucket", new()
+    ///     var bucket = new Minio.Index.S3Bucket("bucket", new()
     ///     {
     ///         Bucket = "bucket",
     ///     });
     /// 
-    ///     var bucket_lifecycle_rules = new Minio.IlmPolicy("bucket-lifecycle-rules", new()
+    ///     var bucket_lifecycle_rules = new Minio.Index.IlmPolicy("bucket-lifecycle-rules", new()
     ///     {
     ///         Bucket = bucket.Bucket,
     ///         Rules = new[]

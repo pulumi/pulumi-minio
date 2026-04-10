@@ -107,7 +107,7 @@ using Minio = Pulumi.Minio;
 
 return await Deployment.RunAsync(() =>
 {
-    var statePulumiS3 = new Minio.S3Bucket("state_pulumi_s3");
+    var statePulumiS3 = new Minio.Index.S3Bucket("state_pulumi_s3");
 
 });
 
