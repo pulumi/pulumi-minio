@@ -20,7 +20,7 @@ namespace Pulumi.Minio
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Minio.IamUser("test", new()
+    ///     var test = new Minio.Index.IamUser("test", new()
     ///     {
     ///         Name = "test",
     ///         ForceDestroy = true,
@@ -30,7 +30,7 @@ namespace Pulumi.Minio
     ///         },
     ///     });
     /// 
-    ///     var testServiceAccount = new Minio.IamServiceAccount("test_service_account", new()
+    ///     var testServiceAccount = new Minio.Index.IamServiceAccount("test_service_account", new()
     ///     {
     ///         TargetUser = test.Name,
     ///     });

@@ -20,12 +20,12 @@ namespace Pulumi.Minio
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var developer = new Minio.IamGroup("developer", new()
+    ///     var developer = new Minio.Index.IamGroup("developer", new()
     ///     {
     ///         Name = "developer",
     ///     });
     /// 
-    ///     var testPolicy = new Minio.IamGroupPolicy("test_policy", new()
+    ///     var testPolicy = new Minio.Index.IamGroupPolicy("test_policy", new()
     ///     {
     ///         Name = "state-terraform-s3",
     ///         Group = developer.Id,
