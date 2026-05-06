@@ -29,8 +29,8 @@ public final class MinioFunctions {
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -98,8 +98,8 @@ public final class MinioFunctions {
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -167,8 +167,8 @@ public final class MinioFunctions {
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -236,8 +236,8 @@ public final class MinioFunctions {
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -305,8 +305,8 @@ public final class MinioFunctions {
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -374,8 +374,8 @@ public final class MinioFunctions {
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -443,8 +443,8 @@ public final class MinioFunctions {
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
