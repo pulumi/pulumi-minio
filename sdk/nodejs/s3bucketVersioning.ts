@@ -72,8 +72,8 @@ export class S3BucketVersioning extends pulumi.CustomResource {
  * Input properties used for looking up and filtering S3BucketVersioning resources.
  */
 export interface S3BucketVersioningState {
-    bucket?: pulumi.Input<string>;
-    versioningConfiguration?: pulumi.Input<inputs.S3BucketVersioningVersioningConfiguration>;
+    bucket?: pulumi.Input<string | undefined>;
+    versioningConfiguration?: pulumi.Input<inputs.S3BucketVersioningVersioningConfiguration | undefined>;
 }
 
 /**

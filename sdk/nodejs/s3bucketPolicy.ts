@@ -70,8 +70,8 @@ export class S3BucketPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering S3BucketPolicy resources.
  */
 export interface S3BucketPolicyState {
-    bucket?: pulumi.Input<string>;
-    policy?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
+    policy?: pulumi.Input<string | undefined>;
 }
 
 /**

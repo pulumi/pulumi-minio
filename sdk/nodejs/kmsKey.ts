@@ -64,7 +64,7 @@ export class KmsKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KmsKey resources.
  */
 export interface KmsKeyState {
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
 }
 
 /**

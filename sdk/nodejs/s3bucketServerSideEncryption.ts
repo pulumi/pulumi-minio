@@ -76,9 +76,9 @@ export class S3BucketServerSideEncryption extends pulumi.CustomResource {
  * Input properties used for looking up and filtering S3BucketServerSideEncryption resources.
  */
 export interface S3BucketServerSideEncryptionState {
-    bucket?: pulumi.Input<string>;
-    encryptionType?: pulumi.Input<string>;
-    kmsKeyId?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
 }
 
 /**

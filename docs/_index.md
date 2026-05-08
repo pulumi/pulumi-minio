@@ -107,7 +107,7 @@ using Minio = Pulumi.Minio;
 
 return await Deployment.RunAsync(() =>
 {
-    var statePulumiS3 = new Minio.Index.S3Bucket("state_pulumi_s3");
+    var statePulumiS3 = new Minio.S3Bucket("state_pulumi_s3");
 
 });
 
@@ -152,8 +152,8 @@ import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.minio.S3Bucket;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

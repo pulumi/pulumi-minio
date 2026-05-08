@@ -112,22 +112,22 @@ export class IamServiceAccount extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IamServiceAccount resources.
  */
 export interface IamServiceAccountState {
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * Disable service account
      */
-    disableUser?: pulumi.Input<boolean>;
+    disableUser?: pulumi.Input<boolean | undefined>;
     /**
      * policy of service account
      */
-    policy?: pulumi.Input<string>;
-    secretKey?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
-    targetUser?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
+    secretKey?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    targetUser?: pulumi.Input<string | undefined>;
     /**
      * rotate secret key
      */
-    updateSecret?: pulumi.Input<boolean>;
+    updateSecret?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -137,14 +137,14 @@ export interface IamServiceAccountArgs {
     /**
      * Disable service account
      */
-    disableUser?: pulumi.Input<boolean>;
+    disableUser?: pulumi.Input<boolean | undefined>;
     /**
      * policy of service account
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     targetUser: pulumi.Input<string>;
     /**
      * rotate secret key
      */
-    updateSecret?: pulumi.Input<boolean>;
+    updateSecret?: pulumi.Input<boolean | undefined>;
 }

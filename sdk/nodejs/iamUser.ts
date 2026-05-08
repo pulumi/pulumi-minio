@@ -116,19 +116,19 @@ export interface IamUserState {
     /**
      * Disable user
      */
-    disableUser?: pulumi.Input<boolean>;
+    disableUser?: pulumi.Input<boolean | undefined>;
     /**
      * Delete user even if it has non-Terraform-managed IAM access keys
      */
-    forceDestroy?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    secret?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    secret?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Rotate Minio User Secret Key
      */
-    updateSecret?: pulumi.Input<boolean>;
+    updateSecret?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -138,16 +138,16 @@ export interface IamUserArgs {
     /**
      * Disable user
      */
-    disableUser?: pulumi.Input<boolean>;
+    disableUser?: pulumi.Input<boolean | undefined>;
     /**
      * Delete user even if it has non-Terraform-managed IAM access keys
      */
-    forceDestroy?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    secret?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    secret?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Rotate Minio User Secret Key
      */
-    updateSecret?: pulumi.Input<boolean>;
+    updateSecret?: pulumi.Input<boolean | undefined>;
 }

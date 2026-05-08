@@ -110,14 +110,14 @@ export class S3Object extends pulumi.CustomResource {
  * Input properties used for looking up and filtering S3Object resources.
  */
 export interface S3ObjectState {
-    bucketName?: pulumi.Input<string>;
-    content?: pulumi.Input<string>;
-    contentBase64?: pulumi.Input<string>;
-    contentType?: pulumi.Input<string>;
-    etag?: pulumi.Input<string>;
-    objectName?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    versionId?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
+    content?: pulumi.Input<string | undefined>;
+    contentBase64?: pulumi.Input<string | undefined>;
+    contentType?: pulumi.Input<string | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    objectName?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -125,11 +125,11 @@ export interface S3ObjectState {
  */
 export interface S3ObjectArgs {
     bucketName: pulumi.Input<string>;
-    content?: pulumi.Input<string>;
-    contentBase64?: pulumi.Input<string>;
-    contentType?: pulumi.Input<string>;
-    etag?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
+    contentBase64?: pulumi.Input<string | undefined>;
+    contentType?: pulumi.Input<string | undefined>;
+    etag?: pulumi.Input<string | undefined>;
     objectName: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    versionId?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
+    versionId?: pulumi.Input<string | undefined>;
 }

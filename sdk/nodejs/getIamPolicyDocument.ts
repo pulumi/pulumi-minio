@@ -148,9 +148,9 @@ export function getIamPolicyDocumentOutput(args?: GetIamPolicyDocumentOutputArgs
  * A collection of arguments for invoking getIamPolicyDocument.
  */
 export interface GetIamPolicyDocumentOutputArgs {
-    overrideJson?: pulumi.Input<string>;
-    policyId?: pulumi.Input<string>;
-    sourceJson?: pulumi.Input<string>;
-    statements?: pulumi.Input<pulumi.Input<inputs.GetIamPolicyDocumentStatementArgs>[]>;
-    version?: pulumi.Input<string>;
+    overrideJson?: pulumi.Input<string | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
+    sourceJson?: pulumi.Input<string | undefined>;
+    statements?: pulumi.Input<pulumi.Input<inputs.GetIamPolicyDocumentStatementArgs>[] | undefined>;
+    version?: pulumi.Input<string | undefined>;
 }

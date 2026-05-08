@@ -32,21 +32,21 @@ class IlmPolicyRuleArgsDict(TypedDict):
     """
     The ID of this resource.
     """
-    expiration: NotRequired[pulumi.Input[_builtins.str]]
-    filter: NotRequired[pulumi.Input[_builtins.str]]
-    noncurrent_version_expiration_days: NotRequired[pulumi.Input[_builtins.int]]
-    status: NotRequired[pulumi.Input[_builtins.str]]
-    tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    expiration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    noncurrent_version_expiration_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class IlmPolicyRuleArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 noncurrent_version_expiration_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 noncurrent_version_expiration_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The ID of this resource.
         """
@@ -76,56 +76,56 @@ class IlmPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="noncurrentVersionExpirationDays")
-    def noncurrent_version_expiration_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def noncurrent_version_expiration_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "noncurrent_version_expiration_days")
 
     @noncurrent_version_expiration_days.setter
-    def noncurrent_version_expiration_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def noncurrent_version_expiration_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "noncurrent_version_expiration_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 class S3BucketNotificationQueueArgsDict(TypedDict):
     events: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     queue_arn: pulumi.Input[_builtins.str]
-    filter_prefix: NotRequired[pulumi.Input[_builtins.str]]
-    filter_suffix: NotRequired[pulumi.Input[_builtins.str]]
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    filter_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    filter_suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of this resource.
     """
@@ -135,9 +135,9 @@ class S3BucketNotificationQueueArgs:
     def __init__(__self__, *,
                  events: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  queue_arn: pulumi.Input[_builtins.str],
-                 filter_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The ID of this resource.
         """
@@ -170,46 +170,46 @@ class S3BucketNotificationQueueArgs:
 
     @_builtins.property
     @pulumi.getter(name="filterPrefix")
-    def filter_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "filter_prefix")
 
     @filter_prefix.setter
-    def filter_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="filterSuffix")
-    def filter_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "filter_suffix")
 
     @filter_suffix.setter
-    def filter_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_suffix", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of this resource.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
 
 class S3BucketVersioningVersioningConfigurationArgsDict(TypedDict):
     status: pulumi.Input[_builtins.str]
-    exclude_folders: NotRequired[pulumi.Input[_builtins.bool]]
-    excluded_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_folders: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    excluded_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class S3BucketVersioningVersioningConfigurationArgs:
     def __init__(__self__, *,
                  status: pulumi.Input[_builtins.str],
-                 exclude_folders: Optional[pulumi.Input[_builtins.bool]] = None,
-                 excluded_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 exclude_folders: pulumi.Input[Optional[_builtins.bool]] = None,
+                 excluded_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         pulumi.set(__self__, "status", status)
         if exclude_folders is not None:
             pulumi.set(__self__, "exclude_folders", exclude_folders)
@@ -227,20 +227,20 @@ class S3BucketVersioningVersioningConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeFolders")
-    def exclude_folders(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def exclude_folders(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "exclude_folders")
 
     @exclude_folders.setter
-    def exclude_folders(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def exclude_folders(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exclude_folders", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedPrefixes")
-    def excluded_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def excluded_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "excluded_prefixes")
 
     @excluded_prefixes.setter
-    def excluded_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def excluded_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excluded_prefixes", value)
 
 

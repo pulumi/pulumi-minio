@@ -106,10 +106,10 @@ export class IamGroupPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IamGroupPolicy resources.
  */
 export interface IamGroupPolicyState {
-    group?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    namePrefix?: pulumi.Input<string>;
-    policy?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    namePrefix?: pulumi.Input<string | undefined>;
+    policy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,7 +117,7 @@ export interface IamGroupPolicyState {
  */
 export interface IamGroupPolicyArgs {
     group: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    namePrefix?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    namePrefix?: pulumi.Input<string | undefined>;
     policy: pulumi.Input<string>;
 }

@@ -19,19 +19,19 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 minio_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 minio_key_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_session_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 minio_user: Optional[pulumi.Input[_builtins.str]] = None):
+                 minio_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_cacert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 minio_key_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_session_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 minio_user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -82,150 +82,150 @@ class ProviderArgs:
     @_builtins.property
     @pulumi.getter(name="minioAccessKey")
     @_utilities.deprecated("""use minio_user instead""")
-    def minio_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minio Access Key
         """
         return pulumi.get(self, "minio_access_key")
 
     @minio_access_key.setter
-    def minio_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="minioApiVersion")
-    def minio_api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_api_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minio API Version (type: string, options: v2 or v4, default: v4)
         """
         return pulumi.get(self, "minio_api_version")
 
     @minio_api_version.setter
-    def minio_api_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_api_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_api_version", value)
 
     @_builtins.property
     @pulumi.getter(name="minioCacertFile")
-    def minio_cacert_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_cacert_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "minio_cacert_file")
 
     @minio_cacert_file.setter
-    def minio_cacert_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_cacert_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_cacert_file", value)
 
     @_builtins.property
     @pulumi.getter(name="minioCertFile")
-    def minio_cert_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_cert_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "minio_cert_file")
 
     @minio_cert_file.setter
-    def minio_cert_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_cert_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_cert_file", value)
 
     @_builtins.property
     @pulumi.getter(name="minioInsecure")
-    def minio_insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def minio_insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable SSL certificate verification (default: false)
         """
         return pulumi.get(self, "minio_insecure")
 
     @minio_insecure.setter
-    def minio_insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def minio_insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "minio_insecure", value)
 
     @_builtins.property
     @pulumi.getter(name="minioKeyFile")
-    def minio_key_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_key_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "minio_key_file")
 
     @minio_key_file.setter
-    def minio_key_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_key_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_key_file", value)
 
     @_builtins.property
     @pulumi.getter(name="minioPassword")
-    def minio_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minio Password
         """
         return pulumi.get(self, "minio_password")
 
     @minio_password.setter
-    def minio_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_password", value)
 
     @_builtins.property
     @pulumi.getter(name="minioRegion")
-    def minio_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minio Region (default: us-east-1)
         """
         return pulumi.get(self, "minio_region")
 
     @minio_region.setter
-    def minio_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_region", value)
 
     @_builtins.property
     @pulumi.getter(name="minioSecretKey")
     @_utilities.deprecated("""use minio_password instead""")
-    def minio_secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minio Secret Key
         """
         return pulumi.get(self, "minio_secret_key")
 
     @minio_secret_key.setter
-    def minio_secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_secret_key", value)
 
     @_builtins.property
     @pulumi.getter(name="minioServer")
-    def minio_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minio Host and Port
         """
         return pulumi.get(self, "minio_server")
 
     @minio_server.setter
-    def minio_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_server", value)
 
     @_builtins.property
     @pulumi.getter(name="minioSessionToken")
-    def minio_session_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_session_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minio Session Token
         """
         return pulumi.get(self, "minio_session_token")
 
     @minio_session_token.setter
-    def minio_session_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_session_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_session_token", value)
 
     @_builtins.property
     @pulumi.getter(name="minioSsl")
-    def minio_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def minio_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Minio SSL enabled (default: false)
         """
         return pulumi.get(self, "minio_ssl")
 
     @minio_ssl.setter
-    def minio_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def minio_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "minio_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="minioUser")
-    def minio_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minio_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minio User
         """
         return pulumi.get(self, "minio_user")
 
     @minio_user.setter
-    def minio_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minio_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minio_user", value)
 
 
@@ -235,19 +235,19 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 minio_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 minio_key_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_session_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 minio_user: Optional[pulumi.Input[_builtins.str]] = None,
+                 minio_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_cacert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 minio_key_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_session_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 minio_user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the minio package. By default, resources use package-wide configuration
@@ -297,19 +297,19 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 minio_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_cacert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 minio_key_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_session_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 minio_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 minio_user: Optional[pulumi.Input[_builtins.str]] = None,
+                 minio_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_cacert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 minio_key_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_session_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 minio_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 minio_user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

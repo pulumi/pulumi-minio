@@ -19,9 +19,9 @@ __all__ = ['IamGroupArgs', 'IamGroup']
 @pulumi.input_type
 class IamGroupArgs:
     def __init__(__self__, *,
-                 disable_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a IamGroup resource.
 
@@ -37,45 +37,45 @@ class IamGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableGroup")
-    def disable_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable group
         """
         return pulumi.get(self, "disable_group")
 
     @disable_group.setter
-    def disable_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_group", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Delete group even if it has non-Terraform-managed members
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _IamGroupState:
     def __init__(__self__, *,
-                 disable_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IamGroup resources.
 
@@ -93,44 +93,44 @@ class _IamGroupState:
 
     @_builtins.property
     @pulumi.getter(name="disableGroup")
-    def disable_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable group
         """
         return pulumi.get(self, "disable_group")
 
     @disable_group.setter
-    def disable_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_group", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Delete group even if it has non-Terraform-managed members
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -140,9 +140,9 @@ class IamGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -194,9 +194,9 @@ class IamGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -220,10 +220,10 @@ class IamGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disable_group: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'IamGroup':
+            disable_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'IamGroup':
         """
         Get an existing IamGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

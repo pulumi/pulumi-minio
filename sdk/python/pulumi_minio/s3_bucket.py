@@ -19,12 +19,12 @@ __all__ = ['S3BucketArgs', 'S3Bucket']
 @pulumi.input_type
 class S3BucketArgs:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_locking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quota: Optional[pulumi.Input[_builtins.float]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_locking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quota: pulumi.Input[Optional[_builtins.float]] = None):
         """
         The set of arguments for constructing a S3Bucket resource.
         """
@@ -43,70 +43,70 @@ class S3BucketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketPrefix")
-    def bucket_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bucket_prefix")
 
     @bucket_prefix.setter
-    def bucket_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="objectLocking")
-    def object_locking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def object_locking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "object_locking")
 
     @object_locking.setter
-    def object_locking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def object_locking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "object_locking", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def quota(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def quota(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "quota", value)
 
 
 @pulumi.input_type
 class _S3BucketState:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_locking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quota: Optional[pulumi.Input[_builtins.float]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_locking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quota: pulumi.Input[Optional[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering S3Bucket resources.
         """
@@ -129,74 +129,74 @@ class _S3BucketState:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketDomainName")
-    def bucket_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bucket_domain_name")
 
     @bucket_domain_name.setter
-    def bucket_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketPrefix")
-    def bucket_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bucket_prefix")
 
     @bucket_prefix.setter
-    def bucket_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="objectLocking")
-    def object_locking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def object_locking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "object_locking")
 
     @object_locking.setter
-    def object_locking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def object_locking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "object_locking", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def quota(self) -> pulumi.Input[Optional[_builtins.float]]:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def quota(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "quota", value)
 
 
@@ -206,12 +206,12 @@ class S3Bucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_locking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quota: Optional[pulumi.Input[_builtins.float]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_locking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quota: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -267,12 +267,12 @@ class S3Bucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_locking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 quota: Optional[pulumi.Input[_builtins.float]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_locking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 quota: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -300,14 +300,14 @@ class S3Bucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            arn: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            object_locking: Optional[pulumi.Input[_builtins.bool]] = None,
-            quota: Optional[pulumi.Input[_builtins.float]] = None) -> 'S3Bucket':
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            object_locking: pulumi.Input[Optional[_builtins.bool]] = None,
+            quota: pulumi.Input[Optional[_builtins.float]] = None) -> 'S3Bucket':
         """
         Get an existing S3Bucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

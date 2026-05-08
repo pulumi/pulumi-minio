@@ -73,8 +73,8 @@ export class IamUserPolicyAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IamUserPolicyAttachment resources.
  */
 export interface IamUserPolicyAttachmentState {
-    policyName?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**

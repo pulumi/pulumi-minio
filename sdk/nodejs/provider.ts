@@ -113,48 +113,48 @@ export interface ProviderArgs {
      *
      * @deprecated use minioUser instead
      */
-    minioAccessKey?: pulumi.Input<string>;
+    minioAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Minio API Version (type: string, options: v2 or v4, default: v4)
      */
-    minioApiVersion?: pulumi.Input<string>;
-    minioCacertFile?: pulumi.Input<string>;
-    minioCertFile?: pulumi.Input<string>;
+    minioApiVersion?: pulumi.Input<string | undefined>;
+    minioCacertFile?: pulumi.Input<string | undefined>;
+    minioCertFile?: pulumi.Input<string | undefined>;
     /**
      * Disable SSL certificate verification (default: false)
      */
-    minioInsecure?: pulumi.Input<boolean>;
-    minioKeyFile?: pulumi.Input<string>;
+    minioInsecure?: pulumi.Input<boolean | undefined>;
+    minioKeyFile?: pulumi.Input<string | undefined>;
     /**
      * Minio Password
      */
-    minioPassword?: pulumi.Input<string>;
+    minioPassword?: pulumi.Input<string | undefined>;
     /**
      * Minio Region (default: us-east-1)
      */
-    minioRegion?: pulumi.Input<string>;
+    minioRegion?: pulumi.Input<string | undefined>;
     /**
      * Minio Secret Key
      *
      * @deprecated use minioPassword instead
      */
-    minioSecretKey?: pulumi.Input<string>;
+    minioSecretKey?: pulumi.Input<string | undefined>;
     /**
      * Minio Host and Port
      */
-    minioServer?: pulumi.Input<string>;
+    minioServer?: pulumi.Input<string | undefined>;
     /**
      * Minio Session Token
      */
-    minioSessionToken?: pulumi.Input<string>;
+    minioSessionToken?: pulumi.Input<string | undefined>;
     /**
      * Minio SSL enabled (default: false)
      */
-    minioSsl?: pulumi.Input<boolean>;
+    minioSsl?: pulumi.Input<boolean | undefined>;
     /**
      * Minio User
      */
-    minioUser?: pulumi.Input<string>;
+    minioUser?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

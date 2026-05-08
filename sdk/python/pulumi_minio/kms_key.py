@@ -38,7 +38,7 @@ class KmsKeyArgs:
 @pulumi.input_type
 class _KmsKeyState:
     def __init__(__self__, *,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KmsKey resources.
         """
@@ -47,11 +47,11 @@ class _KmsKeyState:
 
     @_builtins.property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key_id")
 
     @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_id", value)
 
 
@@ -61,7 +61,7 @@ class KmsKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a KmsKey resource with the given unique name, props, and options.
@@ -93,7 +93,7 @@ class KmsKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -116,7 +116,7 @@ class KmsKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            key_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'KmsKey':
+            key_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'KmsKey':
         """
         Get an existing KmsKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
