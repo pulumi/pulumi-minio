@@ -73,8 +73,8 @@ export class IamGroupPolicyAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IamGroupPolicyAttachment resources.
  */
 export interface IamGroupPolicyAttachmentState {
-    groupName?: pulumi.Input<string>;
-    policyName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
+    policyName?: pulumi.Input<string | undefined>;
 }
 
 /**

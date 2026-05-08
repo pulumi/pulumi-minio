@@ -97,24 +97,24 @@ export class S3Bucket extends pulumi.CustomResource {
  * Input properties used for looking up and filtering S3Bucket resources.
  */
 export interface S3BucketState {
-    acl?: pulumi.Input<string>;
-    arn?: pulumi.Input<string>;
-    bucket?: pulumi.Input<string>;
-    bucketDomainName?: pulumi.Input<string>;
-    bucketPrefix?: pulumi.Input<string>;
-    forceDestroy?: pulumi.Input<boolean>;
-    objectLocking?: pulumi.Input<boolean>;
-    quota?: pulumi.Input<number>;
+    acl?: pulumi.Input<string | undefined>;
+    arn?: pulumi.Input<string | undefined>;
+    bucket?: pulumi.Input<string | undefined>;
+    bucketDomainName?: pulumi.Input<string | undefined>;
+    bucketPrefix?: pulumi.Input<string | undefined>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    objectLocking?: pulumi.Input<boolean | undefined>;
+    quota?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a S3Bucket resource.
  */
 export interface S3BucketArgs {
-    acl?: pulumi.Input<string>;
-    bucket?: pulumi.Input<string>;
-    bucketPrefix?: pulumi.Input<string>;
-    forceDestroy?: pulumi.Input<boolean>;
-    objectLocking?: pulumi.Input<boolean>;
-    quota?: pulumi.Input<number>;
+    acl?: pulumi.Input<string | undefined>;
+    bucket?: pulumi.Input<string | undefined>;
+    bucketPrefix?: pulumi.Input<string | undefined>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    objectLocking?: pulumi.Input<boolean | undefined>;
+    quota?: pulumi.Input<number | undefined>;
 }

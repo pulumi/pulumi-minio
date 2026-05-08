@@ -97,16 +97,16 @@ export class IamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IamPolicy resources.
  */
 export interface IamPolicyState {
-    name?: pulumi.Input<string>;
-    namePrefix?: pulumi.Input<string>;
-    policy?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    namePrefix?: pulumi.Input<string | undefined>;
+    policy?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a IamPolicy resource.
  */
 export interface IamPolicyArgs {
-    name?: pulumi.Input<string>;
-    namePrefix?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    namePrefix?: pulumi.Input<string | undefined>;
     policy: pulumi.Input<string>;
 }

@@ -15,12 +15,12 @@ export interface GetIamPolicyDocumentStatement {
 }
 
 export interface GetIamPolicyDocumentStatementArgs {
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
-    conditions?: pulumi.Input<pulumi.Input<inputs.GetIamPolicyDocumentStatementConditionArgs>[]>;
-    effect?: pulumi.Input<string>;
-    principal?: pulumi.Input<string>;
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
-    sid?: pulumi.Input<string>;
+    actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.GetIamPolicyDocumentStatementConditionArgs>[] | undefined>;
+    effect?: pulumi.Input<string | undefined>;
+    principal?: pulumi.Input<string | undefined>;
+    resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetIamPolicyDocumentStatementCondition {
@@ -36,30 +36,30 @@ export interface GetIamPolicyDocumentStatementConditionArgs {
 }
 
 export interface IlmPolicyRule {
-    expiration?: pulumi.Input<string>;
-    filter?: pulumi.Input<string>;
+    expiration?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The ID of this resource.
      */
     id: pulumi.Input<string>;
-    noncurrentVersionExpirationDays?: pulumi.Input<number>;
-    status?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    noncurrentVersionExpirationDays?: pulumi.Input<number | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface S3BucketNotificationQueue {
     events: pulumi.Input<pulumi.Input<string>[]>;
-    filterPrefix?: pulumi.Input<string>;
-    filterSuffix?: pulumi.Input<string>;
+    filterPrefix?: pulumi.Input<string | undefined>;
+    filterSuffix?: pulumi.Input<string | undefined>;
     /**
      * The ID of this resource.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     queueArn: pulumi.Input<string>;
 }
 
 export interface S3BucketVersioningVersioningConfiguration {
-    excludeFolders?: pulumi.Input<boolean>;
-    excludedPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeFolders?: pulumi.Input<boolean | undefined>;
+    excludedPrefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     status: pulumi.Input<string>;
 }

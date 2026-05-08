@@ -69,8 +69,8 @@ export class S3BucketNotification extends pulumi.CustomResource {
  * Input properties used for looking up and filtering S3BucketNotification resources.
  */
 export interface S3BucketNotificationState {
-    bucket?: pulumi.Input<string>;
-    queues?: pulumi.Input<pulumi.Input<inputs.S3BucketNotificationQueue>[]>;
+    bucket?: pulumi.Input<string | undefined>;
+    queues?: pulumi.Input<pulumi.Input<inputs.S3BucketNotificationQueue>[] | undefined>;
 }
 
 /**
@@ -78,5 +78,5 @@ export interface S3BucketNotificationState {
  */
 export interface S3BucketNotificationArgs {
     bucket: pulumi.Input<string>;
-    queues?: pulumi.Input<pulumi.Input<inputs.S3BucketNotificationQueue>[]>;
+    queues?: pulumi.Input<pulumi.Input<inputs.S3BucketNotificationQueue>[] | undefined>;
 }

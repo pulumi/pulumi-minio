@@ -90,13 +90,13 @@ export interface IamGroupState {
     /**
      * Disable group
      */
-    disableGroup?: pulumi.Input<boolean>;
+    disableGroup?: pulumi.Input<boolean | undefined>;
     /**
      * Delete group even if it has non-Terraform-managed members
      */
-    forceDestroy?: pulumi.Input<boolean>;
-    groupName?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    groupName?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -106,10 +106,10 @@ export interface IamGroupArgs {
     /**
      * Disable group
      */
-    disableGroup?: pulumi.Input<boolean>;
+    disableGroup?: pulumi.Input<boolean | undefined>;
     /**
      * Delete group even if it has non-Terraform-managed members
      */
-    forceDestroy?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -51,8 +51,8 @@ class S3BucketVersioningArgs:
 @pulumi.input_type
 class _S3BucketVersioningState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning_configuration: Optional[pulumi.Input['S3BucketVersioningVersioningConfigurationArgs']] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning_configuration: pulumi.Input[Optional['S3BucketVersioningVersioningConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering S3BucketVersioning resources.
         """
@@ -63,20 +63,20 @@ class _S3BucketVersioningState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="versioningConfiguration")
-    def versioning_configuration(self) -> Optional[pulumi.Input['S3BucketVersioningVersioningConfigurationArgs']]:
+    def versioning_configuration(self) -> pulumi.Input[Optional['S3BucketVersioningVersioningConfigurationArgs']]:
         return pulumi.get(self, "versioning_configuration")
 
     @versioning_configuration.setter
-    def versioning_configuration(self, value: Optional[pulumi.Input['S3BucketVersioningVersioningConfigurationArgs']]):
+    def versioning_configuration(self, value: pulumi.Input[Optional['S3BucketVersioningVersioningConfigurationArgs']]):
         pulumi.set(self, "versioning_configuration", value)
 
 
@@ -86,8 +86,8 @@ class S3BucketVersioning(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning_configuration: Optional[pulumi.Input[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning_configuration: pulumi.Input[Optional[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None,
                  __props__=None):
         """
         Create a S3BucketVersioning resource with the given unique name, props, and options.
@@ -119,8 +119,8 @@ class S3BucketVersioning(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning_configuration: Optional[pulumi.Input[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning_configuration: pulumi.Input[Optional[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -146,8 +146,8 @@ class S3BucketVersioning(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            versioning_configuration: Optional[pulumi.Input[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None) -> 'S3BucketVersioning':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            versioning_configuration: pulumi.Input[Optional[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None) -> 'S3BucketVersioning':
         """
         Get an existing S3BucketVersioning resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

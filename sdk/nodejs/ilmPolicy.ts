@@ -91,8 +91,8 @@ export class IlmPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IlmPolicy resources.
  */
 export interface IlmPolicyState {
-    bucket?: pulumi.Input<string>;
-    rules?: pulumi.Input<pulumi.Input<inputs.IlmPolicyRule>[]>;
+    bucket?: pulumi.Input<string | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.IlmPolicyRule>[] | undefined>;
 }
 
 /**

@@ -20,9 +20,9 @@ __all__ = ['IamServiceAccountArgs', 'IamServiceAccount']
 class IamServiceAccountArgs:
     def __init__(__self__, *,
                  target_user: pulumi.Input[_builtins.str],
-                 disable_user: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_secret: Optional[pulumi.Input[_builtins.bool]] = None):
+                 disable_user: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_secret: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IamServiceAccount resource.
 
@@ -49,51 +49,51 @@ class IamServiceAccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableUser")
-    def disable_user(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_user(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable service account
         """
         return pulumi.get(self, "disable_user")
 
     @disable_user.setter
-    def disable_user(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_user(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         policy of service account
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="updateSecret")
-    def update_secret(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def update_secret(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         rotate secret key
         """
         return pulumi.get(self, "update_secret")
 
     @update_secret.setter
-    def update_secret(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def update_secret(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "update_secret", value)
 
 
 @pulumi.input_type
 class _IamServiceAccountState:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_user: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_secret: Optional[pulumi.Input[_builtins.bool]] = None):
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_user: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_secret: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering IamServiceAccount resources.
 
@@ -118,74 +118,74 @@ class _IamServiceAccountState:
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="disableUser")
-    def disable_user(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_user(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable service account
         """
         return pulumi.get(self, "disable_user")
 
     @disable_user.setter
-    def disable_user(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_user(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         policy of service account
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="targetUser")
-    def target_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "target_user")
 
     @target_user.setter
-    def target_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_user", value)
 
     @_builtins.property
     @pulumi.getter(name="updateSecret")
-    def update_secret(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def update_secret(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         rotate secret key
         """
         return pulumi.get(self, "update_secret")
 
     @update_secret.setter
-    def update_secret(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def update_secret(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "update_secret", value)
 
 
@@ -195,10 +195,10 @@ class IamServiceAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_user: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_secret: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_user: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_secret: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -265,10 +265,10 @@ class IamServiceAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_user: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_secret: Optional[pulumi.Input[_builtins.bool]] = None,
+                 disable_user: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_secret: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -299,13 +299,13 @@ class IamServiceAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_key: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_user: Optional[pulumi.Input[_builtins.bool]] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            target_user: Optional[pulumi.Input[_builtins.str]] = None,
-            update_secret: Optional[pulumi.Input[_builtins.bool]] = None) -> 'IamServiceAccount':
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_user: pulumi.Input[Optional[_builtins.bool]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_user: pulumi.Input[Optional[_builtins.str]] = None,
+            update_secret: pulumi.Input[Optional[_builtins.bool]] = None) -> 'IamServiceAccount':
         """
         Get an existing IamServiceAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

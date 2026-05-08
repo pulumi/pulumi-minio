@@ -85,15 +85,15 @@ export interface IamGroupMembershipState {
     /**
      * Group name to add users
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * Name of group membership
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Add user or list of users such as a group membership
      */
-    users?: pulumi.Input<pulumi.Input<string>[]>;
+    users?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -107,7 +107,7 @@ export interface IamGroupMembershipArgs {
     /**
      * Name of group membership
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Add user or list of users such as a group membership
      */

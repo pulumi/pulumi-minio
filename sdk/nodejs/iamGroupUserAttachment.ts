@@ -88,8 +88,8 @@ export class IamGroupUserAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IamGroupUserAttachment resources.
  */
 export interface IamGroupUserAttachmentState {
-    groupName?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**

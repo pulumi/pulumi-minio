@@ -22,7 +22,7 @@ __all__ = ['S3BucketNotificationArgs', 'S3BucketNotification']
 class S3BucketNotificationArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 queues: Optional[pulumi.Input[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]] = None):
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]] = None):
         """
         The set of arguments for constructing a S3BucketNotification resource.
         """
@@ -41,19 +41,19 @@ class S3BucketNotificationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def queues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]]:
+    def queues(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]]:
         return pulumi.get(self, "queues")
 
     @queues.setter
-    def queues(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]]):
+    def queues(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]]):
         pulumi.set(self, "queues", value)
 
 
 @pulumi.input_type
 class _S3BucketNotificationState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 queues: Optional[pulumi.Input[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]] = None):
         """
         Input properties used for looking up and filtering S3BucketNotification resources.
         """
@@ -64,20 +64,20 @@ class _S3BucketNotificationState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def queues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]]:
+    def queues(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]]:
         return pulumi.get(self, "queues")
 
     @queues.setter
-    def queues(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]]):
+    def queues(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['S3BucketNotificationQueueArgs']]]]):
         pulumi.set(self, "queues", value)
 
 
@@ -87,8 +87,8 @@ class S3BucketNotification(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 queues: Optional[pulumi.Input[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None,
                  __props__=None):
         """
         Create a S3BucketNotification resource with the given unique name, props, and options.
@@ -120,8 +120,8 @@ class S3BucketNotification(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 queues: Optional[pulumi.Input[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -145,8 +145,8 @@ class S3BucketNotification(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            queues: Optional[pulumi.Input[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None) -> 'S3BucketNotification':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None) -> 'S3BucketNotification':
         """
         Get an existing S3BucketNotification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
