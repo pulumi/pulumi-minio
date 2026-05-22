@@ -79,7 +79,7 @@ $ export MINIO_PASSWORD="xgwgwqqwv"
 When using this method, you may omit the
 minio provider configuration entirely:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
@@ -168,6 +168,21 @@ public class App {
         var statePulumiS3 = new S3Bucket("statePulumiS3");
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    minio = {
+      source = "pulumi/minio"
+    }
+  }
+}
+
+resource "minio_s3bucket" "state_pulumi_s3" {
 }
 ```
 
