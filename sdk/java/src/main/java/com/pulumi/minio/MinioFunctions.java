@@ -27,6 +27,8 @@ public final class MinioFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.minio.MinioFunctions;
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementConditionArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
      * import java.util.ArrayList;
@@ -96,6 +98,8 @@ public final class MinioFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.minio.MinioFunctions;
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementConditionArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
      * import java.util.ArrayList;
@@ -165,6 +169,8 @@ public final class MinioFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.minio.MinioFunctions;
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementConditionArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
      * import java.util.ArrayList;
@@ -234,6 +240,8 @@ public final class MinioFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.minio.MinioFunctions;
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementConditionArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
      * import java.util.ArrayList;
@@ -303,6 +311,8 @@ public final class MinioFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.minio.MinioFunctions;
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementConditionArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
      * import java.util.ArrayList;
@@ -372,6 +382,8 @@ public final class MinioFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.minio.MinioFunctions;
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementConditionArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
      * import java.util.ArrayList;
@@ -441,6 +453,8 @@ public final class MinioFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.minio.MinioFunctions;
      * import com.pulumi.minio.inputs.GetIamPolicyDocumentArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementArgs;
+     * import com.pulumi.minio.inputs.GetIamPolicyDocumentStatementConditionArgs;
      * import com.pulumi.minio.IamPolicy;
      * import com.pulumi.minio.IamPolicyArgs;
      * import java.util.ArrayList;
