@@ -34,7 +34,7 @@ import (
 //			}
 //			_, err = minio.NewIamGroupPolicy(ctx, "test_policy", &minio.IamGroupPolicyArgs{
 //				Name:  pulumi.String("state-terraform-s3"),
-//				Group: developer.ID(),
+//				Group: developer.ID().ToIDOutput().ToStringOutput(),
 //				Policy: pulumi.String(`{
 //	  \"Version\":\"2012-10-17\",
 //	  \"Statement\": [
