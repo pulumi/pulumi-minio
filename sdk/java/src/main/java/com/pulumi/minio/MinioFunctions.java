@@ -54,8 +54,6 @@ public final class MinioFunctions {
      *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions("s3:ListBucket")
-     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
      *                         .test("StringLike")
      *                         .variable("s3:prefix")
@@ -63,6 +61,8 @@ public final class MinioFunctions {
      *                             "",
      *                             "home/")
      *                         .build())
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
      *                     .actions("s3:PutObject")
@@ -125,8 +125,6 @@ public final class MinioFunctions {
      *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions("s3:ListBucket")
-     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
      *                         .test("StringLike")
      *                         .variable("s3:prefix")
@@ -134,6 +132,8 @@ public final class MinioFunctions {
      *                             "",
      *                             "home/")
      *                         .build())
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
      *                     .actions("s3:PutObject")
@@ -196,8 +196,6 @@ public final class MinioFunctions {
      *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions("s3:ListBucket")
-     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
      *                         .test("StringLike")
      *                         .variable("s3:prefix")
@@ -205,6 +203,8 @@ public final class MinioFunctions {
      *                             "",
      *                             "home/")
      *                         .build())
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
      *                     .actions("s3:PutObject")
@@ -267,8 +267,6 @@ public final class MinioFunctions {
      *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions("s3:ListBucket")
-     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
      *                         .test("StringLike")
      *                         .variable("s3:prefix")
@@ -276,6 +274,8 @@ public final class MinioFunctions {
      *                             "",
      *                             "home/")
      *                         .build())
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
      *                     .actions("s3:PutObject")
@@ -338,8 +338,6 @@ public final class MinioFunctions {
      *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions("s3:ListBucket")
-     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
      *                         .test("StringLike")
      *                         .variable("s3:prefix")
@@ -347,6 +345,8 @@ public final class MinioFunctions {
      *                             "",
      *                             "home/")
      *                         .build())
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
      *                     .actions("s3:PutObject")
@@ -409,8 +409,6 @@ public final class MinioFunctions {
      *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions("s3:ListBucket")
-     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
      *                         .test("StringLike")
      *                         .variable("s3:prefix")
@@ -418,6 +416,8 @@ public final class MinioFunctions {
      *                             "",
      *                             "home/")
      *                         .build())
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
      *                     .actions("s3:PutObject")
@@ -480,8 +480,6 @@ public final class MinioFunctions {
      *                     .resources("arn:aws:s3:::*")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
-     *                     .actions("s3:ListBucket")
-     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .conditions(GetIamPolicyDocumentStatementConditionArgs.builder()
      *                         .test("StringLike")
      *                         .variable("s3:prefix")
@@ -489,6 +487,8 @@ public final class MinioFunctions {
      *                             "",
      *                             "home/")
      *                         .build())
+     *                     .actions("s3:ListBucket")
+     *                     .resources("arn:aws:s3:::state-terraform-s3")
      *                     .build(),
      *                 GetIamPolicyDocumentStatementArgs.builder()
      *                     .actions("s3:PutObject")

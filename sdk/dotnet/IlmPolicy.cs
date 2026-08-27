@@ -29,7 +29,6 @@ namespace Pulumi.Minio
     /// 
     ///     var bucket_lifecycle_rules = new Minio.IlmPolicy("bucket-lifecycle-rules", new()
     ///     {
-    ///         Bucket = bucket.Bucket,
     ///         Rules = new[]
     ///         {
     ///             new Minio.Inputs.IlmPolicyRuleArgs
@@ -38,6 +37,7 @@ namespace Pulumi.Minio
     ///                 Expiration = "7d",
     ///             },
     ///         },
+    ///         Bucket = bucket.Bucket,
     ///     });
     /// 
     /// });

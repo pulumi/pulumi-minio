@@ -41,14 +41,6 @@ namespace Pulumi.Minio
         ///             },
         ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
         ///             {
-        ///                 Actions = new[]
-        ///                 {
-        ///                     "s3:ListBucket",
-        ///                 },
-        ///                 Resources = new[]
-        ///                 {
-        ///                     "arn:aws:s3:::state-terraform-s3",
-        ///                 },
         ///                 Conditions = new[]
         ///                 {
         ///                     new Minio.Inputs.GetIamPolicyDocumentStatementConditionInputArgs
@@ -61,6 +53,14 @@ namespace Pulumi.Minio
         ///                             "home/",
         ///                         },
         ///                     },
+        ///                 },
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "s3:ListBucket",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "arn:aws:s3:::state-terraform-s3",
         ///                 },
         ///             },
         ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
@@ -120,14 +120,6 @@ namespace Pulumi.Minio
         ///             },
         ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
         ///             {
-        ///                 Actions = new[]
-        ///                 {
-        ///                     "s3:ListBucket",
-        ///                 },
-        ///                 Resources = new[]
-        ///                 {
-        ///                     "arn:aws:s3:::state-terraform-s3",
-        ///                 },
         ///                 Conditions = new[]
         ///                 {
         ///                     new Minio.Inputs.GetIamPolicyDocumentStatementConditionInputArgs
@@ -140,6 +132,14 @@ namespace Pulumi.Minio
         ///                             "home/",
         ///                         },
         ///                     },
+        ///                 },
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "s3:ListBucket",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "arn:aws:s3:::state-terraform-s3",
         ///                 },
         ///             },
         ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
@@ -199,14 +199,6 @@ namespace Pulumi.Minio
         ///             },
         ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs
         ///             {
-        ///                 Actions = new[]
-        ///                 {
-        ///                     "s3:ListBucket",
-        ///                 },
-        ///                 Resources = new[]
-        ///                 {
-        ///                     "arn:aws:s3:::state-terraform-s3",
-        ///                 },
         ///                 Conditions = new[]
         ///                 {
         ///                     new Minio.Inputs.GetIamPolicyDocumentStatementConditionInputArgs
@@ -219,6 +211,14 @@ namespace Pulumi.Minio
         ///                             "home/",
         ///                         },
         ///                     },
+        ///                 },
+        ///                 Actions = new[]
+        ///                 {
+        ///                     "s3:ListBucket",
+        ///                 },
+        ///                 Resources = new[]
+        ///                 {
+        ///                     "arn:aws:s3:::state-terraform-s3",
         ///                 },
         ///             },
         ///             new Minio.Inputs.GetIamPolicyDocumentStatementInputArgs

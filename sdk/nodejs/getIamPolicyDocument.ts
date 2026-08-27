@@ -24,8 +24,6 @@ import * as utilities from "./utilities";
  *             resources: ["arn:aws:s3:::*"],
  *         },
  *         {
- *             actions: ["s3:ListBucket"],
- *             resources: ["arn:aws:s3:::state-terraform-s3"],
  *             conditions: [{
  *                 test: "StringLike",
  *                 variable: "s3:prefix",
@@ -34,6 +32,8 @@ import * as utilities from "./utilities";
  *                     "home/",
  *                 ],
  *             }],
+ *             actions: ["s3:ListBucket"],
+ *             resources: ["arn:aws:s3:::state-terraform-s3"],
  *         },
  *         {
  *             actions: ["s3:PutObject"],
@@ -106,8 +106,6 @@ export interface GetIamPolicyDocumentResult {
  *             resources: ["arn:aws:s3:::*"],
  *         },
  *         {
- *             actions: ["s3:ListBucket"],
- *             resources: ["arn:aws:s3:::state-terraform-s3"],
  *             conditions: [{
  *                 test: "StringLike",
  *                 variable: "s3:prefix",
@@ -116,6 +114,8 @@ export interface GetIamPolicyDocumentResult {
  *                     "home/",
  *                 ],
  *             }],
+ *             actions: ["s3:ListBucket"],
+ *             resources: ["arn:aws:s3:::state-terraform-s3"],
  *         },
  *         {
  *             actions: ["s3:PutObject"],

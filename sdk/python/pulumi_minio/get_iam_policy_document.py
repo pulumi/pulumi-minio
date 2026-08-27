@@ -128,8 +128,6 @@ def get_iam_policy_document(override_json: Optional[_builtins.str] = None,
             "resources": ["arn:aws:s3:::*"],
         },
         {
-            "actions": ["s3:ListBucket"],
-            "resources": ["arn:aws:s3:::state-terraform-s3"],
             "conditions": [{
                 "test": "StringLike",
                 "variable": "s3:prefix",
@@ -138,6 +136,8 @@ def get_iam_policy_document(override_json: Optional[_builtins.str] = None,
                     "home/",
                 ],
             }],
+            "actions": ["s3:ListBucket"],
+            "resources": ["arn:aws:s3:::state-terraform-s3"],
         },
         {
             "actions": ["s3:PutObject"],
@@ -192,8 +192,6 @@ def get_iam_policy_document_output(override_json: pulumi.Input[Optional[Optional
             "resources": ["arn:aws:s3:::*"],
         },
         {
-            "actions": ["s3:ListBucket"],
-            "resources": ["arn:aws:s3:::state-terraform-s3"],
             "conditions": [{
                 "test": "StringLike",
                 "variable": "s3:prefix",
@@ -202,6 +200,8 @@ def get_iam_policy_document_output(override_json: pulumi.Input[Optional[Optional
                     "home/",
                 ],
             }],
+            "actions": ["s3:ListBucket"],
+            "resources": ["arn:aws:s3:::state-terraform-s3"],
         },
         {
             "actions": ["s3:PutObject"],

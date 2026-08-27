@@ -50,11 +50,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bucket_lifecycle_rules = new IlmPolicy("bucket-lifecycle-rules", IlmPolicyArgs.builder()
- *             .bucket(bucket.bucket())
  *             .rules(IlmPolicyRuleArgs.builder()
  *                 .id("expire-7d")
  *                 .expiration("7d")
  *                 .build())
+ *             .bucket(bucket.bucket())
  *             .build());
  * 
  *     }

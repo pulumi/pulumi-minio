@@ -35,13 +35,13 @@ import (
 //				return err
 //			}
 //			_, err = minio.NewIlmPolicy(ctx, "bucket-lifecycle-rules", &minio.IlmPolicyArgs{
-//				Bucket: bucket.Bucket,
 //				Rules: minio.IlmPolicyRuleArray{
 //					&minio.IlmPolicyRuleArgs{
 //						Id:         pulumi.String("expire-7d"),
 //						Expiration: pulumi.String("7d"),
 //					},
 //				},
+//				Bucket: bucket.Bucket,
 //			})
 //			if err != nil {
 //				return err
