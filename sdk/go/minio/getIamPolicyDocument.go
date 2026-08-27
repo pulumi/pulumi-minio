@@ -38,12 +38,6 @@ import (
 //						},
 //					},
 //					{
-//						Actions: []string{
-//							"s3:ListBucket",
-//						},
-//						Resources: []string{
-//							"arn:aws:s3:::state-terraform-s3",
-//						},
 //						Conditions: []minio.GetIamPolicyDocumentStatementCondition{
 //							{
 //								Test:     "StringLike",
@@ -53,6 +47,12 @@ import (
 //									"home/",
 //								},
 //							},
+//						},
+//						Actions: []string{
+//							"s3:ListBucket",
+//						},
+//						Resources: []string{
+//							"arn:aws:s3:::state-terraform-s3",
 //						},
 //					},
 //					{
@@ -113,12 +113,8 @@ type GetIamPolicyDocumentResult struct {
 }
 
 func GetIamPolicyDocumentOutput(ctx *pulumi.Context, args GetIamPolicyDocumentOutputArgs, opts ...pulumi.InvokeOption) GetIamPolicyDocumentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIamPolicyDocumentResultOutput, error) {
-			args := v.(GetIamPolicyDocumentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("minio:index/getIamPolicyDocument:getIamPolicyDocument", args, GetIamPolicyDocumentResultOutput{}, options).(GetIamPolicyDocumentResultOutput), nil
-		}).(GetIamPolicyDocumentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("minio:index/getIamPolicyDocument:getIamPolicyDocument", args, GetIamPolicyDocumentResultOutput{}, options).(GetIamPolicyDocumentResultOutput)
 }
 
 // A collection of arguments for invoking getIamPolicyDocument.

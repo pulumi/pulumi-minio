@@ -100,11 +100,11 @@ class IlmPolicy(pulumi.CustomResource):
 
         bucket = minio.S3Bucket("bucket", bucket="bucket")
         bucket_lifecycle_rules = minio.IlmPolicy("bucket-lifecycle-rules",
-            bucket=bucket.bucket,
             rules=[{
                 "id": "expire-7d",
                 "expiration": "7d",
-            }])
+            }],
+            bucket=bucket.bucket)
         ```
 
 
@@ -128,11 +128,11 @@ class IlmPolicy(pulumi.CustomResource):
 
         bucket = minio.S3Bucket("bucket", bucket="bucket")
         bucket_lifecycle_rules = minio.IlmPolicy("bucket-lifecycle-rules",
-            bucket=bucket.bucket,
             rules=[{
                 "id": "expire-7d",
                 "expiration": "7d",
-            }])
+            }],
+            bucket=bucket.bucket)
         ```
 
 
