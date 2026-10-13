@@ -85,7 +85,7 @@ minio provider configuration entirely:
 import * as pulumi from "@pulumi/pulumi";
 import * as minio from "@pulumi/minio";
 
-const statePulumiS3 = new minio.S3Bucket("state_pulumi_s3", {});
+const stateTerraformS3 = new minio.S3Bucket("state_terraform_s3", {});
 ```
 
 {{% /choosable %}}
@@ -94,7 +94,7 @@ const statePulumiS3 = new minio.S3Bucket("state_pulumi_s3", {});
 import pulumi
 import pulumi_minio as minio
 
-state_pulumi_s3 = minio.S3Bucket("state_pulumi_s3")
+state_terraform_s3 = minio.S3Bucket("state_terraform_s3")
 ```
 
 {{% /choosable %}}
@@ -107,7 +107,7 @@ using Minio = Pulumi.Minio;
 
 return await Deployment.RunAsync(() =>
 {
-    var statePulumiS3 = new Minio.S3Bucket("state_pulumi_s3");
+    var stateTerraformS3 = new Minio.S3Bucket("state_terraform_s3");
 
 });
 
@@ -125,7 +125,7 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		_, err := minio.NewS3Bucket(ctx, "state_pulumi_s3", nil)
+		_, err := minio.NewS3Bucket(ctx, "state_terraform_s3", nil)
 		if err != nil {
 			return err
 		}
@@ -138,9 +138,9 @@ func main() {
 {{% choosable language yaml %}}
 ```yaml
 resources:
-  statePulumiS3:
+  stateTerraformS3:
     type: minio:S3Bucket
-    name: state_pulumi_s3
+    name: state_terraform_s3
 ```
 
 {{% /choosable %}}
@@ -165,7 +165,7 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        var statePulumiS3 = new S3Bucket("statePulumiS3");
+        var stateTerraformS3 = new S3Bucket("stateTerraformS3");
 
     }
 }
@@ -174,7 +174,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     minio = {
       source = "pulumi/minio"
@@ -182,7 +182,10 @@ pulumi {
   }
 }
 
-resource "minio_s3bucket" "state_pulumi_s3" {
+resource "minio_s3_bucket" "state_terraform_s3" {
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 ```
 

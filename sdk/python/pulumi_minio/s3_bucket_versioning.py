@@ -87,7 +87,7 @@ class S3BucketVersioning(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 versioning_configuration: pulumi.Input[Optional[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None,
+                 versioning_configuration: pulumi.Input[Optional[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict', 'outputs.S3BucketVersioningVersioningConfiguration']]] = None,
                  __props__=None):
         """
         Create a S3BucketVersioning resource with the given unique name, props, and options.
@@ -120,7 +120,7 @@ class S3BucketVersioning(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 versioning_configuration: pulumi.Input[Optional[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None,
+                 versioning_configuration: pulumi.Input[Optional[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict', 'outputs.S3BucketVersioningVersioningConfiguration']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -147,7 +147,7 @@ class S3BucketVersioning(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            versioning_configuration: pulumi.Input[Optional[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict']]] = None) -> 'S3BucketVersioning':
+            versioning_configuration: pulumi.Input[Optional[Union['S3BucketVersioningVersioningConfigurationArgs', 'S3BucketVersioningVersioningConfigurationArgsDict', 'outputs.S3BucketVersioningVersioningConfiguration']]] = None) -> 'S3BucketVersioning':
         """
         Get an existing S3BucketVersioning resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

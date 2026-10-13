@@ -64,9 +64,9 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         ctx.export("minioName", developerMinioIamGroupMembership.id());
- *         ctx.export("minioPolicy", developerMinioIamGroupMembership.policy());
- *         ctx.export("minioGroup", developerMinioIamGroupMembership.group());
+ *         ctx.export("minioName", developerMinioIamGroupMembership.get("id"));
+ *         ctx.export("minioPolicy", developerMinioIamGroupMembership.get("policy"));
+ *         ctx.export("minioGroup", developerMinioIamGroupMembership.get("group"));
  *     }
  * }
  * }
