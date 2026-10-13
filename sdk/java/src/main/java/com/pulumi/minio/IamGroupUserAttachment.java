@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var developerIamGroupUserAttachment = new IamGroupUserAttachment("developerIamGroupUserAttachment", IamGroupUserAttachmentArgs.builder()
- *             .groupName(group.name())
+ *             .groupName(group.get("name"))
  *             .userName(userOne.name())
  *             .build());
  * 

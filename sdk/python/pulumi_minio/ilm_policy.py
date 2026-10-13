@@ -87,7 +87,7 @@ class IlmPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IlmPolicyRuleArgs', 'IlmPolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IlmPolicyRuleArgs', 'IlmPolicyRuleArgsDict', 'outputs.IlmPolicyRule']]]]] = None,
                  __props__=None):
         """
         `IlmPolicy` handles lifecycle settings for a given `S3Bucket`.
@@ -152,7 +152,7 @@ class IlmPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IlmPolicyRuleArgs', 'IlmPolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IlmPolicyRuleArgs', 'IlmPolicyRuleArgsDict', 'outputs.IlmPolicyRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -179,7 +179,7 @@ class IlmPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IlmPolicyRuleArgs', 'IlmPolicyRuleArgsDict']]]]] = None) -> 'IlmPolicy':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IlmPolicyRuleArgs', 'IlmPolicyRuleArgsDict', 'outputs.IlmPolicyRule']]]]] = None) -> 'IlmPolicy':
         """
         Get an existing IlmPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

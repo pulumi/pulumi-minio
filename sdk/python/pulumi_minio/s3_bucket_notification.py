@@ -88,7 +88,7 @@ class S3BucketNotification(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict', 'outputs.S3BucketNotificationQueue']]]]] = None,
                  __props__=None):
         """
         Create a S3BucketNotification resource with the given unique name, props, and options.
@@ -121,7 +121,7 @@ class S3BucketNotification(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
-                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None,
+                 queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict', 'outputs.S3BucketNotificationQueue']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -146,7 +146,7 @@ class S3BucketNotification(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: pulumi.Input[Optional[_builtins.str]] = None,
-            queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict']]]]] = None) -> 'S3BucketNotification':
+            queues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['S3BucketNotificationQueueArgs', 'S3BucketNotificationQueueArgsDict', 'outputs.S3BucketNotificationQueue']]]]] = None) -> 'S3BucketNotification':
         """
         Get an existing S3BucketNotification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

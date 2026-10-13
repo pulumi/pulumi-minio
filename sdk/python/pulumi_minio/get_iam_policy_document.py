@@ -108,7 +108,7 @@ class AwaitableGetIamPolicyDocumentResult(GetIamPolicyDocumentResult):
 def get_iam_policy_document(override_json: Optional[_builtins.str] = None,
                             policy_id: Optional[_builtins.str] = None,
                             source_json: Optional[_builtins.str] = None,
-                            statements: Optional[Sequence[Union['GetIamPolicyDocumentStatementArgs', 'GetIamPolicyDocumentStatementArgsDict']]] = None,
+                            statements: Optional[Sequence[Union['GetIamPolicyDocumentStatementArgs', 'GetIamPolicyDocumentStatementArgsDict', 'outputs.GetIamPolicyDocumentStatementResult']]] = None,
                             version: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIamPolicyDocumentResult:
     """
@@ -172,7 +172,7 @@ def get_iam_policy_document(override_json: Optional[_builtins.str] = None,
 def get_iam_policy_document_output(override_json: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    policy_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    source_json: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                   statements: pulumi.Input[Optional[Optional[Sequence[Union['GetIamPolicyDocumentStatementArgs', 'GetIamPolicyDocumentStatementArgsDict']]]]] = None,
+                                   statements: pulumi.Input[Optional[Optional[Sequence[Union['GetIamPolicyDocumentStatementArgs', 'GetIamPolicyDocumentStatementArgsDict', 'outputs.GetIamPolicyDocumentStatementResult']]]]] = None,
                                    version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamPolicyDocumentResult]:
     """
